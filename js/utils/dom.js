@@ -19,7 +19,7 @@ export const DOMUtils = {
       if (key === 'className') el.className = value;
       else if (key === 'textContent') el.textContent = value;
       else if (key === 'innerHTML') el.innerHTML = value;
-      else if (key.startsWith('data')) el.setAttribute(`data-${key.slice(4).toLowerCase()}`, value);
+      else if (key.startsWith('data-')) el.setAttribute(key, value);
       else if (key === 'style' && typeof value === 'object') Object.assign(el.style, value);
       else el.setAttribute(key, value);
     }

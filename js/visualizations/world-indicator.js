@@ -70,7 +70,7 @@ export class WorldIndicator {
 
     const subScores = this.data.subScores;
     const categories = ['environment', 'society', 'economy', 'progress', 'momentum'];
-    const icons = ['🌍', '🕊️', '📊', '🔬', '📈'];
+    const icons = ['globe', 'people', 'dollar', 'pulse', 'trending'];
     const names = ['Umwelt', 'Gesellschaft', 'Wirtschaft', 'Fortschritt', 'Momentum'];
 
     categories.forEach((cat, i) => {

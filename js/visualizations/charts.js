@@ -68,11 +68,12 @@ export class Charts {
       return sum + MathUtils.distance(points[i - 1].x, points[i - 1].y, p.x, p.y);
     }, 0);
 
+    const gradId = container.id || 'chart-' + Math.random().toString(36).slice(2, 8);
     let svg = `<svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">`;
 
     // Gradient
     svg += `<defs>
-      <linearGradient id="areaGrad-${container.id}" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id="areaGrad-${gradId}" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="${color}" stop-opacity="${fillOpacity}" />
         <stop offset="100%" stop-color="${color}" stop-opacity="0" />
       </linearGradient>
@@ -104,7 +105,7 @@ export class Charts {
 
     // Area fill
     if (showArea) {
-      svg += `<path d="${areaD}" fill="url(#areaGrad-${container.id})" opacity="${animate ? 0 : 1}">
+      svg += `<path d="${areaD}" fill="url(#areaGrad-${gradId})" opacity="${animate ? 0 : 1}">
         ${animate ? `<animate attributeName="opacity" from="0" to="1" dur="1s" begin="0.5s" fill="freeze" />` : ''}
       </path>`;
     }

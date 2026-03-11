@@ -9,6 +9,7 @@ import { WorldIndicator } from './visualizations/world-indicator.js';
 import { Charts } from './visualizations/charts.js';
 import { Maps } from './visualizations/maps.js';
 import { Counter, CounterManager, Typewriter } from './visualizations/counters.js';
+import { CinematicScroll } from './visualizations/cinematic.js';
 import { MathUtils } from './utils/math.js';
 import { DOMUtils } from './utils/dom.js';
 
@@ -16,6 +17,7 @@ class BelkisOne {
   constructor() {
     this.dataLoader = new DataLoader();
     this.scrollEngine = new ScrollEngine();
+    this.cinematic = new CinematicScroll();
     this.particles = null;
     this.worldIndicator = null;
     this.counterManager = new CounterManager();
@@ -54,6 +56,9 @@ class BelkisOne {
       // Init scroll engine & sections
       this._initScrollEngine(data);
       this._updateLoading(80);
+
+      // Init cinematic scroll effects + images
+      this.cinematic.init();
 
       // Init all visualizations
       this._initVisualizations(data);
@@ -97,8 +102,14 @@ class BelkisOne {
     if (!canvas) return;
 
     canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;';
-    // Re-enable pointer events just for the canvas mouse tracking
-    canvas.style.pointerEvents = 'auto';
+
+    // Track mouse via window event instead of canvas (canvas has pointer-events:none)
+    window.addEventListener('mousemove', (e) => {
+      if (this.particles) {
+        this.particles.mouse.x = e.clientX;
+        this.particles.mouse.y = e.clientY;
+      }
+    });
 
     this.particles = new ParticleSystem(canvas, {
       count: DOMUtils.viewport().isMobile ? 300 : 1000,
@@ -133,6 +144,9 @@ class BelkisOne {
 
   // ─── Section Progress Handler ───
   _onSectionProgress(sectionId, progress, section, data) {
+    // Cinematic scroll transformations + image effects
+    this.cinematic.updateSection(sectionId, progress);
+
     // Update particle colors based on active section
     if (progress > 0.2 && progress < 0.8 && this.particles) {
       const color = this._sectionColors[sectionId];
@@ -403,6 +417,17 @@ class BelkisOne {
         this.scrollEngine.observeReveals(momList);
       }
 
+      // Momentum gauge
+      const momGauge = document.getElementById('momentum-gauge');
+      if (momGauge) {
+        Charts.gauge(momGauge, mom.positiveCount ? (mom.positiveCount / mom.totalIndicators) * 100 : 54.6, {
+          size: 140,
+          strokeWidth: 10,
+          color: '#5ac8fa',
+          label: 'Momentum'
+        });
+      }
+
       // Comparison grid
       const compGrid = document.getElementById('comparison-grid');
       if (compGrid) {
@@ -464,7 +489,7 @@ class BelkisOne {
 
     grid.innerHTML = '';
     data.dataSources.forEach(source => {
-      const stars = '⭐'.repeat(source.trust);
+      const stars = '\u2605'.repeat(source.trust);
       const card = DOMUtils.create('a', {
         className: 'source-card reveal',
         href: source.url,

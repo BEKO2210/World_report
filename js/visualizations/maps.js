@@ -193,22 +193,27 @@ export class Maps {
       }
     });
 
-    // Load SVG map
+    const overlay = DOMUtils.create('div', { className: 'map-overlay' });
+    const svgWrapper = DOMUtils.create('div', {
+      className: 'map-svg-wrapper',
+      style: { position: 'absolute', inset: '0', zIndex: '0' }
+    });
+
+    // Load SVG map into wrapper (not mapEl.innerHTML to preserve overlay)
     fetch('assets/maps/world.svg')
       .then(r => r.text())
       .then(svg => {
-        mapEl.innerHTML = svg;
-        const svgEl = mapEl.querySelector('svg');
+        svgWrapper.innerHTML = svg;
+        const svgEl = svgWrapper.querySelector('svg');
         if (svgEl) {
           svgEl.style.cssText = 'width:100%;height:100%;opacity:0.4;';
         }
       })
       .catch(() => {
-        // Fallback: simplified dot-matrix world outline
-        mapEl.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:14px;">Weltkarte</div>`;
+        svgWrapper.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:14px;">Weltkarte</div>`;
       });
 
-    const overlay = DOMUtils.create('div', { className: 'map-overlay' });
+    mapEl.appendChild(svgWrapper);
     mapEl.appendChild(overlay);
     container.appendChild(mapEl);
 
