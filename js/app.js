@@ -67,9 +67,9 @@ class BelkisOne {
       // Init counters
       this.counterManager.discover().observe();
 
-      // Init interactions
-      this._initInteractions();
+      // Init nav dots first (before interactions, which registers their click handlers)
       this._initNavDots();
+      this._initInteractions();
       this._initEasterEgg();
 
       // Prolog animation
@@ -250,6 +250,7 @@ class BelkisOne {
     if (!this._societyBuilt && progress > 0.1) {
       this._societyBuilt = true;
       const soc = data.society;
+      this._crisisData = { conflicts: soc.conflicts.locations };
 
       // Conflict map
       const conflictMapEl = document.getElementById('conflict-map');
@@ -557,6 +558,23 @@ class BelkisOne {
       dot.addEventListener('click', () => {
         const target = dot.dataset.target;
         if (target) DOMUtils.scrollTo(`#${target}`);
+      });
+    });
+
+    // Crisis map layer buttons
+    document.querySelectorAll('.crisis-layer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.crisis-layer-btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const layer = btn.dataset.layer;
+        const mapContainer = document.querySelector('.crisis-map-container .map-container');
+        if (mapContainer && this._crisisData) {
+          const overlay = mapContainer.querySelector('.map-overlay');
+          if (overlay) overlay.innerHTML = '';
+          if (layer === 'conflicts' && this._crisisData.conflicts) {
+            Maps.conflictMap(mapContainer, this._crisisData.conflicts);
+          }
+        }
       });
     });
   }

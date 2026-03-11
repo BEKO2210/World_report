@@ -41,7 +41,7 @@ export class ParticleSystem {
     this.height = rect.height;
     this.canvas.width = this.width * dpr;
     this.canvas.height = this.height * dpr;
-    this.ctx.scale(dpr, dpr);
+    this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   _initParticles() {
@@ -213,11 +213,15 @@ export class ParticleSystem {
 
   // ─── Set Color Theme ───
   setColor(r, g, b, transition = 1) {
-    const startColors = this.particles.map(p => ({ r: p.r, g: p.g, b: p.b }));
-    let elapsed = 0;
+    // Cancel any previous color animation
+    if (this._colorAnimId) cancelAnimationFrame(this._colorAnimId);
 
-    const animate = (dt) => {
-      elapsed += dt;
+    const startColors = this.particles.map(p => ({ r: p.r, g: p.g, b: p.b }));
+    let startTime = null;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = (timestamp - startTime) / 1000;
       const t = MathUtils.clamp(elapsed / transition, 0, 1);
       const eased = MathUtils.easing.easeOutCubic(t);
 
@@ -228,11 +232,13 @@ export class ParticleSystem {
       });
 
       if (t < 1) {
-        requestAnimationFrame(() => animate(0.016));
+        this._colorAnimId = requestAnimationFrame(animate);
+      } else {
+        this._colorAnimId = null;
       }
     };
 
-    animate(0);
+    this._colorAnimId = requestAnimationFrame(animate);
   }
 
   // ─── Burst effect ───

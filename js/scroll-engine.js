@@ -167,14 +167,17 @@ export class ScrollEngine {
       navDotsContainer.classList.toggle('is-visible', scrollProgress > 0.02);
     }
 
-    // Highlight active dot
+    // Highlight active dot — find section closest to center of viewport (progress ~0.5)
     let activeIndex = -1;
-    let maxRatio = 0;
+    let bestDist = Infinity;
     let i = 0;
     for (const [, section] of this.sections) {
-      if (section.isVisible && section.progress > maxRatio && section.progress < 0.95) {
-        maxRatio = section.progress;
-        activeIndex = i;
+      if (section.isVisible) {
+        const dist = Math.abs(section.progress - 0.5);
+        if (dist < bestDist) {
+          bestDist = dist;
+          activeIndex = i;
+        }
       }
       i++;
     }
