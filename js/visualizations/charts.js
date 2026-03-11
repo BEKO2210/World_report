@@ -316,6 +316,43 @@ export class Charts {
     `;
   }
 
+  // ─── Sparkline (Compact Inline Chart) ───
+  static sparkline(container, data, options = {}) {
+    const {
+      width = container.getBoundingClientRect().width || 200,
+      height = 40,
+      color = '#00d4ff',
+      fillOpacity = 0.1,
+      strokeWidth = 1.5
+    } = options;
+
+    const values = data.map(d => typeof d === 'number' ? d : d.value);
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const range = max - min || 1;
+    const pad = 2;
+
+    const points = values.map((v, i) => ({
+      x: pad + (i / (values.length - 1)) * (width - pad * 2),
+      y: pad + (1 - (v - min) / range) * (height - pad * 2)
+    }));
+
+    const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ');
+    const areaD = pathD + ` L ${points[points.length - 1].x.toFixed(1)} ${height} L ${points[0].x.toFixed(1)} ${height} Z`;
+
+    const gradId = 'spark-' + Math.random().toString(36).slice(2, 8);
+
+    container.innerHTML = `<svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="width:100%;height:${height}px;display:block">
+      <defs><linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${color}" stop-opacity="${fillOpacity}"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </linearGradient></defs>
+      <path d="${areaD}" fill="url(#${gradId})"/>
+      <path d="${pathD}" fill="none" stroke="${color}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="${points[points.length - 1].x.toFixed(1)}" cy="${points[points.length - 1].y.toFixed(1)}" r="2.5" fill="${color}"/>
+    </svg>`;
+  }
+
   // ─── Literacy Stairs ───
   static literacyStairs(container, data, progress = 1) {
     container.innerHTML = '';
