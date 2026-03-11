@@ -155,36 +155,44 @@ class BelkisOne {
       }
     }
 
-    switch (sectionId) {
-      case 'akt-indicator':
-        if (this.worldIndicator) {
-          this.worldIndicator.update(progress);
-        }
-        break;
+    try {
+      switch (sectionId) {
+        case 'akt-indicator':
+          if (this.worldIndicator) {
+            this.worldIndicator.update(progress);
+          }
+          break;
 
-      case 'akt-environment':
-        this._updateEnvironment(progress, data);
-        break;
+        case 'akt-environment':
+          this._updateEnvironment(progress, data);
+          break;
 
-      case 'akt-society':
-        this._updateSociety(progress, data);
-        break;
+        case 'akt-society':
+          this._updateSociety(progress, data);
+          break;
 
-      case 'akt-economy':
-        this._updateEconomy(progress, data);
-        break;
+        case 'akt-economy':
+          this._updateEconomy(progress, data);
+          break;
 
-      case 'akt-progress':
-        this._updateProgress(progress, data);
-        break;
+        case 'akt-progress':
+          this._updateProgress(progress, data);
+          break;
 
-      case 'akt-momentum':
-        this._updateMomentum(progress, data);
-        break;
+        case 'akt-momentum':
+          this._updateMomentum(progress, data);
+          break;
 
-      case 'epilog':
-        this._updateEpilog(progress, data);
-        break;
+        case 'akt-crisis-map':
+          this._updateCrisisMap(progress, data);
+          break;
+
+        case 'epilog':
+          this._updateEpilog(progress, data);
+          break;
+      }
+    } catch (err) {
+      console.error(`[BelkisOne] Error in section ${sectionId}:`, err);
     }
   }
 
@@ -203,15 +211,16 @@ class BelkisOne {
     this._progressBuilt = false;
     this._realtimeBuilt = false;
     this._momentumBuilt = false;
+    this._crisisMapBuilt = false;
 
     // Realtime section - build immediately since it has live data
-    this._buildRealtime(data);
+    try { this._buildRealtime(data); } catch (e) { console.error('[BelkisOne] Realtime build error:', e); }
 
     // Scenarios
-    this._buildScenarios(data);
+    try { this._buildScenarios(data); } catch (e) { console.error('[BelkisOne] Scenarios build error:', e); }
 
     // Sources
-    this._buildSources(data);
+    try { this._buildSources(data); } catch (e) { console.error('[BelkisOne] Sources build error:', e); }
 
     // Last updated
     const tsEls = document.querySelectorAll('.timestamp');
@@ -259,6 +268,17 @@ class BelkisOne {
         setTimeout(() => {
           Maps.conflictMap(conflictMapEl.querySelector('.map-container') || conflictMapEl, soc.conflicts.locations);
         }, 500);
+      }
+
+      // Freedom index visualization
+      if (soc.freedom) {
+        const freedomSection = document.querySelector('.akt-society .freedom-legend');
+        if (freedomSection) {
+          const chartContainer = document.createElement('div');
+          chartContainer.style.cssText = 'margin-top:var(--space-sm);';
+          freedomSection.parentElement.insertBefore(chartContainer, freedomSection.nextSibling);
+          Charts.freedomBar(chartContainer, soc.freedom);
+        }
       }
 
       // Life expectancy chart
@@ -418,10 +438,13 @@ class BelkisOne {
         this.scrollEngine.observeReveals(momList);
       }
 
-      // Momentum gauge
+      // Momentum gauge — compute from indicators if not pre-computed
       const momGauge = document.getElementById('momentum-gauge');
       if (momGauge) {
-        Charts.gauge(momGauge, mom.positiveCount ? (mom.positiveCount / mom.totalIndicators) * 100 : 54.6, {
+        const positiveCount = mom.positiveCount || mom.indicators.filter(i => i.direction === 'improving').length;
+        const totalCount = mom.totalIndicators || mom.indicators.length;
+        const gaugeValue = totalCount > 0 ? (positiveCount / totalCount) * 100 : 50;
+        Charts.gauge(momGauge, gaugeValue, {
           size: 140,
           strokeWidth: 10,
           color: '#5ac8fa',
@@ -453,6 +476,47 @@ class BelkisOne {
         });
         this.scrollEngine.observeReveals(compGrid);
       }
+    }
+  }
+
+  // ─── Crisis Map Section ───
+  _updateCrisisMap(progress, data) {
+    if (!this._crisisMapBuilt && progress > 0.1) {
+      this._crisisMapBuilt = true;
+      const container = document.getElementById('crisis-map-container');
+      if (!container) return;
+
+      // Replace placeholder with actual map
+      container.innerHTML = '';
+      const mapEl = Maps.createBasicMap(container);
+
+      // Add conflict dots after map loads
+      const soc = data.society;
+      if (soc?.conflicts?.locations) {
+        this._crisisData = this._crisisData || { conflicts: soc.conflicts.locations };
+        setTimeout(() => {
+          const mc = mapEl.querySelector('.map-container') || mapEl;
+          Maps.conflictMap(mc, soc.conflicts.locations);
+        }, 600);
+      }
+
+      // Wire up layer buttons now that the map exists
+      document.querySelectorAll('.crisis-layer-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.crisis-layer-btn').forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const layer = btn.dataset.layer;
+          const mc = container.querySelector('.map-container');
+          if (!mc) return;
+          const overlay = mc.querySelector('.map-overlay');
+          if (overlay) overlay.innerHTML = '';
+          if (layer === 'conflicts' && this._crisisData?.conflicts) {
+            Maps.conflictMap(mc, this._crisisData.conflicts);
+          } else if (layer === 'climate') {
+            Maps.conflictMap(mc, soc.conflicts.locations);
+          }
+        });
+      });
     }
   }
 
@@ -575,22 +639,6 @@ class BelkisOne {
       });
     });
 
-    // Crisis map layer buttons
-    document.querySelectorAll('.crisis-layer-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.crisis-layer-btn').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        const layer = btn.dataset.layer;
-        const mapContainer = document.querySelector('.crisis-map-container .map-container');
-        if (mapContainer && this._crisisData) {
-          const overlay = mapContainer.querySelector('.map-overlay');
-          if (overlay) overlay.innerHTML = '';
-          if (layer === 'conflicts' && this._crisisData.conflicts) {
-            Maps.conflictMap(mapContainer, this._crisisData.conflicts);
-          }
-        }
-      });
-    });
   }
 
   // ─── Navigation Dots ───

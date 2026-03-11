@@ -300,6 +300,22 @@ export class Charts {
     }
   }
 
+  // ─── Freedom Index Bar ───
+  static freedomBar(container, freedom) {
+    const total = freedom.free + freedom.partlyFree + freedom.notFree;
+    const freeP = (freedom.free / total * 100).toFixed(1);
+    const partlyP = (freedom.partlyFree / total * 100).toFixed(1);
+    const notFreeP = (freedom.notFree / total * 100).toFixed(1);
+
+    container.innerHTML = `
+      <div style="width:100%;height:32px;border-radius:8px;overflow:hidden;display:flex;margin-bottom:8px">
+        <div style="width:${freeP}%;background:#34c759;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#000;transition:width 1.5s ease">${freedom.free}</div>
+        <div style="width:${partlyP}%;background:#ffcc00;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#000;transition:width 1.5s ease">${freedom.partlyFree}</div>
+        <div style="width:${notFreeP}%;background:#ff3b30;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#000;transition:width 1.5s ease">${freedom.notFree}</div>
+      </div>
+    `;
+  }
+
   // ─── Literacy Stairs ───
   static literacyStairs(container, data, progress = 1) {
     container.innerHTML = '';
