@@ -173,13 +173,17 @@ export class CinematicScroll {
 
     switch (sectionId) {
       case 'prolog': {
-        // Prolog: Scale up pulse, fade content
-        const pulse = section.querySelector('.prolog__pulse');
-        if (pulse) {
-          const scale = 1 + progress * 3;
-          const opacity = 1 - progress * 2;
-          pulse.style.transform = `scale(${scale})`;
-          pulse.style.opacity = MathUtils.clamp(opacity, 0, 1);
+        // Prolog: Scale up orb, fade content
+        const orb = section.querySelector('.prolog__orb');
+        if (orb) {
+          const scale = 1 + progress * 2;
+          const opacity = 1 - progress * 2.5;
+          orb.style.transform = `scale(${scale})`;
+          orb.style.opacity = MathUtils.clamp(opacity, 0, 1);
+        }
+        const brand = section.querySelector('.prolog__brand');
+        if (brand) {
+          brand.style.opacity = MathUtils.clamp(1 - progress * 3, 0, 1);
         }
         const hint = section.querySelector('.scroll-hint');
         if (hint) {

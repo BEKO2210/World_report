@@ -89,6 +89,20 @@
   position: relative;
   z-index: 2;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prolog__brand {
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  animation: prologBrandIn 1.5s ease 0.3s forwards;
 }
 
 .prolog__title {
@@ -97,16 +111,93 @@
   color: var(--text-primary);
   opacity: 0;
   letter-spacing: 0.02em;
+  transition: opacity 0.8s ease;
+  min-height: 1.4em;
 }
 
-.prolog__pulse {
-  width: 12px;
-  height: 12px;
+.prolog__title.is-typing {
+  opacity: 1;
+}
+
+.prolog__subtitle {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+  letter-spacing: 0.04em;
+  font-weight: 300;
+}
+
+.prolog__subtitle.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Orb Animation */
+.prolog__orb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prolog__orb-core {
+  width: 16px;
+  height: 16px;
   background: var(--text-primary);
   border-radius: 50%;
-  margin: 0 auto var(--space-lg);
-  animation: heartbeat 2s ease infinite;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 60px rgba(255, 255, 255, 0.1);
+  animation: orbCoreBreath 3s ease-in-out infinite;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(0, 212, 255, 0.2),
+    0 0 100px rgba(0, 212, 255, 0.1);
+}
+
+.prolog__orb-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: orbRingSpin 8s linear infinite;
+}
+
+.prolog__orb-ring--1 {
+  width: 50px;
+  height: 50px;
+  border-color: rgba(0, 212, 255, 0.2);
+  animation-duration: 6s;
+}
+
+.prolog__orb-ring--2 {
+  width: 70px;
+  height: 70px;
+  border-color: rgba(255, 255, 255, 0.08);
+  animation-duration: 10s;
+  animation-direction: reverse;
+}
+
+.prolog__orb-ring--3 {
+  width: 90px;
+  height: 90px;
+  border-color: rgba(52, 199, 89, 0.1);
+  animation-duration: 14s;
+  border-style: dashed;
+}
+
+@media (max-width: 640px) {
+  .prolog__orb {
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--space-lg);
+  }
+  .prolog__orb-core { width: 12px; height: 12px; }
+  .prolog__orb-ring--1 { width: 36px; height: 36px; }
+  .prolog__orb-ring--2 { width: 52px; height: 52px; }
+  .prolog__orb-ring--3 { width: 68px; height: 68px; }
 }
 
 /* ─── AKT 1: WELT-INDIKATOR ─── */
@@ -193,6 +284,24 @@
   font-size: var(--text-micro);
   color: var(--text-muted);
   text-align: center;
+}
+
+@media (max-width: 640px) {
+  .world-indicator {
+    max-width: 95vw;
+  }
+  .world-indicator__zone-mark {
+    font-size: 0.5rem;
+  }
+  .world-indicator__zone-mark:nth-child(2),
+  .world-indicator__zone-mark:nth-child(3),
+  .world-indicator__zone-mark:nth-child(5),
+  .world-indicator__zone-mark:nth-child(6) {
+    display: none;
+  }
+  .world-indicator__endpoints {
+    font-size: 0.6rem;
+  }
 }
 
 .world-indicator__value {
@@ -982,4 +1091,76 @@
   background: var(--text-primary);
   border-radius: 1px;
   transition: width 0.3s ease;
+}
+
+/* ─── MOBILE RESPONSIVENESS ─── */
+@media (max-width: 640px) {
+  /* Charts: reduce left padding for small screens */
+  .chart-container svg text {
+    font-size: 8px;
+  }
+
+  /* Warming stripes height */
+  .warming-stripes {
+    height: 80px;
+  }
+
+  /* Literacy stairs */
+  .literacy-stairs {
+    height: 150px;
+  }
+
+  /* Fear & Greed gauge */
+  .fear-greed-gauge {
+    width: 100px;
+    height: 55px;
+  }
+
+  /* Buttons: larger touch targets */
+  .btn {
+    padding: 14px 24px;
+    min-height: 48px;
+  }
+
+  .crisis-layer-btn {
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  /* Epilog back to top */
+  .epilog__back-to-top {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* Reduce section padding on mobile */
+  .section {
+    min-height: auto;
+    min-height: 100svh;
+  }
+
+  /* Scenarios better spacing */
+  .scenario {
+    padding: var(--space-md);
+  }
+
+  .scenario__score {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  /* Source cards stack nicely */
+  .sources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Typewriter: allow wrapping on mobile */
+  .typewriter {
+    white-space: normal;
+    overflow: visible;
+  }
+
+  /* Momentum items */
+  .momentum-item {
+    padding: var(--space-xs) var(--space-sm);
+  }
 }

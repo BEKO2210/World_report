@@ -33,19 +33,21 @@ export class Charts {
 
   // ─── Line/Area Chart ───
   static lineChart(container, data, options = {}) {
+    const containerWidth = container.getBoundingClientRect().width || 800;
+    const isMobile = containerWidth < 500;
     const {
-      width = 800,
-      height = 300,
+      width = Math.round(containerWidth),
+      height = isMobile ? 180 : 300,
       color = '#00d4ff',
       fillOpacity = 0.15,
-      strokeWidth = 2.5,
+      strokeWidth = isMobile ? 2 : 2.5,
       showArea = true,
-      showDots = true,
+      showDots = isMobile ? false : true,
       showLabels = true,
       animate = true,
       progress = 1,
       yLabel = '',
-      padding = { top: 20, right: 20, bottom: 40, left: 50 }
+      padding = isMobile ? { top: 15, right: 10, bottom: 30, left: 35 } : { top: 20, right: 20, bottom: 40, left: 50 }
     } = options;
 
     const plotWidth = width - padding.left - padding.right;
@@ -140,14 +142,16 @@ export class Charts {
 
   // ─── Bar Chart ───
   static barChart(container, data, options = {}) {
+    const containerWidth = container.getBoundingClientRect().width || 800;
+    const isMobile = containerWidth < 500;
     const {
-      width = 800,
-      height = 250,
+      width = Math.round(containerWidth),
+      height = isMobile ? 180 : 250,
       colorFn = () => '#00d4ff',
-      barGap = 4,
+      barGap = isMobile ? 2 : 4,
       progress = 1,
       showLabels = true,
-      padding = { top: 20, right: 20, bottom: 40, left: 50 }
+      padding = isMobile ? { top: 15, right: 10, bottom: 30, left: 35 } : { top: 20, right: 20, bottom: 40, left: 50 }
     } = options;
 
     const plotWidth = width - padding.left - padding.right;

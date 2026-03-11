@@ -524,12 +524,26 @@ class BelkisOne {
   _initProlog() {
     const title = document.querySelector('.prolog__title');
     if (title) {
+      // Fade in title when typing starts
+      setTimeout(() => title.classList.add('is-typing'), 1400);
+
       const tw = new Typewriter(title, {
         text: 'Wie geht es der Welt? Wirklich?',
         speed: 70,
         delay: 1500
       });
       tw.start();
+
+      // Show subtitle after typewriter finishes
+      const subtitle = document.querySelector('.prolog__subtitle');
+      if (subtitle) {
+        const textLength = 31; // "Wie geht es der Welt? Wirklich?"
+        const typingDuration = 1500 + textLength * 85; // delay + chars * avg speed
+        setTimeout(() => {
+          subtitle.textContent = 'Ein datengetriebenes Scroll-Erlebnis.';
+          subtitle.classList.add('is-visible');
+        }, typingDuration);
+      }
     }
   }
 

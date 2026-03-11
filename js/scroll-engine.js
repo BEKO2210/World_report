@@ -137,7 +137,13 @@ export class ScrollEngine {
 
   _updateSections() {
     for (const [sectionId, section] of this.sections) {
-      if (!section.isVisible && section.progress === 0) continue;
+      // Skip off-screen sections entirely for performance
+      if (!section.isVisible) {
+        if (section.progress !== 0) {
+          section.progress = 0;
+        }
+        continue;
+      }
 
       const rect = section.element.getBoundingClientRect();
       const sectionHeight = rect.height;

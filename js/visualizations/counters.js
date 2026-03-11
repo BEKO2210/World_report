@@ -50,7 +50,6 @@ export class Counter {
 
   _render() {
     let displayValue;
-    const absVal = Math.abs(this.current);
 
     if (this.suffix === 'compact') {
       displayValue = MathUtils.formatCompact(Math.round(this.current));
