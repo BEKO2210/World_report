@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "generated": "2026-03-11T12:00:00Z",
+    "version": "1.0.0",
+    "sources_count": 24,
+    "sources_available": 22,
+    "next_update": "2026-03-11T18:00:00Z"
+  },
+  "worldIndex": {
+    "value": 47.3,
+    "label": "GEMISCHT",
+    "zone": "mixed",
+    "previous": 46.8,
+    "change": 0.5,
+    "trend": "improving"
+  },
+  "subScores": {
+    "environment": {
+      "value": 38.2,
+      "label": "BESORGNISERREGEND",
+      "zone": "concerning",
+      "weight": 0.25,
+      "trend": "declining",
+      "change": -1.2,
+      "indicators": [
+        {"name": "Globale Temperaturanomalie", "value": "+1.45°C", "score": 25, "trend": "declining", "source": "NASA GISTEMP"},
+        {"name": "CO2-Konzentration", "value": "421 ppm", "score": 22, "trend": "declining", "source": "NOAA"},
+        {"name": "Luftqualität (Global Avg AQI)", "value": 68, "score": 45, "trend": "stable", "source": "WAQI"},
+        {"name": "Arktis-Eisfläche", "value": "4.2 Mio km²", "score": 30, "trend": "declining", "source": "NSIDC"},
+        {"name": "Waldfläche", "value": "31.2%", "score": 42, "trend": "declining", "source": "World Bank"},
+        {"name": "Erneuerbare Energie", "value": "29.9%", "score": 55, "trend": "improving", "source": "IRENA"}
+      ]
+    },
+    "society": {
+      "value": 44.7,
+      "label": "GEMISCHT",
+      "zone": "mixed",
+      "weight": 0.25,
+      "trend": "stable",
+      "change": 0.1,
+      "indicators": [
+        {"name": "Aktive Konflikte", "value": 56, "score": 32, "trend": "declining", "source": "ACLED"},
+        {"name": "Menschen auf der Flucht", "value": "108.4 Mio", "score": 28, "trend": "declining", "source": "UNHCR"},
+        {"name": "Freiheitsindex (Avg)", "value": 55.2, "score": 48, "trend": "declining", "source": "Freedom House"},
+        {"name": "Lebenserwartung (Global)", "value": "73.4 Jahre", "score": 68, "trend": "improving", "source": "WHO"},
+        {"name": "Kindersterblichkeit", "value": "3.7%", "score": 62, "trend": "improving", "source": "WHO"},
+        {"name": "Global Peace Index", "value": 2.31, "score": 38, "trend": "stable", "source": "IEP"}
+      ]
+    },
+    "economy": {
+      "value": 51.4,
+      "label": "GEMISCHT",
+      "zone": "mixed",
+      "weight": 0.20,
+      "trend": "improving",
+      "change": 0.8,
+      "indicators": [
+        {"name": "Extreme Armut", "value": "648 Mio", "score": 55, "trend": "improving", "source": "World Bank"},
+        {"name": "Gini-Index (Global Avg)", "value": 0.42, "score": 38, "trend": "stable", "source": "World Bank"},
+        {"name": "Globales BIP-Wachstum", "value": "3.1%", "score": 62, "trend": "improving", "source": "IMF"},
+        {"name": "Jugendarbeitslosigkeit", "value": "13.2%", "score": 45, "trend": "stable", "source": "ILO"},
+        {"name": "HDI (Global Avg)", "value": 0.739, "score": 58, "trend": "improving", "source": "UNDP"}
+      ]
+    },
+    "progress": {
+      "value": 62.8,
+      "label": "POSITIV",
+      "zone": "positive",
+      "weight": 0.20,
+      "trend": "improving",
+      "change": 2.1,
+      "indicators": [
+        {"name": "Alphabetisierungsrate", "value": "87.4%", "score": 72, "trend": "improving", "source": "UNESCO"},
+        {"name": "Internet-Durchdringung", "value": "67.4%", "score": 65, "trend": "improving", "source": "ITU"},
+        {"name": "Wissenschaftl. Publikationen/Jahr", "value": "3.2 Mio", "score": 78, "trend": "improving", "source": "arXiv/Scopus"},
+        {"name": "Patentanmeldungen/Jahr", "value": "3.5 Mio", "score": 70, "trend": "improving", "source": "WIPO"},
+        {"name": "GitHub Commits/Tag (Global)", "value": "142 Mio", "score": 68, "trend": "improving", "source": "GitHub"},
+        {"name": "Bildungszugang (Sekundär)", "value": "78.2%", "score": 62, "trend": "improving", "source": "UNESCO"}
+      ]
+    },
+    "momentum": {
+      "value": 54.6,
+      "label": "GEMISCHT",
+      "zone": "mixed",
+      "weight": 0.10,
+      "trend": "improving",
+      "change": 1.5,
+      "positiveCount": 14,
+      "negativeCount": 6,
+      "totalIndicators": 20
+    }
+  },
+  "environment": {
+    "temperatureAnomaly": {
+      "current": 1.45,
+      "unit": "°C",
+      "baseline": "1951-1980 avg",
+      "history": [
+        {"year": 1880, "value": -0.16}, {"year": 1890, "value": -0.35}, {"year": 1900, "value": -0.08},
+        {"year": 1910, "value": -0.34}, {"year": 1920, "value": -0.21}, {"year": 1930, "value": -0.14},
+        {"year": 1940, "value": 0.12}, {"year": 1950, "value": -0.16}, {"year": 1960, "value": 0.03},
+        {"year": 1970, "value": 0.04}, {"year": 1975, "value": -0.01}, {"year": 1980, "value": 0.26},
+        {"year": 1985, "value": 0.12}, {"year": 1990, "value": 0.45}, {"year": 1995, "value": 0.46},
+        {"year": 2000, "value": 0.40}, {"year": 2005, "value": 0.68}, {"year": 2010, "value": 0.72},
+        {"year": 2015, "value": 0.90}, {"year": 2016, "value": 1.02}, {"year": 2017, "value": 0.92},
+        {"year": 2018, "value": 0.85}, {"year": 2019, "value": 0.98}, {"year": 2020, "value": 1.02},
+        {"year": 2021, "value": 0.85}, {"year": 2022, "value": 0.89}, {"year": 2023, "value": 1.17},
+        {"year": 2024, "value": 1.29}, {"year": 2025, "value": 1.38}, {"year": 2026, "value": 1.45}
+      ],
+      "source": "NASA GISTEMP"
+    },
+    "co2": {
+      "current": 421,
+      "unit": "ppm",
+      "preindustrial": 280,
+      "history": [
+        {"year": 1960, "value": 317}, {"year": 1970, "value": 326}, {"year": 1980, "value": 339},
+        {"year": 1990, "value": 354}, {"year": 2000, "value": 370}, {"year": 2005, "value": 380},
+        {"year": 2010, "value": 390}, {"year": 2015, "value": 401}, {"year": 2020, "value": 414},
+        {"year": 2023, "value": 419}, {"year": 2024, "value": 420}, {"year": 2026, "value": 421}
+      ],
+      "source": "NOAA"
+    },
+    "airQuality": {
+      "globalAvgAQI": 68,
+      "cleanestCities": [
+        {"city": "Helsinki", "country": "FI", "aqi": 12},
+        {"city": "Reykjavik", "country": "IS", "aqi": 15},
+        {"city": "Wellington", "country": "NZ", "aqi": 18},
+        {"city": "Zürich", "country": "CH", "aqi": 22},
+        {"city": "Vancouver", "country": "CA", "aqi": 25}
+      ],
+      "mostPolluted": [
+        {"city": "Lahore", "country": "PK", "aqi": 285},
+        {"city": "Delhi", "country": "IN", "aqi": 268},
+        {"city": "Dhaka", "country": "BD", "aqi": 245},
+        {"city": "Kolkata", "country": "IN", "aqi": 198},
+        {"city": "Beijing", "country": "CN", "aqi": 165}
+      ],
+      "source": "WAQI / OpenAQ"
+    },
+    "arcticIce": {
+      "current": 4.2,
+      "unit": "million km²",
+      "reference1980": 7.8,
+      "percentLost": 46.2,
+      "source": "NSIDC"
+    }
+  },
+  "society": {
+    "conflicts": {
+      "activeCount": 56,
+      "locations": [
+        {"name": "Ukraine", "lat": 48.38, "lng": 31.17, "type": "war", "intensity": 0.95},
+        {"name": "Gaza", "lat": 31.35, "lng": 34.31, "type": "war", "intensity": 0.92},
+        {"name": "Sudan", "lat": 15.50, "lng": 32.56, "type": "war", "intensity": 0.88},
+        {"name": "Myanmar", "lat": 19.76, "lng": 96.08, "type": "war", "intensity": 0.75},
+        {"name": "Syrien", "lat": 34.80, "lng": 38.99, "type": "conflict", "intensity": 0.65},
+        {"name": "Jemen", "lat": 15.55, "lng": 48.52, "type": "conflict", "intensity": 0.62},
+        {"name": "Somalia", "lat": 5.15, "lng": 46.20, "type": "conflict", "intensity": 0.58},
+        {"name": "DR Kongo", "lat": -4.04, "lng": 21.76, "type": "conflict", "intensity": 0.55},
+        {"name": "Sahel", "lat": 14.50, "lng": 2.10, "type": "conflict", "intensity": 0.52},
+        {"name": "Haiti", "lat": 18.97, "lng": -72.29, "type": "unrest", "intensity": 0.45}
+      ],
+      "source": "ACLED"
+    },
+    "refugees": {
+      "total": 108400000,
+      "displaced": 68300000,
+      "asylumseekers": 6900000,
+      "flows": [
+        {"from": "Syria", "to": "Turkey", "count": 3200000},
+        {"from": "Ukraine", "to": "Poland", "count": 1800000},
+        {"from": "Venezuela", "to": "Colombia", "count": 2500000},
+        {"from": "Afghanistan", "to": "Pakistan", "count": 1700000},
+        {"from": "Sudan", "to": "Chad", "count": 1100000},
+        {"from": "Myanmar", "to": "Bangladesh", "count": 960000},
+        {"from": "Somalia", "to": "Kenya", "count": 580000},
+        {"from": "DRC", "to": "Uganda", "count": 520000}
+      ],
+      "source": "UNHCR"
+    },
+    "freedom": {
+      "free": 84,
+      "partlyFree": 56,
+      "notFree": 55,
+      "trendDecline": true,
+      "yearDecline": 18,
+      "source": "Freedom House"
+    },
+    "lifeExpectancy": {
+      "global": 73.4,
+      "highest": {"country": "Japan", "value": 84.8},
+      "lowest": {"country": "Central African Republic", "value": 53.1},
+      "history": [
+        {"year": 1960, "value": 52.6}, {"year": 1970, "value": 58.5}, {"year": 1980, "value": 62.8},
+        {"year": 1990, "value": 65.4}, {"year": 2000, "value": 67.7}, {"year": 2010, "value": 70.8},
+        {"year": 2020, "value": 72.0}, {"year": 2026, "value": 73.4}
+      ],
+      "source": "WHO"
+    }
+  },
+  "economy": {
+    "wealth": {
+      "billionaires": 2781,
+      "billionaireWealth": 14200000000000,
+      "extremePoverty": 648000000,
+      "top1Percent": 45.8,
+      "bottom50Percent": 2.1,
+      "source": "World Bank / Oxfam"
+    },
+    "gdpGrowth": {
+      "global": 3.1,
+      "regions": [
+        {"name": "Asien-Pazifik", "value": 4.8},
+        {"name": "Nordamerika", "value": 2.1},
+        {"name": "Europa", "value": 1.4},
+        {"name": "Lateinamerika", "value": 2.3},
+        {"name": "Naher Osten", "value": 3.2},
+        {"name": "Sub-Sahara Afrika", "value": 3.8}
+      ],
+      "source": "IMF"
+    },
+    "gini": {
+      "globalAvg": 0.42,
+      "history": [
+        {"year": 1990, "value": 0.46}, {"year": 2000, "value": 0.44},
+        {"year": 2010, "value": 0.43}, {"year": 2020, "value": 0.42},
+        {"year": 2026, "value": 0.42}
+      ],
+      "source": "World Bank"
+    }
+  },
+  "progress": {
+    "publications": {
+      "annualTotal": 3200000,
+      "history": [
+        {"year": 1980, "value": 650000}, {"year": 1990, "value": 900000},
+        {"year": 2000, "value": 1200000}, {"year": 2010, "value": 1900000},
+        {"year": 2020, "value": 2800000}, {"year": 2026, "value": 3200000}
+      ],
+      "source": "arXiv / Scopus"
+    },
+    "github": {
+      "dailyCommits": 142000000,
+      "activeDevs": 120000000,
+      "reposCreatedToday": 850000,
+      "source": "GitHub"
+    },
+    "internet": {
+      "penetration": 67.4,
+      "users": 5400000000,
+      "history": [
+        {"year": 1995, "value": 0.8}, {"year": 2000, "value": 6.8},
+        {"year": 2005, "value": 15.7}, {"year": 2010, "value": 30.0},
+        {"year": 2015, "value": 44.0}, {"year": 2020, "value": 59.5},
+        {"year": 2026, "value": 67.4}
+      ],
+      "source": "ITU"
+    },
+    "literacy": {
+      "global": 87.4,
+      "male": 90.1,
+      "female": 84.7,
+      "history": [
+        {"year": 1970, "value": 56.2, "male": 65.1, "female": 47.3},
+        {"year": 1980, "value": 63.5, "male": 71.2, "female": 55.8},
+        {"year": 1990, "value": 71.8, "male": 78.4, "female": 65.2},
+        {"year": 2000, "value": 78.6, "male": 83.5, "female": 73.7},
+        {"year": 2010, "value": 83.2, "male": 87.1, "female": 79.3},
+        {"year": 2020, "value": 86.3, "male": 89.4, "female": 83.2},
+        {"year": 2026, "value": 87.4, "male": 90.1, "female": 84.7}
+      ],
+      "source": "UNESCO"
+    }
+  },
+  "realtime": {
+    "earthquakes": {
+      "last24h": [
+        {"location": "Tonga", "magnitude": 5.8, "lat": -21.2, "lng": -175.2, "depth": 10, "time": "2026-03-11T10:23:00Z"},
+        {"location": "Japan", "magnitude": 4.9, "lat": 36.2, "lng": 141.0, "depth": 35, "time": "2026-03-11T08:15:00Z"},
+        {"location": "Chile", "magnitude": 5.2, "lat": -33.4, "lng": -70.7, "depth": 48, "time": "2026-03-11T06:42:00Z"},
+        {"location": "Indonesia", "magnitude": 4.7, "lat": -6.8, "lng": 110.4, "depth": 22, "time": "2026-03-11T04:11:00Z"},
+        {"location": "Turkey", "magnitude": 4.1, "lat": 38.7, "lng": 43.3, "depth": 12, "time": "2026-03-11T02:58:00Z"},
+        {"location": "Alaska", "magnitude": 4.5, "lat": 61.3, "lng": -150.1, "depth": 65, "time": "2026-03-11T01:30:00Z"},
+        {"location": "Philippines", "magnitude": 5.0, "lat": 7.1, "lng": 126.5, "depth": 18, "time": "2026-03-10T23:45:00Z"},
+        {"location": "Peru", "magnitude": 4.3, "lat": -15.5, "lng": -75.1, "depth": 30, "time": "2026-03-10T21:12:00Z"}
+      ],
+      "source": "USGS"
+    },
+    "newsSentiment": {
+      "score": -0.42,
+      "label": "Leicht Negativ",
+      "history24h": [-0.38, -0.45, -0.42, -0.50, -0.35, -0.48, -0.42, -0.39, -0.55, -0.41, -0.38, -0.42],
+      "source": "GDELT"
+    },
+    "cryptoFearGreed": {
+      "value": 38,
+      "label": "Fear",
+      "source": "Alternative.me"
+    },
+    "lastUpdated": "2026-03-11T12:00:00Z"
+  },
+  "momentum": {
+    "indicators": [
+      {"name": "Extreme Armut", "direction": "improving", "change": "-2.1%/Jahr", "icon": "poverty"},
+      {"name": "Kindersterblichkeit", "direction": "improving", "change": "-3.8%/Jahr", "icon": "health"},
+      {"name": "Lebenserwartung", "direction": "improving", "change": "+0.2 Jahre/Jahr", "icon": "health"},
+      {"name": "Alphabetisierung", "direction": "improving", "change": "+0.4%/Jahr", "icon": "education"},
+      {"name": "Internetzugang", "direction": "improving", "change": "+1.8%/Jahr", "icon": "tech"},
+      {"name": "Erneuerbare Energie", "direction": "improving", "change": "+2.4%/Jahr", "icon": "energy"},
+      {"name": "Wissenschaftl. Output", "direction": "improving", "change": "+5.2%/Jahr", "icon": "science"},
+      {"name": "Bildungszugang Frauen", "direction": "improving", "change": "+1.1%/Jahr", "icon": "education"},
+      {"name": "Impfabdeckung", "direction": "improving", "change": "+0.8%/Jahr", "icon": "health"},
+      {"name": "Demokratisierung", "direction": "improving", "change": "+0.3 Punkte", "icon": "freedom"},
+      {"name": "Malaria-Todesfälle", "direction": "improving", "change": "-4.2%/Jahr", "icon": "health"},
+      {"name": "Zugang zu Trinkwasser", "direction": "improving", "change": "+0.6%/Jahr", "icon": "water"},
+      {"name": "Müttersterblickkeit", "direction": "improving", "change": "-2.9%/Jahr", "icon": "health"},
+      {"name": "Smartphone-Verbreitung", "direction": "improving", "change": "+3.1%/Jahr", "icon": "tech"},
+      {"name": "CO2-Emissionen", "direction": "declining", "change": "+0.8%/Jahr", "icon": "climate"},
+      {"name": "Biodiversität", "direction": "declining", "change": "-2.5%/Jahr", "icon": "nature"},
+      {"name": "Waldverlust", "direction": "declining", "change": "-0.12%/Jahr", "icon": "nature"},
+      {"name": "Demokratie-Qualität", "direction": "declining", "change": "-0.5 Punkte", "icon": "freedom"},
+      {"name": "Meeresspiegel", "direction": "declining", "change": "+3.6mm/Jahr", "icon": "climate"},
+      {"name": "Ungleichheit (innerstaatl.)", "direction": "declining", "change": "+0.3 Gini", "icon": "economy"}
+    ],
+    "comparison2000": [
+      {"name": "Extreme Armut", "then": 1700000000, "now": 648000000, "improved": true},
+      {"name": "Kindersterblichkeit", "then": 9700000, "now": 4900000, "improved": true},
+      {"name": "Bildungszugang", "then": "58%", "now": "78.2%", "improved": true},
+      {"name": "Lebenserwartung", "then": 67.7, "now": 73.4, "improved": true},
+      {"name": "Internet-Nutzer", "then": "6.8%", "now": "67.4%", "improved": true},
+      {"name": "CO2-Emissionen", "then": "25.2 Gt", "now": "36.8 Gt", "improved": false},
+      {"name": "Biodiversität (LPI)", "then": 0.72, "now": 0.31, "improved": false},
+      {"name": "Meeresspiegel", "then": "+0mm", "now": "+98mm", "improved": false}
+    ]
+  },
+  "scenarios": {
+    "businessAsUsual": {
+      "worldIndex2030": 45.1,
+      "worldIndex2050": 38.7,
+      "keyChanges": [
+        "Temperatur +2.1°C bis 2050",
+        "Extreme Armut: 420 Mio",
+        "Internet: 82% Penetration",
+        "Biodiversität: -50% bis 2050"
+      ]
+    },
+    "worstCase": {
+      "worldIndex2030": 35.2,
+      "worldIndex2050": 22.8,
+      "keyChanges": [
+        "Temperatur +3.5°C bis 2050",
+        "Extreme Armut: 900 Mio",
+        "Massenmigration: 500 Mio",
+        "Ökosystem-Kollaps in Schlüsselregionen"
+      ]
+    },
+    "bestCase": {
+      "worldIndex2030": 58.4,
+      "worldIndex2050": 72.1,
+      "keyChanges": [
+        "Temperatur stabilisiert bei +1.8°C",
+        "Extreme Armut eliminiert bis 2040",
+        "100% erneuerbare Energie bis 2050",
+        "Universeller Bildungszugang bis 2035"
+      ]
+    }
+  },
+  "dataSources": [
+    {"name": "NASA GISTEMP", "url": "https://data.giss.nasa.gov/gistemp/", "trust": 3, "lastUpdate": "2026-03-10"},
+    {"name": "NOAA Climate", "url": "https://www.climate.gov/", "trust": 3, "lastUpdate": "2026-03-10"},
+    {"name": "World Air Quality Index", "url": "https://waqi.info/", "trust": 2, "lastUpdate": "2026-03-11"},
+    {"name": "NSIDC Arctic Ice", "url": "https://nsidc.org/", "trust": 3, "lastUpdate": "2026-03-08"},
+    {"name": "World Bank Open Data", "url": "https://data.worldbank.org/", "trust": 3, "lastUpdate": "2026-03-01"},
+    {"name": "ACLED", "url": "https://acleddata.com/", "trust": 3, "lastUpdate": "2026-03-09"},
+    {"name": "UNHCR", "url": "https://www.unhcr.org/refugee-statistics/", "trust": 3, "lastUpdate": "2026-03-05"},
+    {"name": "Freedom House", "url": "https://freedomhouse.org/", "trust": 3, "lastUpdate": "2026-02-15"},
+    {"name": "WHO GHO", "url": "https://www.who.int/data/gho", "trust": 3, "lastUpdate": "2026-02-28"},
+    {"name": "IMF WEO", "url": "https://www.imf.org/en/Publications/WEO", "trust": 3, "lastUpdate": "2026-01-20"},
+    {"name": "UNESCO", "url": "https://data.uis.unesco.org/", "trust": 3, "lastUpdate": "2026-02-10"},
+    {"name": "ITU", "url": "https://datahub.itu.int/", "trust": 3, "lastUpdate": "2026-02-01"},
+    {"name": "GitHub API", "url": "https://api.github.com/", "trust": 2, "lastUpdate": "2026-03-11"},
+    {"name": "arXiv", "url": "https://arxiv.org/", "trust": 2, "lastUpdate": "2026-03-11"},
+    {"name": "WIPO", "url": "https://www.wipo.int/", "trust": 3, "lastUpdate": "2026-01-15"},
+    {"name": "USGS Earthquakes", "url": "https://earthquake.usgs.gov/", "trust": 3, "lastUpdate": "2026-03-11"},
+    {"name": "GDELT Project", "url": "https://www.gdeltproject.org/", "trust": 2, "lastUpdate": "2026-03-11"},
+    {"name": "OpenAQ", "url": "https://openaq.org/", "trust": 2, "lastUpdate": "2026-03-11"},
+    {"name": "IEP Global Peace Index", "url": "https://www.visionofhumanity.org/", "trust": 3, "lastUpdate": "2026-01-01"},
+    {"name": "IRENA", "url": "https://www.irena.org/", "trust": 3, "lastUpdate": "2026-02-20"},
+    {"name": "Oxfam", "url": "https://www.oxfam.org/", "trust": 2, "lastUpdate": "2026-01-15"},
+    {"name": "Alternative.me", "url": "https://alternative.me/crypto/fear-and-greed-index/", "trust": 1, "lastUpdate": "2026-03-11"}
+  ]
+}

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BELKIS ONE — Globales Echtzeit-Analyse-Dashboard. Der Zustand der Welt in einem Scroll-Erlebnis.">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>BELKIS ONE 1.0 — Der Zustand der Welt</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ═══ LOADING SCREEN ═══ -->
+  <div class="loading-screen" aria-hidden="true">
+    <div class="loading-screen__text">BELKIS ONE</div>
+    <div class="loading-screen__bar">
+      <div class="loading-screen__progress" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- ═══ PARTICLE CANVAS (Fixed Background) ═══ -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══ NAVIGATION DOTS ═══ -->
+  <nav class="nav-dots" aria-label="Sektions-Navigation"></nav>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PROLOG — DER ERSTE EINDRUCK                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="prolog" class="section prolog" data-section="prolog" aria-label="Prolog">
+    <div class="prolog__content">
+      <div class="prolog__pulse" aria-hidden="true"></div>
+      <h1 class="prolog__title"></h1>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Scroll um zu erfahren</span>
+      <span class="scroll-hint__arrow">↓</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 1 — DER WELT-INDIKATOR                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-indicator" class="section akt-indicator" data-section="akt-indicator" aria-label="Welt-Indikator">
+    <div class="container section__content">
+      <h2 class="text-section text-center reveal">Der Welt-Indikator</h2>
+      <p class="text-body text-muted text-center reveal" style="max-width:600px;margin:var(--space-sm) auto var(--space-lg)">
+        Berechnet aus hunderten Datenpunkten. Kein Algorithmus, kein KI-Modell — reiner Code, reale Daten.
+      </p>
+
+      <div class="world-indicator reveal">
+        <div class="world-indicator__endpoints">
+          <span>KOLLAPS</span>
+          <span>GOLDENES ZEITALTER</span>
+        </div>
+
+        <div class="world-indicator__scale">
+          <div class="world-indicator__track"></div>
+          <div class="world-indicator__comet"></div>
+          <div class="world-indicator__pointer" style="left: 0%"></div>
+        </div>
+
+        <div class="world-indicator__zones">
+          <span class="world-indicator__zone-mark">0</span>
+          <span class="world-indicator__zone-mark">KRITISCH</span>
+          <span class="world-indicator__zone-mark">BESORGNISERREGEND</span>
+          <span class="world-indicator__zone-mark">GEMISCHT</span>
+          <span class="world-indicator__zone-mark">POSITIV</span>
+          <span class="world-indicator__zone-mark">EXZELLENT</span>
+          <span class="world-indicator__zone-mark">100</span>
+        </div>
+
+        <div class="world-indicator__value">
+          <span class="world-indicator__number text-hero">0</span>
+          <span class="world-indicator__of"> / 100</span>
+          <div class="world-indicator__zone-label"></div>
+        </div>
+      </div>
+
+      <!-- Sub-Scores -->
+      <div class="sub-scores reveal-stagger" role="list" aria-label="Sub-Scores">
+        <div class="sub-score reveal" data-subscore="environment" role="listitem">
+          <span class="sub-score__icon">🌍</span>
+          <div class="sub-score__gauge"></div>
+          <span class="sub-score__value text-mono">0</span>
+          <span class="sub-score__name">Umwelt</span>
+        </div>
+        <div class="sub-score reveal" data-subscore="society" role="listitem">
+          <span class="sub-score__icon">🕊️</span>
+          <div class="sub-score__gauge"></div>
+          <span class="sub-score__value text-mono">0</span>
+          <span class="sub-score__name">Gesellschaft</span>
+        </div>
+        <div class="sub-score reveal" data-subscore="economy" role="listitem">
+          <span class="sub-score__icon">📊</span>
+          <div class="sub-score__gauge"></div>
+          <span class="sub-score__value text-mono">0</span>
+          <span class="sub-score__name">Wirtschaft</span>
+        </div>
+        <div class="sub-score reveal" data-subscore="progress" role="listitem">
+          <span class="sub-score__icon">🔬</span>
+          <div class="sub-score__gauge"></div>
+          <span class="sub-score__value text-mono">0</span>
+          <span class="sub-score__name">Fortschritt</span>
+        </div>
+        <div class="sub-score reveal" data-subscore="momentum" role="listitem">
+          <span class="sub-score__icon">📈</span>
+          <div class="sub-score__gauge"></div>
+          <span class="sub-score__value text-mono">0</span>
+          <span class="sub-score__name">Momentum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 2 — UMWELT: DER PLANET ATMET                     -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-environment" class="section akt-environment" data-section="akt-environment" aria-label="Umwelt">
+    <div class="container section__content">
+      <h2 class="text-section reveal">🌍 Der Planet atmet</h2>
+      <p class="text-muted reveal">Temperatur, CO2, Luft, Eis — die Vitaldaten unserer Erde.</p>
+
+      <!-- Warming Stripes -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Temperaturanomalie 1880–2026</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)">Jeder Streifen = ein Jahr. Blau = kühler, Rot = wärmer als der Durchschnitt.</p>
+        <div id="warming-stripes" class="warming-stripes" role="img" aria-label="Warming Stripes Visualisierung"></div>
+      </div>
+
+      <!-- CO2 -->
+      <div class="co2-display reveal">
+        <div class="co2-display__value" data-counter data-target="421" data-suffix=" ppm" data-decimals="0">0 ppm</div>
+        <div class="co2-display__unit">CO2-Konzentration in der Atmosphäre</div>
+      </div>
+      <div id="co2-chart" class="chart-container reveal" role="img" aria-label="CO2-Konzentration über Zeit"></div>
+
+      <!-- Arctic Ice -->
+      <div class="arctic-compare reveal" style="margin-top:var(--space-xl)">
+        <div class="arctic-compare__year">
+          <div class="arctic-compare__label">1980</div>
+          <div class="text-hero" style="font-size:clamp(2rem,5vw,3.5rem);color:#5ac8fa">7.8</div>
+          <div class="text-muted">Mio km² Eisfläche</div>
+        </div>
+        <div class="arctic-compare__year">
+          <div class="arctic-compare__label">Heute</div>
+          <div class="text-hero" style="font-size:clamp(2rem,5vw,3.5rem);color:#ff6b6b" data-counter data-target="4.2" data-decimals="1">0</div>
+          <div class="text-muted">Mio km² Eisfläche</div>
+          <div class="text-label" style="color:var(--danger);margin-top:var(--space-xs)">-46.2% seit 1980</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 3 — GESELLSCHAFT: WIR MENSCHEN                   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-society" class="section akt-society" data-section="akt-society" aria-label="Gesellschaft">
+    <div class="container section__content">
+      <h2 class="text-section reveal">🕊️ Wir Menschen</h2>
+      <p class="text-muted reveal">Konflikte, Flucht, Freiheit, Lebenserwartung — wie es uns geht.</p>
+
+      <!-- Conflict Map -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Aktive Konflikte weltweit</h3>
+        <div id="conflict-map" style="width:100%;min-height:300px;position:relative"></div>
+      </div>
+
+      <!-- Refugee Counter -->
+      <div class="refugee-counter reveal">
+        <div class="refugee-counter__number" data-counter data-target="108400000" data-suffix="compact">0</div>
+        <div class="refugee-counter__label">Menschen auf der Flucht weltweit</div>
+        <p class="text-micro text-muted" style="margin-top:var(--space-xs)">Quelle: UNHCR 2026</p>
+      </div>
+
+      <!-- Freedom Index -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub text-center">Freiheitsindex weltweit</h3>
+        <div class="freedom-legend">
+          <div class="freedom-legend__item">
+            <span class="freedom-legend__dot" style="background:#34c759"></span>
+            <span>Frei (84)</span>
+          </div>
+          <div class="freedom-legend__item">
+            <span class="freedom-legend__dot" style="background:#ffcc00"></span>
+            <span>Teilweise frei (56)</span>
+          </div>
+          <div class="freedom-legend__item">
+            <span class="freedom-legend__dot" style="background:#ff3b30"></span>
+            <span>Nicht frei (55)</span>
+          </div>
+        </div>
+        <p class="text-label text-muted text-center" style="margin-top:var(--space-sm)">18. Jahr in Folge mit Rückgang der globalen Freiheit — Freedom House 2026</p>
+      </div>
+
+      <!-- Life Expectancy -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Globale Lebenserwartung</h3>
+        <div class="flex-between" style="margin:var(--space-sm) 0">
+          <span class="text-muted">1960: 52.6 Jahre</span>
+          <span class="text-mono" style="font-size:var(--text-sub);color:#e8a87c" data-counter data-target="73.4" data-decimals="1" data-suffix=" Jahre">0</span>
+        </div>
+        <div id="life-expectancy-chart" class="chart-container" role="img" aria-label="Lebenserwartung über Zeit"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 4 — WIRTSCHAFT: DER MOTOR                        -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-economy" class="section akt-economy" data-section="akt-economy" aria-label="Wirtschaft">
+    <div class="container section__content">
+      <h2 class="text-section reveal">📊 Der Motor</h2>
+      <p class="text-muted reveal">Reichtum, Armut, Ungleichheit — die Zahlen hinter dem System.</p>
+
+      <!-- Wealth Comparison -->
+      <div class="wealth-comparison reveal">
+        <div class="wealth-comparison__side">
+          <div class="wealth-comparison__value" style="color:#ffd700" data-counter data-target="2781">0</div>
+          <div class="wealth-comparison__label">Milliardäre weltweit</div>
+        </div>
+        <div class="wealth-comparison__vs">vs.</div>
+        <div class="wealth-comparison__side">
+          <div class="wealth-comparison__value" style="color:#ff9500" data-counter data-target="648" data-suffix=" Mio">0</div>
+          <div class="wealth-comparison__label">Menschen in extremer Armut</div>
+        </div>
+      </div>
+
+      <!-- Inequality Bar -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Globale Vermögensverteilung</h3>
+        <div id="inequality-bar" class="inequality-bar">
+          <div class="inequality-bar__top" style="width:0%">Top 1%</div>
+          <div class="inequality-bar__rest">Untere 50%: 2.1%</div>
+        </div>
+      </div>
+
+      <!-- GDP Growth -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Globales BIP-Wachstum</h3>
+        <div class="text-center" style="margin:var(--space-md) 0">
+          <span class="text-hero" style="font-size:clamp(3rem,6vw,5rem);color:#34c759" data-counter data-target="3.1" data-decimals="1" data-suffix="%">0</span>
+        </div>
+      </div>
+
+      <!-- Gini Timeline -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Gini-Index (Ungleichheit) 1990–2026</h3>
+        <div id="gini-chart" class="chart-container" role="img" aria-label="Gini-Index über Zeit"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 5 — FORTSCHRITT: DIE KURVE                       -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-progress" class="section akt-progress" data-section="akt-progress" aria-label="Fortschritt">
+    <div class="container section__content">
+      <h2 class="text-section reveal">🔬 Die Kurve</h2>
+      <p class="text-muted reveal">Wissenschaft, Technologie, Bildung — der Fortschritt ist exponentiell.</p>
+
+      <!-- Scientific Publications -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Wissenschaftliche Publikationen pro Jahr</h3>
+        <div id="publications-chart" class="chart-container" role="img" aria-label="Wissenschaftliche Publikationen"></div>
+      </div>
+
+      <!-- GitHub Pulse -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub text-center">GitHub Global Pulse</h3>
+        <div class="github-pulse__counter" data-counter data-target="142" data-suffix=" Mio Commits/Tag">0</div>
+        <div class="text-muted text-center">
+          <span data-counter data-target="120" data-suffix=" Mio">0</span> aktive Entwickler weltweit
+        </div>
+      </div>
+
+      <!-- Internet Penetration -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Internet-Durchdringung</h3>
+        <div class="flex-between" style="margin:var(--space-sm) 0">
+          <span class="text-muted">1995: 0.8%</span>
+          <span class="text-mono" style="font-size:var(--text-sub);color:#5ac8fa" data-counter data-target="67.4" data-decimals="1" data-suffix="%">0</span>
+        </div>
+        <div id="internet-chart" class="chart-container" role="img" aria-label="Internet-Durchdringung über Zeit"></div>
+      </div>
+
+      <!-- Literacy Stairs -->
+      <div class="reveal" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Alphabetisierung nach Geschlecht</h3>
+        <div class="freedom-legend" style="margin-bottom:var(--space-sm)">
+          <div class="freedom-legend__item">
+            <span class="freedom-legend__dot" style="background:#5ac8fa;opacity:0.7"></span>
+            <span>Männer</span>
+          </div>
+          <div class="freedom-legend__item">
+            <span class="freedom-legend__dot" style="background:#34c759"></span>
+            <span>Frauen</span>
+          </div>
+        </div>
+        <div id="literacy-stairs" class="literacy-stairs" role="img" aria-label="Alphabetisierung nach Geschlecht über Jahrzehnte"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 6 — ECHTZEIT-PULSE                               -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-realtime" class="section akt-realtime" data-section="akt-realtime" aria-label="Echtzeit-Daten">
+    <div class="container section__content">
+      <h2 class="text-section reveal">Echtzeit-Pulse</h2>
+      <p class="text-muted reveal">Live-Daten aus aller Welt — aktualisiert alle 6 Stunden.</p>
+      <p class="timestamp reveal" style="margin-bottom:var(--space-lg)"></p>
+
+      <div class="realtime-grid reveal-stagger">
+        <!-- Earthquakes -->
+        <div class="widget reveal">
+          <div class="widget__header">
+            <span class="widget__title">Erdbeben (24h)</span>
+            <span class="live-badge"><span class="live-badge__dot"></span> LIVE</span>
+          </div>
+          <div class="widget__body">
+            <ul id="earthquake-list" class="earthquake-list" aria-label="Letzte Erdbeben"></ul>
+          </div>
+          <div class="widget__glow" style="--accent:#ff6b6b" aria-hidden="true"></div>
+        </div>
+
+        <!-- Air Quality - Clean -->
+        <div class="widget reveal">
+          <div class="widget__header">
+            <span class="widget__title">Sauberste Städte</span>
+            <span class="live-badge"><span class="live-badge__dot"></span> LIVE</span>
+          </div>
+          <div class="widget__body">
+            <ul id="clean-cities" class="earthquake-list" aria-label="Sauberste Städte"></ul>
+          </div>
+          <div class="widget__glow" style="--accent:#34c759" aria-hidden="true"></div>
+        </div>
+
+        <!-- Air Quality - Polluted -->
+        <div class="widget reveal">
+          <div class="widget__header">
+            <span class="widget__title">Schmutzigste Städte</span>
+            <span class="live-badge"><span class="live-badge__dot"></span> LIVE</span>
+          </div>
+          <div class="widget__body">
+            <ul id="dirty-cities" class="earthquake-list" aria-label="Schmutzigste Städte"></ul>
+          </div>
+          <div class="widget__glow" style="--accent:#ff3b30" aria-hidden="true"></div>
+        </div>
+
+        <!-- News Sentiment -->
+        <div class="widget reveal">
+          <div class="widget__header">
+            <span class="widget__title">Nachrichten-Sentiment</span>
+            <span class="live-badge"><span class="live-badge__dot"></span> LIVE</span>
+          </div>
+          <div class="widget__body">
+            <div id="sentiment-wave" class="sentiment-wave" role="img" aria-label="Nachrichten-Sentiment"></div>
+            <div class="text-center text-muted" style="margin-top:var(--space-xs)">
+              Score: <span class="text-mono" style="color:#ff6b6b">-0.42</span> (Leicht Negativ)
+            </div>
+          </div>
+        </div>
+
+        <!-- Fear & Greed -->
+        <div class="widget reveal">
+          <div class="widget__header">
+            <span class="widget__title">Crypto Fear & Greed</span>
+          </div>
+          <div class="widget__body text-center">
+            <div id="fear-greed-gauge" class="fear-greed-gauge" role="img" aria-label="Fear and Greed Index"></div>
+            <div class="text-label text-muted" style="margin-top:var(--space-sm)">Fear (38/100)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 7 — MOMENTUM: WOHIN BEWEGEN WIR UNS?            -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-momentum" class="section akt-momentum" data-section="akt-momentum" aria-label="Momentum">
+    <div class="container section__content">
+      <h2 class="momentum-question reveal">Wird es besser — oder schlechter?</h2>
+
+      <h3 class="text-sub text-center reveal">20 Schlüssel-Indikatoren</h3>
+      <div id="momentum-list" class="momentum-list" role="list" aria-label="Momentum-Indikatoren"></div>
+
+      <div class="momentum-summary reveal" id="momentum-summary">
+        <span style="color:#34c759" data-counter data-target="14">0</span> von
+        <span data-counter data-target="20">0</span> Trends positiv
+      </div>
+
+      <!-- Historical Comparison -->
+      <div class="reveal" style="margin-top:var(--space-2xl)">
+        <h3 class="text-sub text-center">Die Welt 2000 vs. Heute</h3>
+        <div id="comparison-grid" class="comparison-grid" role="list" aria-label="Vergleich 2000 vs Heute"></div>
+      </div>
+
+      <!-- Momentum Gauge -->
+      <div class="reveal text-center" style="margin-top:var(--space-xl)">
+        <h3 class="text-sub">Momentum-Score</h3>
+        <p class="text-muted" style="margin-bottom:var(--space-md)">Nicht wo wir sind — sondern wohin wir gehen.</p>
+        <div id="momentum-gauge" class="gauge" style="display:inline-flex;margin:0 auto"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 8 — DIE KARTE DER KRISEN                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-crisis-map" class="section akt-crisis-map" data-section="akt-crisis-map" aria-label="Krisenkarte">
+    <div class="container section__content">
+      <h2 class="text-section text-center reveal">Die Karte der Krisen</h2>
+      <p class="text-muted text-center reveal" style="margin-bottom:var(--space-lg)">Klima, Konflikte, Hunger, Naturkatastrophen — und Hoffnung.</p>
+
+      <div class="crisis-layers reveal">
+        <button class="crisis-layer-btn is-active" data-layer="climate">Klimarisiko</button>
+        <button class="crisis-layer-btn" data-layer="conflicts">Konflikte</button>
+        <button class="crisis-layer-btn" data-layer="hunger">Hungerkrisen</button>
+        <button class="crisis-layer-btn" data-layer="nature">Naturschutz</button>
+        <button class="crisis-layer-btn" data-layer="energy">Erneuerbare</button>
+      </div>
+
+      <div id="crisis-map-container" class="reveal" style="width:100%;min-height:400px;position:relative;margin-top:var(--space-md)">
+        <div style="width:100%;height:400px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:var(--text-muted)">
+          Interaktive Weltkarte — Layer-Overlays ein/ausschaltbar
+        </div>
+      </div>
+
+      <p class="text-body text-muted text-center reveal" style="margin-top:var(--space-lg);max-width:600px;margin-left:auto;margin-right:auto">
+        Die Realität ist komplex. Es gibt Krisen und Fortschritt — gleichzeitig, überall. Die Daten zeigen beides.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 9 — SZENARIEN: DREI ZUKÜNFTE                     -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-scenarios" class="section akt-scenarios" data-section="akt-scenarios" aria-label="Szenarien">
+    <div class="container section__content">
+      <h2 class="text-section text-center reveal">Drei Zukünfte</h2>
+      <p class="text-muted text-center reveal" style="margin-bottom:var(--space-xl)">Projektionen bis 2050 — basierend auf aktuellen Trends und Daten.</p>
+
+      <div class="scenarios-grid reveal-stagger">
+        <!-- Business as Usual -->
+        <div id="scenario-bau" class="scenario scenario--bau reveal">
+          <div class="text-label" style="color:#ff9500">Pfad A</div>
+          <div class="scenario__title" style="color:#ff9500">Weiter so</div>
+          <div class="scenario__score" style="color:#ff9500">0 / 100</div>
+          <div class="text-label text-muted" style="margin-bottom:var(--space-sm)">Welt-Index 2050</div>
+          <ul class="scenario__list"></ul>
+        </div>
+
+        <!-- Worst Case -->
+        <div id="scenario-worst" class="scenario scenario--worst reveal">
+          <div class="text-label" style="color:#ff3b30">Pfad B</div>
+          <div class="scenario__title" style="color:#ff3b30">Schlimmster Fall</div>
+          <div class="scenario__score" style="color:#ff3b30">0 / 100</div>
+          <div class="text-label text-muted" style="margin-bottom:var(--space-sm)">Welt-Index 2050</div>
+          <ul class="scenario__list"></ul>
+        </div>
+
+        <!-- Best Case -->
+        <div id="scenario-best" class="scenario scenario--best reveal">
+          <div class="text-label" style="color:#00d4ff">Pfad C</div>
+          <div class="scenario__title" style="color:#00d4ff">Bestmöglicher Kurs</div>
+          <div class="scenario__score" style="color:#00d4ff">0 / 100</div>
+          <div class="text-label text-muted" style="margin-bottom:var(--space-sm)">Welt-Index 2050</div>
+          <ul class="scenario__list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 10 — DATENQUELLEN: TRANSPARENZ                   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-sources" class="section akt-sources" data-section="akt-sources" aria-label="Datenquellen">
+    <div class="container section__content">
+      <h2 class="text-section text-center reveal">Datenquellen & Transparenz</h2>
+      <p class="text-muted text-center reveal" style="margin-bottom:var(--space-lg)">
+        Jeder Datenpunkt ist überprüfbar. Jede Quelle ist verlinkt.
+      </p>
+
+      <div id="sources-grid" class="sources-grid reveal-stagger" role="list" aria-label="Datenquellen"></div>
+
+      <div class="methodology-note reveal">
+        <p>Wir nutzen keine KI für die Analyse — nur Code und Daten.</p>
+        <p class="text-label text-muted" style="margin-top:var(--space-sm)">
+          Alle Berechnungen sind open-source und reproduzierbar.
+          Der Welt-Indikator basiert auf einem gewichteten Durchschnitt normalisierter Sub-Scores.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- AKT 11 — DEIN BEITRAG                                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="akt-action" class="section akt-action" data-section="akt-action" aria-label="Dein Beitrag">
+    <div class="container section__content">
+      <h2 class="action-question reveal">Du hast die Daten gesehen.<br>Was kannst DU tun?</h2>
+
+      <div class="actions-grid reveal-stagger">
+        <div class="action-card reveal">
+          <div class="action-card__icon">🏘️</div>
+          <div class="action-card__title">Lokal handeln</div>
+          <div class="action-card__desc">Wählen gehen. Community-Projekte unterstützen. Lokalpolitik mitgestalten.</div>
+          <button class="btn btn--ghost">Mehr erfahren</button>
+        </div>
+
+        <div class="action-card reveal">
+          <div class="action-card__icon">💻</div>
+          <div class="action-card__title">Digital beitragen</div>
+          <div class="action-card__desc">Open-Source-Projekte unterstützen. Datenprojekte vorantreiben. Wissen teilen.</div>
+          <button class="btn btn--ghost">Mehr erfahren</button>
+        </div>
+
+        <div class="action-card reveal">
+          <div class="action-card__icon">🌍</div>
+          <div class="action-card__title">Global wirken</div>
+          <div class="action-card__desc">1€ = 4 Mahlzeiten. 5€ = 1 Impfung. Gezielte Spenden mit maximaler Wirkung.</div>
+          <button class="btn btn--primary">Wirkungsrechner</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- EPILOG — DER LOOP                                    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="epilog" class="section epilog" data-section="epilog" aria-label="Epilog">
+    <div class="container section__content text-center">
+      <div class="epilog__value text-hero" data-counter data-target="47.3" data-decimals="1">0</div>
+
+      <div class="epilog__message">
+        Die Daten aktualisieren sich alle 6 Stunden.<br>
+        Komm zurück — und sieh ob sich etwas verändert hat.
+      </div>
+
+      <button class="epilog__back-to-top magnetic-wrap" aria-label="Zurück nach oben">
+        ↑
+      </button>
+
+      <p class="timestamp" style="margin-top:var(--space-xl)"></p>
+
+      <!-- Easter Egg -->
+      <div class="easter-egg" style="margin-top:var(--space-xl);color:var(--text-muted);font-size:var(--text-body)">
+        Du interessierst dich.<br>Das ist der erste Schritt.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN SCRIPT ═══ -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

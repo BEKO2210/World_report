@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════════════════════════
+   BELKIS ONE 1.0 — Data Loader & Cache
+   ═══════════════════════════════════════════════════════════ */
+
+export class DataLoader {
+  constructor(options = {}) {
+    this.dataUrl = options.url || 'data/processed/world-state.json';
+    this.cacheKey = options.cacheKey || 'belkis-one-data';
+    this.cacheTTL = options.cacheTTL || 6 * 60 * 60 * 1000; // 6 hours
+    this.data = null;
+    this.loading = false;
+    this.error = null;
+  }
+
+  // ─── Load data with cache ───
+  async load() {
+    // Try cache first
+    const cached = this._getFromCache();
+    if (cached) {
+      this.data = cached;
+      return this.data;
+    }
+
+    // Fetch fresh data
+    this.loading = true;
+    this.error = null;
+
+    try {
+      const response = await fetch(this.dataUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      this.data = await response.json();
+      this._saveToCache(this.data);
+      return this.data;
+    } catch (err) {
+      this.error = err;
+      console.warn('[DataLoader] Fetch failed, trying cache fallback:', err.message);
+
+      // Try stale cache as fallback
+      const stale = this._getFromCache(true);
+      if (stale) {
+        this.data = stale;
+        return this.data;
+      }
+
+      throw err;
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  // ─── Cache operations ───
+  _getFromCache(ignoreExpiry = false) {
+    try {
+      const raw = localStorage.getItem(this.cacheKey);
+      if (!raw) return null;
+
+      const { data, timestamp } = JSON.parse(raw);
+      const age = Date.now() - timestamp;
+
+      if (!ignoreExpiry && age > this.cacheTTL) {
+        return null;
+      }
+
+      return data;
+    } catch {
+      return null;
+    }
+  }
+
+  _saveToCache(data) {
+    try {
+      localStorage.setItem(this.cacheKey, JSON.stringify({
+        data,
+        timestamp: Date.now()
+      }));
+    } catch {
+      // localStorage might be full or disabled
+    }
+  }
+
+  // ─── Computed Values ───
+  getWorldIndex() {
+    return this.data?.worldIndex || { value: 0, label: 'N/A', zone: 'mixed' };
+  }
+
+  getSubScores() {
+    return this.data?.subScores || {};
+  }
+
+  getEnvironmentData() {
+    return this.data?.environment || {};
+  }
+
+  getSocietyData() {
+    return this.data?.society || {};
+  }
+
+  getEconomyData() {
+    return this.data?.economy || {};
+  }
+
+  getProgressData() {
+    return this.data?.progress || {};
+  }
+
+  getRealtimeData() {
+    return this.data?.realtime || {};
+  }
+
+  getMomentumData() {
+    return this.data?.momentum || {};
+  }
+
+  getScenariosData() {
+    return this.data?.scenarios || {};
+  }
+
+  getDataSources() {
+    return this.data?.dataSources || [];
+  }
+
+  getMeta() {
+    return this.data?.meta || {};
+  }
+
+  // ─── Format timestamp ───
+  getLastUpdated() {
+    const ts = this.data?.realtime?.lastUpdated || this.data?.meta?.generated;
+    if (!ts) return 'Unbekannt';
+    const d = new Date(ts);
+    return d.toLocaleString('de-DE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+}

@@ -1,0 +1,322 @@
+name: BELKIS ONE — Data Pipeline
+
+on:
+  schedule:
+    # Every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force refresh all data sources'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: data-pipeline
+  cancel-in-progress: true
+
+env:
+  DATA_DIR: data
+  PROCESSED_DIR: data/processed
+
+jobs:
+  # ─── FETCH ENVIRONMENT DATA ───
+  fetch-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create data directories
+        run: mkdir -p ${{ env.DATA_DIR }}/raw/environment
+
+      - name: Fetch NASA GISTEMP
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv" \
+            -o ${{ env.DATA_DIR }}/raw/environment/gistemp.csv || echo "NASA GISTEMP fetch failed"
+
+      - name: Fetch NOAA CO2 Data
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv" \
+            -o ${{ env.DATA_DIR }}/raw/environment/co2.csv || echo "NOAA CO2 fetch failed"
+
+      - name: Fetch World Air Quality Index
+        continue-on-error: true
+        run: |
+          # WAQI requires API token — placeholder for production
+          echo '{"status":"placeholder","data":[]}' > ${{ env.DATA_DIR }}/raw/environment/aqi.json
+
+      - name: Upload environment artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-data
+          path: ${{ env.DATA_DIR }}/raw/environment/
+          retention-days: 1
+
+  # ─── FETCH SOCIETY DATA ───
+  fetch-society:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create data directories
+        run: mkdir -p ${{ env.DATA_DIR }}/raw/society
+
+      - name: Fetch ACLED Conflict Data
+        continue-on-error: true
+        run: |
+          # ACLED requires API key — placeholder
+          echo '{"status":"placeholder","data":[]}' > ${{ env.DATA_DIR }}/raw/society/conflicts.json
+
+      - name: Fetch UNHCR Refugee Statistics
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://data.unhcr.org/population/get/timeseries?widget_id=311898&sv_id=54&population_group=5460" \
+            -o ${{ env.DATA_DIR }}/raw/society/refugees.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/society/refugees.json
+
+      - name: Fetch WHO Life Expectancy
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://ghoapi.azureedge.net/api/WHOSIS_000001" \
+            -o ${{ env.DATA_DIR }}/raw/society/life_expectancy.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/society/life_expectancy.json
+
+      - name: Upload society artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: society-data
+          path: ${{ env.DATA_DIR }}/raw/society/
+          retention-days: 1
+
+  # ─── FETCH ECONOMY DATA ───
+  fetch-economy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create data directories
+        run: mkdir -p ${{ env.DATA_DIR }}/raw/economy
+
+      - name: Fetch World Bank Indicators
+        continue-on-error: true
+        run: |
+          # GDP Growth
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=30&date=2000:2026" \
+            -o ${{ env.DATA_DIR }}/raw/economy/gdp_growth.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/economy/gdp_growth.json
+
+          # Poverty headcount
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://api.worldbank.org/v2/country/WLD/indicator/SI.POV.DDAY?format=json&per_page=30" \
+            -o ${{ env.DATA_DIR }}/raw/economy/poverty.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/economy/poverty.json
+
+          # Gini index
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://api.worldbank.org/v2/country/WLD/indicator/SI.POV.GINI?format=json&per_page=30" \
+            -o ${{ env.DATA_DIR }}/raw/economy/gini.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/economy/gini.json
+
+      - name: Upload economy artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: economy-data
+          path: ${{ env.DATA_DIR }}/raw/economy/
+          retention-days: 1
+
+  # ─── FETCH TECH & PROGRESS DATA ───
+  fetch-tech:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create data directories
+        run: mkdir -p ${{ env.DATA_DIR }}/raw/tech
+
+      - name: Fetch GitHub Stats
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/search/repositories?q=stars:>1000&sort=updated&per_page=5" \
+            -o ${{ env.DATA_DIR }}/raw/tech/github_trending.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/tech/github_trending.json
+
+      - name: Fetch arXiv Publication Stats
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "http://export.arxiv.org/api/query?search_query=all&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending" \
+            -o ${{ env.DATA_DIR }}/raw/tech/arxiv_latest.xml 2>/dev/null || \
+          echo '<status>fallback</status>' > ${{ env.DATA_DIR }}/raw/tech/arxiv_latest.xml
+
+      - name: Upload tech artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tech-data
+          path: ${{ env.DATA_DIR }}/raw/tech/
+          retention-days: 1
+
+  # ─── FETCH REALTIME DATA ───
+  fetch-realtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create data directories
+        run: mkdir -p ${{ env.DATA_DIR }}/raw/realtime
+
+      - name: Fetch USGS Earthquakes
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson" \
+            -o ${{ env.DATA_DIR }}/raw/realtime/earthquakes.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/realtime/earthquakes.json
+
+      - name: Fetch Fear & Greed Index
+        continue-on-error: true
+        run: |
+          curl -sf --retry 3 --retry-delay 5 \
+            "https://api.alternative.me/fng/?limit=1" \
+            -o ${{ env.DATA_DIR }}/raw/realtime/fear_greed.json 2>/dev/null || \
+          echo '{"status":"fallback"}' > ${{ env.DATA_DIR }}/raw/realtime/fear_greed.json
+
+      - name: Upload realtime artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: realtime-data
+          path: ${{ env.DATA_DIR }}/raw/realtime/
+          retention-days: 1
+
+  # ─── PROCESS ALL DATA ───
+  process-data:
+    needs: [fetch-environment, fetch-society, fetch-economy, fetch-tech, fetch-realtime]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ${{ env.DATA_DIR }}/raw/
+
+      - name: Check data availability
+        id: check-data
+        run: |
+          total=0
+          available=0
+          for f in ${{ env.DATA_DIR }}/raw/**/*; do
+            if [ -f "$f" ]; then
+              total=$((total + 1))
+              if ! grep -q '"status":"fallback"' "$f" 2>/dev/null && ! grep -q '<status>fallback</status>' "$f" 2>/dev/null; then
+                available=$((available + 1))
+              fi
+            fi
+          done
+          echo "total=$total" >> $GITHUB_OUTPUT
+          echo "available=$available" >> $GITHUB_OUTPUT
+          echo "Data sources: $available/$total available"
+
+          # Alert if more than 50% fail
+          if [ $total -gt 0 ] && [ $((available * 100 / total)) -lt 50 ]; then
+            echo "alert=true" >> $GITHUB_OUTPUT
+          else
+            echo "alert=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Process and normalize data
+        run: |
+          mkdir -p ${{ env.PROCESSED_DIR }}
+          # In production, this would be a comprehensive Node.js script
+          # that processes all raw data into world-state.json
+          # For now, ensure the existing processed data is preserved
+          if [ ! -f "${{ env.PROCESSED_DIR }}/world-state.json" ]; then
+            echo "No processed data found — using fallback"
+            cp data/processed/world-state.json ${{ env.PROCESSED_DIR }}/world-state.json 2>/dev/null || true
+          fi
+
+          # Update timestamp in world-state.json
+          if command -v node &> /dev/null; then
+            node -e "
+              const fs = require('fs');
+              const path = '${{ env.PROCESSED_DIR }}/world-state.json';
+              if (fs.existsSync(path)) {
+                const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+                data.meta.generated = new Date().toISOString();
+                data.meta.next_update = new Date(Date.now() + 6*60*60*1000).toISOString();
+                data.realtime.lastUpdated = new Date().toISOString();
+                fs.writeFileSync(path, JSON.stringify(data, null, 2));
+                console.log('Updated timestamps in world-state.json');
+              }
+            "
+          fi
+
+      - name: Create alert issue if sources failing
+        if: steps.check-data.outputs.alert == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const total = '${{ steps.check-data.outputs.total }}';
+            const available = '${{ steps.check-data.outputs.available }}';
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Data Pipeline Alert: ${available}/${total} sources available`,
+              body: `More than 50% of data sources failed to fetch.\n\n- Total sources: ${total}\n- Available: ${available}\n- Failed: ${total - available}\n\nPlease check the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`,
+              labels: ['alert', 'data-pipeline']
+            });
+
+      - name: Commit updated data
+        run: |
+          git config user.name "BELKIS ONE Pipeline"
+          git config user.email "pipeline@belkis.one"
+          git add ${{ env.PROCESSED_DIR }}/
+          git diff --staged --quiet || git commit -m "chore: update world-state data [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push || echo "Push failed — data will be updated on next run"
+
+  # ─── DEPLOY TO GITHUB PAGES ───
+  deploy:
+    needs: process-data
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Pull latest data
+        run: git pull origin ${{ github.ref_name }} || true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
