@@ -1,0 +1,16 @@
+{
+  "name": "belkis-one-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BELKIS ONE — World State Data Pipeline",
+  "type": "module",
+  "scripts": {
+    "collect": "node scripts/collect-data.js",
+    "process": "node scripts/process-data.js",
+    "pipeline": "node scripts/collect-data.js && node scripts/process-data.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0",
+    "xml2js": "^0.6.2"
+  }
+}
