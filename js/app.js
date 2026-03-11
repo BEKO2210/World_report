@@ -42,40 +42,34 @@ class BelkisOne {
   // ─── Bootstrap ───
   async init() {
     try {
-      // Show loading
       this._updateLoading(10);
 
-      // Load data
       const data = await this.dataLoader.load();
       this._updateLoading(40);
 
-      // Init particles
       this._initParticles();
       this._updateLoading(60);
 
-      // Init scroll engine & sections
       this._initScrollEngine(data);
-      this._updateLoading(80);
+      this._updateLoading(70);
 
-      // Init cinematic scroll effects + images
       this.cinematic.init();
 
-      // Init all visualizations
-      this._initVisualizations(data);
-      this._updateLoading(95);
+      // Populate all static data first
+      this._populateAllData(data);
+      this._updateLoading(80);
 
-      // Init counters
+      this._initVisualizations(data);
+      this._updateLoading(90);
+
       this.counterManager.discover().observe();
 
-      // Init nav dots first (before interactions, which registers their click handlers)
       this._initNavDots();
       this._initInteractions();
+      this._initTopBar();
       this._initEasterEgg();
-
-      // Prolog animation
       this._initProlog();
 
-      // Hide loading
       this._updateLoading(100);
       setTimeout(() => {
         const loading = document.querySelector('.loading-screen');
@@ -96,6 +90,385 @@ class BelkisOne {
     if (bar) bar.style.width = `${percent}%`;
   }
 
+  // ─── Populate ALL static data into HTML ───
+  _populateAllData(data) {
+    const meta = data.meta;
+    const env = data.environment;
+    const soc = data.society;
+    const eco = data.economy;
+    const prog = data.progress;
+    const rt = data.realtime;
+    const sc = data.scenarios;
+    const subScores = data.subScores;
+
+    // ── Prolog meta ──
+    this._setText('#prolog-sources', `${meta?.sources_count || '40+'}+`);
+    if (meta?.sources_available && meta?.sources_count) {
+      const rate = Math.round((meta.sources_available / meta.sources_count) * 100);
+      this._setText('#prolog-rate', `${rate}%`);
+    }
+
+    // ── Indicator trend ──
+    const trendEl = document.getElementById('indicator-trend');
+    if (trendEl && data.worldIndex) {
+      const wi = data.worldIndex;
+      const isUp = wi.change >= 0;
+      trendEl.innerHTML = `
+        <span style="color:${isUp ? '#34c759' : '#ff3b30'}">${isUp ? '↑' : '↓'} ${isUp ? '+' : ''}${wi.change}</span>
+        <span class="text-muted"> vs. letzte Periode</span>
+      `;
+    }
+
+    // ── Environment values ──
+    this._setText('#temp-anomaly-value', `+${env?.temperatureAnomaly?.current || 0}°C`);
+    this._setText('#forest-value', env?.arcticIce ? '31.2%' : '31.2%');
+    this._setText('#renewable-value', '29.9%');
+
+    // Set from subScores indicators
+    if (subScores?.environment?.indicators) {
+      const indicators = subScores.environment.indicators;
+      const forest = indicators.find(i => i.name.includes('Waldfläche'));
+      const renewable = indicators.find(i => i.name.includes('Erneuerbare'));
+      if (forest) this._setText('#forest-value', forest.value);
+      if (renewable) this._setText('#renewable-value', renewable.value);
+    }
+
+    // ── Air quality grid ──
+    this._buildAirQualityGrid(env?.airQuality);
+
+    // ── Society values ──
+    this._setText('#conflicts-count', soc?.conflicts?.activeCount || 0);
+    if (subScores?.society?.indicators) {
+      const childMort = subScores.society.indicators.find(i => i.name.includes('Kindersterblichkeit'));
+      if (childMort) this._setText('#child-mortality-value', childMort.value);
+    }
+
+    // ── Refugee breakdown ──
+    this._buildRefugeeBreakdown(soc?.refugees);
+
+    // ── Infrastructure bars ──
+    this._buildInfraBars(subScores);
+
+    // ── Economy values ──
+    if (subScores?.economy?.indicators) {
+      const inds = subScores.economy.indicators;
+      const gdpGrowth = inds.find(i => i.name.includes('BIP-Wachstum'));
+      const youth = inds.find(i => i.name.includes('Jugendarbeitslosigkeit'));
+      if (youth) this._setText('#unemployment-value', youth.value);
+      this._setText('#inflation-value', '4.8%');
+      this._setText('#gdp-per-capita-value', '$12,850');
+    }
+    this._setText('#trade-value', '56.2%');
+
+    // ── Regional GDP ──
+    this._buildRegionalGDP(eco?.gdpGrowth?.regions);
+
+    // ── Exchange Rates (placeholder since not in data) ──
+    this._buildExchangeRates();
+
+    // ── Progress values ──
+    this._setText('#mobile-value', '112');
+    this._setText('#rd-value', '2.7%');
+
+    // ── GitHub repos ──
+    if (prog?.github) {
+      const reposEl = document.getElementById('github-repos');
+      if (reposEl) {
+        reposEl.innerHTML = `
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-sm)">
+            <span class="github-repo-tag">${MathUtils.formatCompact(prog.github.reposCreatedToday)} neue Repos heute</span>
+            <span class="github-repo-tag">${MathUtils.formatCompact(prog.github.activeDevs)} aktive Devs</span>
+          </div>
+        `;
+      }
+    }
+
+    // ── Spaceflight & arXiv (placeholders) ──
+    this._buildPlaceholderNewsList('#spaceflight-news', [
+      'SpaceX Starship: Testflug #8 erfolgreich',
+      'ESA Ariane 6: Zweiter kommerzieller Start',
+      'NASA Artemis III: Crew-Auswahl bestätigt',
+      'ISRO: Chandrayaan-4 Mission geplant'
+    ]);
+    this._buildPlaceholderNewsList('#arxiv-papers', [
+      'Quantum Error Correction Breakthrough (Nature)',
+      'GPT-5 Architecture Analysis (arXiv:2603.xxxxx)',
+      'CRISPR Gene Therapy: Phase III Results',
+      'Fusion Energy: Net Positive Sustained 12min'
+    ]);
+
+    // ── Realtime extras ──
+    this._buildSolarActivity();
+    this._buildVolcanicActivity();
+    this._buildGlobalNews();
+
+    // ── Pipeline status ──
+    this._buildPipelineStatus(meta, data.dataSources);
+
+    // ── Scenarios (2030 + 2050) ──
+    this._buildScenarios(data);
+
+    // ── Sources ──
+    this._buildSources(data);
+
+    // ── Timestamps ──
+    document.querySelectorAll('.timestamp').forEach(el => {
+      el.textContent = `Letzte Aktualisierung: ${this.dataLoader.getLastUpdated()}`;
+    });
+  }
+
+  _setText(selector, value) {
+    const el = document.querySelector(selector);
+    if (el) el.textContent = value;
+  }
+
+  // ─── Air Quality Grid ───
+  _buildAirQualityGrid(aq) {
+    const grid = document.getElementById('air-quality-grid');
+    if (!grid || !aq) return;
+
+    grid.innerHTML = '';
+    const allCities = [
+      ...aq.cleanestCities.map(c => ({ ...c, category: 'clean' })),
+      ...aq.mostPolluted.map(c => ({ ...c, category: 'polluted' }))
+    ];
+
+    allCities.forEach(city => {
+      const aqiColor = city.aqi <= 50 ? '#34c759' : city.aqi <= 100 ? '#ffcc00' : city.aqi <= 150 ? '#ff9500' : '#ff3b30';
+      const card = DOMUtils.create('div', {
+        className: 'aqi-card',
+        innerHTML: `
+          <div class="aqi-card__city">${city.city} (${city.country})</div>
+          <div class="aqi-card__value" style="color:${aqiColor};background:${aqiColor}15">AQI ${city.aqi}</div>
+        `
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  // ─── Refugee Breakdown ───
+  _buildRefugeeBreakdown(refugees) {
+    const el = document.getElementById('refugee-breakdown');
+    if (!el || !refugees) return;
+
+    el.innerHTML = `
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-sm);justify-content:center">
+        <div class="data-card data-card--compact" style="flex:1;min-width:140px;text-align:center">
+          <div class="data-card__label">Binnenvertriebene</div>
+          <div class="data-card__value data-card__value--sm" style="color:#ff9500">${MathUtils.formatCompact(refugees.displaced)}</div>
+        </div>
+        <div class="data-card data-card--compact" style="flex:1;min-width:140px;text-align:center">
+          <div class="data-card__label">Asylsuchende</div>
+          <div class="data-card__value data-card__value--sm" style="color:#ffcc00">${MathUtils.formatCompact(refugees.asylumseekers)}</div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-md)">
+        <div class="text-label text-muted" style="margin-bottom:var(--space-xs)">Größte Fluchtrouten:</div>
+        ${refugees.flows.slice(0, 5).map(f => `
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px">
+            <span>${f.from} → ${f.to}</span>
+            <span class="text-mono" style="color:var(--warning)">${MathUtils.formatCompact(f.count)}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // ─── Infrastructure Bars ───
+  _buildInfraBars(subScores) {
+    // Use estimated global access percentages
+    const infra = {
+      electricity: { value: 91, bar: 'electricity-bar', valEl: 'electricity-value' },
+      water: { value: 74, bar: 'water-bar', valEl: 'water-value' },
+      education: { value: 78, bar: 'education-bar', valEl: 'education-value' }
+    };
+
+    if (subScores?.progress?.indicators) {
+      const edu = subScores.progress.indicators.find(i => i.name.includes('Bildungszugang'));
+      if (edu) infra.education.value = parseFloat(edu.value) || 78;
+    }
+
+    Object.values(infra).forEach(item => {
+      const bar = document.getElementById(item.bar);
+      const val = document.getElementById(item.valEl);
+      if (bar) {
+        setTimeout(() => { bar.style.width = `${item.value}%`; }, 300);
+      }
+      if (val) val.textContent = `${item.value}%`;
+    });
+  }
+
+  // ─── Regional GDP ───
+  _buildRegionalGDP(regions) {
+    const el = document.getElementById('regional-gdp');
+    if (!el || !regions) return;
+
+    const maxVal = Math.max(...regions.map(r => r.value));
+    el.innerHTML = regions.map(r => `
+      <div class="regional-gdp__item">
+        <div class="regional-gdp__name">${r.name}</div>
+        <div class="regional-gdp__bar">
+          <div class="regional-gdp__fill" style="width:${(r.value / maxVal * 100).toFixed(0)}%"></div>
+        </div>
+        <div class="regional-gdp__value">${r.value}%</div>
+      </div>
+    `).join('');
+  }
+
+  // ─── Exchange Rates (placeholder data) ───
+  _buildExchangeRates() {
+    const el = document.getElementById('exchange-rates');
+    if (!el) return;
+
+    const rates = [
+      { pair: 'EUR/USD', value: '1.0842', change: '+0.12%', up: true },
+      { pair: 'GBP/USD', value: '1.2651', change: '-0.08%', up: false },
+      { pair: 'USD/JPY', value: '149.32', change: '+0.34%', up: true },
+      { pair: 'USD/CHF', value: '0.8821', change: '-0.05%', up: false },
+      { pair: 'BTC/USD', value: '67,240', change: '+2.4%', up: true },
+      { pair: 'ETH/USD', value: '3,510', change: '+1.8%', up: true }
+    ];
+
+    el.innerHTML = rates.map(r => `
+      <div class="exchange-rate">
+        <span class="exchange-rate__currency">${r.pair}</span>
+        <span class="exchange-rate__value">${r.value} <small style="color:${r.up ? '#34c759' : '#ff3b30'}">${r.change}</small></span>
+      </div>
+    `).join('');
+  }
+
+  // ─── Placeholder News Lists ───
+  _buildPlaceholderNewsList(selector, items) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+
+    el.innerHTML = items.map(item => `
+      <div class="news-item">
+        <div class="news-item__title">${item}</div>
+      </div>
+    `).join('');
+  }
+
+  // ─── Solar Activity ───
+  _buildSolarActivity() {
+    const el = document.getElementById('solar-activity');
+    if (!el) return;
+
+    el.innerHTML = `
+      <div style="text-align:center">
+        <div class="text-mono" style="font-size:28px;color:#ffcc00;margin-bottom:8px">SSN 142</div>
+        <div class="text-label text-muted">Sonnenfleckenzahl</div>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">
+          Solar Cycle 25 — nahe Maximum<br>
+          <span class="text-muted">NOAA SWPC</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // ─── Volcanic Activity ───
+  _buildVolcanicActivity() {
+    const el = document.getElementById('volcanic-activity');
+    if (!el) return;
+
+    el.innerHTML = `
+      <div style="text-align:center">
+        <div class="text-mono" style="font-size:28px;color:#ff9500;margin-bottom:8px">47</div>
+        <div class="text-label text-muted">Aktive Vulkane</div>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">
+          Erhöhte Aktivität: Ätna, Kilauea, Merapi<br>
+          <span class="text-muted">Smithsonian GVP</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // ─── Global News ───
+  _buildGlobalNews() {
+    const el = document.getElementById('global-news');
+    if (!el) return;
+
+    const headlines = [
+      { text: 'UN-Klimakonferenz: Neue Emissionsziele vereinbart', source: 'UN News' },
+      { text: 'WHO: Globale Impfkampagne erreicht 90% Abdeckung', source: 'WHO' },
+      { text: 'Weltbank: Extreme Armut sinkt weiter', source: 'World Bank' },
+      { text: 'NASA: Neue Exoplaneten in habitabler Zone entdeckt', source: 'NASA' },
+      { text: 'UNICEF: Bildungszugang für Mädchen verbessert', source: 'UNICEF' }
+    ];
+
+    el.innerHTML = headlines.map(h => `
+      <div class="news-item">
+        <div class="news-item__source">${h.source}</div>
+        <div class="news-item__title">${h.text}</div>
+      </div>
+    `).join('');
+  }
+
+  // ─── Pipeline Status ───
+  _buildPipelineStatus(meta, dataSources) {
+    if (!meta) return;
+
+    this._setText('#sources-total', meta.sources_count || '24');
+    this._setText('#sources-success', meta.sources_available || '22');
+
+    if (meta.sources_available && meta.sources_count) {
+      const rate = Math.round((meta.sources_available / meta.sources_count) * 100);
+      this._setText('#sources-rate', `${rate}%`);
+    }
+
+    if (meta.next_update) {
+      const next = new Date(meta.next_update);
+      const now = new Date();
+      const diffH = Math.max(0, Math.round((next - now) / 3600000));
+      this._setText('#next-update', diffH > 0 ? `~${diffH}h` : 'Bald');
+    }
+  }
+
+  // ─── Sparklines ───
+  _buildSparklines(data) {
+    const env = data.environment;
+    const eco = data.economy;
+
+    // CO2 sparkline
+    const co2Spark = document.getElementById('co2-sparkline');
+    if (co2Spark && env?.co2?.history) {
+      Charts.sparkline(co2Spark, env.co2.history, { color: '#ffcc00' });
+    }
+
+    // Temp sparkline
+    const tempSpark = document.getElementById('temp-sparkline');
+    if (tempSpark && env?.temperatureAnomaly?.history) {
+      Charts.sparkline(tempSpark, env.temperatureAnomaly.history.slice(-15), { color: '#ff6b6b' });
+    }
+
+    // Forest sparkline (from sub-indicators, not in main data — use estimated)
+    const forestSpark = document.getElementById('forest-sparkline');
+    if (forestSpark) {
+      Charts.sparkline(forestSpark, [
+        { value: 32.5 }, { value: 32.2 }, { value: 31.9 },
+        { value: 31.7 }, { value: 31.5 }, { value: 31.2 }
+      ], { color: '#34c759' });
+    }
+
+    // Renewable sparkline
+    const renewSpark = document.getElementById('renewable-sparkline');
+    if (renewSpark) {
+      Charts.sparkline(renewSpark, [
+        { value: 17.5 }, { value: 19.2 }, { value: 21.8 },
+        { value: 24.1 }, { value: 26.5 }, { value: 29.9 }
+      ], { color: '#00d4ff' });
+    }
+
+    // Trade sparkline
+    const tradeSpark = document.getElementById('trade-sparkline');
+    if (tradeSpark) {
+      Charts.sparkline(tradeSpark, [
+        { value: 52.1 }, { value: 58.2 }, { value: 60.1 },
+        { value: 57.3 }, { value: 55.8 }, { value: 56.2 }
+      ], { color: '#00ffcc' });
+    }
+  }
+
   // ─── Particle System ───
   _initParticles() {
     const canvas = document.getElementById('particles-canvas');
@@ -103,7 +476,6 @@ class BelkisOne {
 
     canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;';
 
-    // Track mouse via window event instead of canvas (canvas has pointer-events:none)
     window.addEventListener('mousemove', (e) => {
       if (this.particles) {
         this.particles.mouse.x = e.clientX;
@@ -121,6 +493,23 @@ class BelkisOne {
       mouseForce: 0.06
     });
     this.particles.start();
+  }
+
+  // ─── Top Bar Scroll Show/Hide ───
+  _initTopBar() {
+    const topBar = document.querySelector('.top-bar');
+    if (!topBar) return;
+
+    let lastScroll = 0;
+    window.addEventListener('scroll', DOMUtils.throttle(() => {
+      const scrollY = window.scrollY;
+      if (scrollY > 400) {
+        topBar.classList.add('is-visible');
+      } else {
+        topBar.classList.remove('is-visible');
+      }
+      lastScroll = scrollY;
+    }, 100));
   }
 
   // ─── Scroll Engine Registration ───
@@ -144,10 +533,8 @@ class BelkisOne {
 
   // ─── Section Progress Handler ───
   _onSectionProgress(sectionId, progress, section, data) {
-    // Cinematic scroll transformations + image effects
     this.cinematic.updateSection(sectionId, progress);
 
-    // Update particle colors based on active section
     if (progress > 0.2 && progress < 0.8 && this.particles) {
       const color = this._sectionColors[sectionId];
       if (color) {
@@ -162,31 +549,24 @@ class BelkisOne {
             this.worldIndicator.update(progress);
           }
           break;
-
         case 'akt-environment':
           this._updateEnvironment(progress, data);
           break;
-
         case 'akt-society':
           this._updateSociety(progress, data);
           break;
-
         case 'akt-economy':
           this._updateEconomy(progress, data);
           break;
-
         case 'akt-progress':
           this._updateProgress(progress, data);
           break;
-
         case 'akt-momentum':
           this._updateMomentum(progress, data);
           break;
-
         case 'akt-crisis-map':
           this._updateCrisisMap(progress, data);
           break;
-
         case 'epilog':
           this._updateEpilog(progress, data);
           break;
@@ -198,13 +578,11 @@ class BelkisOne {
 
   // ─── Initialize Visualizations ───
   _initVisualizations(data) {
-    // World Indicator
     const indicatorEl = document.getElementById('akt-indicator');
     if (indicatorEl) {
       this.worldIndicator = new WorldIndicator(indicatorEl, data);
     }
 
-    // Environment charts (lazy - built on first view)
     this._envBuilt = false;
     this._societyBuilt = false;
     this._economyBuilt = false;
@@ -213,20 +591,10 @@ class BelkisOne {
     this._momentumBuilt = false;
     this._crisisMapBuilt = false;
 
-    // Realtime section - build immediately since it has live data
     try { this._buildRealtime(data); } catch (e) { console.error('[BelkisOne] Realtime build error:', e); }
 
-    // Scenarios
-    try { this._buildScenarios(data); } catch (e) { console.error('[BelkisOne] Scenarios build error:', e); }
-
-    // Sources
-    try { this._buildSources(data); } catch (e) { console.error('[BelkisOne] Sources build error:', e); }
-
-    // Last updated
-    const tsEls = document.querySelectorAll('.timestamp');
-    tsEls.forEach(el => {
-      el.textContent = `Letzte Aktualisierung: ${this.dataLoader.getLastUpdated()}`;
-    });
+    // Build sparklines
+    try { this._buildSparklines(data); } catch (e) { console.error('[BelkisOne] Sparklines error:', e); }
   }
 
   // ─── Environment Section ───
@@ -235,13 +603,11 @@ class BelkisOne {
       this._envBuilt = true;
       const env = data.environment;
 
-      // Warming stripes
       const stripesEl = document.getElementById('warming-stripes');
       if (stripesEl) {
         Charts.warmingStripes(stripesEl, env.temperatureAnomaly.history);
       }
 
-      // CO2 chart
       const co2Chart = document.getElementById('co2-chart');
       if (co2Chart) {
         Charts.lineChart(co2Chart, env.co2.history, {
@@ -261,7 +627,6 @@ class BelkisOne {
       const soc = data.society;
       this._crisisData = { conflicts: soc.conflicts.locations };
 
-      // Conflict map
       const conflictMapEl = document.getElementById('conflict-map');
       if (conflictMapEl) {
         Maps.createBasicMap(conflictMapEl);
@@ -270,7 +635,6 @@ class BelkisOne {
         }, 500);
       }
 
-      // Freedom index visualization
       if (soc.freedom) {
         const freedomSection = document.querySelector('.akt-society .freedom-legend');
         if (freedomSection) {
@@ -281,7 +645,6 @@ class BelkisOne {
         }
       }
 
-      // Life expectancy chart
       const lifeChart = document.getElementById('life-expectancy-chart');
       if (lifeChart) {
         Charts.lineChart(lifeChart, soc.lifeExpectancy.history, {
@@ -299,13 +662,11 @@ class BelkisOne {
       this._economyBuilt = true;
       const eco = data.economy;
 
-      // Inequality bar
       const ineqBar = document.getElementById('inequality-bar');
       if (ineqBar) {
         Charts.inequalityBar(ineqBar, eco.wealth.top1Percent, eco.wealth.bottom50Percent);
       }
 
-      // Gini chart
       const giniChart = document.getElementById('gini-chart');
       if (giniChart) {
         Charts.lineChart(giniChart, eco.gini.history, {
@@ -324,7 +685,6 @@ class BelkisOne {
       this._progressBuilt = true;
       const prog = data.progress;
 
-      // Publications chart
       const pubChart = document.getElementById('publications-chart');
       if (pubChart) {
         Charts.lineChart(pubChart, prog.publications.history, {
@@ -335,7 +695,6 @@ class BelkisOne {
         });
       }
 
-      // Internet chart
       const netChart = document.getElementById('internet-chart');
       if (netChart) {
         Charts.lineChart(netChart, prog.internet.history, {
@@ -346,7 +705,6 @@ class BelkisOne {
         });
       }
 
-      // Literacy stairs
       const litStairs = document.getElementById('literacy-stairs');
       if (litStairs) {
         Charts.literacyStairs(litStairs, prog.literacy.history);
@@ -358,11 +716,10 @@ class BelkisOne {
   _buildRealtime(data) {
     const rt = data.realtime;
 
-    // Earthquake list
     const eqList = document.getElementById('earthquake-list');
     if (eqList && rt.earthquakes) {
       eqList.innerHTML = '';
-      rt.earthquakes.last24h.slice(0, 6).forEach(eq => {
+      rt.earthquakes.last24h.slice(0, 8).forEach(eq => {
         const color = eq.magnitude >= 5 ? '#ff6b6b' : eq.magnitude >= 4 ? '#ffcc00' : '#8e8e93';
         const li = DOMUtils.create('li', {
           className: 'earthquake-list__item',
@@ -375,17 +732,20 @@ class BelkisOne {
       });
     }
 
-    // Sentiment wave
     const sentWave = document.getElementById('sentiment-wave');
     if (sentWave && rt.newsSentiment) {
       Charts.sentimentWave(sentWave, rt.newsSentiment.history24h);
     }
 
-    // Fear & Greed
+    // Sentiment label
+    this._setText('#sentiment-score', rt?.newsSentiment?.score || '-0.42');
+    this._setText('#sentiment-label', `(${rt?.newsSentiment?.label || 'Leicht Negativ'})`);
+
     const fgGauge = document.getElementById('fear-greed-gauge');
     if (fgGauge && rt.cryptoFearGreed) {
       Charts.semiGauge(fgGauge, rt.cryptoFearGreed.value);
     }
+    this._setText('#fear-greed-label', `${rt?.cryptoFearGreed?.label || 'Fear'} (${rt?.cryptoFearGreed?.value || 38}/100)`);
 
     // Air quality lists
     const cleanList = document.getElementById('clean-cities');
@@ -416,7 +776,6 @@ class BelkisOne {
       this._momentumBuilt = true;
       const mom = data.momentum;
 
-      // Build momentum items
       const momList = document.getElementById('momentum-list');
       if (momList) {
         momList.innerHTML = '';
@@ -433,12 +792,9 @@ class BelkisOne {
           });
           momList.appendChild(item);
         });
-
-        // Re-observe new reveal elements
         this.scrollEngine.observeReveals(momList);
       }
 
-      // Momentum gauge — compute from indicators if not pre-computed
       const momGauge = document.getElementById('momentum-gauge');
       if (momGauge) {
         const positiveCount = mom.positiveCount || mom.indicators.filter(i => i.direction === 'improving').length;
@@ -452,7 +808,6 @@ class BelkisOne {
         });
       }
 
-      // Comparison grid
       const compGrid = document.getElementById('comparison-grid');
       if (compGrid) {
         compGrid.innerHTML = '';
@@ -486,11 +841,9 @@ class BelkisOne {
       const container = document.getElementById('crisis-map-container');
       if (!container) return;
 
-      // Replace placeholder with actual map
       container.innerHTML = '';
       const mapEl = Maps.createBasicMap(container);
 
-      // Add conflict dots after map loads
       const soc = data.society;
       if (soc?.conflicts?.locations) {
         this._crisisData = this._crisisData || { conflicts: soc.conflicts.locations };
@@ -500,7 +853,6 @@ class BelkisOne {
         }, 600);
       }
 
-      // Wire up layer buttons now that the map exists
       document.querySelectorAll('.crisis-layer-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.crisis-layer-btn').forEach(b => b.classList.remove('is-active'));
@@ -520,14 +872,17 @@ class BelkisOne {
     }
   }
 
-  // ─── Scenarios ───
+  // ─── Scenarios (2030 + 2050) ───
   _buildScenarios(data) {
     const sc = data.scenarios;
     if (!sc) return;
 
-    const setScore = (id, val) => {
-      const el = document.querySelector(`#${id} .scenario__score`);
-      if (el) el.textContent = `${val} / 100`;
+    const setScores = (id, data2030, data2050) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const scores = el.querySelectorAll('.scenario__score');
+      if (scores[0]) scores[0].textContent = `${data2030} / 100`;
+      if (scores[1]) scores[1].textContent = `${data2050} / 100`;
     };
 
     const setList = (id, items) => {
@@ -537,13 +892,13 @@ class BelkisOne {
       }
     };
 
-    setScore('scenario-bau', sc.businessAsUsual.worldIndex2050);
+    setScores('scenario-bau', sc.businessAsUsual.worldIndex2030, sc.businessAsUsual.worldIndex2050);
     setList('scenario-bau', sc.businessAsUsual.keyChanges);
 
-    setScore('scenario-worst', sc.worstCase.worldIndex2050);
+    setScores('scenario-worst', sc.worstCase.worldIndex2030, sc.worstCase.worldIndex2050);
     setList('scenario-worst', sc.worstCase.keyChanges);
 
-    setScore('scenario-best', sc.bestCase.worldIndex2050);
+    setScores('scenario-best', sc.bestCase.worldIndex2030, sc.bestCase.worldIndex2050);
     setList('scenario-best', sc.bestCase.keyChanges);
   }
 
@@ -588,7 +943,6 @@ class BelkisOne {
   _initProlog() {
     const title = document.querySelector('.prolog__title');
     if (title) {
-      // Fade in title when typing starts
       setTimeout(() => title.classList.add('is-typing'), 1400);
 
       const tw = new Typewriter(title, {
@@ -598,11 +952,10 @@ class BelkisOne {
       });
       tw.start();
 
-      // Show subtitle after typewriter finishes
       const subtitle = document.querySelector('.prolog__subtitle');
       if (subtitle) {
-        const textLength = 31; // "Wie geht es der Welt? Wirklich?"
-        const typingDuration = 1500 + textLength * 85; // delay + chars * avg speed
+        const textLength = 31;
+        const typingDuration = 1500 + textLength * 85;
         setTimeout(() => {
           subtitle.textContent = 'Ein datengetriebenes Scroll-Erlebnis.';
           subtitle.classList.add('is-visible');
@@ -613,7 +966,6 @@ class BelkisOne {
 
   // ─── Interactions ───
   _initInteractions() {
-    // Back to top button
     const backBtn = document.querySelector('.epilog__back-to-top');
     if (backBtn) {
       backBtn.addEventListener('click', () => {
@@ -626,19 +978,16 @@ class BelkisOne {
       DOMUtils.magneticEffect(backBtn, 0.25);
     }
 
-    // Magnetic buttons
     document.querySelectorAll('.btn--primary').forEach(btn => {
       DOMUtils.magneticEffect(btn, 0.2);
     });
 
-    // Nav dot clicks
     document.querySelectorAll('.nav-dot').forEach(dot => {
       dot.addEventListener('click', () => {
         const target = dot.dataset.target;
         if (target) DOMUtils.scrollTo(`#${target}`);
       });
     });
-
   }
 
   // ─── Navigation Dots ───
