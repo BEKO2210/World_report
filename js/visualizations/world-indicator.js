@@ -86,7 +86,7 @@ export class WorldIndicator {
             size: 80,
             strokeWidth: 6,
             color: MathUtils.getZone(scoreData.value).color,
-            label: names[i]
+            label: ''
           });
         }, i * 150);
       }
