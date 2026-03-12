@@ -56,6 +56,7 @@ class BelkisOne {
       this.cinematic.init();
 
       this._initVisualizations(data);
+      this._primeInitialRender(data);
       this._updateLoading(90);
 
       this.counterManager.discover().observe();
@@ -213,6 +214,28 @@ class BelkisOne {
     });
   }
 
+  // ─── Ensure first paint is fully populated (no empty sections on initial load) ───
+  _primeInitialRender(data) {
+    // Run after initial DOM paint to keep loader smooth.
+    requestAnimationFrame(() => {
+      // Indicator should never stay at 0 if data already exists.
+      if (this.worldIndicator) {
+        this.worldIndicator.update(1);
+      }
+
+      // Build all lazy sections once so maps/tables/lists are always present.
+      this._updateEnvironment(1, data);
+      this._updateSociety(1, data);
+      this._updateEconomy(1, data);
+      this._updateProgress(1, data);
+      this._updateMomentum(1, data);
+      this._updateCrisisMap(1, data);
+
+      // Re-observe reveal elements generated dynamically.
+      this.scrollEngine.observeReveals();
+    });
+  }
+
   // ─── Top Bar Scroll Show/Hide ───
   _initTopBar() {
     const topBar = document.querySelector('.top-bar');
@@ -282,6 +305,30 @@ class BelkisOne {
           `
         });
         aqGrid.appendChild(card);
+      });
+    }
+
+    // Weather grid (Open-Meteo)
+    const weatherGrid = document.getElementById('weather-grid');
+    if (weatherGrid && Array.isArray(env.weather)) {
+      weatherGrid.innerHTML = '';
+      env.weather.slice(0, 8).forEach(city => {
+        const cur = city.current || {};
+        const temp = Number(cur.temperature_2m);
+        const humidity = Number(cur.relative_humidity_2m);
+        const wind = Number(cur.wind_speed_10m);
+
+        const card = DOMUtils.create('div', {
+          className: 'weather-card',
+          innerHTML: `
+            <div class="weather-card__city">${city.name || 'Unbekannt'}</div>
+            <div class="weather-card__temp">${Number.isFinite(temp) ? `${temp.toFixed(1)}°C` : '—'}</div>
+            <div class="weather-card__detail">Feuchte: ${Number.isFinite(humidity) ? `${humidity}%` : '—'}</div>
+            <div class="weather-card__detail">Wind: ${Number.isFinite(wind) ? `${wind} km/h` : '—'}</div>
+          `
+        });
+
+        weatherGrid.appendChild(card);
       });
     }
   }
@@ -383,17 +430,25 @@ class BelkisOne {
     // Regional GDP
     const rgdpEl = document.getElementById('regional-gdp');
     if (rgdpEl && eco?.gdpGrowth?.regions) {
-      const regions = eco.gdpGrowth.regions;
-      const maxVal = Math.max(...regions.map(r => r.value));
-      rgdpEl.innerHTML = regions.map(r => `
-        <div class="regional-gdp__item">
-          <div class="regional-gdp__name">${r.name}</div>
-          <div class="regional-gdp__bar">
-            <div class="regional-gdp__fill" style="width:${(r.value / maxVal * 100).toFixed(0)}%"></div>
+      const regions = eco.gdpGrowth.regions
+        .map(r => ({
+          name: r.name || r.region || 'Unbekannt',
+          value: Number(r.value ?? r.gdpGrowth ?? 0)
+        }))
+        .filter(r => Number.isFinite(r.value));
+
+      if (regions.length) {
+        const maxVal = Math.max(...regions.map(r => Math.abs(r.value))) || 1;
+        rgdpEl.innerHTML = regions.map(r => `
+          <div class="regional-gdp__item">
+            <div class="regional-gdp__name">${r.name}</div>
+            <div class="regional-gdp__bar">
+              <div class="regional-gdp__fill" style="width:${(Math.abs(r.value) / maxVal * 100).toFixed(0)}%"></div>
+            </div>
+            <div class="regional-gdp__value">${r.value > 0 ? '+' : ''}${r.value.toFixed(1)}%</div>
           </div>
-          <div class="regional-gdp__value">${r.value}%</div>
-        </div>
-      `).join('');
+        `).join('');
+      }
     }
   }
 

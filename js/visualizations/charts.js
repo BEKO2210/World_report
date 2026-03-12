@@ -356,14 +356,21 @@ export class Charts {
   // ─── Literacy Stairs ───
   static literacyStairs(container, data, progress = 1) {
     container.innerHTML = '';
-    const maxVal = 100;
+    if (!Array.isArray(data) || !data.length) return;
+
+    const values = data.flatMap(entry => [Number(entry.male), Number(entry.female)]).filter(Number.isFinite);
+    const minVal = Math.max(0, Math.min(...values) - 3);
+    const maxVal = Math.min(100, Math.max(...values) + 1);
+    const range = Math.max(1, maxVal - minVal);
 
     data.forEach((entry, i) => {
       const step = DOMUtils.create('div', { className: 'literacy-stairs__step' });
       const visible = i / data.length < progress;
 
-      const maleH = visible ? (entry.male / maxVal) * 100 : 0;
-      const femaleH = visible ? (entry.female / maxVal) * 100 : 0;
+      const male = Number(entry.male);
+      const female = Number(entry.female);
+      const maleH = visible && Number.isFinite(male) ? ((male - minVal) / range) * 100 : 0;
+      const femaleH = visible && Number.isFinite(female) ? ((female - minVal) / range) * 100 : 0;
 
       const wrapper = DOMUtils.create('div', {
         style: { display: 'flex', gap: '2px', alignItems: 'flex-end', width: '100%', height: '100%' }
