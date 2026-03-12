@@ -14,19 +14,12 @@ export class DataLoader {
 
   // ─── Load data with cache ───
   async load() {
-    // Try cache first
-    const cached = this._getFromCache();
-    if (cached) {
-      this.data = cached;
-      return this.data;
-    }
-
-    // Fetch fresh data
+    // Always prefer fresh data so workflow updates become visible immediately.
     this.loading = true;
     this.error = null;
 
     try {
-      const response = await fetch(this.dataUrl);
+      const response = await fetch(this.dataUrl, { cache: 'no-store' });
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
@@ -37,7 +30,13 @@ export class DataLoader {
       this.error = err;
       console.warn('[DataLoader] Fetch failed, trying cache fallback:', err.message);
 
-      // Try stale cache as fallback
+      // Try non-expired cache first, then stale cache.
+      const cached = this._getFromCache();
+      if (cached) {
+        this.data = cached;
+        return this.data;
+      }
+
       const stale = this._getFromCache(true);
       if (stale) {
         this.data = stale;
@@ -127,7 +126,7 @@ export class DataLoader {
 
   // ─── Format timestamp ───
   getLastUpdated() {
-    const ts = this.data?.realtime?.lastUpdated || this.data?.meta?.generated;
+    const ts = this.data?.meta?.generated || this.data?.realtime?.lastUpdated;
     if (!ts) return 'Unbekannt';
     const d = new Date(ts);
     return d.toLocaleString('de-DE', {

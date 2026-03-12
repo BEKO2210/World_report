@@ -414,7 +414,7 @@ class BelkisOne {
           <div class="regional-gdp__bar">
             <div class="regional-gdp__fill" style="width:${(r.value / maxVal * 100).toFixed(0)}%"></div>
           </div>
-          <div class="regional-gdp__value">${r.value}%</div>
+          <div class="regional-gdp__value">${r.value > 0 ? '+' : ''}${Number(r.value).toFixed(1)}%</div>
         </div>
       `).join('');
     }
