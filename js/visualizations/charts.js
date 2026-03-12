@@ -397,6 +397,16 @@ export class Charts {
         textContent: entry.year
       });
       step.appendChild(label);
+
+      const gap = Number.isFinite(male) && Number.isFinite(female) ? Math.abs(male - female) : null;
+      if (gap !== null) {
+        const gapLabel = DOMUtils.create('span', {
+          className: 'literacy-stairs__gap',
+          textContent: `Δ${gap.toFixed(1)}%`
+        });
+        step.appendChild(gapLabel);
+      }
+
       container.appendChild(step);
     });
   }
