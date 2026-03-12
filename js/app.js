@@ -56,6 +56,7 @@ class BelkisOne {
       this.cinematic.init();
 
       this._initVisualizations(data);
+      this._primeInitialRender(data);
       this._updateLoading(90);
 
       this.counterManager.discover().observe();
@@ -213,6 +214,28 @@ class BelkisOne {
     });
   }
 
+  // ─── Ensure first paint is fully populated (no empty sections on initial load) ───
+  _primeInitialRender(data) {
+    // Run after initial DOM paint to keep loader smooth.
+    requestAnimationFrame(() => {
+      // Indicator should never stay at 0 if data already exists.
+      if (this.worldIndicator) {
+        this.worldIndicator.update(1);
+      }
+
+      // Build all lazy sections once so maps/tables/lists are always present.
+      this._updateEnvironment(1, data);
+      this._updateSociety(1, data);
+      this._updateEconomy(1, data);
+      this._updateProgress(1, data);
+      this._updateMomentum(1, data);
+      this._updateCrisisMap(1, data);
+
+      // Re-observe reveal elements generated dynamically.
+      this.scrollEngine.observeReveals();
+    });
+  }
+
   // ─── Top Bar Scroll Show/Hide ───
   _initTopBar() {
     const topBar = document.querySelector('.top-bar');
@@ -284,6 +307,30 @@ class BelkisOne {
         aqGrid.appendChild(card);
       });
     }
+
+    // Weather grid (Open-Meteo)
+    const weatherGrid = document.getElementById('weather-grid');
+    if (weatherGrid && Array.isArray(env.weather)) {
+      weatherGrid.innerHTML = '';
+      env.weather.slice(0, 8).forEach(city => {
+        const cur = city.current || {};
+        const temp = Number(cur.temperature_2m);
+        const humidity = Number(cur.relative_humidity_2m);
+        const wind = Number(cur.wind_speed_10m);
+
+        const card = DOMUtils.create('div', {
+          className: 'weather-card',
+          innerHTML: `
+            <div class="weather-card__city">${city.name || 'Unbekannt'}</div>
+            <div class="weather-card__temp">${Number.isFinite(temp) ? `${temp.toFixed(1)}°C` : '—'}</div>
+            <div class="weather-card__detail">Feuchte: ${Number.isFinite(humidity) ? `${humidity}%` : '—'}</div>
+            <div class="weather-card__detail">Wind: ${Number.isFinite(wind) ? `${wind} km/h` : '—'}</div>
+          `
+        });
+
+        weatherGrid.appendChild(card);
+      });
+    }
   }
 
   // ─── Society static values ───
@@ -330,13 +377,10 @@ class BelkisOne {
 
     // Infrastructure bars
     const infraData = [
-      { bar: 'electricity-bar', val: 'electricity-value', pct: 91 },
-      { bar: 'water-bar', val: 'water-value', pct: 74 },
-      { bar: 'education-bar', val: 'education-value', pct: 78 }
+      { bar: 'electricity-bar', val: 'electricity-value', pct: Number(soc?.electricityAccess?.current) || 91 },
+      { bar: 'water-bar', val: 'water-value', pct: Number(soc?.safeWater?.current) || 74 },
+      { bar: 'education-bar', val: 'education-value', pct: Number(soc?.education?.current) || 78 }
     ];
-    // Try to get education from progress indicators
-    const eduInd = data.subScores?.progress?.indicators?.find(i => i.name.includes('Bildungszugang'));
-    if (eduInd) infraData[2].pct = parseFloat(eduInd.value) || 78;
 
     infraData.forEach(item => {
       const bar = document.getElementById(item.bar);
@@ -352,30 +396,43 @@ class BelkisOne {
     const sub = data.subScores?.economy?.indicators;
 
     // Inflation, unemployment, GDP per capita, trade
-    this._setText('#inflation-value', '4.8%');
-    this._setText('#gdp-per-capita-value', '$12,850');
-    this._setText('#trade-value', '56.2%');
+    const inflation = Number(eco?.inflation?.current);
+    const gdpPerCapita = Number(eco?.gdpPerCapita?.current);
+    const trade = Number(eco?.trade?.current);
+
+    if (Number.isFinite(inflation)) this._setText('#inflation-value', `${inflation.toFixed(2)}%`);
+    if (Number.isFinite(gdpPerCapita)) this._setText('#gdp-per-capita-value', `$${Math.round(gdpPerCapita).toLocaleString('en-US')}`);
+    if (Number.isFinite(trade)) this._setText('#trade-value', `${trade.toFixed(1)}%`);
 
     if (sub) {
-      const youth = sub.find(i => i.name.includes('Jugendarbeitslosigkeit'));
-      if (youth) this._setText('#unemployment-value', youth.value);
+      const unemployment = sub.find(i => i.name.includes('Arbeitslosigkeit'));
+      if (unemployment) this._setText('#unemployment-value', unemployment.value);
     }
 
-    // Exchange rates
+    if (!document.getElementById('unemployment-value')?.textContent || document.getElementById('unemployment-value')?.textContent.trim() === '0%') {
+      const val = Number(eco?.unemployment?.current);
+      if (Number.isFinite(val)) {
+        this._setText('#unemployment-value', `${val.toFixed(2)}%`);
+      }
+    }
+
+    // Exchange rates (derived from latest feed)
     const exEl = document.getElementById('exchange-rates');
-    if (exEl) {
-      const rates = [
-        { pair: 'EUR/USD', value: '1.0842', change: '+0.12%', up: true },
-        { pair: 'GBP/USD', value: '1.2651', change: '-0.08%', up: false },
-        { pair: 'USD/JPY', value: '149.32', change: '+0.34%', up: true },
-        { pair: 'USD/CHF', value: '0.8821', change: '-0.05%', up: false },
-        { pair: 'BTC/USD', value: '67,240', change: '+2.4%', up: true },
-        { pair: 'ETH/USD', value: '3,510', change: '+1.8%', up: true }
-      ];
-      exEl.innerHTML = rates.map(r => `
+    if (exEl && eco?.exchangeRates) {
+      const fx = eco.exchangeRates;
+      const pairs = [
+        { pair: 'EUR/USD', value: Number.isFinite(Number(fx.EUR)) && Number(fx.EUR) !== 0 ? (1 / Number(fx.EUR)) : null, digits: 4 },
+        { pair: 'GBP/USD', value: Number.isFinite(Number(fx.GBP)) && Number(fx.GBP) !== 0 ? (1 / Number(fx.GBP)) : null, digits: 4 },
+        { pair: 'USD/JPY', value: Number(fx.JPY), digits: 2 },
+        { pair: 'USD/CHF', value: Number(fx.CHF), digits: 4 },
+        { pair: 'USD/CNY', value: Number(fx.CNY), digits: 4 },
+        { pair: 'USD/INR', value: Number(fx.INR), digits: 2 }
+      ].filter(p => Number.isFinite(p.value));
+
+      exEl.innerHTML = pairs.map(r => `
         <div class="exchange-rate">
           <span class="exchange-rate__currency">${r.pair}</span>
-          <span class="exchange-rate__value">${r.value} <small style="color:${r.up ? '#34c759' : '#ff3b30'}">${r.change}</small></span>
+          <span class="exchange-rate__value">${r.value.toFixed(r.digits)}</span>
         </div>
       `).join('');
     }
@@ -383,24 +440,34 @@ class BelkisOne {
     // Regional GDP
     const rgdpEl = document.getElementById('regional-gdp');
     if (rgdpEl && eco?.gdpGrowth?.regions) {
-      const regions = eco.gdpGrowth.regions;
-      const maxVal = Math.max(...regions.map(r => r.value));
-      rgdpEl.innerHTML = regions.map(r => `
-        <div class="regional-gdp__item">
-          <div class="regional-gdp__name">${r.name}</div>
-          <div class="regional-gdp__bar">
-            <div class="regional-gdp__fill" style="width:${(r.value / maxVal * 100).toFixed(0)}%"></div>
+      const regions = eco.gdpGrowth.regions
+        .map(r => ({
+          name: r.name || r.region || 'Unbekannt',
+          value: Number(r.value ?? r.gdpGrowth ?? 0)
+        }))
+        .filter(r => Number.isFinite(r.value));
+
+      if (regions.length) {
+        const maxVal = Math.max(...regions.map(r => Math.abs(r.value))) || 1;
+        rgdpEl.innerHTML = regions.map(r => `
+          <div class="regional-gdp__item">
+            <div class="regional-gdp__name">${r.name}</div>
+            <div class="regional-gdp__bar">
+              <div class="regional-gdp__fill" style="width:${(Math.abs(r.value) / maxVal * 100).toFixed(0)}%"></div>
+            </div>
+            <div class="regional-gdp__value">${r.value > 0 ? '+' : ''}${r.value.toFixed(1)}%</div>
           </div>
-          <div class="regional-gdp__value">${r.value}%</div>
-        </div>
-      `).join('');
+        `).join('');
+      }
     }
   }
 
   // ─── Progress static values ───
   _populateProgressValues(data) {
-    this._setText('#mobile-value', '112');
-    this._setText('#rd-value', '2.7%');
+    const mobile = Number(data.progress?.mobile?.subscriptionsPer100);
+    const rd = Number(data.progress?.rdSpending?.current);
+    if (Number.isFinite(mobile)) this._setText('#mobile-value', mobile.toFixed(1));
+    if (Number.isFinite(rd)) this._setText('#rd-value', `${rd.toFixed(2)}%`);
 
     // GitHub repos
     const reposEl = document.getElementById('github-repos');
@@ -430,32 +497,37 @@ class BelkisOne {
   }
 
   // ─── Realtime extras (solar, volcanic, global news) ───
-  _populateRealtimeExtras() {
+  _populateRealtimeExtras(data) {
+    const rt = data?.realtime || {};
+
     const solarEl = document.getElementById('solar-activity');
     if (solarEl) {
+      const latestSolar = Array.isArray(rt.solar) && rt.solar.length ? rt.solar[rt.solar.length - 1] : null;
+      const ssn = Number(latestSolar?.sunspots);
       solarEl.innerHTML = `<div style="text-align:center">
-        <div class="text-mono" style="font-size:28px;color:#ffcc00;margin-bottom:8px">SSN 142</div>
+        <div class="text-mono" style="font-size:28px;color:#ffcc00;margin-bottom:8px">${Number.isFinite(ssn) ? ssn.toFixed(1) : '—'}</div>
         <div class="text-label text-muted">Sonnenfleckenzahl</div>
-        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">Solar Cycle 25 — nahe Maximum<br><span class="text-muted">NOAA SWPC</span></div>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">${latestSolar?.date || 'Keine Daten'}<br><span class="text-muted">NOAA SWPC</span></div>
       </div>`;
     }
+
     const volcanicEl = document.getElementById('volcanic-activity');
     if (volcanicEl) {
+      const volcanic = Array.isArray(rt.volcanic) ? rt.volcanic : [];
+      const names = volcanic.slice(0, 3).map(v => v.name).filter(Boolean).join(', ');
       volcanicEl.innerHTML = `<div style="text-align:center">
-        <div class="text-mono" style="font-size:28px;color:#ff9500;margin-bottom:8px">47</div>
+        <div class="text-mono" style="font-size:28px;color:#ff9500;margin-bottom:8px">${volcanic.length}</div>
         <div class="text-label text-muted">Aktive Vulkane</div>
-        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">Ätna, Kilauea, Merapi<br><span class="text-muted">Smithsonian GVP</span></div>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">${names || 'Keine aktuellen Meldungen'}<br><span class="text-muted">USGS / Smithsonian</span></div>
       </div>`;
     }
+
     const newsEl = document.getElementById('global-news');
-    if (newsEl) {
-      const items = [
-        { text: 'UN-Klimakonferenz: Neue Emissionsziele', source: 'UN' },
-        { text: 'WHO: Globale Impfkampagne erreicht 90%', source: 'WHO' },
-        { text: 'Weltbank: Extreme Armut sinkt weiter', source: 'WB' },
-        { text: 'NASA: Exoplaneten in habitabler Zone', source: 'NASA' },
-        { text: 'UNICEF: Bildungszugang verbessert', source: 'UNICEF' }
-      ];
+    if (newsEl && Array.isArray(rt.news)) {
+      const items = rt.news.slice(0, 6).map(n => ({
+        text: n.title || 'Ohne Titel',
+        source: n.source || 'News'
+      }));
       newsEl.innerHTML = items.map(h => `
         <div class="news-item">
           <div class="news-item__source">${h.source}</div>

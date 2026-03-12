@@ -90,6 +90,11 @@ export class ScrollEngine {
 
   // ─── Reveal Observer for .reveal elements ───
   _setupRevealObserver() {
+    if (typeof IntersectionObserver === 'undefined') {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
     this._revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -105,6 +110,15 @@ export class ScrollEngine {
     document.querySelectorAll('.reveal').forEach(el => {
       this._revealObserver.observe(el);
     });
+
+    // Safety fallback: if observer doesn't fire reliably, reveal all content.
+    setTimeout(() => {
+      const total = document.querySelectorAll('.reveal').length;
+      const visible = document.querySelectorAll('.reveal.is-visible').length;
+      if (total > 20 && visible <= 1) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      }
+    }, 1500);
   }
 
   // ─── Scroll Listener ───
@@ -207,7 +221,11 @@ export class ScrollEngine {
   // ─── Observe new reveal elements ───
   observeReveals(container = document) {
     container.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
-      this._revealObserver.observe(el);
+      if (this._revealObserver) {
+        this._revealObserver.observe(el);
+      } else {
+        el.classList.add('is-visible');
+      }
     });
   }
 
