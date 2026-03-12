@@ -56,6 +56,7 @@ class BelkisOne {
       this.cinematic.init();
 
       this._initVisualizations(data);
+      this._primeInitialRender(data);
       this._updateLoading(90);
 
       this.counterManager.discover().observe();
@@ -210,6 +211,28 @@ class BelkisOne {
     const tsEls = document.querySelectorAll('.timestamp');
     tsEls.forEach(el => {
       el.textContent = `Letzte Aktualisierung: ${this.dataLoader.getLastUpdated()}`;
+    });
+  }
+
+  // ─── Ensure first paint is fully populated (no empty sections on initial load) ───
+  _primeInitialRender(data) {
+    // Run after initial DOM paint to keep loader smooth.
+    requestAnimationFrame(() => {
+      // Indicator should never stay at 0 if data already exists.
+      if (this.worldIndicator) {
+        this.worldIndicator.update(1);
+      }
+
+      // Build all lazy sections once so maps/tables/lists are always present.
+      this._updateEnvironment(1, data);
+      this._updateSociety(1, data);
+      this._updateEconomy(1, data);
+      this._updateProgress(1, data);
+      this._updateMomentum(1, data);
+      this._updateCrisisMap(1, data);
+
+      // Re-observe reveal elements generated dynamically.
+      this.scrollEngine.observeReveals();
     });
   }
 
