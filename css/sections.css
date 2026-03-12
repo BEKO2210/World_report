@@ -403,6 +403,23 @@
   font-weight: 700;
 }
 
+/* ─── Bento Grid ─── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+.bento-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.bento-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.bento-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) {
+  .bento-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .bento-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bento-grid--2, .bento-grid--3, .bento-grid--4 { grid-template-columns: 1fr; }
+}
+
 /* ─── AKT 2: UMWELT ─── */
 .akt-environment {
   background: #0a1628;
@@ -427,48 +444,6 @@
 
 .warming-stripes__bar:hover {
   opacity: 0.8;
-}
-
-.co2-display {
-  text-align: center;
-  margin: var(--space-xl) 0;
-}
-
-.co2-display__value {
-  font-family: var(--font-mono);
-  font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 800;
-  color: var(--warning);
-  text-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
-}
-
-.co2-display__unit {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  color: var(--text-secondary);
-  font-weight: 400;
-}
-
-.arctic-compare {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  align-items: center;
-}
-
-@media (max-width: 640px) {
-  .arctic-compare {
-    grid-template-columns: 1fr;
-  }
-}
-
-.arctic-compare__year {
-  text-align: center;
-}
-
-.arctic-compare__label {
-  font-size: var(--text-label);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-xs);
 }
 
 /* ─── AKT 3: GESELLSCHAFT ─── */
