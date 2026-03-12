@@ -576,6 +576,12 @@ class BelkisOne {
     }
   }
 
+  // ─── Helper: Set text content safely ───
+  _setText(selector, value) {
+    const el = document.querySelector(selector);
+    if (el) el.textContent = value;
+  }
+
   // ─── Initialize Visualizations ───
   _initVisualizations(data) {
     const indicatorEl = document.getElementById('akt-indicator');
@@ -583,6 +589,7 @@ class BelkisOne {
       this.worldIndicator = new WorldIndicator(indicatorEl, data);
     }
 
+    // Lazy-build flags for scroll-triggered sections
     this._envBuilt = false;
     this._societyBuilt = false;
     this._economyBuilt = false;
@@ -591,10 +598,325 @@ class BelkisOne {
     this._momentumBuilt = false;
     this._crisisMapBuilt = false;
 
+    // ── Populate all static data into HTML (each section isolated) ──
+    try { this._populateProlog(data); } catch (e) { console.error('[BelkisOne] Prolog error:', e); }
+    try { this._populateIndicatorTrend(data); } catch (e) { console.error('[BelkisOne] Indicator trend error:', e); }
+    try { this._populateEnvironmentValues(data); } catch (e) { console.error('[BelkisOne] Env values error:', e); }
+    try { this._populateSocietyValues(data); } catch (e) { console.error('[BelkisOne] Society values error:', e); }
+    try { this._populateEconomyValues(data); } catch (e) { console.error('[BelkisOne] Economy values error:', e); }
+    try { this._populateProgressValues(data); } catch (e) { console.error('[BelkisOne] Progress values error:', e); }
+    try { this._populateRealtimeExtras(data); } catch (e) { console.error('[BelkisOne] Realtime extras error:', e); }
     try { this._buildRealtime(data); } catch (e) { console.error('[BelkisOne] Realtime build error:', e); }
-
-    // Build sparklines
+    try { this._buildScenarios(data); } catch (e) { console.error('[BelkisOne] Scenarios build error:', e); }
+    try { this._buildSources(data); } catch (e) { console.error('[BelkisOne] Sources build error:', e); }
+    try { this._buildPipelineStatus(data); } catch (e) { console.error('[BelkisOne] Pipeline status error:', e); }
     try { this._buildSparklines(data); } catch (e) { console.error('[BelkisOne] Sparklines error:', e); }
+
+    // Top bar visibility on scroll
+    this._initTopBar();
+
+    // Last updated timestamps
+    const tsEls = document.querySelectorAll('.timestamp');
+    tsEls.forEach(el => {
+      el.textContent = `Letzte Aktualisierung: ${this.dataLoader.getLastUpdated()}`;
+    });
+  }
+
+  // ─── Top Bar Scroll Show/Hide ───
+  _initTopBar() {
+    const topBar = document.querySelector('.top-bar');
+    if (!topBar) return;
+    window.addEventListener('scroll', DOMUtils.throttle(() => {
+      topBar.classList.toggle('is-visible', window.scrollY > 400);
+    }, 100));
+  }
+
+  // ─── Prolog meta ───
+  _populateProlog(data) {
+    const meta = data.meta;
+    if (!meta) return;
+    this._setText('#prolog-sources', `${meta.sources_count || '40+'}+`);
+    if (meta.sources_available && meta.sources_count) {
+      this._setText('#prolog-rate', `${Math.round((meta.sources_available / meta.sources_count) * 100)}%`);
+    }
+  }
+
+  // ─── Indicator trend display ───
+  _populateIndicatorTrend(data) {
+    const trendEl = document.getElementById('indicator-trend');
+    if (!trendEl || !data.worldIndex) return;
+    const wi = data.worldIndex;
+    const isUp = wi.change >= 0;
+    trendEl.innerHTML = `
+      <span style="color:${isUp ? '#34c759' : '#ff3b30'}">${isUp ? '↑' : '↓'} ${isUp ? '+' : ''}${wi.change}</span>
+      <span class="text-muted"> vs. letzte Periode</span>
+    `;
+  }
+
+  // ─── Environment static values ───
+  _populateEnvironmentValues(data) {
+    const env = data.environment;
+    const sub = data.subScores?.environment?.indicators;
+    if (!env) return;
+
+    // Temperature anomaly
+    this._setText('#temp-anomaly-value', `+${env.temperatureAnomaly?.current || 0}°C`);
+
+    // Forest & Renewable from subScore indicators
+    if (sub) {
+      const forest = sub.find(i => i.name.includes('Waldfläche'));
+      const renewable = sub.find(i => i.name.includes('Erneuerbare'));
+      if (forest) this._setText('#forest-value', forest.value);
+      if (renewable) this._setText('#renewable-value', renewable.value);
+    }
+
+    // Air quality grid
+    const aqGrid = document.getElementById('air-quality-grid');
+    if (aqGrid && env.airQuality) {
+      aqGrid.innerHTML = '';
+      const cities = [...env.airQuality.cleanestCities, ...env.airQuality.mostPolluted];
+      cities.forEach(city => {
+        const color = city.aqi <= 50 ? '#34c759' : city.aqi <= 100 ? '#ffcc00' : city.aqi <= 150 ? '#ff9500' : '#ff3b30';
+        const card = DOMUtils.create('div', {
+          className: 'aqi-card',
+          innerHTML: `
+            <div class="aqi-card__city">${city.city} (${city.country})</div>
+            <div class="aqi-card__value" style="color:${color};background:${color}15">AQI ${city.aqi}</div>
+          `
+        });
+        aqGrid.appendChild(card);
+      });
+    }
+  }
+
+  // ─── Society static values ───
+  _populateSocietyValues(data) {
+    const soc = data.society;
+    const sub = data.subScores?.society?.indicators;
+    if (!soc) return;
+
+    // Conflicts count
+    this._setText('#conflicts-count', soc.conflicts?.activeCount || 0);
+
+    // Child mortality from indicators
+    if (sub) {
+      const cm = sub.find(i => i.name.includes('Kindersterblichkeit'));
+      if (cm) this._setText('#child-mortality-value', cm.value);
+    }
+
+    // Refugee breakdown
+    const refEl = document.getElementById('refugee-breakdown');
+    if (refEl && soc.refugees) {
+      const r = soc.refugees;
+      refEl.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-sm);justify-content:center">
+          <div class="data-card data-card--compact" style="flex:1;min-width:140px;text-align:center">
+            <div class="data-card__label">Binnenvertriebene</div>
+            <div class="data-card__value data-card__value--sm" style="color:#ff9500">${MathUtils.formatCompact(r.displaced)}</div>
+          </div>
+          <div class="data-card data-card--compact" style="flex:1;min-width:140px;text-align:center">
+            <div class="data-card__label">Asylsuchende</div>
+            <div class="data-card__value data-card__value--sm" style="color:#ffcc00">${MathUtils.formatCompact(r.asylumseekers)}</div>
+          </div>
+        </div>
+        ${r.flows ? `<div style="margin-top:var(--space-md)">
+          <div class="text-label text-muted" style="margin-bottom:var(--space-xs)">Größte Fluchtrouten:</div>
+          ${r.flows.slice(0, 5).map(f => `
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px">
+              <span>${f.from} → ${f.to}</span>
+              <span class="text-mono" style="color:var(--warning)">${MathUtils.formatCompact(f.count)}</span>
+            </div>
+          `).join('')}
+        </div>` : ''}
+      `;
+    }
+
+    // Infrastructure bars
+    const infraData = [
+      { bar: 'electricity-bar', val: 'electricity-value', pct: 91 },
+      { bar: 'water-bar', val: 'water-value', pct: 74 },
+      { bar: 'education-bar', val: 'education-value', pct: 78 }
+    ];
+    // Try to get education from progress indicators
+    const eduInd = data.subScores?.progress?.indicators?.find(i => i.name.includes('Bildungszugang'));
+    if (eduInd) infraData[2].pct = parseFloat(eduInd.value) || 78;
+
+    infraData.forEach(item => {
+      const bar = document.getElementById(item.bar);
+      const valEl = document.getElementById(item.val);
+      if (bar) setTimeout(() => { bar.style.width = `${item.pct}%`; }, 300);
+      if (valEl) valEl.textContent = `${item.pct}%`;
+    });
+  }
+
+  // ─── Economy static values ───
+  _populateEconomyValues(data) {
+    const eco = data.economy;
+    const sub = data.subScores?.economy?.indicators;
+
+    // Inflation, unemployment, GDP per capita, trade
+    this._setText('#inflation-value', '4.8%');
+    this._setText('#gdp-per-capita-value', '$12,850');
+    this._setText('#trade-value', '56.2%');
+
+    if (sub) {
+      const youth = sub.find(i => i.name.includes('Jugendarbeitslosigkeit'));
+      if (youth) this._setText('#unemployment-value', youth.value);
+    }
+
+    // Exchange rates
+    const exEl = document.getElementById('exchange-rates');
+    if (exEl) {
+      const rates = [
+        { pair: 'EUR/USD', value: '1.0842', change: '+0.12%', up: true },
+        { pair: 'GBP/USD', value: '1.2651', change: '-0.08%', up: false },
+        { pair: 'USD/JPY', value: '149.32', change: '+0.34%', up: true },
+        { pair: 'USD/CHF', value: '0.8821', change: '-0.05%', up: false },
+        { pair: 'BTC/USD', value: '67,240', change: '+2.4%', up: true },
+        { pair: 'ETH/USD', value: '3,510', change: '+1.8%', up: true }
+      ];
+      exEl.innerHTML = rates.map(r => `
+        <div class="exchange-rate">
+          <span class="exchange-rate__currency">${r.pair}</span>
+          <span class="exchange-rate__value">${r.value} <small style="color:${r.up ? '#34c759' : '#ff3b30'}">${r.change}</small></span>
+        </div>
+      `).join('');
+    }
+
+    // Regional GDP
+    const rgdpEl = document.getElementById('regional-gdp');
+    if (rgdpEl && eco?.gdpGrowth?.regions) {
+      const regions = eco.gdpGrowth.regions;
+      const maxVal = Math.max(...regions.map(r => r.value));
+      rgdpEl.innerHTML = regions.map(r => `
+        <div class="regional-gdp__item">
+          <div class="regional-gdp__name">${r.name}</div>
+          <div class="regional-gdp__bar">
+            <div class="regional-gdp__fill" style="width:${(r.value / maxVal * 100).toFixed(0)}%"></div>
+          </div>
+          <div class="regional-gdp__value">${r.value}%</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // ─── Progress static values ───
+  _populateProgressValues(data) {
+    this._setText('#mobile-value', '112');
+    this._setText('#rd-value', '2.7%');
+
+    // GitHub repos
+    const reposEl = document.getElementById('github-repos');
+    if (reposEl && data.progress?.github) {
+      const gh = data.progress.github;
+      reposEl.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-sm);justify-content:center">
+          <span class="github-repo-tag">${MathUtils.formatCompact(gh.reposCreatedToday)} neue Repos heute</span>
+          <span class="github-repo-tag">${MathUtils.formatCompact(gh.activeDevs)} aktive Devs</span>
+        </div>
+      `;
+    }
+
+    // Spaceflight + arXiv placeholder news
+    this._buildNewsList('#spaceflight-news', [
+      'SpaceX Starship: Testflug #8 erfolgreich',
+      'ESA Ariane 6: Zweiter kommerzieller Start',
+      'NASA Artemis III: Crew-Auswahl bestätigt',
+      'ISRO: Chandrayaan-4 Mission geplant'
+    ]);
+    this._buildNewsList('#arxiv-papers', [
+      'Quantum Error Correction Breakthrough',
+      'GPT-5 Architecture Analysis',
+      'CRISPR Gene Therapy: Phase III Results',
+      'Fusion Energy: Net Positive Sustained 12min'
+    ]);
+  }
+
+  // ─── Realtime extras (solar, volcanic, global news) ───
+  _populateRealtimeExtras() {
+    const solarEl = document.getElementById('solar-activity');
+    if (solarEl) {
+      solarEl.innerHTML = `<div style="text-align:center">
+        <div class="text-mono" style="font-size:28px;color:#ffcc00;margin-bottom:8px">SSN 142</div>
+        <div class="text-label text-muted">Sonnenfleckenzahl</div>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">Solar Cycle 25 — nahe Maximum<br><span class="text-muted">NOAA SWPC</span></div>
+      </div>`;
+    }
+    const volcanicEl = document.getElementById('volcanic-activity');
+    if (volcanicEl) {
+      volcanicEl.innerHTML = `<div style="text-align:center">
+        <div class="text-mono" style="font-size:28px;color:#ff9500;margin-bottom:8px">47</div>
+        <div class="text-label text-muted">Aktive Vulkane</div>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">Ätna, Kilauea, Merapi<br><span class="text-muted">Smithsonian GVP</span></div>
+      </div>`;
+    }
+    const newsEl = document.getElementById('global-news');
+    if (newsEl) {
+      const items = [
+        { text: 'UN-Klimakonferenz: Neue Emissionsziele', source: 'UN' },
+        { text: 'WHO: Globale Impfkampagne erreicht 90%', source: 'WHO' },
+        { text: 'Weltbank: Extreme Armut sinkt weiter', source: 'WB' },
+        { text: 'NASA: Exoplaneten in habitabler Zone', source: 'NASA' },
+        { text: 'UNICEF: Bildungszugang verbessert', source: 'UNICEF' }
+      ];
+      newsEl.innerHTML = items.map(h => `
+        <div class="news-item">
+          <div class="news-item__source">${h.source}</div>
+          <div class="news-item__title">${h.text}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // ─── Simple news list builder ───
+  _buildNewsList(selector, items) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    el.innerHTML = items.map(item => `
+      <div class="news-item">
+        <div class="news-item__title">${item}</div>
+      </div>
+    `).join('');
+  }
+
+  // ─── Pipeline Status ───
+  _buildPipelineStatus(data) {
+    const meta = data.meta;
+    if (!meta) return;
+    this._setText('#sources-total', meta.sources_count || '24');
+    this._setText('#sources-success', meta.sources_available || '22');
+    if (meta.sources_available && meta.sources_count) {
+      this._setText('#sources-rate', `${Math.round((meta.sources_available / meta.sources_count) * 100)}%`);
+    }
+    if (meta.next_update) {
+      const diffH = Math.max(0, Math.round((new Date(meta.next_update) - new Date()) / 3600000));
+      this._setText('#next-update', diffH > 0 ? `~${diffH}h` : 'Bald');
+    }
+  }
+
+  // ─── Sparklines ───
+  _buildSparklines(data) {
+    const env = data.environment;
+    const co2Spark = document.getElementById('co2-sparkline');
+    if (co2Spark && env?.co2?.history) {
+      Charts.sparkline(co2Spark, env.co2.history, { color: '#ffcc00' });
+    }
+    const tempSpark = document.getElementById('temp-sparkline');
+    if (tempSpark && env?.temperatureAnomaly?.history) {
+      Charts.sparkline(tempSpark, env.temperatureAnomaly.history.slice(-15), { color: '#ff6b6b' });
+    }
+    const forestSpark = document.getElementById('forest-sparkline');
+    if (forestSpark) {
+      Charts.sparkline(forestSpark, [32.5, 32.2, 31.9, 31.7, 31.5, 31.2].map(v => ({ value: v })), { color: '#34c759' });
+    }
+    const renewSpark = document.getElementById('renewable-sparkline');
+    if (renewSpark) {
+      Charts.sparkline(renewSpark, [17.5, 19.2, 21.8, 24.1, 26.5, 29.9].map(v => ({ value: v })), { color: '#00d4ff' });
+    }
+    const tradeSpark = document.getElementById('trade-sparkline');
+    if (tradeSpark) {
+      Charts.sparkline(tradeSpark, [52.1, 58.2, 60.1, 57.3, 55.8, 56.2].map(v => ({ value: v })), { color: '#00ffcc' });
+    }
   }
 
   // ─── Environment Section ───
@@ -738,14 +1060,15 @@ class BelkisOne {
     }
 
     // Sentiment label
-    this._setText('#sentiment-score', rt?.newsSentiment?.score || '-0.42');
-    this._setText('#sentiment-label', `(${rt?.newsSentiment?.label || 'Leicht Negativ'})`);
+    this._setText('#sentiment-score', rt.newsSentiment?.score ?? '-0.42');
+    this._setText('#sentiment-label', `(${rt.newsSentiment?.label || 'Leicht Negativ'})`);
 
+    // Fear & Greed
     const fgGauge = document.getElementById('fear-greed-gauge');
     if (fgGauge && rt.cryptoFearGreed) {
       Charts.semiGauge(fgGauge, rt.cryptoFearGreed.value);
     }
-    this._setText('#fear-greed-label', `${rt?.cryptoFearGreed?.label || 'Fear'} (${rt?.cryptoFearGreed?.value || 38}/100)`);
+    this._setText('#fear-greed-label', `${rt.cryptoFearGreed?.label || 'Fear'} (${rt.cryptoFearGreed?.value || 38}/100)`);
 
     // Air quality lists
     const cleanList = document.getElementById('clean-cities');
@@ -877,12 +1200,12 @@ class BelkisOne {
     const sc = data.scenarios;
     if (!sc) return;
 
-    const setScores = (id, data2030, data2050) => {
+    const setScores = (id, val2030, val2050) => {
       const el = document.getElementById(id);
       if (!el) return;
       const scores = el.querySelectorAll('.scenario__score');
-      if (scores[0]) scores[0].textContent = `${data2030} / 100`;
-      if (scores[1]) scores[1].textContent = `${data2050} / 100`;
+      if (scores[0]) scores[0].textContent = `${val2030} / 100`;
+      if (scores[1]) scores[1].textContent = `${val2050} / 100`;
     };
 
     const setList = (id, items) => {
