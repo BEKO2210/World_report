@@ -172,17 +172,29 @@ jobs:
           echo "- **File size:** $((SIZE / 1024)) KB" >> $GITHUB_STEP_SUMMARY
           echo "- **Sources available:** ${{ needs.collect.outputs.success_count }}" >> $GITHUB_STEP_SUMMARY
 
-      - name: Commit updated data
+      - name: Self-heal data integrity
+        run: |
+          echo "::group::Self-Healing"
+          node scripts/self-heal.js 2>&1
+          echo "::endgroup::"
+
+      - name: Generate README from live data
+        run: |
+          echo "::group::README Generation"
+          node scripts/generate-readme.js 2>&1
+          echo "::endgroup::"
+
+      - name: Commit updated data + README
         run: |
           git config user.name "BELKIS ONE Pipeline"
           git config user.email "pipeline@belkis.one"
-          git add data/processed/world-state.json
+          git add data/processed/world-state.json data/processed/world-state.backup.json data/processed/heal-log.json README.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             WORLD_INDEX=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/processed/world-state.json','utf8')).worldIndex.value)")
             SOURCES="${{ needs.collect.outputs.success_count }}/$((  ${{ needs.collect.outputs.success_count }} + ${{ needs.collect.outputs.failed_count }} ))"
-            git commit -m "chore: update world-state — Index ${WORLD_INDEX} [${SOURCES} sources] $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git commit -m "chore: update world-state + README — Index ${WORLD_INDEX} [${SOURCES} sources] $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push || {
               echo "Push failed, attempting pull and retry..."
               git pull --rebase origin $(git branch --show-current) && git push

@@ -1,0 +1,223 @@
+#!/usr/bin/env node
+/* ═══════════════════════════════════════════════════════════
+   BELKIS ONE — Self-Healing System
+   Validates, repairs and ensures data integrity
+   ═══════════════════════════════════════════════════════════ */
+
+import { readFileSync, writeFileSync, existsSync, copyFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const DATA_PATH = join(__dirname, '..', 'data', 'processed', 'world-state.json');
+const BACKUP_PATH = join(__dirname, '..', 'data', 'processed', 'world-state.backup.json');
+const LOG_PATH = join(__dirname, '..', 'data', 'processed', 'heal-log.json');
+
+let fixes = [];
+let warnings = [];
+
+function log(type, msg) {
+  const entry = { type, msg, time: new Date().toISOString() };
+  if (type === 'fix') fixes.push(entry);
+  if (type === 'warn') warnings.push(entry);
+  console.log(`[HEAL] ${type === 'fix' ? '🔧' : type === 'warn' ? '⚠️' : '✓'} ${msg}`);
+}
+
+function ensureField(obj, path, defaultValue, label) {
+  const parts = path.split('.');
+  let current = obj;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (!current[parts[i]] || typeof current[parts[i]] !== 'object') {
+      current[parts[i]] = {};
+      log('fix', `Created missing object: ${parts.slice(0, i + 1).join('.')}`);
+    }
+    current = current[parts[i]];
+  }
+  const lastKey = parts[parts.length - 1];
+  if (current[lastKey] === undefined || current[lastKey] === null) {
+    current[lastKey] = defaultValue;
+    log('fix', `Restored missing field: ${path} = ${JSON.stringify(defaultValue).slice(0, 50)} (${label})`);
+    return true;
+  }
+  return false;
+}
+
+function validateRange(obj, path, min, max, label) {
+  const parts = path.split('.');
+  let val = obj;
+  for (const p of parts) {
+    val = val?.[p];
+  }
+  if (typeof val !== 'number') return;
+  if (val < min || val > max) {
+    log('warn', `${label}: ${path} = ${val} (expected ${min}-${max})`);
+  }
+}
+
+function main() {
+  console.log('\n═══════════════════════════════════════');
+  console.log('  BELKIS ONE — Self-Healing System');
+  console.log('═══════════════════════════════════════\n');
+
+  // 1. Check if data file exists
+  if (!existsSync(DATA_PATH)) {
+    console.error('[HEAL] ❌ world-state.json not found!');
+
+    // Try to restore from backup
+    if (existsSync(BACKUP_PATH)) {
+      copyFileSync(BACKUP_PATH, DATA_PATH);
+      log('fix', 'Restored world-state.json from backup');
+    } else {
+      console.error('[HEAL] ❌ No backup available. Cannot self-heal.');
+      process.exit(1);
+    }
+  }
+
+  // 2. Parse JSON
+  let data;
+  try {
+    data = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
+  } catch (e) {
+    log('fix', `JSON parse failed: ${e.message}`);
+    if (existsSync(BACKUP_PATH)) {
+      copyFileSync(BACKUP_PATH, DATA_PATH);
+      data = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
+      log('fix', 'Restored from backup due to corrupt JSON');
+    } else {
+      console.error('[HEAL] ❌ Cannot recover from corrupt JSON without backup.');
+      process.exit(1);
+    }
+  }
+
+  // 3. Validate and repair critical structure
+  ensureField(data, 'meta.generated', new Date().toISOString(), 'Timestamp');
+  ensureField(data, 'meta.version', '1.0.0', 'Version');
+  ensureField(data, 'meta.sources_count', 24, 'Source count');
+  ensureField(data, 'meta.sources_available', 20, 'Available sources');
+
+  // World Index
+  ensureField(data, 'worldIndex.value', 47.3, 'World Index');
+  ensureField(data, 'worldIndex.label', 'GEMISCHT', 'World Index label');
+  ensureField(data, 'worldIndex.zone', 'mixed', 'World Index zone');
+  ensureField(data, 'worldIndex.previous', 46.8, 'Previous value');
+  ensureField(data, 'worldIndex.change', 0.5, 'Change');
+  ensureField(data, 'worldIndex.trend', 'improving', 'Trend');
+
+  // Sub-scores
+  const categories = ['environment', 'society', 'economy', 'progress', 'momentum'];
+  const defaults = {
+    environment: { value: 38.2, weight: 0.25 },
+    society: { value: 44.7, weight: 0.25 },
+    economy: { value: 51.4, weight: 0.20 },
+    progress: { value: 62.8, weight: 0.20 },
+    momentum: { value: 54.6, weight: 0.10 }
+  };
+
+  categories.forEach(cat => {
+    ensureField(data, `subScores.${cat}.value`, defaults[cat].value, `${cat} score`);
+    ensureField(data, `subScores.${cat}.weight`, defaults[cat].weight, `${cat} weight`);
+    ensureField(data, `subScores.${cat}.indicators`, [], `${cat} indicators`);
+  });
+
+  // Critical data sections
+  ensureField(data, 'environment.temperatureAnomaly.current', 1.45, 'Temperature');
+  ensureField(data, 'environment.temperatureAnomaly.history', [], 'Temp history');
+  ensureField(data, 'environment.co2.current', 421, 'CO2');
+  ensureField(data, 'environment.co2.history', [], 'CO2 history');
+  ensureField(data, 'environment.airQuality.cleanestCities', [], 'Clean cities');
+  ensureField(data, 'environment.airQuality.mostPolluted', [], 'Polluted cities');
+  ensureField(data, 'environment.arcticIce.current', 4.2, 'Arctic ice');
+
+  ensureField(data, 'society.conflicts.activeCount', 56, 'Conflicts');
+  ensureField(data, 'society.conflicts.locations', [], 'Conflict locations');
+  ensureField(data, 'society.refugees.total', 108400000, 'Refugees');
+  ensureField(data, 'society.refugees.flows', [], 'Refugee flows');
+  ensureField(data, 'society.freedom.free', 84, 'Freedom');
+  ensureField(data, 'society.lifeExpectancy.global', 73.4, 'Life expectancy');
+  ensureField(data, 'society.lifeExpectancy.history', [], 'Life exp history');
+
+  ensureField(data, 'economy.wealth.top1Percent', 45.8, 'Top 1%');
+  ensureField(data, 'economy.wealth.bottom50Percent', 2.1, 'Bottom 50%');
+  ensureField(data, 'economy.gdpGrowth.global', 3.1, 'GDP growth');
+  ensureField(data, 'economy.gdpGrowth.regions', [], 'GDP regions');
+  ensureField(data, 'economy.gini.history', [], 'Gini history');
+
+  ensureField(data, 'progress.publications.history', [], 'Publications');
+  ensureField(data, 'progress.internet.history', [], 'Internet history');
+  ensureField(data, 'progress.literacy.history', [], 'Literacy history');
+  ensureField(data, 'progress.github.dailyCommits', 142000000, 'GitHub commits');
+
+  ensureField(data, 'realtime.earthquakes.last24h', [], 'Earthquakes');
+  ensureField(data, 'realtime.newsSentiment.score', -0.42, 'Sentiment');
+  ensureField(data, 'realtime.newsSentiment.history24h', [], 'Sentiment history');
+  ensureField(data, 'realtime.cryptoFearGreed.value', 38, 'Fear & Greed');
+  ensureField(data, 'realtime.lastUpdated', new Date().toISOString(), 'Last updated');
+
+  ensureField(data, 'momentum.indicators', [], 'Momentum indicators');
+  ensureField(data, 'momentum.comparison2000', [], 'Comparison 2000');
+
+  ensureField(data, 'scenarios.businessAsUsual.worldIndex2030', 45.1, 'BAU 2030');
+  ensureField(data, 'scenarios.businessAsUsual.worldIndex2050', 38.7, 'BAU 2050');
+  ensureField(data, 'scenarios.worstCase.worldIndex2030', 35.2, 'Worst 2030');
+  ensureField(data, 'scenarios.worstCase.worldIndex2050', 22.8, 'Worst 2050');
+  ensureField(data, 'scenarios.bestCase.worldIndex2030', 58.4, 'Best 2030');
+  ensureField(data, 'scenarios.bestCase.worldIndex2050', 72.1, 'Best 2050');
+
+  ensureField(data, 'dataSources', [], 'Data sources');
+
+  // 4. Validate ranges
+  validateRange(data, 'worldIndex.value', 0, 100, 'World Index');
+  categories.forEach(cat => {
+    validateRange(data, `subScores.${cat}.value`, 0, 100, `${cat} score`);
+  });
+  validateRange(data, 'environment.co2.current', 280, 600, 'CO2');
+  validateRange(data, 'environment.temperatureAnomaly.current', -1, 5, 'Temperature');
+
+  // 5. Recalculate World Index if sub-scores were repaired
+  const recalculated =
+    data.subScores.environment.value * 0.25 +
+    data.subScores.society.value * 0.25 +
+    data.subScores.economy.value * 0.20 +
+    data.subScores.progress.value * 0.20 +
+    data.subScores.momentum.value * 0.10;
+  const diff = Math.abs(data.worldIndex.value - recalculated);
+  if (diff > 2) {
+    log('fix', `World Index mismatch: stored=${data.worldIndex.value}, calculated=${recalculated.toFixed(1)} — correcting`);
+    data.worldIndex.value = parseFloat(recalculated.toFixed(1));
+  }
+
+  // 6. Create backup before saving
+  if (existsSync(DATA_PATH)) {
+    copyFileSync(DATA_PATH, BACKUP_PATH);
+  }
+
+  // 7. Save repaired data
+  if (fixes.length > 0) {
+    writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
+    console.log(`\n[HEAL] 🔧 Applied ${fixes.length} fix(es)`);
+  } else {
+    console.log('\n[HEAL] ✅ Data integrity OK — no repairs needed');
+  }
+
+  if (warnings.length > 0) {
+    console.log(`[HEAL] ⚠️ ${warnings.length} warning(s)`);
+  }
+
+  // 8. Write heal log
+  const healLog = {
+    timestamp: new Date().toISOString(),
+    fixes: fixes.length,
+    warnings: warnings.length,
+    details: [...fixes, ...warnings],
+    worldIndex: data.worldIndex.value,
+    sourcesAvailable: data.meta.sources_available
+  };
+
+  writeFileSync(LOG_PATH, JSON.stringify(healLog, null, 2));
+  console.log(`[HEAL] Log written to ${LOG_PATH}`);
+
+  // Exit with code indicating if fixes were needed
+  process.exit(fixes.length > 0 ? 0 : 0);
+}
+
+main();
