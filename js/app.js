@@ -55,10 +55,6 @@ class BelkisOne {
 
       this.cinematic.init();
 
-      // Populate all static data first
-      this._populateAllData(data);
-      this._updateLoading(80);
-
       this._initVisualizations(data);
       this._updateLoading(90);
 
@@ -90,385 +86,6 @@ class BelkisOne {
     if (bar) bar.style.width = `${percent}%`;
   }
 
-  // ─── Populate ALL static data into HTML ───
-  _populateAllData(data) {
-    const meta = data.meta;
-    const env = data.environment;
-    const soc = data.society;
-    const eco = data.economy;
-    const prog = data.progress;
-    const rt = data.realtime;
-    const sc = data.scenarios;
-    const subScores = data.subScores;
-
-    // ── Prolog meta ──
-    this._setText('#prolog-sources', `${meta?.sources_count || '40+'}+`);
-    if (meta?.sources_available && meta?.sources_count) {
-      const rate = Math.round((meta.sources_available / meta.sources_count) * 100);
-      this._setText('#prolog-rate', `${rate}%`);
-    }
-
-    // ── Indicator trend ──
-    const trendEl = document.getElementById('indicator-trend');
-    if (trendEl && data.worldIndex) {
-      const wi = data.worldIndex;
-      const isUp = wi.change >= 0;
-      trendEl.innerHTML = `
-        <span style="color:${isUp ? '#34c759' : '#ff3b30'}">${isUp ? '↑' : '↓'} ${isUp ? '+' : ''}${wi.change}</span>
-        <span class="text-muted"> vs. letzte Periode</span>
-      `;
-    }
-
-    // ── Environment values ──
-    this._setText('#temp-anomaly-value', `+${env?.temperatureAnomaly?.current || 0}°C`);
-    this._setText('#forest-value', env?.arcticIce ? '31.2%' : '31.2%');
-    this._setText('#renewable-value', '29.9%');
-
-    // Set from subScores indicators
-    if (subScores?.environment?.indicators) {
-      const indicators = subScores.environment.indicators;
-      const forest = indicators.find(i => i.name.includes('Waldfläche'));
-      const renewable = indicators.find(i => i.name.includes('Erneuerbare'));
-      if (forest) this._setText('#forest-value', forest.value);
-      if (renewable) this._setText('#renewable-value', renewable.value);
-    }
-
-    // ── Air quality grid ──
-    this._buildAirQualityGrid(env?.airQuality);
-
-    // ── Society values ──
-    this._setText('#conflicts-count', soc?.conflicts?.activeCount || 0);
-    if (subScores?.society?.indicators) {
-      const childMort = subScores.society.indicators.find(i => i.name.includes('Kindersterblichkeit'));
-      if (childMort) this._setText('#child-mortality-value', childMort.value);
-    }
-
-    // ── Refugee breakdown ──
-    this._buildRefugeeBreakdown(soc?.refugees);
-
-    // ── Infrastructure bars ──
-    this._buildInfraBars(subScores);
-
-    // ── Economy values ──
-    if (subScores?.economy?.indicators) {
-      const inds = subScores.economy.indicators;
-      const gdpGrowth = inds.find(i => i.name.includes('BIP-Wachstum'));
-      const youth = inds.find(i => i.name.includes('Jugendarbeitslosigkeit'));
-      if (youth) this._setText('#unemployment-value', youth.value);
-      this._setText('#inflation-value', '4.8%');
-      this._setText('#gdp-per-capita-value', '$12,850');
-    }
-    this._setText('#trade-value', '56.2%');
-
-    // ── Regional GDP ──
-    this._buildRegionalGDP(eco?.gdpGrowth?.regions);
-
-    // ── Exchange Rates (placeholder since not in data) ──
-    this._buildExchangeRates();
-
-    // ── Progress values ──
-    this._setText('#mobile-value', '112');
-    this._setText('#rd-value', '2.7%');
-
-    // ── GitHub repos ──
-    if (prog?.github) {
-      const reposEl = document.getElementById('github-repos');
-      if (reposEl) {
-        reposEl.innerHTML = `
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-sm)">
-            <span class="github-repo-tag">${MathUtils.formatCompact(prog.github.reposCreatedToday)} neue Repos heute</span>
-            <span class="github-repo-tag">${MathUtils.formatCompact(prog.github.activeDevs)} aktive Devs</span>
-          </div>
-        `;
-      }
-    }
-
-    // ── Spaceflight & arXiv (placeholders) ──
-    this._buildPlaceholderNewsList('#spaceflight-news', [
-      'SpaceX Starship: Testflug #8 erfolgreich',
-      'ESA Ariane 6: Zweiter kommerzieller Start',
-      'NASA Artemis III: Crew-Auswahl bestätigt',
-      'ISRO: Chandrayaan-4 Mission geplant'
-    ]);
-    this._buildPlaceholderNewsList('#arxiv-papers', [
-      'Quantum Error Correction Breakthrough (Nature)',
-      'GPT-5 Architecture Analysis (arXiv:2603.xxxxx)',
-      'CRISPR Gene Therapy: Phase III Results',
-      'Fusion Energy: Net Positive Sustained 12min'
-    ]);
-
-    // ── Realtime extras ──
-    this._buildSolarActivity();
-    this._buildVolcanicActivity();
-    this._buildGlobalNews();
-
-    // ── Pipeline status ──
-    this._buildPipelineStatus(meta, data.dataSources);
-
-    // ── Scenarios (2030 + 2050) ──
-    this._buildScenarios(data);
-
-    // ── Sources ──
-    this._buildSources(data);
-
-    // ── Timestamps ──
-    document.querySelectorAll('.timestamp').forEach(el => {
-      el.textContent = `Letzte Aktualisierung: ${this.dataLoader.getLastUpdated()}`;
-    });
-  }
-
-  _setText(selector, value) {
-    const el = document.querySelector(selector);
-    if (el) el.textContent = value;
-  }
-
-  // ─── Air Quality Grid ───
-  _buildAirQualityGrid(aq) {
-    const grid = document.getElementById('air-quality-grid');
-    if (!grid || !aq) return;
-
-    grid.innerHTML = '';
-    const allCities = [
-      ...aq.cleanestCities.map(c => ({ ...c, category: 'clean' })),
-      ...aq.mostPolluted.map(c => ({ ...c, category: 'polluted' }))
-    ];
-
-    allCities.forEach(city => {
-      const aqiColor = city.aqi <= 50 ? '#34c759' : city.aqi <= 100 ? '#ffcc00' : city.aqi <= 150 ? '#ff9500' : '#ff3b30';
-      const card = DOMUtils.create('div', {
-        className: 'aqi-card',
-        innerHTML: `
-          <div class="aqi-card__city">${city.city} (${city.country})</div>
-          <div class="aqi-card__value" style="color:${aqiColor};background:${aqiColor}15">AQI ${city.aqi}</div>
-        `
-      });
-      grid.appendChild(card);
-    });
-  }
-
-  // ─── Refugee Breakdown ───
-  _buildRefugeeBreakdown(refugees) {
-    const el = document.getElementById('refugee-breakdown');
-    if (!el || !refugees) return;
-
-    el.innerHTML = `
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-sm);justify-content:center">
-        <div class="data-card data-card--compact" style="flex:1;min-width:140px;text-align:center">
-          <div class="data-card__label">Binnenvertriebene</div>
-          <div class="data-card__value data-card__value--sm" style="color:#ff9500">${MathUtils.formatCompact(refugees.displaced)}</div>
-        </div>
-        <div class="data-card data-card--compact" style="flex:1;min-width:140px;text-align:center">
-          <div class="data-card__label">Asylsuchende</div>
-          <div class="data-card__value data-card__value--sm" style="color:#ffcc00">${MathUtils.formatCompact(refugees.asylumseekers)}</div>
-        </div>
-      </div>
-      <div style="margin-top:var(--space-md)">
-        <div class="text-label text-muted" style="margin-bottom:var(--space-xs)">Größte Fluchtrouten:</div>
-        ${refugees.flows.slice(0, 5).map(f => `
-          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px">
-            <span>${f.from} → ${f.to}</span>
-            <span class="text-mono" style="color:var(--warning)">${MathUtils.formatCompact(f.count)}</span>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  // ─── Infrastructure Bars ───
-  _buildInfraBars(subScores) {
-    // Use estimated global access percentages
-    const infra = {
-      electricity: { value: 91, bar: 'electricity-bar', valEl: 'electricity-value' },
-      water: { value: 74, bar: 'water-bar', valEl: 'water-value' },
-      education: { value: 78, bar: 'education-bar', valEl: 'education-value' }
-    };
-
-    if (subScores?.progress?.indicators) {
-      const edu = subScores.progress.indicators.find(i => i.name.includes('Bildungszugang'));
-      if (edu) infra.education.value = parseFloat(edu.value) || 78;
-    }
-
-    Object.values(infra).forEach(item => {
-      const bar = document.getElementById(item.bar);
-      const val = document.getElementById(item.valEl);
-      if (bar) {
-        setTimeout(() => { bar.style.width = `${item.value}%`; }, 300);
-      }
-      if (val) val.textContent = `${item.value}%`;
-    });
-  }
-
-  // ─── Regional GDP ───
-  _buildRegionalGDP(regions) {
-    const el = document.getElementById('regional-gdp');
-    if (!el || !regions) return;
-
-    const maxVal = Math.max(...regions.map(r => r.value));
-    el.innerHTML = regions.map(r => `
-      <div class="regional-gdp__item">
-        <div class="regional-gdp__name">${r.name}</div>
-        <div class="regional-gdp__bar">
-          <div class="regional-gdp__fill" style="width:${(r.value / maxVal * 100).toFixed(0)}%"></div>
-        </div>
-        <div class="regional-gdp__value">${r.value}%</div>
-      </div>
-    `).join('');
-  }
-
-  // ─── Exchange Rates (placeholder data) ───
-  _buildExchangeRates() {
-    const el = document.getElementById('exchange-rates');
-    if (!el) return;
-
-    const rates = [
-      { pair: 'EUR/USD', value: '1.0842', change: '+0.12%', up: true },
-      { pair: 'GBP/USD', value: '1.2651', change: '-0.08%', up: false },
-      { pair: 'USD/JPY', value: '149.32', change: '+0.34%', up: true },
-      { pair: 'USD/CHF', value: '0.8821', change: '-0.05%', up: false },
-      { pair: 'BTC/USD', value: '67,240', change: '+2.4%', up: true },
-      { pair: 'ETH/USD', value: '3,510', change: '+1.8%', up: true }
-    ];
-
-    el.innerHTML = rates.map(r => `
-      <div class="exchange-rate">
-        <span class="exchange-rate__currency">${r.pair}</span>
-        <span class="exchange-rate__value">${r.value} <small style="color:${r.up ? '#34c759' : '#ff3b30'}">${r.change}</small></span>
-      </div>
-    `).join('');
-  }
-
-  // ─── Placeholder News Lists ───
-  _buildPlaceholderNewsList(selector, items) {
-    const el = document.querySelector(selector);
-    if (!el) return;
-
-    el.innerHTML = items.map(item => `
-      <div class="news-item">
-        <div class="news-item__title">${item}</div>
-      </div>
-    `).join('');
-  }
-
-  // ─── Solar Activity ───
-  _buildSolarActivity() {
-    const el = document.getElementById('solar-activity');
-    if (!el) return;
-
-    el.innerHTML = `
-      <div style="text-align:center">
-        <div class="text-mono" style="font-size:28px;color:#ffcc00;margin-bottom:8px">SSN 142</div>
-        <div class="text-label text-muted">Sonnenfleckenzahl</div>
-        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">
-          Solar Cycle 25 — nahe Maximum<br>
-          <span class="text-muted">NOAA SWPC</span>
-        </div>
-      </div>
-    `;
-  }
-
-  // ─── Volcanic Activity ───
-  _buildVolcanicActivity() {
-    const el = document.getElementById('volcanic-activity');
-    if (!el) return;
-
-    el.innerHTML = `
-      <div style="text-align:center">
-        <div class="text-mono" style="font-size:28px;color:#ff9500;margin-bottom:8px">47</div>
-        <div class="text-label text-muted">Aktive Vulkane</div>
-        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">
-          Erhöhte Aktivität: Ätna, Kilauea, Merapi<br>
-          <span class="text-muted">Smithsonian GVP</span>
-        </div>
-      </div>
-    `;
-  }
-
-  // ─── Global News ───
-  _buildGlobalNews() {
-    const el = document.getElementById('global-news');
-    if (!el) return;
-
-    const headlines = [
-      { text: 'UN-Klimakonferenz: Neue Emissionsziele vereinbart', source: 'UN News' },
-      { text: 'WHO: Globale Impfkampagne erreicht 90% Abdeckung', source: 'WHO' },
-      { text: 'Weltbank: Extreme Armut sinkt weiter', source: 'World Bank' },
-      { text: 'NASA: Neue Exoplaneten in habitabler Zone entdeckt', source: 'NASA' },
-      { text: 'UNICEF: Bildungszugang für Mädchen verbessert', source: 'UNICEF' }
-    ];
-
-    el.innerHTML = headlines.map(h => `
-      <div class="news-item">
-        <div class="news-item__source">${h.source}</div>
-        <div class="news-item__title">${h.text}</div>
-      </div>
-    `).join('');
-  }
-
-  // ─── Pipeline Status ───
-  _buildPipelineStatus(meta, dataSources) {
-    if (!meta) return;
-
-    this._setText('#sources-total', meta.sources_count || '24');
-    this._setText('#sources-success', meta.sources_available || '22');
-
-    if (meta.sources_available && meta.sources_count) {
-      const rate = Math.round((meta.sources_available / meta.sources_count) * 100);
-      this._setText('#sources-rate', `${rate}%`);
-    }
-
-    if (meta.next_update) {
-      const next = new Date(meta.next_update);
-      const now = new Date();
-      const diffH = Math.max(0, Math.round((next - now) / 3600000));
-      this._setText('#next-update', diffH > 0 ? `~${diffH}h` : 'Bald');
-    }
-  }
-
-  // ─── Sparklines ───
-  _buildSparklines(data) {
-    const env = data.environment;
-    const eco = data.economy;
-
-    // CO2 sparkline
-    const co2Spark = document.getElementById('co2-sparkline');
-    if (co2Spark && env?.co2?.history) {
-      Charts.sparkline(co2Spark, env.co2.history, { color: '#ffcc00' });
-    }
-
-    // Temp sparkline
-    const tempSpark = document.getElementById('temp-sparkline');
-    if (tempSpark && env?.temperatureAnomaly?.history) {
-      Charts.sparkline(tempSpark, env.temperatureAnomaly.history.slice(-15), { color: '#ff6b6b' });
-    }
-
-    // Forest sparkline (from sub-indicators, not in main data — use estimated)
-    const forestSpark = document.getElementById('forest-sparkline');
-    if (forestSpark) {
-      Charts.sparkline(forestSpark, [
-        { value: 32.5 }, { value: 32.2 }, { value: 31.9 },
-        { value: 31.7 }, { value: 31.5 }, { value: 31.2 }
-      ], { color: '#34c759' });
-    }
-
-    // Renewable sparkline
-    const renewSpark = document.getElementById('renewable-sparkline');
-    if (renewSpark) {
-      Charts.sparkline(renewSpark, [
-        { value: 17.5 }, { value: 19.2 }, { value: 21.8 },
-        { value: 24.1 }, { value: 26.5 }, { value: 29.9 }
-      ], { color: '#00d4ff' });
-    }
-
-    // Trade sparkline
-    const tradeSpark = document.getElementById('trade-sparkline');
-    if (tradeSpark) {
-      Charts.sparkline(tradeSpark, [
-        { value: 52.1 }, { value: 58.2 }, { value: 60.1 },
-        { value: 57.3 }, { value: 55.8 }, { value: 56.2 }
-      ], { color: '#00ffcc' });
-    }
-  }
-
   // ─── Particle System ───
   _initParticles() {
     const canvas = document.getElementById('particles-canvas');
@@ -493,23 +110,6 @@ class BelkisOne {
       mouseForce: 0.06
     });
     this.particles.start();
-  }
-
-  // ─── Top Bar Scroll Show/Hide ───
-  _initTopBar() {
-    const topBar = document.querySelector('.top-bar');
-    if (!topBar) return;
-
-    let lastScroll = 0;
-    window.addEventListener('scroll', DOMUtils.throttle(() => {
-      const scrollY = window.scrollY;
-      if (scrollY > 400) {
-        topBar.classList.add('is-visible');
-      } else {
-        topBar.classList.remove('is-visible');
-      }
-      lastScroll = scrollY;
-    }, 100));
   }
 
   // ─── Scroll Engine Registration ───
@@ -576,12 +176,6 @@ class BelkisOne {
     }
   }
 
-  // ─── Helper: Set text content safely ───
-  _setText(selector, value) {
-    const el = document.querySelector(selector);
-    if (el) el.textContent = value;
-  }
-
   // ─── Initialize Visualizations ───
   _initVisualizations(data) {
     const indicatorEl = document.getElementById('akt-indicator');
@@ -612,9 +206,6 @@ class BelkisOne {
     try { this._buildPipelineStatus(data); } catch (e) { console.error('[BelkisOne] Pipeline status error:', e); }
     try { this._buildSparklines(data); } catch (e) { console.error('[BelkisOne] Sparklines error:', e); }
 
-    // Top bar visibility on scroll
-    this._initTopBar();
-
     // Last updated timestamps
     const tsEls = document.querySelectorAll('.timestamp');
     tsEls.forEach(el => {
@@ -629,6 +220,12 @@ class BelkisOne {
     window.addEventListener('scroll', DOMUtils.throttle(() => {
       topBar.classList.toggle('is-visible', window.scrollY > 400);
     }, 100));
+  }
+
+  // ─── Helper: Set text content safely ───
+  _setText(selector, value) {
+    const el = document.querySelector(selector);
+    if (el) el.textContent = value;
   }
 
   // ─── Prolog meta ───
