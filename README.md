@@ -12,7 +12,7 @@
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 12.03.2026 02:02 UTC
+> **Letzte Aktualisierung:** 12.03.2026 06:55 UTC
 
 ### Sub-Scores
 
@@ -214,5 +214,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 12.03.2026 02:02 UTC | 39/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 12.03.2026 06:55 UTC | 39/40 Quellen aktiv
 </sub>
