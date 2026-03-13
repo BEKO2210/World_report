@@ -12,7 +12,7 @@
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 12.03.2026 21:06 UTC
+> **Letzte Aktualisierung:** 13.03.2026 00:02 UTC
 
 ### Sub-Scores
 
@@ -65,7 +65,7 @@
 |-----------|------|--------|
 | Erdbeben (24h) | **8** Beben M2.5+ | USGS |
 | Nachrichten-Sentiment | **-0.42** (Leicht Negativ) | GDELT |
-| Crypto Fear & Greed | **18/100** (Extreme Fear) | Alternative.me |
+| Crypto Fear & Greed | **15/100** (Extreme Fear) | Alternative.me |
 
 ---
 
@@ -155,32 +155,32 @@ belkis-one/
 
 | Quelle | Vertrauen | Letztes Update |
 |--------|-----------|----------------|
-| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-12 |
-| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-12 |
-| [OpenAQ](https://openaq.org/) | ⭐⭐ | 2026-03-12 |
-| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-12 |
-| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-12 |
-| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-12 |
-| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-12 |
-| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-12 |
-| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-12 |
-| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-12 |
-| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-12 |
-| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-12 |
-| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-12 |
-| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-12 |
-| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-12 |
-| [NASA Climate (RSS)](https://climate.nasa.gov/) | ⭐⭐⭐ | 2026-03-12 |
-| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-12 |
-| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-12 |
+| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-13 |
+| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-13 |
+| [OpenAQ](https://openaq.org/) | ⭐⭐ | 2026-03-13 |
+| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-13 |
+| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-13 |
+| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-13 |
+| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-13 |
+| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-13 |
+| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-13 |
+| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-13 |
+| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-13 |
+| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-13 |
+| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-13 |
+| [NASA Climate (RSS)](https://climate.nasa.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
 
 ## 🚀 Setup
 
@@ -214,5 +214,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 12.03.2026 21:06 UTC | 38/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 00:02 UTC | 38/40 Quellen aktiv
 </sub>
