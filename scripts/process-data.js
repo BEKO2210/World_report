@@ -179,10 +179,38 @@ function buildWorldState() {
 
   // ─── REALTIME ───
   const earthquakeData = readRaw('realtime', 'earthquakes.json');
-  const gdeltData = readRaw('realtime', 'gdelt-tone.json') || readRaw('realtime', 'gdelt-news.json');
+  const gdeltTone = readRaw('realtime', 'gdelt-tone.json');
+  const gdeltNews = readRaw('realtime', 'gdelt-news.json');
   const rssData = readRaw('realtime', 'rss-news.json');
   const volcanicData = readRaw('realtime', 'volcanic-activity.json');
   const solarData = readRaw('realtime', 'solar-activity.json');
+
+  // Merge RSS + GDELT news, deduplicate by title, sort by date, diversify sources
+  const allNews = [
+    ...(rssData?.articles || []),
+    ...(gdeltNews?.articles || [])
+  ];
+  // Deduplicate by normalized title (first 60 chars lowercase)
+  const seen = new Set();
+  const deduped = allNews.filter(a => {
+    const key = (a.title || '').toLowerCase().slice(0, 60);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  // Sort by date (newest first), then pick max 3 per source for diversity
+  deduped.sort((a, b) => {
+    const da = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+    const db = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+    return (db || 0) - (da || 0);
+  });
+  const sourceCounts = {};
+  const diverseNews = deduped.filter(a => {
+    const src = a.source || 'Unknown';
+    sourceCounts[src] = (sourceCounts[src] || 0) + 1;
+    return sourceCounts[src] <= 3;
+  }).slice(0, 20);
+  console.log(`  News: ${diverseNews.length} articles from ${Object.keys(sourceCounts).length} sources`);
 
   // ─── MOMENTUM (trend analysis) ───
   // Compare recent vs. earlier values for key indicators
@@ -516,17 +544,23 @@ function buildWorldState() {
         total24h: earthquakeData?.count || 0,
         source: 'USGS'
       },
-      newsSentiment: existing?.realtime?.newsSentiment || {
+      newsSentiment: gdeltTone?.data ? {
+        score: typeof gdeltTone.data === 'object' ? (gdeltTone.data.score ?? -0.42) : -0.42,
+        label: 'Leicht Negativ',
+        history24h: Array.isArray(gdeltTone.data) ? gdeltTone.data.slice(-12).map(d => d.tone ?? d.value ?? -0.4) :
+          [-0.3, -0.5, -0.4, -0.6, -0.3, -0.4, -0.5, -0.3, -0.4, -0.6, -0.5, -0.4],
+        source: 'GDELT'
+      } : (existing?.realtime?.newsSentiment || {
         score: -0.42, label: 'Leicht Negativ',
         history24h: [-0.3, -0.5, -0.4, -0.6, -0.3, -0.4, -0.5, -0.3, -0.4, -0.6, -0.5, -0.4],
         source: 'GDELT'
-      },
+      }),
       cryptoFearGreed: {
         value: cryptoData?.current?.value || existing?.realtime?.cryptoFearGreed?.value || 38,
         label: cryptoData?.current?.label || 'Fear',
         source: 'Alternative.me'
       },
-      news: rssData?.articles?.slice(0, 15) || [],
+      news: diverseNews.length > 0 ? diverseNews : (existing?.realtime?.news || []),
       volcanic: volcanicData?.alerts || [],
       solar: solarData?.recent?.slice(-12) || [],
       lastUpdated: new Date().toISOString()
@@ -588,7 +622,14 @@ function buildDataSourcesList() {
     { name: 'GDELT Project', url: 'https://www.gdeltproject.org/', trust: 2, lastUpdate: today, category: 'realtime' },
     { name: 'UN News (RSS)', url: 'https://news.un.org/', trust: 3, lastUpdate: today, category: 'realtime' },
     { name: 'WHO News (RSS)', url: 'https://www.who.int/', trust: 3, lastUpdate: today, category: 'realtime' },
-    { name: 'NASA Climate (RSS)', url: 'https://climate.nasa.gov/', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'UNHCR (RSS)', url: 'https://www.unhcr.org/', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'ReliefWeb (RSS)', url: 'https://reliefweb.int/', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'NASA (RSS)', url: 'https://www.nasa.gov/', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'BBC World (RSS)', url: 'https://www.bbc.com/news/world', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'DW News (RSS)', url: 'https://www.dw.com/', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'Al Jazeera (RSS)', url: 'https://www.aljazeera.com/', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'Guardian World (RSS)', url: 'https://www.theguardian.com/world', trust: 3, lastUpdate: today, category: 'realtime' },
+    { name: 'France24 (RSS)', url: 'https://www.france24.com/', trust: 3, lastUpdate: today, category: 'realtime' },
     { name: 'NOAA Space Weather', url: 'https://www.swpc.noaa.gov/', trust: 3, lastUpdate: today, category: 'realtime' },
     { name: 'USGS Volcanoes', url: 'https://volcanoes.usgs.gov/', trust: 3, lastUpdate: today, category: 'realtime' }
   ];

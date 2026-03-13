@@ -506,45 +506,97 @@ async function fetchSpaceflightNews() {
 // ══════════════════════════════════════════════════════════════
 
 async function fetchGDELTNews() {
-  // GDELT — Global news tone/sentiment (free, no key)
+  // GDELT — Global news articles (free, no key)
+  // Try article list first (more useful for headlines), fallback to tone
+  let articles = [];
   try {
-    const data = await fetchJSON('https://api.gdeltproject.org/api/v2/doc/doc?query=world&mode=tonechart&format=json&timespan=24h');
-    save('realtime', 'gdelt-tone.json', { data, fetched: new Date().toISOString() });
-  } catch {
-    // Alternative: GDELT GEO
-    const data = await fetchJSON('https://api.gdeltproject.org/api/v2/doc/doc?query=crisis OR conflict OR disaster&mode=artlist&maxrecords=20&format=json');
-    save('realtime', 'gdelt-news.json', { articles: data.articles || [], fetched: new Date().toISOString() });
-  }
+    const data = await fetchJSON('https://api.gdeltproject.org/api/v2/doc/doc?query=world+crisis+climate+conflict&mode=artlist&maxrecords=15&format=json&sourcelang=english');
+    articles = (data?.articles || []).map(a => ({
+      title: a.title,
+      pubDate: a.seendate,
+      link: a.url,
+      source: 'GDELT'
+    }));
+  } catch { /* ignore */ }
+  save('realtime', 'gdelt-news.json', { articles, fetched: new Date().toISOString() });
+
+  // Also fetch tone data for sentiment
+  try {
+    const tone = await fetchJSON('https://api.gdeltproject.org/api/v2/doc/doc?query=world&mode=tonechart&format=json&timespan=24h');
+    save('realtime', 'gdelt-tone.json', { data: tone, fetched: new Date().toISOString() });
+  } catch { /* ignore */ }
 }
 
 async function fetchRSSFeeds() {
-  // RSS feeds from major news sources — parse manually
+  // RSS feeds from major international news sources
+  // Each feed is tried independently — failed feeds are skipped
   const feeds = [
-    { name: 'Reuters World', url: 'https://www.reutersagency.com/feed/?taxonomy=best-sectors&post_type=best' },
+    // ─── Tier 1: UN system (most reliable, always available) ───
     { name: 'UN News', url: 'https://news.un.org/feed/subscribe/en/news/all/rss.xml' },
     { name: 'WHO News', url: 'https://www.who.int/rss-feeds/news-english.xml' },
-    { name: 'NASA Climate', url: 'https://climate.nasa.gov/news/rss.xml' },
-    { name: 'World Bank Blogs', url: 'https://blogs.worldbank.org/feed' }
+    { name: 'UNHCR', url: 'https://www.unhcr.org/rss/news.xml' },
+    { name: 'ReliefWeb', url: 'https://reliefweb.int/updates/rss.xml' },
+
+    // ─── Tier 2: Science & Climate ───
+    { name: 'NASA', url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss' },
+    { name: 'NASA Earth', url: 'https://earthobservatory.nasa.gov/feeds/earth-observatory.rss' },
+    { name: 'ESA', url: 'https://www.esa.int/rssfeed/Our_Activities/Space_Science' },
+    { name: 'NOAA Climate', url: 'https://www.climate.gov/feeds/all.rss' },
+
+    // ─── Tier 3: World news (may block; silent fail is fine) ───
+    { name: 'BBC World', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
+    { name: 'DW News', url: 'https://rss.dw.com/xml/rss-en-world' },
+    { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml' },
+    { name: 'Guardian', url: 'https://www.theguardian.com/world/rss' },
+    { name: 'France24', url: 'https://www.france24.com/en/rss' },
+    { name: 'NHK World', url: 'https://www3.nhk.or.jp/nhkworld/en/news/feeds/' },
+
+    // ─── Tier 4: Development & Economy ───
+    { name: 'World Bank', url: 'https://blogs.worldbank.org/feed' },
+    { name: 'IMF Blog', url: 'https://www.imf.org/en/News/rss?Language=ENG' }
   ];
 
   const allArticles = [];
   for (const feed of feeds) {
     try {
-      const xml = await fetchText(feed.url, { timeout: 10000 });
-      // Simple RSS item extraction
+      const xml = await fetchText(feed.url, { timeout: 12000 });
+      if (!xml || xml.length < 100) continue;
+
       const items = [];
+
+      // Try RSS <item> format
       const itemRegex = /<item>([\s\S]*?)<\/item>/g;
       let match;
       while ((match = itemRegex.exec(xml)) !== null && items.length < 5) {
         const content = match[1];
         const title = content.match(/<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/)?.[1]?.trim();
         const pubDate = content.match(/<pubDate>(.*?)<\/pubDate>/)?.[1];
-        const link = content.match(/<link>(.*?)<\/link>/)?.[1]?.trim();
-        if (title) items.push({ title, pubDate, link, source: feed.name });
+        const link = content.match(/<link>(.*?)<\/link>/)?.[1]?.trim()
+          || content.match(/<link[^>]*href="([^"]*)"[^>]*\/?>/)?.[1];
+        if (title && title.length > 10) items.push({ title, pubDate, link, source: feed.name });
       }
+
+      // Fallback: Try Atom <entry> format (used by some feeds)
+      if (items.length === 0) {
+        const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+        while ((match = entryRegex.exec(xml)) !== null && items.length < 5) {
+          const content = match[1];
+          const title = content.match(/<title[^>]*>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/)?.[1]?.trim();
+          const pubDate = content.match(/<published>(.*?)<\/published>/)?.[1]
+            || content.match(/<updated>(.*?)<\/updated>/)?.[1];
+          const link = content.match(/<link[^>]*href="([^"]*)"[^>]*\/?>/)?.[1];
+          if (title && title.length > 10) items.push({ title, pubDate, link, source: feed.name });
+        }
+      }
+
       allArticles.push(...items);
-    } catch { /* skip failed feeds */ }
+      console.log(`  [RSS] ${feed.name}: ${items.length} articles`);
+    } catch (err) {
+      console.log(`  [RSS] ${feed.name}: failed (${err.message?.slice(0, 40)})`);
+    }
   }
+
+  console.log(`  [RSS] Total: ${allArticles.length} articles from ${new Set(allArticles.map(a => a.source)).size} sources`);
   save('realtime', 'rss-news.json', { articles: allArticles, fetched: new Date().toISOString() });
 }
 
