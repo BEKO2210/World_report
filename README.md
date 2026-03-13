@@ -12,7 +12,7 @@
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 13.03.2026 21:01 UTC
+> **Letzte Aktualisierung:** 13.03.2026 23:52 UTC
 
 ### Sub-Scores
 
@@ -151,7 +151,7 @@ belkis-one/
 - **IntersectionObserver** — Scroll-driven Animations
 - **GitHub Actions** — Automatisierte Daten-Pipeline mit Self-Healing
 
-## 📡 Datenquellen (26)
+## 📡 Datenquellen (33)
 
 | Quelle | Vertrauen | Letztes Update |
 |--------|-----------|----------------|
@@ -178,7 +178,14 @@ belkis-one/
 | [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-13 |
 | [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-13 |
 | [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-13 |
-| [NASA Climate (RSS)](https://climate.nasa.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-03-13 |
+| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-03-13 |
+| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-03-13 |
+| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-03-13 |
+| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-03-13 |
+| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-03-13 |
+| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-03-13 |
 | [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-13 |
 | [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
 
@@ -214,5 +221,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 21:01 UTC | 38/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 23:52 UTC | 39/40 Quellen aktiv
 </sub>
