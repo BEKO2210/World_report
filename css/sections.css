@@ -645,8 +645,8 @@
 .literacy-stairs {
   display: flex;
   align-items: flex-end;
-  gap: var(--space-xs);
-  height: 200px;
+  gap: var(--space-sm);
+  height: 260px;
   padding: var(--space-md) 0;
 }
 
@@ -660,9 +660,9 @@
 
 .literacy-stairs__bar {
   width: 100%;
-  border-radius: 4px 4px 0 0;
+  border-radius: 6px 6px 0 0;
   transition: height 1.5s var(--ease-out-expo);
-  min-height: 4px;
+  min-height: 8px;
 }
 
 .literacy-stairs__bar--male {
@@ -685,6 +685,13 @@
   color: var(--text-secondary);
   font-family: var(--font-mono);
   line-height: 1;
+}
+
+
+@media (max-width: 768px) {
+  .literacy-stairs {
+    height: 220px;
+  }
 }
 
 /* ─── AKT 6: ECHTZEIT ─── */
