@@ -379,7 +379,7 @@ class BelkisOne {
     const infraData = [
       { bar: 'electricity-bar', val: 'electricity-value', pct: Number(soc?.electricityAccess?.current) || 91 },
       { bar: 'water-bar', val: 'water-value', pct: Number(soc?.safeWater?.current) || 74 },
-      { bar: 'education-bar', val: 'education-value', pct: Number(soc?.education?.current) || 78 }
+      { bar: 'education-bar', val: 'education-value', pct: Number(soc?.education?.enrollment) || 78 }
     ];
 
     infraData.forEach(item => {
@@ -469,6 +469,16 @@ class BelkisOne {
     if (Number.isFinite(mobile)) this._setText('#mobile-value', mobile.toFixed(1));
     if (Number.isFinite(rd)) this._setText('#rd-value', `${rd.toFixed(2)}%`);
 
+    // Literacy legend (dynamic)
+    const litMale = Number(data.progress?.literacy?.male);
+    const litFemale = Number(data.progress?.literacy?.female);
+    if (Number.isFinite(litMale)) this._setText('#literacy-male-label', `Männer: ${litMale}%`);
+    if (Number.isFinite(litFemale)) this._setText('#literacy-female-label', `Frauen: ${litFemale}%`);
+    if (Number.isFinite(litMale) && Number.isFinite(litFemale)) {
+      const gap = Math.abs(litMale - litFemale).toFixed(1);
+      this._setText('#literacy-gap-text', `Geschlechterlücke schließt sich — aber noch ${gap}% Differenz.`);
+    }
+
     // GitHub repos
     const reposEl = document.getElementById('github-repos');
     if (reposEl && data.progress?.github) {
@@ -481,19 +491,31 @@ class BelkisOne {
       `;
     }
 
-    // Spaceflight + arXiv placeholder news
-    this._buildNewsList('#spaceflight-news', [
-      'SpaceX Starship: Testflug #8 erfolgreich',
-      'ESA Ariane 6: Zweiter kommerzieller Start',
-      'NASA Artemis III: Crew-Auswahl bestätigt',
-      'ISRO: Chandrayaan-4 Mission geplant'
-    ]);
-    this._buildNewsList('#arxiv-papers', [
-      'Quantum Error Correction Breakthrough',
-      'GPT-5 Architecture Analysis',
-      'CRISPR Gene Therapy: Phase III Results',
-      'Fusion Energy: Net Positive Sustained 12min'
-    ]);
+    // Spaceflight news (dynamic with fallback)
+    const spaceArticles = data.progress?.spaceflight;
+    if (Array.isArray(spaceArticles) && spaceArticles.length > 0) {
+      this._buildNewsList('#spaceflight-news', spaceArticles.slice(0, 4).map(a => a.title || a));
+    } else {
+      this._buildNewsList('#spaceflight-news', [
+        'SpaceX Starship: Testflug #8 erfolgreich',
+        'ESA Ariane 6: Zweiter kommerzieller Start',
+        'NASA Artemis III: Crew-Auswahl bestätigt',
+        'ISRO: Chandrayaan-4 Mission geplant'
+      ]);
+    }
+
+    // arXiv papers (dynamic with fallback)
+    const arxivPapers = data.progress?.publications?.latestArxiv;
+    if (Array.isArray(arxivPapers) && arxivPapers.length > 0) {
+      this._buildNewsList('#arxiv-papers', arxivPapers.slice(0, 4).map(p => p.title || p));
+    } else {
+      this._buildNewsList('#arxiv-papers', [
+        'Quantum Error Correction Breakthrough',
+        'GPT-5 Architecture Analysis',
+        'CRISPR Gene Therapy: Phase III Results',
+        'Fusion Energy: Net Positive Sustained 12min'
+      ]);
+    }
   }
 
   // ─── Realtime extras (solar, volcanic, global news) ───
@@ -583,15 +605,21 @@ class BelkisOne {
     }
     const forestSpark = document.getElementById('forest-sparkline');
     if (forestSpark) {
-      Charts.sparkline(forestSpark, [32.5, 32.2, 31.9, 31.7, 31.5, 31.2].map(v => ({ value: v })), { color: '#34c759' });
+      const forestHistory = env?.forest?.history;
+      const forestData = forestHistory?.length > 2 ? forestHistory : [32.5, 32.2, 31.9, 31.7, 31.5, 31.2].map(v => ({ value: v }));
+      Charts.sparkline(forestSpark, forestData, { color: '#34c759' });
     }
     const renewSpark = document.getElementById('renewable-sparkline');
     if (renewSpark) {
-      Charts.sparkline(renewSpark, [17.5, 19.2, 21.8, 24.1, 26.5, 29.9].map(v => ({ value: v })), { color: '#00d4ff' });
+      const renewHistory = env?.renewableEnergy?.history;
+      const renewData = renewHistory?.length > 2 ? renewHistory : [17.5, 19.2, 21.8, 24.1, 26.5, 29.9].map(v => ({ value: v }));
+      Charts.sparkline(renewSpark, renewData, { color: '#00d4ff' });
     }
     const tradeSpark = document.getElementById('trade-sparkline');
     if (tradeSpark) {
-      Charts.sparkline(tradeSpark, [52.1, 58.2, 60.1, 57.3, 55.8, 56.2].map(v => ({ value: v })), { color: '#00ffcc' });
+      const tradeHistory = data.economy?.trade?.history;
+      const tradeData = tradeHistory?.length > 2 ? tradeHistory : [52.1, 58.2, 60.1, 57.3, 55.8, 56.2].map(v => ({ value: v }));
+      Charts.sparkline(tradeSpark, tradeData, { color: '#00ffcc' });
     }
   }
 

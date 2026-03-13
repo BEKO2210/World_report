@@ -69,7 +69,7 @@ function buildWorldState() {
   const co2Current = co2Data?.current || latest(co2History)?.value || existing?.environment?.co2?.current || 421;
 
   const forestHistory = forestData?.history || [];
-  const forestCurrent = latest(forestHistory)?.value || existing?.environment?.arcticIce?.current ? null : 31.2;
+  const forestCurrent = latest(forestHistory)?.value || existing?.environment?.forest?.current || 31.2;
 
   const renewableHistory = renewableData?.history || [];
   const renewableCurrent = latest(renewableHistory)?.value || 29.9;
@@ -146,7 +146,7 @@ function buildWorldState() {
   const unemploymentCurrent = latest(unemploymentData?.history || [])?.value || 5.8;
 
   const ecoGDPScore = normalize(gdpGrowth, -5, 6);
-  const ecoGiniScore = normalize(giniCurrent, 60, 25); // lower Gini = better
+  const ecoGiniScore = normalize(giniCurrent, 0.60, 0.25); // lower Gini = better (0-1 scale)
   const ecoInflScore = normalize(inflationCurrent, 20, 2); // 2% = perfect
   const ecoUnempScore = normalize(unemploymentCurrent, 15, 2);
   const ecoScore = Math.round((ecoGDPScore * 0.3 + ecoGiniScore * 0.25 + ecoInflScore * 0.25 + ecoUnempScore * 0.2) * 10) / 10;
