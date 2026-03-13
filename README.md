@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 66.3 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 66.5 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.3/100  ↑ +0
+█████████████░░░░░░░  66.5/100  ↑ +0.2
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 13.03.2026 10:36 UTC
+> **Letzte Aktualisierung:** 13.03.2026 10:54 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **45.4**/100 | ↓ +0 | 25% |
+| 🟡 Umwelt | **45.4**/100 | ↑ +0 | 25% |
 | 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73.7**/100 | ↑ +0 | 20% |
-| 🟢 Fortschritt | **76.7**/100 | ↑ +0 | 20% |
-| 🟢 Momentum | **78.9**/100 | → undefined | 10% |
+| 🟢 Fortschritt | **77.7**/100 | ↑ +1 | 20% |
+| 🟢 Momentum | **78.9**/100 | → +0 | 10% |
 
 ---
 
@@ -55,7 +55,7 @@
 ### 🚀 Fortschritt
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
-| Internet-Nutzer | **71.2%** (5.4 Mrd) | ITU |
+| Internet-Nutzer | **73.6%** (5.4 Mrd) | ITU |
 | Alphabetisierung | **87.7%** | UNESCO |
 | Wiss. Publikationen | **3.2 Mio/Jahr** | arXiv/Scopus |
 | GitHub Commits | **142.0 Mio/Tag** | GitHub |
@@ -77,13 +77,13 @@
 #### ✅ Verbessert sich (15)
 - **Kindersterblichkeit**: -4.5%
 - **Erneuerbare Energie**: +6.6%
-- **Internet-Zugang**: +16.6%
+- **Internet-Zugang**: +12.1%
 - **BIP-Wachstum**: +48.9%
-- **Arbeitslosigkeit**: -18.3%
+- **Arbeitslosigkeit**: -19.1%
 - **BIP pro Kopf**: +14.3%
 - **Globaler Handel**: +7.8%
 - **Alphabetisierung**: +0.7%
-- **Mobilfunk**: +3.4%
+- **Mobilfunk**: +3.8%
 - **F&E Ausgaben**: +15.7%
 - **Elektrizitätszugang**: +1.4%
 - **Trinkwasser**: +2.7%
@@ -214,5 +214,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 10:36 UTC | 38/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 10:54 UTC | 39/40 Quellen aktiv
 </sub>
