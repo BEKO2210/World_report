@@ -321,11 +321,15 @@
 .scenario__list li::before { content: '→'; position: absolute; left: 0; }
 
 /* ─── Map ─── */
-.map-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto; aspect-ratio: 2 / 1; }
+.map-container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; aspect-ratio: 2 / 1; min-height: 300px; }
 .map-container svg { width: 100%; height: 100%; }
-.map-overlay { position: absolute; inset: 0; pointer-events: none; }
-.map-point { position: absolute; width: 8px; height: 8px; border-radius: 50%; transform: translate(-50%,-50%); pointer-events: auto; cursor: pointer; }
+.map-svg-wrapper svg path { cursor: pointer; }
+.map-svg-wrapper svg path:hover { opacity: 1 !important; filter: brightness(1.3); }
+.map-overlay { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.map-point { position: absolute; width: 8px; height: 8px; border-radius: 50%; transform: translate(-50%,-50%); pointer-events: auto; cursor: pointer; z-index: 3; }
 .map-point--pulse { animation: mapPulse 2s ease-in-out infinite; }
+.map-point-label { pointer-events: none; z-index: 4; }
+.map-legend { z-index: 5; pointer-events: none; }
 
 /* ─── Chart + Widget + Misc ─── */
 .chart-container { position: relative; width: 100%; padding: var(--space-sm) 0; }

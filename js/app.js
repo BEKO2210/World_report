@@ -654,11 +654,13 @@ class BelkisOne {
       this._crisisData = { conflicts: soc.conflicts.locations };
 
       const conflictMapEl = document.getElementById('conflict-map');
-      if (conflictMapEl) {
-        Maps.createBasicMap(conflictMapEl);
-        setTimeout(() => {
-          Maps.conflictMap(conflictMapEl.querySelector('.map-container') || conflictMapEl, soc.conflicts.locations);
-        }, 500);
+      if (conflictMapEl && soc?.conflicts?.locations) {
+        const mapEl = Maps.createBasicMap(conflictMapEl);
+        const ready = mapEl._svgReady || Promise.resolve();
+        ready.then(() => {
+          const mc = mapEl.querySelector('.map-container') || mapEl;
+          Maps.conflictMap(mc, soc.conflicts.locations);
+        });
       }
 
       if (soc.freedom) {
@@ -872,28 +874,45 @@ class BelkisOne {
       const mapEl = Maps.createBasicMap(container);
 
       const soc = data.society;
-      if (soc?.conflicts?.locations) {
-        this._crisisData = this._crisisData || { conflicts: soc.conflicts.locations };
-        setTimeout(() => {
-          const mc = mapEl.querySelector('.map-container') || mapEl;
-          Maps.conflictMap(mc, soc.conflicts.locations);
-        }, 600);
-      }
+      const env = data.environment;
+      const conflicts = soc?.conflicts?.locations || [];
+      const refugees = soc?.refugees || null;
+
+      // Wait for SVG to load, then show default layer (climate)
+      const ready = mapEl._svgReady || Promise.resolve();
+      ready.then(() => {
+        const mc = mapEl.querySelector('.map-container') || mapEl;
+        Maps.climateLayer(mc, env);
+      });
+
+      // Wire up all 5 layer buttons
+      const applyLayer = (layer) => {
+        const mc = container.querySelector('.map-container');
+        if (!mc) return;
+        switch (layer) {
+          case 'climate':
+            Maps.climateLayer(mc, env);
+            break;
+          case 'conflicts':
+            Maps.conflictsLayer(mc, conflicts, refugees);
+            break;
+          case 'hunger':
+            Maps.hungerLayer(mc);
+            break;
+          case 'nature':
+            Maps.natureLayer(mc, env);
+            break;
+          case 'energy':
+            Maps.energyLayer(mc, env);
+            break;
+        }
+      };
 
       document.querySelectorAll('.crisis-layer-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.crisis-layer-btn').forEach(b => b.classList.remove('is-active'));
           btn.classList.add('is-active');
-          const layer = btn.dataset.layer;
-          const mc = container.querySelector('.map-container');
-          if (!mc) return;
-          const overlay = mc.querySelector('.map-overlay');
-          if (overlay) overlay.innerHTML = '';
-          if (layer === 'conflicts' && this._crisisData?.conflicts) {
-            Maps.conflictMap(mc, this._crisisData.conflicts);
-          } else if (layer === 'climate') {
-            Maps.conflictMap(mc, soc.conflicts.locations);
-          }
+          applyLayer(btn.dataset.layer);
         });
       });
     }
