@@ -176,7 +176,11 @@ jobs:
         run: |
           echo "::group::Self-Healing"
           node scripts/self-heal.js 2>&1
+          HEAL_EXIT=$?
           echo "::endgroup::"
+          if [ $HEAL_EXIT -eq 1 ]; then
+            echo "::warning::Self-heal applied many fixes — data may be degraded"
+          fi
 
       - name: Generate README from live data
         run: |

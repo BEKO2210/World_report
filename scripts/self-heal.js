@@ -4,14 +4,16 @@
    Validates, repairs and ensures data integrity
    ═══════════════════════════════════════════════════════════ */
 
-import { readFileSync, writeFileSync, existsSync, copyFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, copyFileSync, readdirSync, unlinkSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DATA_PATH = join(__dirname, '..', 'data', 'processed', 'world-state.json');
-const BACKUP_PATH = join(__dirname, '..', 'data', 'processed', 'world-state.backup.json');
-const LOG_PATH = join(__dirname, '..', 'data', 'processed', 'heal-log.json');
+const PROCESSED_DIR = join(__dirname, '..', 'data', 'processed');
+const DATA_PATH = join(PROCESSED_DIR, 'world-state.json');
+const BACKUP_PATH = join(PROCESSED_DIR, 'world-state.backup.json');
+const LOG_PATH = join(PROCESSED_DIR, 'heal-log.json');
+const MAX_BACKUPS = 5;
 
 let fixes = [];
 let warnings = [];
@@ -186,9 +188,27 @@ function main() {
     data.worldIndex.value = parseFloat(recalculated.toFixed(1));
   }
 
-  // 6. Create backup before saving
+  // 6. Create dated backup with rotation (keep last 5)
   if (existsSync(DATA_PATH)) {
+    // Always update the standard backup
     copyFileSync(DATA_PATH, BACKUP_PATH);
+
+    // Create dated backup
+    const dateTag = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const datedBackup = join(PROCESSED_DIR, `world-state.backup-${dateTag}.json`);
+    copyFileSync(DATA_PATH, datedBackup);
+
+    // Rotate: keep only MAX_BACKUPS dated backups
+    const backups = readdirSync(PROCESSED_DIR)
+      .filter(f => f.startsWith('world-state.backup-') && f.endsWith('.json'))
+      .sort()
+      .reverse();
+    if (backups.length > MAX_BACKUPS) {
+      backups.slice(MAX_BACKUPS).forEach(old => {
+        unlinkSync(join(PROCESSED_DIR, old));
+        console.log(`[HEAL] Rotated old backup: ${old}`);
+      });
+    }
   }
 
   // 7. Save repaired data
@@ -203,21 +223,33 @@ function main() {
     console.log(`[HEAL] ⚠️ ${warnings.length} warning(s)`);
   }
 
-  // 8. Write heal log
+  // 8. Data staleness check — warn if data is older than 24 hours
+  const generated = new Date(data.meta.generated);
+  const ageHours = (Date.now() - generated.getTime()) / 3600000;
+  if (ageHours > 24) {
+    log('warn', `Data is ${Math.round(ageHours)}h old (generated: ${data.meta.generated})`);
+  }
+
+  // 9. Write heal log
   const healLog = {
     timestamp: new Date().toISOString(),
     fixes: fixes.length,
     warnings: warnings.length,
     details: [...fixes, ...warnings],
     worldIndex: data.worldIndex.value,
-    sourcesAvailable: data.meta.sources_available
+    sourcesAvailable: data.meta.sources_available,
+    dataAgeHours: Math.round(ageHours * 10) / 10
   };
 
   writeFileSync(LOG_PATH, JSON.stringify(healLog, null, 2));
   console.log(`[HEAL] Log written to ${LOG_PATH}`);
 
-  // Exit with code indicating if fixes were needed
-  process.exit(fixes.length > 0 ? 0 : 0);
+  // Exit code: 0 = healthy, 1 = critical fixes applied, 2 = warnings only
+  if (fixes.length > 3) {
+    console.log('[HEAL] ⚠️ Many fixes applied — data may be degraded');
+    process.exit(1);
+  }
+  process.exit(0);
 }
 
 main();
