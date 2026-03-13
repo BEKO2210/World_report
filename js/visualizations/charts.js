@@ -358,10 +358,9 @@ export class Charts {
     container.innerHTML = '';
     if (!Array.isArray(data) || !data.length) return;
 
-    const values = data.flatMap(entry => [Number(entry.male), Number(entry.female)]).filter(Number.isFinite);
-    const minVal = Math.max(0, Math.min(...values) - 3);
-    const maxVal = Math.min(100, Math.max(...values) + 1);
-    const range = Math.max(1, maxVal - minVal);
+    const minVal = 0;
+    const maxVal = 100;
+    const range = maxVal - minVal;
 
     data.forEach((entry, i) => {
       const step = DOMUtils.create('div', { className: 'literacy-stairs__step' });
@@ -373,7 +372,7 @@ export class Charts {
       const femaleH = visible && Number.isFinite(female) ? ((female - minVal) / range) * 100 : 0;
 
       const wrapper = DOMUtils.create('div', {
-        style: { display: 'flex', gap: '2px', alignItems: 'flex-end', width: '100%', height: '100%' }
+        style: { display: 'flex', gap: '6px', alignItems: 'flex-end', width: '100%', height: '100%' }
       });
 
       const maleBar = DOMUtils.create('div', {
