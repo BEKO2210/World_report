@@ -590,37 +590,70 @@
 }
 
 .inequality-bar {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   margin: var(--space-md) 0;
 }
 
-.inequality-bar__top {
-  height: 100%;
-  background: linear-gradient(90deg, var(--warning), var(--warning-dark));
-  transition: width 2s var(--ease-out-expo);
+.inequality-bar__row {
   display: flex;
   align-items: center;
-  padding: 0 var(--space-sm);
-  font-size: var(--text-label);
-  font-weight: 700;
-  color: #000;
+  gap: var(--space-sm);
 }
 
-.inequality-bar__rest {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 var(--space-sm);
+.inequality-bar__label {
+  flex-shrink: 0;
+  width: 75px;
   font-size: var(--text-label);
+  font-weight: 600;
   color: var(--text-secondary);
+  text-align: right;
+}
+
+.inequality-bar__track {
+  flex: 1;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.inequality-bar__fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 2s var(--ease-out-expo);
+  min-width: 4px;
+}
+
+.inequality-bar__fill--top {
+  background: linear-gradient(90deg, #ffd700, #ff9500);
+}
+
+.inequality-bar__fill--bottom {
+  background: linear-gradient(90deg, #5ac8fa, #34c759);
+}
+
+.inequality-bar__pct {
+  flex-shrink: 0;
+  width: 55px;
+  font-size: var(--text-label);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.inequality-bar__pct--top {
+  color: #ffd700;
+}
+
+.inequality-bar__ratio {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--warning);
+  margin-top: var(--space-xs);
+  font-family: var(--font-mono);
 }
 
 /* ─── AKT 5: FORTSCHRITT ─── */
