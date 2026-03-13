@@ -553,7 +553,7 @@ class BelkisOne {
 
     const newsEl = document.getElementById('global-news');
     if (newsEl && Array.isArray(rt.news)) {
-      const items = rt.news.slice(0, 6).map(n => ({
+      const items = rt.news.slice(0, 8).map(n => ({
         text: n.title || 'Ohne Titel',
         source: n.source || 'News'
       }));
