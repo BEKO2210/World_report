@@ -289,15 +289,28 @@ export class Charts {
 
   // ─── Inequality Bar ───
   static inequalityBar(container, topPercent, bottomPercent, progress = 1) {
-    const topEl = container.querySelector('.inequality-bar__top');
-    const restEl = container.querySelector('.inequality-bar__rest');
-    if (topEl) {
-      topEl.style.width = `${topPercent * progress}%`;
-      topEl.textContent = `Top 1%: ${topPercent.toFixed(1)}%`;
-    }
-    if (restEl) {
-      restEl.textContent = `Untere 50%: ${bottomPercent.toFixed(1)}%`;
-    }
+    const topW = topPercent * MathUtils.clamp(progress, 0, 1);
+    const bottomW = bottomPercent * MathUtils.clamp(progress, 0, 1);
+    // Scale bottom relative to top so the tiny bar is still visible but proportionally correct
+    const scale = 100 / topPercent; // normalize so top = 100% width
+
+    container.innerHTML = `
+      <div class="inequality-bar__row">
+        <div class="inequality-bar__label">Top 1%</div>
+        <div class="inequality-bar__track">
+          <div class="inequality-bar__fill inequality-bar__fill--top" style="width:${topW * scale}%"></div>
+        </div>
+        <div class="inequality-bar__pct inequality-bar__pct--top">${topPercent.toFixed(1)}%</div>
+      </div>
+      <div class="inequality-bar__row">
+        <div class="inequality-bar__label">Untere 50%</div>
+        <div class="inequality-bar__track">
+          <div class="inequality-bar__fill inequality-bar__fill--bottom" style="width:${bottomW * scale}%"></div>
+        </div>
+        <div class="inequality-bar__pct">${bottomPercent.toFixed(1)}%</div>
+      </div>
+      <div class="inequality-bar__ratio">${(topPercent / bottomPercent).toFixed(0)}× mehr</div>
+    `;
   }
 
   // ─── Freedom Index Bar ───
