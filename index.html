@@ -930,8 +930,100 @@
     </div>
   </section>
 
+  <!-- ═══ LEGAL FOOTER ═══ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+
+      <!-- Mitmachen -->
+      <div class="site-footer__contrib">
+        <p class="site-footer__invite">
+          Open Source — Beiträge willkommen!
+          <a href="https://github.com/BEKO2210/World_report" target="_blank" rel="noopener">GitHub</a>
+        </p>
+        <p class="site-footer__contrib-text">
+          Übersetzungen, Detail-Ansichten, Verbesserungen, Issues — jede Hilfe zählt.
+        </p>
+      </div>
+
+      <hr class="site-footer__sep">
+
+      <!-- Impressum (§ 5 TMG / § 18 MStV) -->
+      <details class="site-footer__legal">
+        <summary>Impressum</summary>
+        <div class="site-footer__legal-body">
+          <p><strong>Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV</strong></p>
+          <p>
+            Belkis Aslani<br>
+            Vogelsangstr. 32<br>
+            71691 Freiberg am Neckar<br>
+            Deutschland
+          </p>
+          <p>
+            <strong>Kontakt</strong><br>
+            Telefon: +49 176 81462526<br>
+            E-Mail: <a href="mailto:belkis.aslani@gmail.com">belkis.aslani@gmail.com</a>
+          </p>
+          <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
+            Belkis Aslani, Anschrift wie oben.</p>
+        </div>
+      </details>
+
+      <!-- Datenschutz -->
+      <details class="site-footer__legal">
+        <summary>Datenschutzerklärung</summary>
+        <div class="site-footer__legal-body">
+          <p><strong>1. Verantwortlicher</strong><br>
+            Belkis Aslani, Vogelsangstr. 32, 71691 Freiberg am Neckar.
+            E-Mail: belkis.aslani@gmail.com</p>
+          <p><strong>2. Erhebung und Verarbeitung personenbezogener Daten</strong><br>
+            Diese Website erhebt, speichert und verarbeitet <em>keine</em> personenbezogenen Daten.
+            Es werden keine Cookies gesetzt, kein Tracking eingesetzt und keine Analyse-Tools verwendet.</p>
+          <p><strong>3. Hosting</strong><br>
+            Die Website wird über GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. Street,
+            San Francisco, CA 94107, USA) bereitgestellt. GitHub kann Server-Logfiles
+            (IP-Adresse, Browsertyp, Zeitstempel) erheben. Details:
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</p>
+          <p><strong>4. Externe APIs</strong><br>
+            Die dargestellten Daten werden serverseitig per GitHub Actions aus öffentlichen APIs
+            (Weltbank, NASA, WHO u. a.) abgerufen und als statische JSON-Datei ausgeliefert.
+            Beim Besuch der Seite werden keine Anfragen an Drittanbieter-Server gestellt.</p>
+          <p><strong>5. Ihre Rechte</strong><br>
+            Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch
+            gemäß Art. 15–21 DSGVO. Kontakt: belkis.aslani@gmail.com.
+            Beschwerderecht bei einer Aufsichtsbehörde (Art. 77 DSGVO).</p>
+        </div>
+      </details>
+
+      <!-- Haftungsausschluss -->
+      <details class="site-footer__legal">
+        <summary>Haftungsausschluss</summary>
+        <div class="site-footer__legal-body">
+          <p><strong>Haftung für Inhalte</strong><br>
+            Die Inhalte dieser Website werden mit größtmöglicher Sorgfalt erstellt.
+            Für die Richtigkeit, Vollständigkeit und Aktualität der dargestellten Daten
+            wird jedoch keine Gewähr übernommen. Die Daten stammen aus öffentlichen Quellen
+            und werden automatisiert aufbereitet.</p>
+          <p><strong>Haftung für Links</strong><br>
+            Diese Website enthält Links zu externen Seiten Dritter, auf deren Inhalte
+            kein Einfluss besteht. Für die Inhalte verlinkter Seiten ist der jeweilige
+            Anbieter verantwortlich.</p>
+        </div>
+      </details>
+
+      <div class="site-footer__bottom">
+        <span>© 2024–<span id="footer-year">2026</span> Belkis Aslani</span>
+        <span class="site-footer__sep-dot">·</span>
+        <span>MIT License</span>
+        <span class="site-footer__sep-dot">·</span>
+        <span>Made with data, not opinions.</span>
+      </div>
+
+    </div>
+  </footer>
+
   <!-- ═══ MAIN SCRIPT ═══ -->
   <script type="module" src="js/app.js"></script>
+  <script>document.getElementById('footer-year').textContent=new Date().getFullYear()</script>
 
 </body>
 </html>

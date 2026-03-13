@@ -1239,3 +1239,99 @@
     padding: var(--space-xs) var(--space-sm);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   SITE FOOTER — Legal & Contribution
+   ═══════════════════════════════════════════════════════════ */
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: var(--space-xl) 0 var(--space-md);
+  color: var(--text-muted);
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  line-height: 1.6;
+}
+
+.site-footer__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.site-footer__contrib {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.site-footer__invite {
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: rgba(255,255,255,0.5);
+  margin-bottom: var(--space-sm);
+}
+
+.site-footer__invite a {
+  color: var(--accent, #5ac8fa);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.site-footer__invite a:hover {
+  border-bottom-color: var(--accent, #5ac8fa);
+}
+
+.site-footer__contrib-text {
+  color: var(--text-muted);
+  font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+}
+
+.site-footer__sep {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin: var(--space-md) 0;
+}
+
+/* Collapsible legal sections */
+.site-footer__legal {
+  margin-bottom: var(--space-sm);
+}
+
+.site-footer__legal summary {
+  cursor: pointer;
+  color: rgba(255,255,255,0.35);
+  font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+  padding: 0.3em 0;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.site-footer__legal summary:hover {
+  color: rgba(255,255,255,0.55);
+}
+
+.site-footer__legal-body {
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+  color: var(--text-muted);
+  font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+  line-height: 1.7;
+}
+
+.site-footer__legal-body p {
+  margin-bottom: 0.8em;
+}
+
+.site-footer__legal-body a {
+  color: var(--accent, #5ac8fa);
+  text-decoration: none;
+}
+
+.site-footer__bottom {
+  text-align: center;
+  padding-top: var(--space-md);
+  color: rgba(255,255,255,0.25);
+  font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+}
+
+.site-footer__sep-dot {
+  margin: 0 0.5em;
+  opacity: 0.4;
+}
