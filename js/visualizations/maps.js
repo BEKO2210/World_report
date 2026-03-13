@@ -287,7 +287,7 @@ export class Maps {
           fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-mono)',
           zIndex: '5'
         },
-        textContent: `${refugees.total} Mio. Vertriebene`
+        textContent: `${(refugees.total / 1e6).toFixed(1)} Mio. Vertriebene`
       });
       overlay.appendChild(badge);
     }
