@@ -8,20 +8,20 @@
 ## 🌍 Welt-Indikator: 66.5 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.5/100  ↑ +0.2
+█████████████░░░░░░░  66.5/100  ↑ +0
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 13.03.2026 10:54 UTC
+> **Letzte Aktualisierung:** 13.03.2026 12:56 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **45.4**/100 | ↑ +0 | 25% |
+| 🟡 Umwelt | **45.4**/100 | ↓ +0 | 25% |
 | 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73.7**/100 | ↑ +0 | 20% |
-| 🟢 Fortschritt | **77.7**/100 | ↑ +1 | 20% |
+| 🟢 Fortschritt | **77.7**/100 | ↑ +0 | 20% |
 | 🟢 Momentum | **78.9**/100 | → +0 | 10% |
 
 ---
@@ -214,5 +214,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 10:54 UTC | 39/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 12:56 UTC | 39/40 Quellen aktiv
 </sub>
