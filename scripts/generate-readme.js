@@ -43,6 +43,12 @@ function generateProgressBar(value, max = 100, width = 20) {
   return '█'.repeat(filled) + '░'.repeat(empty);
 }
 
+// Safe accessor — returns fallback instead of undefined
+function safe(value, fallback = '—') {
+  if (value === undefined || value === null) return fallback;
+  return value;
+}
+
 function main() {
   console.log('[README] Generating auto-updated README...');
 
@@ -51,29 +57,39 @@ function main() {
     process.exit(0);
   }
 
-  const data = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
-  const wi = data.worldIndex;
-  const sub = data.subScores;
-  const meta = data.meta;
-  const env = data.environment;
-  const soc = data.society;
-  const eco = data.economy;
-  const prog = data.progress;
-  const rt = data.realtime;
-  const mom = data.momentum;
-  const scenarios = data.scenarios;
-  const sources = data.dataSources;
+  let data;
+  try {
+    data = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
+  } catch (e) {
+    console.error('[README] Failed to parse world-state.json:', e.message);
+    process.exit(0);
+  }
 
-  const now = new Date(meta.generated);
+  const wi = data.worldIndex || {};
+  const sub = data.subScores || {};
+  const meta = data.meta || {};
+  const env = data.environment || {};
+  const soc = data.society || {};
+  const eco = data.economy || {};
+  const prog = data.progress || {};
+  const rt = data.realtime || {};
+  const mom = data.momentum || {};
+  const scenarios = data.scenarios || {};
+  const sources = data.dataSources || [];
+
+  const now = meta.generated ? new Date(meta.generated) : new Date();
   const dateStr = now.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
   const timeStr = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
 
-  const trendArrow = wi.change >= 0 ? '↑' : '↓';
-  const trendColor = wi.change >= 0 ? '+' : '';
+  const wiValue = safe(wi.value, 0);
+  const wiChange = safe(wi.change, 0);
+  const trendArrow = wiChange >= 0 ? '↑' : '↓';
+  const trendColor = wiChange >= 0 ? '+' : '';
 
   // Build momentum summary
-  const improving = mom.indicators.filter(i => i.direction === 'improving');
-  const declining = mom.indicators.filter(i => i.direction === 'declining');
+  const indicators = mom.indicators || [];
+  const improving = indicators.filter(i => i.direction === 'improving');
+  const declining = indicators.filter(i => i.direction === 'declining');
 
   const readme = `# BELKIS ONE 1.0
 
@@ -82,10 +98,10 @@ function main() {
 
 ---
 
-## 🌍 Welt-Indikator: ${wi.value} / 100 ${getZoneEmoji(wi.value)} ${getZoneLabel(wi.value)}
+## 🌍 Welt-Indikator: ${wiValue} / 100 ${getZoneEmoji(wiValue)} ${getZoneLabel(wiValue)}
 
 \`\`\`
-${generateProgressBar(wi.value)}  ${wi.value}/100  ${trendArrow} ${trendColor}${wi.change}
+${generateProgressBar(wiValue)}  ${wiValue}/100  ${trendArrow} ${trendColor}${wiChange}
 \`\`\`
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
@@ -95,11 +111,14 @@ ${generateProgressBar(wi.value)}  ${wi.value}/100  ${trendArrow} ${trendColor}${
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| ${getZoneEmoji(sub.environment.value)} Umwelt | **${sub.environment.value}**/100 | ${sub.environment.trend === 'improving' ? '↑' : sub.environment.trend === 'declining' ? '↓' : '→'} ${sub.environment.change >= 0 ? '+' : ''}${sub.environment.change} | 25% |
-| ${getZoneEmoji(sub.society.value)} Gesellschaft | **${sub.society.value}**/100 | ${sub.society.trend === 'improving' ? '↑' : sub.society.trend === 'declining' ? '↓' : '→'} ${sub.society.change >= 0 ? '+' : ''}${sub.society.change} | 25% |
-| ${getZoneEmoji(sub.economy.value)} Wirtschaft | **${sub.economy.value}**/100 | ${sub.economy.trend === 'improving' ? '↑' : sub.economy.trend === 'declining' ? '↓' : '→'} ${sub.economy.change >= 0 ? '+' : ''}${sub.economy.change} | 20% |
-| ${getZoneEmoji(sub.progress.value)} Fortschritt | **${sub.progress.value}**/100 | ${sub.progress.trend === 'improving' ? '↑' : sub.progress.trend === 'declining' ? '↓' : '→'} ${sub.progress.change >= 0 ? '+' : ''}${sub.progress.change} | 20% |
-| ${getZoneEmoji(sub.momentum.value)} Momentum | **${sub.momentum.value}**/100 | ${sub.momentum.trend === 'improving' ? '↑' : sub.momentum.trend === 'declining' ? '↓' : '→'} ${sub.momentum.change >= 0 ? '+' : ''}${sub.momentum.change} | 10% |
+${['environment|Umwelt|25', 'society|Gesellschaft|25', 'economy|Wirtschaft|20', 'progress|Fortschritt|20', 'momentum|Momentum|10'].map(entry => {
+    const [key, label, weight] = entry.split('|');
+    const s = sub[key] || {};
+    const val = safe(s.value, 0);
+    const trend = s.trend === 'improving' ? '↑' : s.trend === 'declining' ? '↓' : '→';
+    const change = safe(s.change, 0);
+    return `| ${getZoneEmoji(val)} ${label} | **${val}**/100 | ${trend} ${change >= 0 ? '+' : ''}${change} | ${weight}% |`;
+  }).join('\n')}
 
 ---
 
@@ -108,48 +127,48 @@ ${generateProgressBar(wi.value)}  ${wi.value}/100  ${trendArrow} ${trendColor}${
 ### 🌡️ Umwelt
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
-| Temperaturanomalie | **+${env.temperatureAnomaly.current}°C** | NASA GISTEMP |
-| CO2-Konzentration | **${env.co2.current} ppm** | NOAA |
-| Arktis-Eisfläche | **${env.arcticIce.current} Mio km²** (${env.arcticIce.percentLost}% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **${env.airQuality.globalAvgAQI}** | WAQI |
+| Temperaturanomalie | **+${safe(env.temperatureAnomaly?.current)}°C** | NASA GISTEMP |
+| CO2-Konzentration | **${safe(env.co2?.current)} ppm** | NOAA |
+| Arktis-Eisfläche | **${safe(env.arcticIce?.current)} Mio km²** (${safe(env.arcticIce?.percentLost)}% verloren) | NSIDC |
+| Luftqualität (Ø) | AQI **${safe(env.airQuality?.globalAvgAQI)}** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
-| Aktive Konflikte | **${soc.conflicts.activeCount}** | ACLED |
-| Menschen auf der Flucht | **${formatCompact(soc.refugees.total)}** | UNHCR |
-| Lebenserwartung | **${soc.lifeExpectancy.global} Jahre** | WHO |
-| Freiheitsindex | ${soc.freedom.free} frei / ${soc.freedom.partlyFree} teilw. / ${soc.freedom.notFree} unfrei | Freedom House |
+| Aktive Konflikte | **${safe(soc.conflicts?.activeCount)}** | ACLED |
+| Menschen auf der Flucht | **${soc.refugees?.total ? formatCompact(soc.refugees.total) : '—'}** | UNHCR |
+| Lebenserwartung | **${safe(soc.lifeExpectancy?.global)} Jahre** | WHO |
+| Freiheitsindex | ${safe(soc.freedom?.free)} frei / ${safe(soc.freedom?.partlyFree)} teilw. / ${safe(soc.freedom?.notFree)} unfrei | Freedom House |
 
 ### 💰 Wirtschaft
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
-| BIP-Wachstum | **${eco.gdpGrowth.global}%** | IMF |
-| Gini-Index | **${eco.gini.globalAvg}** | World Bank |
-| Extreme Armut | **${formatCompact(eco.wealth.extremePoverty)}** | World Bank |
-| Milliardäre | **${formatCompact(eco.wealth.billionaires)}** (${eco.wealth.top1Percent}% Vermögen) | Oxfam |
+| BIP-Wachstum | **${safe(eco.gdpGrowth?.global)}%** | IMF |
+| Gini-Index | **${safe(eco.gini?.globalAvg)}** | World Bank |
+| Extreme Armut | **${eco.wealth?.extremePoverty ? formatCompact(eco.wealth.extremePoverty) : '—'}** | World Bank |
+| Milliardäre | **${eco.wealth?.billionaires ? formatCompact(eco.wealth.billionaires) : '—'}** (${safe(eco.wealth?.top1Percent)}% Vermögen) | Oxfam |
 
 ### 🚀 Fortschritt
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
-| Internet-Nutzer | **${prog.internet.penetration}%** (${formatCompact(prog.internet.users)}) | ITU |
-| Alphabetisierung | **${prog.literacy.global}%** | UNESCO |
-| Wiss. Publikationen | **${formatCompact(prog.publications.annualTotal)}/Jahr** | arXiv/Scopus |
-| GitHub Commits | **${formatCompact(prog.github.dailyCommits)}/Tag** | GitHub |
+| Internet-Nutzer | **${safe(prog.internet?.penetration)}%** (${prog.internet?.users ? formatCompact(prog.internet.users) : '—'}) | ITU |
+| Alphabetisierung | **${safe(prog.literacy?.global)}%** | UNESCO |
+| Wiss. Publikationen | **${prog.publications?.annualTotal ? formatCompact(prog.publications.annualTotal) : '—'}/Jahr** | arXiv/Scopus |
+| GitHub Commits | **${prog.github?.dailyCommits ? formatCompact(prog.github.dailyCommits) : '—'}/Tag** | GitHub |
 
 ### ⚡ Echtzeit
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
-| Erdbeben (24h) | **${rt.earthquakes.last24h.length}** Beben M2.5+ | USGS |
-| Nachrichten-Sentiment | **${rt.newsSentiment.score}** (${rt.newsSentiment.label}) | GDELT |
-| Crypto Fear & Greed | **${rt.cryptoFearGreed.value}/100** (${rt.cryptoFearGreed.label}) | Alternative.me |
+| Erdbeben (24h) | **${rt.earthquakes?.last24h?.length ?? '—'}** Beben M2.5+ | USGS |
+| Nachrichten-Sentiment | **${safe(rt.newsSentiment?.score)}** (${safe(rt.newsSentiment?.label)}) | GDELT |
+| Crypto Fear & Greed | **${safe(rt.cryptoFearGreed?.value)}/100** (${safe(rt.cryptoFearGreed?.label)}) | Alternative.me |
 
 ---
 
-## 📈 Momentum: ${improving.length}/${mom.indicators.length} Trends positiv
+## 📈 Momentum: ${improving.length}/${indicators.length} Trends positiv
 
 <details>
-<summary>Alle ${mom.indicators.length} Indikatoren anzeigen</summary>
+<summary>Alle ${indicators.length} Indikatoren anzeigen</summary>
 
 #### ✅ Verbessert sich (${improving.length})
 ${improving.map(i => `- **${i.name}**: ${i.change}`).join('\n')}
@@ -165,9 +184,9 @@ ${declining.map(i => `- **${i.name}**: ${i.change}`).join('\n')}
 
 | Pfad | 2030 | 2050 | Beschreibung |
 |------|------|------|-------------|
-| 🟠 Weiter so | ${scenarios.businessAsUsual.worldIndex2030} | ${scenarios.businessAsUsual.worldIndex2050} | ${scenarios.businessAsUsual.keyChanges[0]} |
-| 🔴 Worst Case | ${scenarios.worstCase.worldIndex2030} | ${scenarios.worstCase.worldIndex2050} | ${scenarios.worstCase.keyChanges[0]} |
-| 🔵 Best Case | ${scenarios.bestCase.worldIndex2030} | ${scenarios.bestCase.worldIndex2050} | ${scenarios.bestCase.keyChanges[0]} |
+| 🟠 Weiter so | ${safe(scenarios.businessAsUsual?.worldIndex2030)} | ${safe(scenarios.businessAsUsual?.worldIndex2050)} | ${scenarios.businessAsUsual?.keyChanges?.[0] || '—'} |
+| 🔴 Worst Case | ${safe(scenarios.worstCase?.worldIndex2030)} | ${safe(scenarios.worstCase?.worldIndex2050)} | ${scenarios.worstCase?.keyChanges?.[0] || '—'} |
+| 🔵 Best Case | ${safe(scenarios.bestCase?.worldIndex2030)} | ${safe(scenarios.bestCase?.worldIndex2050)} | ${scenarios.bestCase?.keyChanges?.[0] || '—'} |
 
 ---
 
@@ -249,7 +268,7 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | ${dateStr} ${timeStr} UTC | ${meta.sources_available}/${meta.sources_count} Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | ${dateStr} ${timeStr} UTC | ${safe(meta.sources_available, '?')}/${safe(meta.sources_count, '?')} Quellen aktiv
 </sub>
 `;
 
