@@ -144,6 +144,22 @@ function main() {
   ensureField(data, 'economy.gdpGrowth.regions', [], 'GDP regions');
   ensureField(data, 'economy.gini.history', [], 'Gini history');
 
+  // Fix legacy Gini values on 0-1 scale (should be 0-100)
+  if (data.economy?.gini?.globalAvg > 0 && data.economy.gini.globalAvg < 1) {
+    data.economy.gini.globalAvg = Math.round(data.economy.gini.globalAvg * 100 * 10) / 10;
+    log('fix', `Gini globalAvg was on 0-1 scale, converted to 0-100: ${data.economy.gini.globalAvg}`);
+  }
+  if (Array.isArray(data.economy?.gini?.history)) {
+    let giniFixed = 0;
+    data.economy.gini.history.forEach(e => {
+      if (e.value > 0 && e.value < 1) {
+        e.value = Math.round(e.value * 100 * 10) / 10;
+        giniFixed++;
+      }
+    });
+    if (giniFixed > 0) log('fix', `Converted ${giniFixed} Gini history values from 0-1 to 0-100 scale`);
+  }
+
   ensureField(data, 'progress.publications.history', [], 'Publications');
   ensureField(data, 'progress.internet.history', [], 'Internet history');
   ensureField(data, 'progress.literacy.history', [], 'Literacy history');
