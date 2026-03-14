@@ -383,7 +383,7 @@
 /* ─── Language Toggle ─── */
 .lang-toggle-wrapper {
   position: fixed;
-  top: 16px;
+  bottom: 16px;
   right: 16px;
   z-index: 300;
 }
@@ -423,6 +423,6 @@
   text-transform: uppercase;
 }
 @media (max-width: 640px) {
-  .lang-toggle-wrapper { top: 12px; right: 12px; }
+  .lang-toggle-wrapper { bottom: 12px; right: 12px; }
   .lang-toggle { padding: 6px 10px; font-size: 11px; }
 }
