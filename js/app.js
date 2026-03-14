@@ -667,7 +667,7 @@ class BelkisOne {
         const ready = mapEl._svgReady || Promise.resolve();
         ready.then(() => {
           const mc = mapEl.querySelector('.map-container') || mapEl;
-          Maps.conflictMap(mc, soc.conflicts.locations);
+          Maps.conflictsLayer(mc, soc.conflicts.locations, soc.refugees || null);
         });
       }
 
