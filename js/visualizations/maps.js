@@ -100,6 +100,7 @@ export class Maps {
       p.style.fill = '';
       p.style.opacity = '';
       p.style.transition = 'fill 0.6s ease, opacity 0.6s ease';
+      p.classList.remove('map-country--war', 'map-country--conflict', 'map-country--unrest');
     });
     svg.style.opacity = '0.4';
   }
@@ -111,6 +112,7 @@ export class Maps {
     svg.style.opacity = '1';
     svg.querySelectorAll('path').forEach(p => {
       p.style.transition = 'fill 0.6s ease, opacity 0.6s ease';
+      p.classList.remove('map-country--war', 'map-country--conflict', 'map-country--unrest');
       const iso = Maps._getISO(p);
       if (iso && dataMap[iso] !== undefined) {
         const val = dataMap[iso];
@@ -209,74 +211,125 @@ export class Maps {
   }
 
   // ═══════════════════════════════════════════════════════════
-  //  LAYER: Konflikte (Conflicts)
+  //  LAYER: Konflikte (Conflicts) — Country highlighting
   // ═══════════════════════════════════════════════════════════
   static conflictsLayer(container, conflicts, refugees) {
     Maps._clearOverlays(container);
-    Maps._resetSVG(container);
 
+    // Build conflict data map: merge API data + additional known conflicts (2026)
+    const CONFLICT_COUNTRIES = {
+      // Wars (highest intensity — bright red glow)
+      UA: 0.95, PS: 0.92, SD: 0.88, MM: 0.75, IL: 0.70,
+      // Armed conflicts
+      SY: 0.65, YE: 0.62, SO: 0.58, CD: 0.55, ML: 0.52,
+      BF: 0.50, NE: 0.48, HT: 0.45,
+      // Iran/Middle East escalation 2026
+      IR: 0.72, LB: 0.60, IQ: 0.50,
+      // Additional active conflicts
+      AF: 0.48, NG: 0.42, ET: 0.40, CF: 0.45, CM: 0.35,
+      MZ: 0.32, PK: 0.38, TD: 0.30, LY: 0.35
+    };
+
+    // Conflict name-to-ISO mapping for data from world-state.json
+    const NAME_TO_ISO = {
+      'Ukraine': ['UA'], 'Gaza': ['PS', 'IL'], 'Sudan': ['SD'],
+      'Myanmar': ['MM'], 'Syrien': ['SY'], 'Syria': ['SY'],
+      'Jemen': ['YE'], 'Yemen': ['YE'], 'Somalia': ['SO'],
+      'DR Kongo': ['CD'], 'DRC': ['CD'], 'Sahel': ['ML', 'BF', 'NE'],
+      'Haiti': ['HT'], 'Iran': ['IR'], 'Lebanon': ['LB'], 'Libanon': ['LB'],
+      'Iraq': ['IQ'], 'Irak': ['IQ'], 'Afghanistan': ['AF'],
+      'Nigeria': ['NG'], 'Ethiopia': ['ET'], 'Äthiopien': ['ET'],
+      'Libya': ['LY'], 'Libyen': ['LY'], 'Pakistan': ['PK'],
+      'Mozambique': ['MZ'], 'Mosambik': ['MZ'], 'Cameroon': ['CM'], 'Kamerun': ['CM'],
+      'Chad': ['TD'], 'Tschad': ['TD'], 'Central African Republic': ['CF']
+    };
+
+    // Override with actual API data intensities where available
+    if (Array.isArray(conflicts)) {
+      conflicts.forEach(c => {
+        const isos = NAME_TO_ISO[c.name];
+        if (isos) {
+          isos.forEach(iso => { CONFLICT_COUNTRIES[iso] = Math.max(CONFLICT_COUNTRIES[iso] || 0, c.intensity); });
+        }
+      });
+    }
+
+    // Color all SVG country paths
+    const svg = container.querySelector('.map-svg-wrapper svg');
+    if (svg) {
+      svg.style.opacity = '1';
+      svg.querySelectorAll('path').forEach(p => {
+        const iso = Maps._getISO(p);
+        const intensity = iso ? CONFLICT_COUNTRIES[iso] : undefined;
+        p.style.transition = 'fill 0.8s ease, opacity 0.8s ease';
+
+        if (intensity !== undefined) {
+          // War = bright red, conflict = orange-red, unrest = dark orange
+          if (intensity >= 0.7) {
+            p.style.fill = '#ff2020';
+            p.style.opacity = '1';
+            p.classList.add('map-country--war');
+          } else if (intensity >= 0.5) {
+            p.style.fill = '#e05500';
+            p.style.opacity = '0.95';
+            p.classList.add('map-country--conflict');
+          } else {
+            p.style.fill = '#cc6600';
+            p.style.opacity = '0.85';
+            p.classList.add('map-country--unrest');
+          }
+        } else {
+          p.style.fill = '#1a1a2e';
+          p.style.opacity = '0.3';
+          p.classList.remove('map-country--war', 'map-country--conflict', 'map-country--unrest');
+        }
+      });
+    }
+
+    // Add country name labels on overlay for major conflicts
+    const overlay = container.querySelector('.map-overlay');
     const rect = container.getBoundingClientRect();
     const w = rect.width || 900;
     const h = rect.height || 450;
 
-    const overlay = container.querySelector('.map-overlay');
-    if (!overlay) return;
+    const labelData = [
+      { name: 'Ukraine', lat: 49.5, lng: 31.2, type: 'war' },
+      { name: i18n.t('map.gaza'), lat: 31.4, lng: 34.3, type: 'war' },
+      { name: i18n.t('map.sudan'), lat: 15.5, lng: 32.5, type: 'war' },
+      { name: 'Myanmar', lat: 19.8, lng: 96.0, type: 'war' },
+      { name: 'Iran', lat: 32.4, lng: 53.7, type: 'war' },
+      { name: i18n.t('map.syria'), lat: 35.0, lng: 38.0, type: 'conflict' },
+      { name: i18n.t('map.yemen'), lat: 15.6, lng: 48.5, type: 'conflict' },
+      { name: i18n.t('map.drCongo'), lat: -4.0, lng: 22.0, type: 'conflict' },
+      { name: i18n.t('map.lebanon'), lat: 33.9, lng: 35.9, type: 'conflict' },
+      { name: i18n.t('map.somalia'), lat: 5.1, lng: 46.2, type: 'conflict' }
+    ];
 
-    // Conflict hotspots
-    conflicts.forEach((conflict, i) => {
-      const pos = MathUtils.geoToSVG(conflict.lat, conflict.lng, w, h);
-      const size = 6 + conflict.intensity * 16;
-      const colors = {
-        war: '#ff3b30',
-        conflict: '#ff9500',
-        unrest: '#ffcc00',
-        protest: '#5ac8fa'
-      };
-      const color = colors[conflict.type] || '#ff6b6b';
-
-      const point = DOMUtils.create('div', {
-        className: 'map-point map-point--pulse',
-        style: {
-          left: `${pos.x}px`, top: `${pos.y}px`,
-          width: `${size}px`, height: `${size}px`,
-          backgroundColor: color, color: color,
-          opacity: '0.85',
-          animationDelay: `${i * 150}ms`,
-          boxShadow: `0 0 ${size * 1.5}px ${color}`
-        },
-        title: `${conflict.name} (${conflict.type}, ${i18n.t('map.intensity')} ${(conflict.intensity * 100).toFixed(0)}%)`
-      });
-
-      // Label for major conflicts
-      if (conflict.intensity >= 0.7) {
+    if (overlay) {
+      labelData.forEach((item, i) => {
+        const pos = MathUtils.geoToSVG(item.lat, item.lng, w, h);
+        const color = item.type === 'war' ? '#ff4444' : '#ff9500';
         const label = DOMUtils.create('div', {
-          className: 'map-point-label',
+          className: 'map-conflict-label',
           style: {
             position: 'absolute',
-            left: `${pos.x + size / 2 + 4}px`, top: `${pos.y - 6}px`,
-            fontSize: '10px', color: '#fff', whiteSpace: 'nowrap',
-            textShadow: '0 1px 4px rgba(0,0,0,0.9)',
-            pointerEvents: 'none', zIndex: '3'
+            left: `${pos.x}px`, top: `${pos.y - 10}px`,
+            fontSize: '10px', fontWeight: '600', color: '#fff',
+            whiteSpace: 'nowrap', pointerEvents: 'none', zIndex: '4',
+            textShadow: `0 0 8px ${color}, 0 1px 4px rgba(0,0,0,0.9)`,
+            opacity: '0', transform: 'translateY(4px)',
+            transition: `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms`
           },
-          textContent: conflict.name
+          textContent: item.name
         });
         overlay.appendChild(label);
-      }
-
-      overlay.appendChild(point);
-    });
-
-    // Refugee flow lines
-    if (refugees?.flows?.length) {
-      Maps._drawRefugeeFlows(container, refugees.flows, w, h);
+        // Trigger animation
+        requestAnimationFrame(() => {
+          label.style.opacity = '1';
+          label.style.transform = 'translateY(0)';
+        });
+      });
     }
-
-    Maps._addLegend(container, [
-      { color: '#ff3b30', label: i18n.t('map.war') },
-      { color: '#ff9500', label: i18n.t('map.conflict') },
-      { color: '#ffcc00', label: i18n.t('map.unrest') },
-      { color: 'rgba(255,149,0,0.5)', label: i18n.t('map.flightRoutes') }
-    ]);
 
     // Refugee badge
     if (refugees?.total) {
@@ -290,57 +343,14 @@ export class Maps {
         },
         textContent: i18n.t('map.mioDisplaced', { val: (refugees.total / 1e6).toFixed(1) })
       });
-      overlay.appendChild(badge);
+      if (overlay) overlay.appendChild(badge);
     }
-  }
 
-  // ─── Refugee flow arcs ───
-  static _drawRefugeeFlows(container, flows, w, h) {
-    if (!Array.isArray(flows) || flows.length === 0) return;
-    const coords = {
-      'Syria': { lat: 35.0, lng: 38.0 }, 'Turkey': { lat: 39.0, lng: 35.0 },
-      'Ukraine': { lat: 49.0, lng: 31.0 }, 'Poland': { lat: 52.0, lng: 20.0 },
-      'Venezuela': { lat: 8.0, lng: -66.0 }, 'Colombia': { lat: 4.0, lng: -72.0 },
-      'Afghanistan': { lat: 33.0, lng: 65.0 }, 'Pakistan': { lat: 30.0, lng: 70.0 },
-      'Sudan': { lat: 15.0, lng: 32.0 }, 'Chad': { lat: 15.0, lng: 19.0 },
-      'Myanmar': { lat: 19.0, lng: 96.0 }, 'Bangladesh': { lat: 24.0, lng: 90.0 },
-      'Somalia': { lat: 5.0, lng: 46.0 }, 'Kenya': { lat: 1.0, lng: 38.0 },
-      'DRC': { lat: -4.0, lng: 22.0 }, 'Uganda': { lat: 1.0, lng: 32.0 }
-    };
-
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const flowSVG = document.createElementNS(svgNS, 'svg');
-    flowSVG.setAttribute('class', 'flow-svg');
-    flowSVG.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    flowSVG.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;';
-
-    const flowCounts = flows.map(f => Number(f.count) || 0);
-    const maxFlow = Math.max(...flowCounts, 1);
-
-    flows.forEach(flow => {
-      const fromCoord = coords[flow.from];
-      const toCoord = coords[flow.to];
-      if (!fromCoord || !toCoord) return;
-
-      const from = MathUtils.geoToSVG(fromCoord.lat, fromCoord.lng, w, h);
-      const to = MathUtils.geoToSVG(toCoord.lat, toCoord.lng, w, h);
-      const thickness = 1 + (flow.count / maxFlow) * 4;
-      const midX = (from.x + to.x) / 2;
-      const midY = (from.y + to.y) / 2 - 30;
-
-      const path = document.createElementNS(svgNS, 'path');
-      path.setAttribute('d', `M ${from.x} ${from.y} Q ${midX} ${midY} ${to.x} ${to.y}`);
-      path.setAttribute('fill', 'none');
-      path.setAttribute('stroke', 'rgba(255, 149, 0, 0.5)');
-      path.setAttribute('stroke-width', thickness);
-      path.setAttribute('stroke-linecap', 'round');
-      path.setAttribute('stroke-dasharray', '4 8');
-      path.innerHTML = `<animate attributeName="stroke-dashoffset" from="24" to="0" dur="2s" repeatCount="indefinite" />`;
-
-      flowSVG.appendChild(path);
-    });
-
-    container.appendChild(flowSVG);
+    Maps._addLegend(container, [
+      { color: '#ff2020', label: i18n.t('map.war') },
+      { color: '#e05500', label: i18n.t('map.conflict') },
+      { color: '#cc6600', label: i18n.t('map.unrest') }
+    ]);
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -495,43 +505,7 @@ export class Maps {
     }
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  LEGACY: Render conflict points only (backward compat)
-  // ═══════════════════════════════════════════════════════════
-  static conflictMap(container, conflicts, progress = 1) {
-    const overlay = container.querySelector('.map-overlay') || DOMUtils.create('div', { className: 'map-overlay' });
-    overlay.innerHTML = '';
-
-    const visibleCount = Math.ceil(conflicts.length * MathUtils.clamp(progress, 0, 1));
-    const rect = container.getBoundingClientRect();
-    const w = rect.width || 900;
-    const h = rect.height || 450;
-
-    conflicts.slice(0, visibleCount).forEach((conflict, i) => {
-      const pos = MathUtils.geoToSVG(conflict.lat, conflict.lng, w, h);
-      const size = 6 + conflict.intensity * 14;
-      const colors = { war: '#ff3b30', conflict: '#ff9500', unrest: '#ffcc00', protest: '#5ac8fa' };
-      const color = colors[conflict.type] || '#ff6b6b';
-
-      const point = DOMUtils.create('div', {
-        className: 'map-point map-point--pulse',
-        style: {
-          left: `${pos.x}px`, top: `${pos.y}px`,
-          width: `${size}px`, height: `${size}px`,
-          backgroundColor: color, color: color,
-          opacity: '0.8', animationDelay: `${i * 200}ms`,
-          boxShadow: `0 0 ${size}px ${color}`
-        },
-        title: `${conflict.name} (${conflict.type})`
-      });
-
-      overlay.appendChild(point);
-    });
-
-    if (!container.querySelector('.map-overlay')) {
-      container.appendChild(overlay);
-    }
-  }
+  // (Legacy conflictMap removed — replaced by conflictsLayer with country highlighting)
 
   // ═══════════════════════════════════════════════════════════
   //  Map Container Builder

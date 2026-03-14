@@ -331,6 +331,32 @@
 .map-point-label { pointer-events: none; z-index: 4; }
 .map-legend { z-index: 5; pointer-events: none; }
 
+/* ─── Conflict Country Glow ─── */
+.map-country--war {
+  animation: countryGlowWar 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 32, 32, 0.8));
+}
+.map-country--conflict {
+  animation: countryGlowConflict 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(224, 85, 0, 0.6));
+}
+.map-country--unrest {
+  animation: countryGlowUnrest 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(204, 102, 0, 0.4));
+}
+@keyframes countryGlowWar {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 32, 32, 0.6)); opacity: 0.9; }
+  50% { filter: drop-shadow(0 0 12px rgba(255, 32, 32, 1)); opacity: 1; }
+}
+@keyframes countryGlowConflict {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(224, 85, 0, 0.4)); opacity: 0.85; }
+  50% { filter: drop-shadow(0 0 8px rgba(224, 85, 0, 0.8)); opacity: 0.95; }
+}
+@keyframes countryGlowUnrest {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(204, 102, 0, 0.3)); opacity: 0.75; }
+  50% { filter: drop-shadow(0 0 5px rgba(204, 102, 0, 0.6)); opacity: 0.85; }
+}
+
 /* ─── Chart + Widget + Misc ─── */
 .chart-container { position: relative; width: 100%; padding: var(--space-sm) 0; }
 .chart-container svg { width: 100%; overflow: visible; }
