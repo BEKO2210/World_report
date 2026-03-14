@@ -216,18 +216,18 @@ export class Maps {
   static conflictsLayer(container, conflicts, refugees) {
     Maps._clearOverlays(container);
 
-    // Build conflict data map: merge API data + additional known conflicts (2026)
+    // Build conflict data map: merge API data + additional known conflicts (March 2026)
+    // Sources: ACLED, Crisis Group, CFR, Al Jazeera, Wikipedia
     const CONFLICT_COUNTRIES = {
-      // Wars (highest intensity — bright red glow)
-      UA: 0.95, PS: 0.92, SD: 0.88, MM: 0.75, IL: 0.70,
-      // Armed conflicts
-      SY: 0.65, YE: 0.62, SO: 0.58, CD: 0.55, ML: 0.52,
-      BF: 0.50, NE: 0.48, HT: 0.45,
-      // Iran/Middle East escalation 2026
-      IR: 0.72, LB: 0.60, IQ: 0.50,
-      // Additional active conflicts
-      AF: 0.48, NG: 0.42, ET: 0.40, CF: 0.45, CM: 0.35,
-      MZ: 0.32, PK: 0.38, TD: 0.30, LY: 0.35
+      // Wars (intensity ≥ 0.7 — bright red glow)
+      UA: 0.90, RU: 0.90, PS: 1.0, SD: 0.95, MM: 0.85, IR: 0.90,
+      IL: 0.90, LB: 0.80, CD: 0.80, AF: 0.75, PK: 0.70,
+      // Armed conflicts (0.5–0.69 — orange glow)
+      SS: 0.70, ET: 0.70, ML: 0.70, SY: 0.60, SO: 0.60,
+      BF: 0.65, HT: 0.65, NG: 0.60, YE: 0.55, NE: 0.55,
+      VE: 0.50, MZ: 0.50, EC: 0.50, CO: 0.45, CM: 0.45,
+      // Unrest / lower-intensity (< 0.5 — dark orange glow)
+      CF: 0.45, IQ: 0.35, LY: 0.30, TD: 0.35, MX: 0.45
     };
 
     // Conflict name-to-ISO mapping for data from world-state.json
@@ -294,15 +294,19 @@ export class Maps {
 
     const labelData = [
       { name: 'Ukraine', lat: 49.5, lng: 31.2, type: 'war' },
+      { name: i18n.t('map.russia'), lat: 61.5, lng: 50.0, type: 'war' },
       { name: i18n.t('map.gaza'), lat: 31.4, lng: 34.3, type: 'war' },
       { name: i18n.t('map.sudan'), lat: 15.5, lng: 32.5, type: 'war' },
       { name: 'Myanmar', lat: 19.8, lng: 96.0, type: 'war' },
-      { name: 'Iran', lat: 32.4, lng: 53.7, type: 'war' },
+      { name: i18n.t('map.iran'), lat: 32.4, lng: 53.7, type: 'war' },
+      { name: i18n.t('map.lebanon'), lat: 33.9, lng: 35.9, type: 'war' },
+      { name: i18n.t('map.drCongo'), lat: -4.0, lng: 22.0, type: 'war' },
+      { name: i18n.t('map.afghanistan'), lat: 33.0, lng: 65.0, type: 'war' },
+      { name: i18n.t('map.southSudan'), lat: 7.0, lng: 30.0, type: 'conflict' },
       { name: i18n.t('map.syria'), lat: 35.0, lng: 38.0, type: 'conflict' },
       { name: i18n.t('map.yemen'), lat: 15.6, lng: 48.5, type: 'conflict' },
-      { name: i18n.t('map.drCongo'), lat: -4.0, lng: 22.0, type: 'conflict' },
-      { name: i18n.t('map.lebanon'), lat: 33.9, lng: 35.9, type: 'conflict' },
-      { name: i18n.t('map.somalia'), lat: 5.1, lng: 46.2, type: 'conflict' }
+      { name: i18n.t('map.somalia'), lat: 5.1, lng: 46.2, type: 'conflict' },
+      { name: 'Haiti', lat: 19.0, lng: -72.3, type: 'conflict' }
     ];
 
     if (overlay) {
