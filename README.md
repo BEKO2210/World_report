@@ -5,14 +5,14 @@
 
 ---
 
-## 🌍 Welt-Indikator: 68.5 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 66.1 / 100 🟢 POSITIV
 
 ```
-██████████████░░░░░░  68.5/100  ↓ -0.4
+█████████████░░░░░░░  66.1/100  ↓ -2.4
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 14.03.2026 00:31 UTC
+> **Letzte Aktualisierung:** 14.03.2026 01:10 UTC
 
 ### Sub-Scores
 
@@ -20,7 +20,7 @@
 |-----------|-------|-------|------------|
 | 🟡 Umwelt | **45.4**/100 | → +0 | 25% |
 | 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
-| 🔵 Wirtschaft | **85.8**/100 | → +0 | 20% |
+| 🟢 Wirtschaft | **73.7**/100 | ↓ -12.1 | 20% |
 | 🟢 Fortschritt | **77.7**/100 | → +0 | 20% |
 | 🟢 Momentum | **75**/100 | → +0 | 10% |
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **68** | WAQI |
+| Luftqualität (Ø) | AQI **73** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -48,7 +48,7 @@
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
 | BIP-Wachstum | **2.87%** | IMF |
-| Gini-Index | **0.42** | World Bank |
+| Gini-Index | **42** | World Bank |
 | Extreme Armut | **648.0 Mio** | World Bank |
 | Milliardäre | **2.8K** (45.8% Vermögen) | Oxfam |
 
@@ -158,7 +158,7 @@ belkis-one/
 |--------|-----------|----------------|
 | [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-14 |
 | [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-14 |
-| [OpenAQ](https://openaq.org/) | ⭐⭐ | 2026-03-14 |
+| [Open-Meteo (Air Quality)](https://air-quality-api.open-meteo.com/) | ⭐⭐ | 2026-03-14 |
 | [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-14 |
 | [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
 | [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-14 |
@@ -222,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 00:31 UTC | 40/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 01:10 UTC | 40/40 Quellen aktiv
 </sub>

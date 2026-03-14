@@ -1,18 +1,18 @@
 {
   "meta": {
-    "generated": "2026-03-14T00:31:19.722Z",
+    "generated": "2026-03-14T01:10:57.781Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-03-14T06:31:19.722Z"
+    "next_update": "2026-03-14T07:10:57.781Z"
   },
   "worldIndex": {
-    "value": 68.5,
+    "value": 66.1,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 68.9,
-    "change": -0.4,
+    "previous": 68.5,
+    "change": -2.4,
     "trend": "declining"
   },
   "subScores": {
@@ -54,10 +54,10 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 68,
+          "value": 73,
           "score": 45,
           "trend": "stable",
-          "source": "OpenAQ"
+          "source": "Open-Meteo"
         },
         {
           "name": "Arktis-Eisfläche",
@@ -121,12 +121,12 @@
       ]
     },
     "economy": {
-      "value": 85.8,
+      "value": 73.7,
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "stable",
-      "change": 0,
+      "trend": "declining",
+      "change": -12.1,
       "indicators": [
         {
           "name": "BIP-Wachstum",
@@ -137,8 +137,8 @@
         },
         {
           "name": "Gini-Index",
-          "value": 0.42,
-          "score": 100,
+          "value": 42,
+          "score": 51,
           "trend": "stable",
           "source": "World Bank"
         },
@@ -1104,72 +1104,82 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 68,
+      "globalAvgAQI": 73,
       "cleanestCities": [
         {
+          "city": "London",
+          "country": "",
+          "aqi": 18,
+          "lat": 51.51,
+          "lng": -0.13
+        },
+        {
+          "city": "São Paulo",
+          "country": "",
+          "aqi": 21,
+          "lat": -23.55,
+          "lng": -46.63
+        },
+        {
           "city": "Berlin",
-          "aqi": 6.7,
+          "country": "",
+          "aqi": 24,
           "lat": 52.52,
           "lng": 13.41
         },
         {
           "city": "Sydney",
-          "aqi": 7.8,
+          "country": "",
+          "aqi": 24,
           "lat": -33.87,
           "lng": 151.21
         },
         {
-          "city": "London",
-          "aqi": 8.2,
-          "lat": 51.51,
-          "lng": -0.13
-        },
-        {
-          "city": "Tokyo",
-          "aqi": 10.1,
-          "lat": 35.68,
-          "lng": 139.69
-        },
-        {
           "city": "Lagos",
-          "aqi": 12.9,
+          "country": "",
+          "aqi": 27,
           "lat": 6.45,
           "lng": 3.4
         }
       ],
       "mostPolluted": [
         {
-          "city": "Beijing",
-          "aqi": 87.1,
-          "lat": 39.9,
-          "lng": 116.4
-        },
-        {
           "city": "Delhi",
-          "aqi": 77.8,
+          "country": "",
+          "aqi": 255,
           "lat": 28.61,
           "lng": 77.21
         },
         {
-          "city": "Cairo",
-          "aqi": 61.6,
-          "lat": 30.04,
-          "lng": 31.24
+          "city": "Beijing",
+          "country": "",
+          "aqi": 147,
+          "lat": 39.9,
+          "lng": 116.4
         },
         {
           "city": "Mumbai",
-          "aqi": 38,
+          "country": "",
+          "aqi": 77,
           "lat": 19.08,
           "lng": 72.88
         },
         {
+          "city": "Cairo",
+          "country": "",
+          "aqi": 75,
+          "lat": 30.04,
+          "lng": 31.24
+        },
+        {
           "city": "Mexico City",
-          "aqi": 25,
+          "country": "",
+          "aqi": 64,
           "lat": 19.43,
           "lng": -99.13
         }
       ],
-      "source": "OpenAQ / WAQI"
+      "source": "Open-Meteo Air Quality"
     },
     "arcticIce": {
       "current": 4.2,
@@ -1526,12 +1536,12 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-03-14T01:30",
+          "time": "2026-03-14T02:00",
           "interval": 900,
-          "temperature_2m": 11.5,
+          "temperature_2m": 11.3,
           "relative_humidity_2m": 59,
-          "wind_speed_10m": 8.8,
-          "weather_code": 61
+          "wind_speed_10m": 9.1,
+          "weather_code": 3
         }
       },
       {
@@ -1539,11 +1549,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-03-13T20:30",
+          "time": "2026-03-13T21:00",
           "interval": 900,
-          "temperature_2m": 4.2,
-          "relative_humidity_2m": 66,
-          "wind_speed_10m": 22.2,
+          "temperature_2m": 4.1,
+          "relative_humidity_2m": 65,
+          "wind_speed_10m": 22.1,
           "weather_code": 3
         }
       },
@@ -1552,11 +1562,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-03-14T09:30",
+          "time": "2026-03-14T10:00",
           "interval": 900,
-          "temperature_2m": 8,
-          "relative_humidity_2m": 56,
-          "wind_speed_10m": 8.4,
+          "temperature_2m": 8.9,
+          "relative_humidity_2m": 55,
+          "wind_speed_10m": 7.8,
           "weather_code": 0
         }
       },
@@ -1565,12 +1575,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-03-14T11:30",
+          "time": "2026-03-14T12:00",
           "interval": 900,
-          "temperature_2m": 22.2,
-          "relative_humidity_2m": 56,
-          "wind_speed_10m": 3.4,
-          "weather_code": 1
+          "temperature_2m": 22.7,
+          "relative_humidity_2m": 52,
+          "wind_speed_10m": 6.1,
+          "weather_code": 2
         }
       },
       {
@@ -1578,12 +1588,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-03-13T21:30",
+          "time": "2026-03-13T22:00",
           "interval": 900,
-          "temperature_2m": 20.3,
-          "relative_humidity_2m": 94,
-          "wind_speed_10m": 3.8,
-          "weather_code": 3
+          "temperature_2m": 20.2,
+          "relative_humidity_2m": 95,
+          "wind_speed_10m": 3.3,
+          "weather_code": 2
         }
       },
       {
@@ -1591,9 +1601,9 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-03-14T01:30",
+          "time": "2026-03-14T02:00",
           "interval": 900,
-          "temperature_2m": 28.7,
+          "temperature_2m": 28.6,
           "relative_humidity_2m": 84,
           "wind_speed_10m": 9.7,
           "weather_code": 3
@@ -1604,12 +1614,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-03-14T06:00",
+          "time": "2026-03-14T06:30",
           "interval": 900,
           "temperature_2m": 28.1,
-          "relative_humidity_2m": 74,
+          "relative_humidity_2m": 75,
           "wind_speed_10m": 6.9,
-          "weather_code": 2
+          "weather_code": 1
         }
       },
       {
@@ -1617,11 +1627,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-03-14T00:30",
+          "time": "2026-03-14T01:00",
           "interval": 900,
-          "temperature_2m": 4.4,
-          "relative_humidity_2m": 77,
-          "wind_speed_10m": 11.2,
+          "temperature_2m": 4.3,
+          "relative_humidity_2m": 78,
+          "wind_speed_10m": 10.4,
           "weather_code": 0
         }
       }
@@ -3352,7 +3362,7 @@
       "source": "World Bank / IMF"
     },
     "gini": {
-      "globalAvg": 0.42,
+      "globalAvg": 42,
       "history": [
         {
           "year": 1990,
@@ -3951,17 +3961,17 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 474830,
-          "forks": 44524,
+          "stars": 474834,
+          "forks": 44525,
           "language": "Markdown",
-          "updated": "2026-03-14T00:26:16Z"
+          "updated": "2026-03-14T00:55:04Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 445265,
+          "stars": 445272,
           "forks": 33528,
           "language": null,
-          "updated": "2026-03-14T00:30:15Z"
+          "updated": "2026-03-14T01:04:56Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
@@ -3972,52 +3982,52 @@
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 409450,
-          "forks": 44239,
+          "stars": 409476,
+          "forks": 44240,
           "language": "Python",
-          "updated": "2026-03-14T00:26:10Z"
+          "updated": "2026-03-14T01:10:16Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 383959,
+          "stars": 383960,
           "forks": 66010,
           "language": "Python",
-          "updated": "2026-03-14T00:20:06Z"
+          "updated": "2026-03-14T00:40:54Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 350846,
-          "forks": 43778,
+          "stars": 350850,
+          "forks": 43779,
           "language": "TypeScript",
-          "updated": "2026-03-14T00:08:06Z"
+          "updated": "2026-03-14T00:52:03Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 338742,
+          "stars": 338745,
           "forks": 54874,
           "language": "Python",
-          "updated": "2026-03-14T00:24:27Z"
+          "updated": "2026-03-14T01:02:41Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 337791,
+          "stars": 337793,
           "forks": 81626,
           "language": null,
-          "updated": "2026-03-14T00:20:27Z"
+          "updated": "2026-03-14T01:02:25Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 310711,
-          "forks": 59075,
+          "stars": 310761,
+          "forks": 59084,
           "language": "TypeScript",
-          "updated": "2026-03-14T00:30:12Z"
+          "updated": "2026-03-14T01:10:13Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 286993,
+          "stars": 286995,
           "forks": 27381,
           "language": "Python",
-          "updated": "2026-03-14T00:13:57Z"
+          "updated": "2026-03-14T01:07:47Z"
         }
       ],
       "source": "GitHub"
@@ -4579,6 +4589,16 @@
           "type": "earthquake"
         },
         {
+          "location": "56 km N of Arecibo, Puerto Rico",
+          "magnitude": 3.02,
+          "depth": 17.59,
+          "lat": 18.9788333333333,
+          "lng": -66.678,
+          "time": "2026-03-13T23:59:14.820Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
           "location": "162 km SSE of Vilyuchinsk, Russia",
           "magnitude": 4.7,
           "depth": 35,
@@ -4627,19 +4647,9 @@
           "time": "2026-03-13T21:39:22.940Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "215 km ESE of Attu Station, Alaska",
-          "magnitude": 4.1,
-          "depth": 18.9,
-          "lat": 51.839,
-          "lng": 175.895,
-          "time": "2026-03-13T21:36:33.222Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 39,
+      "total24h": 38,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4668,6 +4678,24 @@
     },
     "news": [
       {
+        "title": "Republic of Congo election: Who is running and what’s at stake?",
+        "pubDate": "Sat, 14 Mar 2026 00:21:09 +0000",
+        "link": "https://www.aljazeera.com/news/2026/3/14/republic-of-congo-election-who-is-running-and-whats-at-stake?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Analysts say US threat of ‘no quarter’ for Iran violates international law",
+        "pubDate": "Sat, 14 Mar 2026 00:17:50 +0000",
+        "link": "https://www.aljazeera.com/news/2026/3/14/analysts-say-us-threat-of-no-quarter-for-iran-violates-international-law?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Iran war live: US bombs Iran’s Kharg Island, warns oil facilities next",
+        "pubDate": "Sat, 14 Mar 2026 00:00:00 +0000",
+        "link": "https://www.aljazeera.com/news/liveblog/2026/3/14/iran-war-live-pentagon-vows-to-ramp-up-us-military-campaign-against-iran?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
         "title": "Family of Michigan synagogue suspect killed in Lebanon airstrike, officials say",
         "pubDate": "Fri, 13 Mar 2026 23:36:41 GMT",
         "link": "https://www.bbc.com/news/articles/cdxz0jpzk4do?at_medium=RSS&amp;at_campaign=rss",
@@ -4680,12 +4708,6 @@
         "source": "BBC World"
       },
       {
-        "title": "US judge nixes two subpoenas against Federal Reserve chair Jerome Powell",
-        "pubDate": "Fri, 13 Mar 2026 22:52:35 +0000",
-        "link": "https://www.aljazeera.com/news/2026/3/13/us-judge-nixes-two-subpoenas-against-federal-reserve-chair-jerome-powell?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
         "title": "Volunteers Find Oddly High Solar Flare Rates",
         "pubDate": "Fri, 13 Mar 2026 22:07:28 +0000",
         "link": "https://science.nasa.gov/get-involved/citizen-science/volunteers-find-oddly-high-solar-flare-rates/",
@@ -4696,12 +4718,6 @@
         "pubDate": "Fri, 13 Mar 2026 22:02:39 GMT",
         "link": "https://www.bbc.com/news/articles/c79505804lpo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
-      },
-      {
-        "title": "Worshippers pray outside Al-Aqsa amid closure on al-Quds Day",
-        "pubDate": "Fri, 13 Mar 2026 21:53:58 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/13/worshippers-pray-outside-al-aqsa-amid-closure-on-al-quds-day?traffic_source=rss",
-        "source": "Al Jazeera"
       },
       {
         "title": "An Ethiopian national linked to armed militia FANO deported by ICE",
@@ -4726,12 +4742,6 @@
         "pubDate": "Fri, 13 Mar 2026 21:35:58 GMT",
         "link": "https://www.france24.com/en/tv-shows/spotlight/20260313-trump-s-iran-strategy-former-us-state-department-official-jennifer-gavito-speaks-to-france-24",
         "source": "France24"
-      },
-      {
-        "title": "Drone attack on market in Sudan kills 11, as air war civilian toll mounts",
-        "pubDate": "Fri, 13 Mar 2026 20:50:49 +0000",
-        "link": "https://www.aljazeera.com/news/2026/3/13/drone-attack-on-market-in-sudan-kills-11-as-air-war-civilian-toll-mounts?traffic_source=rss",
-        "source": "Al Jazeera"
       },
       {
         "title": "&#039;Whoever wins the drone war in Ukraine dominates.&#039; Inside the high-tech battle on the Kupiansk front, where every move is watched",
@@ -4839,7 +4849,7 @@
         "sunspots": 78.2
       }
     ],
-    "lastUpdated": "2026-03-14T00:31:19.722Z"
+    "lastUpdated": "2026-03-14T01:10:57.782Z"
   },
   "momentum": {
     "indicators": [
@@ -5063,8 +5073,8 @@
       "category": "environment"
     },
     {
-      "name": "OpenAQ",
-      "url": "https://openaq.org/",
+      "name": "Open-Meteo (Air Quality)",
+      "url": "https://air-quality-api.open-meteo.com/",
       "trust": 2,
       "lastUpdate": "2026-03-14",
       "category": "environment"
