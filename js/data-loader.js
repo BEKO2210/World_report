@@ -2,6 +2,8 @@
    BELKIS ONE 1.0 — Data Loader & Cache
    ═══════════════════════════════════════════════════════════ */
 
+import { i18n } from './i18n.js';
+
 export class DataLoader {
   constructor(options = {}) {
     this.dataUrl = options.url || 'data/processed/world-state.json';
@@ -140,9 +142,10 @@ export class DataLoader {
   // ─── Format timestamp ───
   getLastUpdated() {
     const ts = this.data?.meta?.generated || this.data?.realtime?.lastUpdated;
-    if (!ts) return 'Unbekannt';
+    if (!ts) return i18n.t('js.unknown');
     const d = new Date(ts);
-    return d.toLocaleString('de-DE', {
+    const locale = i18n.lang === 'en' ? 'en-US' : 'de-DE';
+    return d.toLocaleString(locale, {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
