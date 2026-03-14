@@ -190,30 +190,50 @@ async function fetchOpenMeteoClimate() {
   save('environment', 'weather-global.json', { cities: results, fetched: new Date().toISOString() });
 }
 
-async function fetchOpenAQ() {
-  // OpenAQ — Air quality data (free API v3)
-  try {
-    const data = await fetchJSON('https://api.openaq.org/v3/locations?limit=100&order_by=lastUpdated&sort_order=desc', {
-      headers: { 'Accept': 'application/json' }
-    });
-    const locations = (data.results || []).map(l => ({
-      name: l.name,
-      city: l.locality || l.name,
-      country: l.country?.code,
-      lat: l.coordinates?.latitude,
-      lng: l.coordinates?.longitude,
-      parameters: (l.sensors || []).map(s => ({
-        parameter: s.parameter?.name,
-        value: s.latest?.value,
-        unit: s.parameter?.units
-      }))
-    })).filter(l => l.lat && l.lng);
-    save('environment', 'air-quality.json', { locations, fetched: new Date().toISOString() });
-  } catch {
-    // Fallback: try v2 API
-    const data = await fetchJSON('https://api.openaq.org/v2/latest?limit=100&order_by=lastUpdated&sort=desc');
-    save('environment', 'air-quality.json', { locations: data.results || [], fetched: new Date().toISOString() });
+async function fetchAirQuality() {
+  // Open-Meteo Air Quality API (free, no key needed)
+  // Replaces OpenAQ which now requires API key (v2 returned HTTP 410 since Jan 2025)
+  const cities = [
+    { name: 'Beijing', lat: 39.90, lng: 116.40 },
+    { name: 'Delhi', lat: 28.61, lng: 77.21 },
+    { name: 'Los Angeles', lat: 34.05, lng: -118.24 },
+    { name: 'London', lat: 51.51, lng: -0.13 },
+    { name: 'São Paulo', lat: -23.55, lng: -46.63 },
+    { name: 'Cairo', lat: 30.04, lng: 31.24 },
+    { name: 'Lagos', lat: 6.45, lng: 3.40 },
+    { name: 'Tokyo', lat: 35.68, lng: 139.69 },
+    { name: 'Berlin', lat: 52.52, lng: 13.41 },
+    { name: 'Sydney', lat: -33.87, lng: 151.21 },
+    { name: 'Mumbai', lat: 19.08, lng: 72.88 },
+    { name: 'Mexico City', lat: 19.43, lng: -99.13 }
+  ];
+  const locations = [];
+  for (const city of cities) {
+    try {
+      const data = await fetchJSON(
+        `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${city.lat}&longitude=${city.lng}&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,european_aqi`
+      );
+      if (data.current) {
+        locations.push({
+          name: city.name,
+          city: city.name,
+          lat: city.lat,
+          lng: city.lng,
+          parameters: [
+            { parameter: 'pm25', value: data.current.pm2_5, unit: 'µg/m³' },
+            { parameter: 'pm10', value: data.current.pm10, unit: 'µg/m³' },
+            { parameter: 'no2', value: data.current.nitrogen_dioxide, unit: 'µg/m³' },
+            { parameter: 'o3', value: data.current.ozone, unit: 'µg/m³' },
+            { parameter: 'so2', value: data.current.sulphur_dioxide, unit: 'µg/m³' },
+            { parameter: 'co', value: data.current.carbon_monoxide, unit: 'µg/m³' }
+          ].filter(p => p.value != null),
+          aqi: data.current.european_aqi
+        });
+      }
+    } catch { /* skip city */ }
   }
+  if (locations.length === 0) throw new Error('No air quality data from any city');
+  save('environment', 'air-quality.json', { locations, fetched: new Date().toISOString() });
 }
 
 async function fetchGlobalForestWatch() {
@@ -233,10 +253,50 @@ async function fetchRenewableEnergy() {
 }
 
 async function fetchCO2Emissions() {
-  // World Bank — CO2 emissions (metric tons per capita)
-  const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/EN.ATM.CO2E.PC?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
-  if (entries.length === 0) throw new Error('No CO2 emissions data returned');
+  // World Bank — CO2 emissions per capita
+  // Primary: newer EDGAR-based indicator (more recent data)
+  // Fallback 1: legacy indicator EN.ATM.CO2E.PC
+  // Fallback 2: Our World in Data GitHub dataset
+  let entries = [];
+
+  // Try newer WB indicator first (EDGAR source, updated more frequently)
+  try {
+    const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/EN.GHG.CO2.PC.CE.AR5?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
+    entries = extractWorldBankEntries(data, { roundDigits: 2 });
+  } catch { /* try next */ }
+
+  // Fallback: legacy indicator
+  if (entries.length === 0) {
+    try {
+      const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/EN.ATM.CO2E.PC?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
+      entries = extractWorldBankEntries(data, { roundDigits: 2 });
+    } catch { /* try next */ }
+  }
+
+  // Fallback 2: Our World in Data (GitHub raw CSV)
+  if (entries.length === 0) {
+    try {
+      const csv = await fetchText('https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv');
+      const lines = csv.split('\n');
+      const headers = lines[0].split(',');
+      const countryIdx = headers.indexOf('country');
+      const yearIdx = headers.indexOf('year');
+      const co2pcIdx = headers.indexOf('co2_per_capita');
+      for (const line of lines.slice(1)) {
+        const cols = line.split(',');
+        if (cols[countryIdx] === 'World' && cols[co2pcIdx]) {
+          const year = parseInt(cols[yearIdx]);
+          const value = parseFloat(cols[co2pcIdx]);
+          if (!isNaN(year) && Number.isFinite(value)) {
+            entries.push({ year, value: Math.round(value * 100) / 100 });
+          }
+        }
+      }
+      entries.sort((a, b) => a.year - b.year);
+    } catch { /* all failed */ }
+  }
+
+  if (entries.length === 0) throw new Error('No CO2 emissions data from any source');
   save('environment', 'co2-emissions-percapita.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -676,7 +736,7 @@ async function main() {
   await collect('NASA GISTEMP', fetchNASAGISTEMP);
   await collect('NOAA CO2', fetchNOAACO2);
   await collect('Open-Meteo Weather', fetchOpenMeteoClimate);
-  await collect('OpenAQ Air Quality', fetchOpenAQ);
+  await collect('Air Quality (Open-Meteo)', fetchAirQuality);
   await collect('Forest Area (WB)', fetchGlobalForestWatch);
   await collect('Renewable Energy (WB)', fetchRenewableEnergy);
   await collect('CO2 Emissions/Capita (WB)', fetchCO2Emissions);
