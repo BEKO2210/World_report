@@ -5,23 +5,23 @@
 
 ---
 
-## 🌍 Welt-Indikator: 66.5 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 68.9 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.5/100  ↑ +0
+██████████████░░░░░░  68.9/100  ↑ +0.7
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 13.03.2026 23:52 UTC
+> **Letzte Aktualisierung:** 14.03.2026 00:23 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **45.4**/100 | ↓ +0 | 25% |
-| 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
-| 🟢 Wirtschaft | **73.7**/100 | ↑ +0 | 20% |
-| 🟢 Fortschritt | **77.7**/100 | ↑ +0 | 20% |
+| 🟡 Umwelt | **45.4**/100 | ↓ -3.4 | 25% |
+| 🟢 Gesellschaft | **67.8**/100 | → +0.2 | 25% |
+| 🔵 Wirtschaft | **85.8**/100 | ↑ +6.4 | 20% |
+| 🟢 Fortschritt | **77.7**/100 | ↑ +1.3 | 20% |
 | 🟢 Momentum | **78.9**/100 | → +0 | 10% |
 
 ---
@@ -65,7 +65,7 @@
 |-----------|------|--------|
 | Erdbeben (24h) | **8** Beben M2.5+ | USGS |
 | Nachrichten-Sentiment | **-0.42** (Leicht Negativ) | GDELT |
-| Crypto Fear & Greed | **15/100** (Extreme Fear) | Alternative.me |
+| Crypto Fear & Greed | **16/100** (Extreme Fear) | Alternative.me |
 
 ---
 
@@ -155,39 +155,39 @@ belkis-one/
 
 | Quelle | Vertrauen | Letztes Update |
 |--------|-----------|----------------|
-| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-13 |
-| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-13 |
-| [OpenAQ](https://openaq.org/) | ⭐⭐ | 2026-03-13 |
-| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-13 |
-| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-13 |
-| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-13 |
-| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-13 |
-| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-13 |
-| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-13 |
-| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-13 |
-| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-13 |
-| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
-| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-13 |
-| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-13 |
-| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-03-13 |
-| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-03-13 |
-| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-03-13 |
-| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-03-13 |
-| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-03-13 |
-| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-03-13 |
-| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-03-13 |
-| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-13 |
-| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-14 |
+| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-14 |
+| [OpenAQ](https://openaq.org/) | ⭐⭐ | 2026-03-14 |
+| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-14 |
+| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-14 |
+| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-14 |
+| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-14 |
+| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-14 |
+| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-14 |
+| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-14 |
+| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-14 |
+| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-14 |
+| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-03-14 |
+| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-03-14 |
+| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-03-14 |
+| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-14 |
 
 ## 🚀 Setup
 
@@ -221,5 +221,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 23:52 UTC | 39/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 00:23 UTC | 38/40 Quellen aktiv
 </sub>
