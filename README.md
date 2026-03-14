@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 68.9 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 68.5 / 100 🟢 POSITIV
 
 ```
-██████████████░░░░░░  68.9/100  ↑ +0.7
+██████████████░░░░░░  68.5/100  ↓ -0.4
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 14.03.2026 00:23 UTC
+> **Letzte Aktualisierung:** 14.03.2026 00:31 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **45.4**/100 | ↓ -3.4 | 25% |
-| 🟢 Gesellschaft | **67.8**/100 | → +0.2 | 25% |
-| 🔵 Wirtschaft | **85.8**/100 | ↑ +6.4 | 20% |
-| 🟢 Fortschritt | **77.7**/100 | ↑ +1.3 | 20% |
-| 🟢 Momentum | **78.9**/100 | → +0 | 10% |
+| 🟡 Umwelt | **45.4**/100 | → +0 | 25% |
+| 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
+| 🔵 Wirtschaft | **85.8**/100 | → +0 | 20% |
+| 🟢 Fortschritt | **77.7**/100 | → +0 | 20% |
+| 🟢 Momentum | **75**/100 | → +0 | 10% |
 
 ---
 
@@ -69,10 +69,10 @@
 
 ---
 
-## 📈 Momentum: 15/19 Trends positiv
+## 📈 Momentum: 15/20 Trends positiv
 
 <details>
-<summary>Alle 19 Indikatoren anzeigen</summary>
+<summary>Alle 20 Indikatoren anzeigen</summary>
 
 #### ✅ Verbessert sich (15)
 - **Kindersterblichkeit**: -4.5%
@@ -91,11 +91,12 @@
 - **Urbanisierung**: +1.6%
 - **Patentanmeldungen**: +1.2%
 
-#### ❌ Verschlechtert sich (4)
+#### ❌ Verschlechtert sich (5)
 - **Lebenserwartung**: -0.1%
 - **CO2-Konzentration**: +2.0%
 - **Waldfläche**: -0.3%
 - **Inflation**: +120.9%
+- **CO2 pro Kopf**: +1.4%
 
 </details>
 
@@ -221,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 00:23 UTC | 38/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 00:31 UTC | 40/40 Quellen aktiv
 </sub>
