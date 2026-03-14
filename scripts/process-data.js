@@ -149,7 +149,11 @@ function buildWorldState() {
 
   const gdpGrowth = latest(gdpData?.history || [])?.value || existing?.economy?.gdpGrowth?.global || 3.1;
   const giniHistory = giniData?.history || existing?.economy?.gini?.history || [];
-  const giniCurrent = latest(giniHistory)?.value || 42; // World Bank Gini is 0-100 scale (NOT 0-1!)
+  let giniCurrent = latest(giniHistory)?.value || 42; // World Bank Gini is 0-100 scale (NOT 0-1!)
+  // Guard: if value is on 0-1 scale (legacy bug), convert to 0-100
+  if (giniCurrent > 0 && giniCurrent < 1) {
+    giniCurrent = Math.round(giniCurrent * 100 * 10) / 10;
+  }
   const inflationCurrent = latest(inflationData?.history || [])?.value || 6.5;
   const unemploymentCurrent = latest(unemploymentData?.history || [])?.value || 5.8;
 
