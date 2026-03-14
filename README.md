@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 66.5 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 66.1 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.5/100  ↑ +0
+█████████████░░░░░░░  66.1/100  ↓ -2.4
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 13.03.2026 18:41 UTC
+> **Letzte Aktualisierung:** 14.03.2026 01:10 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **45.4**/100 | ↓ +0 | 25% |
+| 🟡 Umwelt | **45.4**/100 | → +0 | 25% |
 | 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
-| 🟢 Wirtschaft | **73.7**/100 | ↑ +0 | 20% |
-| 🟢 Fortschritt | **77.7**/100 | ↑ +0 | 20% |
-| 🟢 Momentum | **78.9**/100 | → +0 | 10% |
+| 🟢 Wirtschaft | **73.7**/100 | ↓ -12.1 | 20% |
+| 🟢 Fortschritt | **77.7**/100 | → +0 | 20% |
+| 🟢 Momentum | **75**/100 | → +0 | 10% |
 
 ---
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **68** | WAQI |
+| Luftqualität (Ø) | AQI **73** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -48,7 +48,7 @@
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
 | BIP-Wachstum | **2.87%** | IMF |
-| Gini-Index | **0.42** | World Bank |
+| Gini-Index | **42** | World Bank |
 | Extreme Armut | **648.0 Mio** | World Bank |
 | Milliardäre | **2.8K** (45.8% Vermögen) | Oxfam |
 
@@ -65,14 +65,14 @@
 |-----------|------|--------|
 | Erdbeben (24h) | **8** Beben M2.5+ | USGS |
 | Nachrichten-Sentiment | **-0.42** (Leicht Negativ) | GDELT |
-| Crypto Fear & Greed | **15/100** (Extreme Fear) | Alternative.me |
+| Crypto Fear & Greed | **16/100** (Extreme Fear) | Alternative.me |
 
 ---
 
-## 📈 Momentum: 15/19 Trends positiv
+## 📈 Momentum: 15/20 Trends positiv
 
 <details>
-<summary>Alle 19 Indikatoren anzeigen</summary>
+<summary>Alle 20 Indikatoren anzeigen</summary>
 
 #### ✅ Verbessert sich (15)
 - **Kindersterblichkeit**: -4.5%
@@ -91,11 +91,12 @@
 - **Urbanisierung**: +1.6%
 - **Patentanmeldungen**: +1.2%
 
-#### ❌ Verschlechtert sich (4)
+#### ❌ Verschlechtert sich (5)
 - **Lebenserwartung**: -0.1%
 - **CO2-Konzentration**: +2.0%
 - **Waldfläche**: -0.3%
 - **Inflation**: +120.9%
+- **CO2 pro Kopf**: +1.4%
 
 </details>
 
@@ -151,36 +152,43 @@ belkis-one/
 - **IntersectionObserver** — Scroll-driven Animations
 - **GitHub Actions** — Automatisierte Daten-Pipeline mit Self-Healing
 
-## 📡 Datenquellen (26)
+## 📡 Datenquellen (33)
 
 | Quelle | Vertrauen | Letztes Update |
 |--------|-----------|----------------|
-| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-13 |
-| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-13 |
-| [OpenAQ](https://openaq.org/) | ⭐⭐ | 2026-03-13 |
-| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-13 |
-| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-13 |
-| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-13 |
-| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-13 |
-| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-13 |
-| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-13 |
-| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-13 |
-| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-13 |
-| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
-| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-13 |
-| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-13 |
-| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-13 |
-| [NASA Climate (RSS)](https://climate.nasa.gov/) | ⭐⭐⭐ | 2026-03-13 |
-| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-13 |
-| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-13 |
+| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-14 |
+| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-14 |
+| [Open-Meteo (Air Quality)](https://air-quality-api.open-meteo.com/) | ⭐⭐ | 2026-03-14 |
+| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-14 |
+| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-14 |
+| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-14 |
+| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-14 |
+| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-14 |
+| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-14 |
+| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-14 |
+| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-14 |
+| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-14 |
+| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-03-14 |
+| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-03-14 |
+| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-03-14 |
+| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-03-14 |
+| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-03-14 |
+| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-14 |
 
 ## 🚀 Setup
 
@@ -214,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 13.03.2026 18:41 UTC | 39/40 Quellen aktiv
+Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 01:10 UTC | 40/40 Quellen aktiv
 </sub>
