@@ -1,4 +1,4 @@
-# BELKIS ONE 1.0
+# World.One 1.0
 
 > **Der Zustand der Welt in einem einzigen Scroll-Erlebnis.**
 > Ein Vermächtnis aus Daten, Code und der Überzeugung, dass Transparenz die Welt verbessert.
@@ -115,7 +115,7 @@
 ## 🏗️ Architektur
 
 ```
-belkis-one/
+world-one/
 ├── index.html                    # Entry Point — 12 Scroll-Sektionen
 ├── css/
 │   ├── core.css                  # Design System, Custom Properties, Reset
@@ -205,7 +205,7 @@ npx serve .
 
 1. Repository-Settings → Pages → Source: **GitHub Actions**
 2. Die Pipeline läuft automatisch alle 6 Stunden
-3. Manuell: Actions → BELKIS ONE → Run workflow
+3. Manuell: Actions → World.One → Run workflow
 
 ## 🧬 Das Vermächtnis
 
@@ -222,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 12:51 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 14.03.2026 12:51 UTC | 40/40 Quellen aktiv
 </sub>

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Data Loader & Cache
+   World.One 1.0 — Data Loader & Cache
    ═══════════════════════════════════════════════════════════ */
 
 import { i18n } from './i18n.js';
@@ -7,7 +7,7 @@ import { i18n } from './i18n.js';
 export class DataLoader {
   constructor(options = {}) {
     this.dataUrl = options.url || 'data/processed/world-state.json';
-    this.cacheKey = options.cacheKey || 'belkis-one-data';
+    this.cacheKey = options.cacheKey || 'world-one-data';
     this.cacheTTL = options.cacheTTL || 6 * 60 * 60 * 1000; // 6 hours
     this.data = null;
     this.loading = false;

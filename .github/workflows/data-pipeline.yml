@@ -190,8 +190,8 @@ jobs:
 
       - name: Commit updated data + README
         run: |
-          git config user.name "BELKIS ONE Pipeline"
-          git config user.email "pipeline@belkis.one"
+          git config user.name "World.One Pipeline"
+          git config user.email "pipeline@world.one"
           git add data/processed/world-state.json data/processed/world-state.backup.json data/processed/heal-log.json README.md
           if git diff --staged --quiet; then
             echo "No changes to commit"

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Chart Visualizations (SVG-based)
+   World.One 1.0 — Chart Visualizations (SVG-based)
    ═══════════════════════════════════════════════════════════ */
 
 import { MathUtils } from '../utils/math.js';

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE — Self-Healing System
+   World.One — Self-Healing System
    Validates, repairs and ensures data integrity
    ═══════════════════════════════════════════════════════════ */
 
@@ -58,7 +58,7 @@ function validateRange(obj, path, min, max, label) {
 
 function main() {
   console.log('\n═══════════════════════════════════════');
-  console.log('  BELKIS ONE — Self-Healing System');
+  console.log('  World.One — Self-Healing System');
   console.log('═══════════════════════════════════════\n');
 
   // 1. Check if data file exists

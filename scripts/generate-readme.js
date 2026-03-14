@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE — Auto-README Generator
+   World.One — Auto-README Generator
    Generates a living README from world-state.json
    Runs as part of the data pipeline — updates every 6h
    ═══════════════════════════════════════════════════════════ */
@@ -91,7 +91,7 @@ function main() {
   const improving = indicators.filter(i => i.direction === 'improving');
   const declining = indicators.filter(i => i.direction === 'declining');
 
-  const readme = `# BELKIS ONE 1.0
+  const readme = `# World.One 1.0
 
 > **Der Zustand der Welt in einem einzigen Scroll-Erlebnis.**
 > Ein Vermächtnis aus Daten, Code und der Überzeugung, dass Transparenz die Welt verbessert.
@@ -193,7 +193,7 @@ ${declining.map(i => `- **${i.name}**: ${i.change}`).join('\n')}
 ## 🏗️ Architektur
 
 \`\`\`
-belkis-one/
+world-one/
 ├── index.html                    # Entry Point — 12 Scroll-Sektionen
 ├── css/
 │   ├── core.css                  # Design System, Custom Properties, Reset
@@ -251,7 +251,7 @@ npx serve .
 
 1. Repository-Settings → Pages → Source: **GitHub Actions**
 2. Die Pipeline läuft automatisch alle 6 Stunden
-3. Manuell: Actions → BELKIS ONE → Run workflow
+3. Manuell: Actions → World.One → Run workflow
 
 ## 🧬 Das Vermächtnis
 
@@ -268,7 +268,7 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | ${dateStr} ${timeStr} UTC | ${safe(meta.sources_available, '?')}/${safe(meta.sources_count, '?')} Quellen aktiv
+Auto-generiert von der World.One Pipeline | ${dateStr} ${timeStr} UTC | ${safe(meta.sources_available, '?')}/${safe(meta.sources_count, '?')} Quellen aktiv
 </sub>
 `;
 

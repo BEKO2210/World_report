@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Main Application Controller
+   World.One 1.0 — Main Application Controller
    ═══════════════════════════════════════════════════════════ */
 
 import { ScrollEngine } from './scroll-engine.js';

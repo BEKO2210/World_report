@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — SVG Map Visualizations
+   World.One 1.0 — SVG Map Visualizations
    ═══════════════════════════════════════════════════════════ */
 
 import { MathUtils } from '../utils/math.js';

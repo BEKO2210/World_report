@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ═══════════════════════════════════════════════════════════════
-   BELKIS ONE — Data Collection Engine
+   World.One — Data Collection Engine
    Fetches real data from 40+ free sources
    ═══════════════════════════════════════════════════════════════ */
 
@@ -727,7 +727,7 @@ async function fetchRegionalGDP() {
 
 async function main() {
   console.log('═══════════════════════════════════════');
-  console.log('  BELKIS ONE — Data Collection Engine');
+  console.log('  World.One — Data Collection Engine');
   console.log(`  ${new Date().toISOString()}`);
   console.log('═══════════════════════════════════════\n');
 

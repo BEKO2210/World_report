@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Animated Counter System
+   World.One 1.0 — Animated Counter System
    ═══════════════════════════════════════════════════════════ */
 
 import { MathUtils } from '../utils/math.js';
