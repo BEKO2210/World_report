@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Scroll Engine
+   World.One 1.0 — Scroll Engine
    IntersectionObserver + requestAnimationFrame
    ═══════════════════════════════════════════════════════════ */
 

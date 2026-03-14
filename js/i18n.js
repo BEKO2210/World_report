@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Internationalization (DE/EN)
+   World.One 1.0 — Internationalization (DE/EN)
    ═══════════════════════════════════════════════════════════ */
 
 const translations = {
@@ -736,7 +736,7 @@ const translations = {
 
 class I18n {
   constructor() {
-    this._lang = localStorage.getItem('belkis-lang') || 'de';
+    this._lang = localStorage.getItem('world-one-lang') || 'de';
     this._listeners = [];
   }
 
@@ -745,7 +745,7 @@ class I18n {
   set lang(value) {
     if (value !== 'de' && value !== 'en') return;
     this._lang = value;
-    localStorage.setItem('belkis-lang', value);
+    localStorage.setItem('world-one-lang', value);
     document.documentElement.lang = value;
     this._applyToDOM();
     this._listeners.forEach(fn => fn(value));

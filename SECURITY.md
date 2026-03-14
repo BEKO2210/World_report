@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The following versions of BELKIS ONE are currently supported with security updates.
+The following versions of World.One are currently supported with security updates.
 
 | Version | Supported |
 |--------|-----------|
@@ -15,7 +15,7 @@ Security fixes are applied directly to the main branch.
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in BELKIS ONE, please report it responsibly.
+If you discover a security vulnerability in World.One, please report it responsibly.
 
 Do NOT open a public issue for security vulnerabilities.
 
@@ -50,7 +50,7 @@ This policy covers:
 
 ## Security Principles
 
-BELKIS ONE follows several security principles:
+World.One follows several security principles:
 
 • All external data is validated  
 • XSS protection for external text inputs  

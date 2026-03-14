@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ═══════════════════════════════════════════════════════════════
-   BELKIS ONE — Data Processing Engine
+   World.One — Data Processing Engine
    Transforms raw data into world-state.json
    ═══════════════════════════════════════════════════════════════ */
 

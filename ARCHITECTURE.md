@@ -13,7 +13,7 @@
 
 ### **Wie die Welt berechnet wird**
 
-*Vollständige technische Dokumentation des BELKIS ONE Systems*
+*Vollständige technische Dokumentation des World.One Systems*
 
 <br>
 
@@ -88,14 +88,14 @@
 
 </div>
 
-BELKIS ONE ist kein Dashboard. Es ist ein **Vermächtnis**.
+World.One ist kein Dashboard. Es ist ein **Vermächtnis**.
 
 Die Idee ist einfach: Die Welt produziert jeden Tag Milliarden von Datenpunkten
 uber ihren Zustand -- Temperaturen, Kindersterblichkeit, Konflikte, Fortschritt.
 Aber diese Daten liegen verstreut in Datenbanken, hinter APIs, in CSV-Dateien.
 Niemand sieht das Gesamtbild.
 
-BELKIS ONE nimmt diese Daten, normalisiert sie zu einem einzigen Score von 0 bis 100
+World.One nimmt diese Daten, normalisiert sie zu einem einzigen Score von 0 bis 100
 und prasentiert sie als immersives Scroll-Erlebnis. Alle 6 Stunden. Automatisch.
 Ohne menschliches Eingreifen.
 
@@ -931,7 +931,7 @@ node scripts/generate-readme.js
   │    Ein Vermaechtnis aus Transparenz,                        │
   │    gebaut um die Menschheit zu ueberdauern."                │
   │                                                             │
-  │                              -- BELKIS ONE                  │
+  │                              -- World.One                  │
   │                                                             │
   └─────────────────────────────────────────────────────────────┘
 
@@ -946,6 +946,6 @@ node scripts/generate-readme.js
 
 ---
 
-<sub>BELKIS ONE 1.0 &mdash; Architektur-Dokumentation &mdash; 2024-present Belkis Aslani</sub>
+<sub>World.One 1.0 &mdash; Architektur-Dokumentation &mdash; 2024-present Belkis Aslani</sub>
 
 </div>

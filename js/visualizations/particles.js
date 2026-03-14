@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Canvas Particle System
+   World.One 1.0 — Canvas Particle System
    ═══════════════════════════════════════════════════════════ */
 
 import { MathUtils } from '../utils/math.js';

@@ -1,8 +1,8 @@
-# BELKIS ONE 1.0 — Entwickler-Dokumentation
+# World.One 1.0 — Entwickler-Dokumentation
 
 ## Projekt-Architektur
 
-**BELKIS ONE** ist ein selbst-aktualisierendes globales Dashboard, das alle 6 Stunden 40+ APIs abfragt,
+**World.One** ist ein selbst-aktualisierendes globales Dashboard, das alle 6 Stunden 40+ APIs abfragt,
 die Daten normalisiert und als immersives Scroll-Erlebnis auf GitHub Pages darstellt.
 
 ### Tech Stack
