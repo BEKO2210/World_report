@@ -662,6 +662,7 @@ class BelkisOne {
 
       const conflictMapEl = document.getElementById('conflict-map');
       if (conflictMapEl && soc?.conflicts?.locations) {
+        conflictMapEl.innerHTML = '';
         const mapEl = Maps.createBasicMap(conflictMapEl);
         const ready = mapEl._svgReady || Promise.resolve();
         ready.then(() => {
@@ -673,7 +674,11 @@ class BelkisOne {
       if (soc.freedom) {
         const freedomSection = document.querySelector('.akt-society .freedom-legend');
         if (freedomSection) {
+          // Remove old freedom chart if it exists (e.g. on language toggle re-build)
+          const existing = freedomSection.parentElement.querySelector('.freedom-bar-chart');
+          if (existing) existing.remove();
           const chartContainer = document.createElement('div');
+          chartContainer.className = 'freedom-bar-chart';
           chartContainer.style.cssText = 'margin-top:var(--space-sm);';
           freedomSection.parentElement.insertBefore(chartContainer, freedomSection.nextSibling);
           Charts.freedomBar(chartContainer, soc.freedom);
@@ -787,6 +792,8 @@ class BelkisOne {
     // Air quality lists
     const cleanList = document.getElementById('clean-cities');
     const dirtyList = document.getElementById('dirty-cities');
+    if (cleanList) cleanList.innerHTML = '';
+    if (dirtyList) dirtyList.innerHTML = '';
     if (cleanList && data.environment?.airQuality) {
       data.environment.airQuality.cleanestCities.forEach(city => {
         const li = DOMUtils.create('li', {
@@ -1099,6 +1106,16 @@ class BelkisOne {
   }
 
   _rebuildDynamic(data) {
+    // Re-render prolog title and subtitle (no typewriter on toggle — instant text)
+    const prologTitle = document.querySelector('.prolog__title');
+    if (prologTitle) {
+      prologTitle.textContent = i18n.t('prolog.title');
+    }
+    const prologSub = document.querySelector('.prolog__subtitle');
+    if (prologSub) {
+      prologSub.textContent = i18n.t('prolog.subtitle');
+    }
+
     // Re-render timestamp
     const tsEls = document.querySelectorAll('.timestamp');
     tsEls.forEach(el => {
@@ -1150,6 +1167,16 @@ class BelkisOne {
 
     // Re-render pipeline status
     this._buildPipelineStatus(data);
+
+    // Re-render scenarios and sources (contain i18n text)
+    this._buildScenarios(data);
+    this._buildSources(data);
+
+    // Reset lazy-built chart sections so they re-render with new labels
+    this._envBuilt = false;
+    this._societyBuilt = false;
+    this._economyBuilt = false;
+    this._progressBuilt = false;
 
     // Update world indicator zone label
     if (this.worldIndicator) {
