@@ -175,20 +175,41 @@ function main() {
   validateRange(data, 'environment.co2.current', 280, 600, 'CO2');
   validateRange(data, 'environment.temperatureAnomaly.current', -1, 5, 'Temperature');
 
-  // 5. Recalculate World Index if sub-scores were repaired
+  // 5. Validate weights sum to 1.0
+  const weights = categories.map(cat => data.subScores[cat].weight);
+  const weightSum = weights.reduce((s, w) => s + w, 0);
+  if (Math.abs(weightSum - 1.0) > 0.01) {
+    log('fix', `Sub-score weights sum to ${weightSum.toFixed(3)} instead of 1.0 — resetting`);
+    data.subScores.environment.weight = 0.25;
+    data.subScores.society.weight = 0.25;
+    data.subScores.economy.weight = 0.20;
+    data.subScores.progress.weight = 0.20;
+    data.subScores.momentum.weight = 0.10;
+  }
+
+  // 6. Recalculate World Index if sub-scores were repaired
   const recalculated =
-    data.subScores.environment.value * 0.25 +
-    data.subScores.society.value * 0.25 +
-    data.subScores.economy.value * 0.20 +
-    data.subScores.progress.value * 0.20 +
-    data.subScores.momentum.value * 0.10;
+    data.subScores.environment.value * data.subScores.environment.weight +
+    data.subScores.society.value * data.subScores.society.weight +
+    data.subScores.economy.value * data.subScores.economy.weight +
+    data.subScores.progress.value * data.subScores.progress.weight +
+    data.subScores.momentum.value * data.subScores.momentum.weight;
   const diff = Math.abs(data.worldIndex.value - recalculated);
   if (diff > 2) {
     log('fix', `World Index mismatch: stored=${data.worldIndex.value}, calculated=${recalculated.toFixed(1)} — correcting`);
     data.worldIndex.value = parseFloat(recalculated.toFixed(1));
   }
 
-  // 6. Create dated backup with rotation (keep last 5)
+  // 6b. Validate World Index zone matches value
+  const correctedZone = data.worldIndex.value < 20 ? 'critical' : data.worldIndex.value < 40 ? 'concerning' : data.worldIndex.value < 60 ? 'mixed' : data.worldIndex.value < 80 ? 'positive' : 'excellent';
+  if (data.worldIndex.zone !== correctedZone) {
+    log('fix', `World Index zone mismatch: stored=${data.worldIndex.zone}, expected=${correctedZone}`);
+    data.worldIndex.zone = correctedZone;
+    const zoneLabels = { critical: 'KOLLAPS', concerning: 'BESORGNISERREGEND', mixed: 'GEMISCHT', positive: 'POSITIV', excellent: 'EXZELLENT' };
+    data.worldIndex.label = zoneLabels[correctedZone];
+  }
+
+  // 7. Create dated backup with rotation (keep last 5)
   if (existsSync(DATA_PATH)) {
     // Always update the standard backup
     copyFileSync(DATA_PATH, BACKUP_PATH);
@@ -211,7 +232,7 @@ function main() {
     }
   }
 
-  // 7. Save repaired data
+  // 8. Save repaired data
   if (fixes.length > 0) {
     writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
     console.log(`\n[HEAL] 🔧 Applied ${fixes.length} fix(es)`);
@@ -223,14 +244,14 @@ function main() {
     console.log(`[HEAL] ⚠️ ${warnings.length} warning(s)`);
   }
 
-  // 8. Data staleness check — warn if data is older than 24 hours
+  // 9. Data staleness check — warn if data is older than 24 hours
   const generated = new Date(data.meta.generated);
   const ageHours = (Date.now() - generated.getTime()) / 3600000;
   if (ageHours > 24) {
     log('warn', `Data is ${Math.round(ageHours)}h old (generated: ${data.meta.generated})`);
   }
 
-  // 9. Write heal log
+  // 10. Write heal log
   const healLog = {
     timestamp: new Date().toISOString(),
     fixes: fixes.length,

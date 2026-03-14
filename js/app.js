@@ -251,6 +251,11 @@ class BelkisOne {
     if (el) el.textContent = value;
   }
 
+  // ─── Helper: Escape HTML to prevent XSS ───
+  _esc(str) {
+    return MathUtils.escapeHTML(str);
+  }
+
   // ─── Prolog meta ───
   _populateProlog(data) {
     const meta = data.meta;
@@ -300,8 +305,8 @@ class BelkisOne {
         const card = DOMUtils.create('div', {
           className: 'aqi-card',
           innerHTML: `
-            <div class="aqi-card__city">${city.city} (${city.country})</div>
-            <div class="aqi-card__value" style="color:${color};background:${color}15">AQI ${city.aqi}</div>
+            <div class="aqi-card__city">${this._esc(city.city)} (${this._esc(city.country)})</div>
+            <div class="aqi-card__value" style="color:${color};background:${color}15">AQI ${Number(city.aqi) || 0}</div>
           `
         });
         aqGrid.appendChild(card);
@@ -321,7 +326,7 @@ class BelkisOne {
         const card = DOMUtils.create('div', {
           className: 'weather-card',
           innerHTML: `
-            <div class="weather-card__city">${city.name || 'Unbekannt'}</div>
+            <div class="weather-card__city">${this._esc(city.name || 'Unbekannt')}</div>
             <div class="weather-card__temp">${Number.isFinite(temp) ? `${temp.toFixed(1)}°C` : '—'}</div>
             <div class="weather-card__detail">Feuchte: ${Number.isFinite(humidity) ? `${humidity}%` : '—'}</div>
             <div class="weather-card__detail">Wind: ${Number.isFinite(wind) ? `${wind} km/h` : '—'}</div>
@@ -559,8 +564,8 @@ class BelkisOne {
       }));
       newsEl.innerHTML = items.map(h => `
         <div class="news-item">
-          <div class="news-item__source">${h.source}</div>
-          <div class="news-item__title">${h.text}</div>
+          <div class="news-item__source">${this._esc(h.source)}</div>
+          <div class="news-item__title">${this._esc(h.text)}</div>
         </div>
       `).join('');
     }
@@ -572,7 +577,7 @@ class BelkisOne {
     if (!el) return;
     el.innerHTML = items.map(item => `
       <div class="news-item">
-        <div class="news-item__title">${item}</div>
+        <div class="news-item__title">${MathUtils.escapeHTML(item)}</div>
       </div>
     `).join('');
   }
@@ -748,12 +753,13 @@ class BelkisOne {
     if (eqList && rt.earthquakes) {
       eqList.innerHTML = '';
       rt.earthquakes.last24h.slice(0, 8).forEach(eq => {
-        const color = eq.magnitude >= 5 ? '#ff6b6b' : eq.magnitude >= 4 ? '#ffcc00' : '#8e8e93';
+        const mag = Number(eq.magnitude) || 0;
+        const color = mag >= 5 ? '#ff6b6b' : mag >= 4 ? '#ffcc00' : '#8e8e93';
         const li = DOMUtils.create('li', {
           className: 'earthquake-list__item',
           innerHTML: `
-            <span>${eq.location}</span>
-            <span class="earthquake-list__mag" style="background:${color}20;color:${color}">M${eq.magnitude}</span>
+            <span>${this._esc(eq.location)}</span>
+            <span class="earthquake-list__mag" style="background:${color}20;color:${color}">M${mag.toFixed(1)}</span>
           `
         });
         eqList.appendChild(li);
@@ -783,7 +789,7 @@ class BelkisOne {
       data.environment.airQuality.cleanestCities.forEach(city => {
         const li = DOMUtils.create('li', {
           className: 'earthquake-list__item',
-          innerHTML: `<span>${city.city}</span><span class="earthquake-list__mag" style="background:rgba(52,199,89,0.2);color:#34c759">AQI ${city.aqi}</span>`
+          innerHTML: `<span>${this._esc(city.city)}</span><span class="earthquake-list__mag" style="background:rgba(52,199,89,0.2);color:#34c759">AQI ${Number(city.aqi) || 0}</span>`
         });
         cleanList.appendChild(li);
       });
@@ -792,7 +798,7 @@ class BelkisOne {
       data.environment.airQuality.mostPolluted.forEach(city => {
         const li = DOMUtils.create('li', {
           className: 'earthquake-list__item',
-          innerHTML: `<span>${city.city}</span><span class="earthquake-list__mag" style="background:rgba(255,59,48,0.2);color:#ff3b30">AQI ${city.aqi}</span>`
+          innerHTML: `<span>${this._esc(city.city)}</span><span class="earthquake-list__mag" style="background:rgba(255,59,48,0.2);color:#ff3b30">AQI ${Number(city.aqi) || 0}</span>`
         });
         dirtyList.appendChild(li);
       });
@@ -955,7 +961,8 @@ class BelkisOne {
 
     grid.innerHTML = '';
     data.dataSources.forEach(source => {
-      const stars = '\u2605'.repeat(source.trust);
+      const trust = MathUtils.clamp(Number(source.trust) || 0, 0, 5);
+      const stars = '\u2605'.repeat(trust);
       const card = DOMUtils.create('a', {
         className: 'source-card reveal',
         href: source.url,
@@ -963,8 +970,8 @@ class BelkisOne {
         rel: 'noopener noreferrer',
         innerHTML: `
           <div>
-            <div class="source-card__name">${source.name}</div>
-            <div class="source-card__date">${source.lastUpdate}</div>
+            <div class="source-card__name">${this._esc(source.name)}</div>
+            <div class="source-card__date">${this._esc(source.lastUpdate)}</div>
           </div>
           <span class="source-card__trust">${stars}</span>
         `
