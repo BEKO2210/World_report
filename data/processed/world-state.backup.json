@@ -1,19 +1,91 @@
 {
   "meta": {
-    "generated": "2026-03-14T12:51:18.292Z",
+    "generated": "2026-03-14T15:21:07.517Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-03-14T18:51:18.292Z"
+    "next_update": "2026-03-14T21:21:07.518Z"
   },
   "worldIndex": {
-    "value": 66.1,
+    "value": 68.6,
+    "rawValue": 66.1,
     "label": "POSITIV",
     "zone": "positive",
     "previous": 66.1,
-    "change": 0,
-    "trend": "stable"
+    "change": 2.5,
+    "trend": "improving",
+    "carryingCapacity": {
+      "checks": {
+        "existence": {
+          "penalty": 0,
+          "passed": true
+        },
+        "balance": {
+          "multiplier": 1.038,
+          "ratio": 0.75
+        },
+        "cascading": {
+          "penalty": 0,
+          "activePairs": 0
+        }
+      },
+      "spectrum": {
+        "environment": {
+          "direction": "neutral",
+          "position": "stable",
+          "level": 0
+        },
+        "society": {
+          "direction": "expansion",
+          "position": "stable",
+          "level": 0
+        },
+        "economy": {
+          "direction": "expansion",
+          "position": "elastic",
+          "level": 1
+        },
+        "progress": {
+          "direction": "expansion",
+          "position": "elastic",
+          "level": 1
+        },
+        "momentum": {
+          "direction": "expansion",
+          "position": "elastic",
+          "level": 1
+        }
+      },
+      "indicators": {
+        "environment": {
+          "bufferDistance": 35.8,
+          "recoveryTime": 0,
+          "maintenanceCost": 0.16
+        },
+        "society": {
+          "bufferDistance": 62.1,
+          "recoveryTime": 793,
+          "maintenanceCost": 0.69
+        },
+        "economy": {
+          "bufferDistance": 69.1,
+          "recoveryTime": 0,
+          "maintenanceCost": 2.76
+        },
+        "progress": {
+          "bufferDistance": 73.8,
+          "recoveryTime": 0,
+          "maintenanceCost": 4.52
+        },
+        "momentum": {
+          "bufferDistance": 70.6,
+          "recoveryTime": 0,
+          "maintenanceCost": 0
+        }
+      },
+      "method": "Tragfähigkeitsprinzip V6 — Mike Hertig"
+    }
   },
   "subScores": {
     "environment": {
@@ -54,7 +126,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 76,
+          "value": 71,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -1102,19 +1174,19 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 76,
+      "globalAvgAQI": 71,
       "cleanestCities": [
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 14,
+          "aqi": 15,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "Berlin",
           "country": "",
-          "aqi": 28,
+          "aqi": 26,
           "lat": 52.52,
           "lng": 13.41
         },
@@ -1126,46 +1198,46 @@
           "lng": 3.4
         },
         {
-          "city": "London",
-          "country": "",
-          "aqi": 32,
-          "lat": 51.51,
-          "lng": -0.13
-        },
-        {
           "city": "Tokyo",
           "country": "",
-          "aqi": 36,
+          "aqi": 34,
           "lat": 35.68,
           "lng": 139.69
+        },
+        {
+          "city": "London",
+          "country": "",
+          "aqi": 35,
+          "lat": 51.51,
+          "lng": -0.13
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 240,
+          "aqi": 203,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Cairo",
           "country": "",
-          "aqi": 140,
+          "aqi": 143,
           "lat": 30.04,
           "lng": 31.24
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 101,
+          "aqi": 82,
           "lat": 39.9,
           "lng": 116.4
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 71,
+          "aqi": 72,
           "lat": 19.08,
           "lng": 72.88
         },
@@ -1534,11 +1606,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-03-14T13:45",
+          "time": "2026-03-14T16:15",
           "interval": 900,
-          "temperature_2m": 11,
-          "relative_humidity_2m": 67,
-          "wind_speed_10m": 12,
+          "temperature_2m": 9.7,
+          "relative_humidity_2m": 70,
+          "wind_speed_10m": 12.6,
           "weather_code": 3
         }
       },
@@ -1547,11 +1619,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-03-14T08:45",
+          "time": "2026-03-14T11:15",
           "interval": 900,
-          "temperature_2m": 4.9,
-          "relative_humidity_2m": 57,
-          "wind_speed_10m": 24.3,
+          "temperature_2m": 7.6,
+          "relative_humidity_2m": 40,
+          "wind_speed_10m": 35,
           "weather_code": 0
         }
       },
@@ -1560,11 +1632,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-03-14T21:45",
+          "time": "2026-03-15T00:15",
           "interval": 900,
-          "temperature_2m": 8,
+          "temperature_2m": 6.8,
           "relative_humidity_2m": 65,
-          "wind_speed_10m": 4.8,
+          "wind_speed_10m": 3.6,
           "weather_code": 1
         }
       },
@@ -1573,12 +1645,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-03-14T23:45",
+          "time": "2026-03-15T02:15",
           "interval": 900,
-          "temperature_2m": 18.6,
-          "relative_humidity_2m": 76,
-          "wind_speed_10m": 3.1,
-          "weather_code": 3
+          "temperature_2m": 17,
+          "relative_humidity_2m": 83,
+          "wind_speed_10m": 2.1,
+          "weather_code": 1
         }
       },
       {
@@ -1586,12 +1658,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-03-14T09:45",
+          "time": "2026-03-14T12:15",
           "interval": 900,
-          "temperature_2m": 22.6,
-          "relative_humidity_2m": 73,
-          "wind_speed_10m": 1.3,
-          "weather_code": 2
+          "temperature_2m": 26.9,
+          "relative_humidity_2m": 54,
+          "wind_speed_10m": 6.7,
+          "weather_code": 1
         }
       },
       {
@@ -1599,12 +1671,12 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-03-14T13:45",
+          "time": "2026-03-14T16:15",
           "interval": 900,
-          "temperature_2m": 31.2,
-          "relative_humidity_2m": 70,
-          "wind_speed_10m": 12.5,
-          "weather_code": 80
+          "temperature_2m": 31.4,
+          "relative_humidity_2m": 69,
+          "wind_speed_10m": 13.2,
+          "weather_code": 3
         }
       },
       {
@@ -1612,11 +1684,11 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-03-14T18:15",
+          "time": "2026-03-14T20:45",
           "interval": 900,
-          "temperature_2m": 28.1,
+          "temperature_2m": 28,
           "relative_humidity_2m": 75,
-          "wind_speed_10m": 13.1,
+          "wind_speed_10m": 8.4,
           "weather_code": 0
         }
       },
@@ -1625,11 +1697,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-03-14T12:45",
+          "time": "2026-03-14T15:15",
           "interval": 900,
-          "temperature_2m": 10.2,
-          "relative_humidity_2m": 48,
-          "wind_speed_10m": 10.8,
+          "temperature_2m": 11.4,
+          "relative_humidity_2m": 36,
+          "wind_speed_10m": 14,
           "weather_code": 1
         }
       }
@@ -3959,73 +4031,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 475010,
-          "forks": 44544,
+          "stars": 475045,
+          "forks": 44548,
           "language": "Markdown",
-          "updated": "2026-03-14T12:46:45Z"
+          "updated": "2026-03-14T15:13:16Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 445371,
-          "forks": 33527,
+          "stars": 445394,
+          "forks": 33533,
           "language": null,
-          "updated": "2026-03-14T12:46:25Z"
+          "updated": "2026-03-14T15:15:42Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 438111,
-          "forks": 43607,
+          "stars": 438119,
+          "forks": 43610,
           "language": "TypeScript",
-          "updated": "2026-03-14T12:37:09Z"
+          "updated": "2026-03-14T15:14:40Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 409958,
-          "forks": 44288,
+          "stars": 410049,
+          "forks": 44301,
           "language": "Python",
-          "updated": "2026-03-14T12:44:24Z"
+          "updated": "2026-03-14T15:19:58Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 383978,
-          "forks": 66021,
+          "stars": 383986,
+          "forks": 66019,
           "language": "Python",
-          "updated": "2026-03-14T11:01:25Z"
+          "updated": "2026-03-14T15:15:24Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 350878,
-          "forks": 43781,
+          "stars": 350884,
+          "forks": 43782,
           "language": "TypeScript",
-          "updated": "2026-03-14T12:35:56Z"
+          "updated": "2026-03-14T15:16:10Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 338798,
-          "forks": 54875,
+          "stars": 338808,
+          "forks": 54874,
           "language": "Python",
-          "updated": "2026-03-14T12:41:43Z"
+          "updated": "2026-03-14T15:15:19Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 337803,
-          "forks": 81622,
+          "stars": 337807,
+          "forks": 81620,
           "language": null,
-          "updated": "2026-03-14T11:45:50Z"
+          "updated": "2026-03-14T15:15:24Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 312121,
-          "forks": 59438,
+          "stars": 312462,
+          "forks": 59524,
           "language": "TypeScript",
-          "updated": "2026-03-14T12:49:03Z"
+          "updated": "2026-03-14T15:20:07Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 287067,
-          "forks": 27388,
+          "stars": 287089,
+          "forks": 27391,
           "language": "Python",
-          "updated": "2026-03-14T12:42:34Z"
+          "updated": "2026-03-14T15:15:37Z"
         }
       ],
       "source": "GitHub"
@@ -4567,6 +4639,36 @@
     "earthquakes": {
       "last24h": [
         {
+          "location": "80 km NE of Tonopah, Nevada",
+          "magnitude": 3.59,
+          "depth": 7.0825,
+          "lat": 38.4865,
+          "lng": -116.4802,
+          "time": "2026-03-14T15:06:49.980Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "16 km N of Laytonville, CA",
+          "magnitude": 2.63,
+          "depth": 5.92999982833862,
+          "lat": 39.8306655883789,
+          "lng": -123.477996826172,
+          "time": "2026-03-14T14:38:01.600Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "47 km N of Hatillo, Puerto Rico",
+          "magnitude": 2.53,
+          "depth": 23.61,
+          "lat": 18.916,
+          "lng": -66.8845,
+          "time": "2026-03-14T12:44:49.170Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
           "location": "44 km N of Valdez, Alaska",
           "magnitude": 3.2,
           "depth": 15.8,
@@ -4615,39 +4717,9 @@
           "time": "2026-03-14T09:36:21.248Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "49 km W of Mentone, Texas",
-          "magnitude": 2.6,
-          "depth": 6.0999,
-          "lat": 31.665,
-          "lng": -104.118,
-          "time": "2026-03-14T09:36:21.063Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "128 km SSE of Ugashik, Alaska",
-          "magnitude": 3.3,
-          "depth": 62.7,
-          "lat": 56.513,
-          "lng": -156.341,
-          "time": "2026-03-14T09:10:22.462Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "26 km WSW of Anchor Point, Alaska",
-          "magnitude": 2.9,
-          "depth": 67.1,
-          "lat": 59.653,
-          "lng": -152.224,
-          "time": "2026-03-14T09:07:20.616Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 43,
+      "total24h": 41,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4676,64 +4748,64 @@
     },
     "news": [
       {
-        "title": "Explosion at Amsterdam Jewish school 'a deliberate attack' says mayor",
-        "pubDate": "Sat, 14 Mar 2026 12:45:41 GMT",
-        "link": "https://www.bbc.com/news/articles/cwyg4j58gdyo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "NATO defence systems shoot down Iranian ballistic missile over Turkey",
-        "pubDate": "Sat, 14 Mar 2026 12:37:24 GMT",
-        "link": "https://www.france24.com/en/nato-defence-systems-shoot-down-iranian-ballistic-missile-over-turkey",
-        "source": "France24"
-      },
-      {
-        "title": "Cuba begins releasing prisoners and confirms US talks as island's energy crisis intensifies",
-        "pubDate": "Sat, 14 Mar 2026 12:36:20 GMT",
-        "link": "https://www.france24.com/en/cuba-begins-releasing-prisoners-and-confirms-us-talks-as-island-s-energy-crisis-intensifies",
-        "source": "France24"
-      },
-      {
-        "title": "Another 5 Palestinians killed in Israel’s genocide in Gaza amid wider war",
-        "pubDate": "Sat, 14 Mar 2026 12:12:07 +0000",
-        "link": "https://www.aljazeera.com/news/2026/3/14/israels-genocide-in-gaza-claims-another-5-palestinian-lives-amid-wider-war?traffic_source=rss",
+        "title": "Hunger is looming over Yemen, urgent action is needed",
+        "pubDate": "Sat, 14 Mar 2026 14:44:56 +0000",
+        "link": "https://www.aljazeera.com/opinions/2026/3/14/hunger-is-looming-over-yemen-urgent-action-is-needed?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Hamas urges key ally Iran to halt attacks on Gulf states",
-        "pubDate": "Sat, 14 Mar 2026 12:05:46 GMT",
-        "link": "https://www.bbc.com/news/articles/cvg3xk6xgyzo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
+        "title": "Israeli strike kills 12 medics in a clinic in southern Lebanon",
+        "pubDate": "Sat, 14 Mar 2026 14:19:13 GMT",
+        "link": "https://www.france24.com/en/israeli-strike-kills-12-medics-in-a-clinic-in-southern-lebanon",
+        "source": "France24"
+      },
+      {
+        "title": "Iraq: US embassy complex in Baghdad hit by a drone strike",
+        "pubDate": "Sat, 14 Mar 2026 14:12:42 GMT",
+        "link": "https://www.france24.com/en/irak-us-embassy-complex-in-baghdad-hit-by-a-drone-strike",
+        "source": "France24"
+      },
+      {
+        "title": "Lebanon says 26 paramedics were killed in Israeli strikes since March 2",
+        "pubDate": "Sat, 14 Mar 2026 14:11:38 GMT",
+        "link": "https://www.france24.com/en/lebanon-says-26-paramedics-were-killed-in-israeli-strikes-since-march-2",
+        "source": "France24"
+      },
+      {
+        "title": "Why is Iran’s Kharg Island important?",
+        "pubDate": "Sat, 14 Mar 2026 14:07:05 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/14/us-bombs-irans-oil-hub-kharg-island?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Fire and damage after strike on US embassy compound in Baghdad",
+        "pubDate": "Sat, 14 Mar 2026 13:55:01 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/14/fire-and-damage-after-strike-on-us-embassy-compound-in-baghdad?traffic_source=rss",
+        "source": "Al Jazeera"
       },
       {
         "title": "Why has the US targeted Iran's Kharg Island?",
-        "pubDate": "Sat, 14 Mar 2026 11:39:38 GMT",
+        "pubDate": "Sat, 14 Mar 2026 13:42:48 GMT",
         "link": "https://www.bbc.com/news/articles/c8jxzlwvd8ro?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Kimi Antonelli becomes youngest F1 driver to take ‌Grand Prix pole position",
-        "pubDate": "Sat, 14 Mar 2026 11:37:31 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/3/14/kimi-antonelli-becomes-youngest-f1-driver-to-take-grand-prix-pole-position?traffic_source=rss",
-        "source": "Al Jazeera"
+        "title": "Hamas urges key ally Iran to halt attacks on Gulf states",
+        "pubDate": "Sat, 14 Mar 2026 13:34:17 GMT",
+        "link": "https://www.bbc.com/news/articles/cvg3xk6xgyzo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
       },
       {
-        "title": "Sandstorm hits Gaza, impacting displaced Palestinians",
-        "pubDate": "Sat, 14 Mar 2026 11:31:34 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/14/sandstorm-hits-gaza-impacting-displaced-palestinians?traffic_source=rss",
-        "source": "Al Jazeera"
+        "title": "More US Marines and warships being moved to Middle East, reports say",
+        "pubDate": "Sat, 14 Mar 2026 13:27:32 GMT",
+        "link": "https://www.bbc.com/news/articles/cq8gj9n12g8o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
       },
       {
         "title": "Pakistan shoots down Taliban drones after strikes on Kabul",
         "pubDate": "Sat, 14 Mar 2026 10:57:00 GMT",
         "link": "https://www.dw.com/en/pakistan-shoots-down-taliban-drones-after-strikes-on-kabul/a-76359740?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
-      },
-      {
-        "title": "Two weeks into the war in the Middle East - What happens next?",
-        "pubDate": "Sat, 14 Mar 2026 10:56:36 GMT",
-        "link": "https://www.france24.com/en/two-weeks-into-the-war-in-the-middle-east-what-is-to-expect",
-        "source": "France24"
       },
       {
         "title": "US vs. Iran: Three generations of conflict",
@@ -4760,28 +4832,10 @@
         "source": "NASA"
       },
       {
-        "title": "Iran: WFP Middle East Regional Escalation Emergency Response Situation Report #2, 13 March 2026",
-        "pubDate": "Fri, 13 Mar 2026 21:13:18 +0000",
-        "link": "https://reliefweb.int/report/iran-islamic-republic/wfp-middle-east-regional-escalation-emergency-response-situation-report-2-13-march-2026",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "Iran: Statement by Tom Fletcher, USG for Humanitarian Affairs and Emergency Relief Coordinator: Closure of Hormuz could have ‘immense impact’ on humanitarian operations",
-        "pubDate": "Fri, 13 Mar 2026 21:01:09 +0000",
-        "link": "https://reliefweb.int/report/iran-islamic-republic/statement-tom-fletcher-usg-humanitarian-affairs-and-emergency-relief-coordinator-closure-hormuz-could-have-immense-impact-humanitarian-operations",
-        "source": "ReliefWeb"
-      },
-      {
         "title": "NASA Selects Finalists in Student Aircraft Maintenance Competition",
         "pubDate": "Fri, 13 Mar 2026 19:17:49 +0000",
         "link": "https://www.nasa.gov/aeronautics/nasa-selects-finalists-in-student-aircraft-maintenance-competition/",
         "source": "NASA"
-      },
-      {
-        "title": "Haiti: IMAWG Haïti : Compte rendu de réunion, en ligne, 12 mars 2026 [Meeting Minutes]",
-        "pubDate": "Fri, 13 Mar 2026 18:58:25 +0000",
-        "link": "https://reliefweb.int/report/haiti/imawg-haiti-compte-rendu-de-reunion-en-ligne-12-mars-2026-meeting-minutes",
-        "source": "ReliefWeb"
       },
       {
         "title": "France returns sacred talking drum looted from Côte d’Ivoire over 100 years ago",
@@ -4794,6 +4848,24 @@
         "pubDate": "Fri, 13 Mar 2026 12:00:00 +0000",
         "link": "https://news.un.org/feed/view/en/story/2026/03/1167133",
         "source": "UN News"
+      },
+      {
+        "title": "Myanmar at a ‘crossroads’: The world must not forsake civilians there, urges UN expert",
+        "pubDate": "Fri, 13 Mar 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/03/1167132",
+        "source": "UN News"
+      },
+      {
+        "title": "UN chief launches major humanitarian appeal from war-torn Lebanon",
+        "pubDate": "Fri, 13 Mar 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/03/1167131",
+        "source": "UN News"
+      },
+      {
+        "title": "Plato readies for space-like tests",
+        "pubDate": "Fri, 13 Mar 2026 11:00:00 +0100",
+        "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Images/2026/03/Plato_readies_for_space-like_tests]]>",
+        "source": "ESA"
       }
     ],
     "volcanic": [],
@@ -4847,7 +4919,7 @@
         "sunspots": 78.2
       }
     ],
-    "lastUpdated": "2026-03-14T12:51:18.292Z"
+    "lastUpdated": "2026-03-14T15:21:07.518Z"
   },
   "momentum": {
     "indicators": [
