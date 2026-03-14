@@ -57,8 +57,11 @@ export class Charts {
 
     const values = data.map(d => Number(d.value)).filter(Number.isFinite);
     if (values.length < 2) return;
-    const minVal = Math.min(...values) * 0.95;
-    const maxVal = Math.max(...values) * 1.05 || 1;
+    const rawMin = Math.min(...values);
+    const rawMax = Math.max(...values);
+    const range = rawMax - rawMin || 1;
+    const minVal = rawMin - range * 0.05;
+    const maxVal = rawMax + range * 0.05 || 1;
 
     const xScale = (i) => padding.left + (i / (data.length - 1)) * plotWidth;
     const yScale = (v) => padding.top + plotHeight - ((v - minVal) / (maxVal - minVal)) * plotHeight;

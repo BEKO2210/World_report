@@ -93,6 +93,12 @@ function buildWorldState() {
     }
   }
 
+  // Calculate global average AQI from all cities
+  const allAQICities = [...cleanestCities, ...mostPolluted];
+  const globalAvgAQI = allAQICities.length > 0
+    ? Math.round(allAQICities.reduce((s, c) => s + (c.aqi || 0), 0) / allAQICities.length)
+    : existing?.environment?.airQuality?.globalAvgAQI || 68;
+
   // Environment scores
   const envTempScore = normalize(tempCurrent, 3.0, 0); // 0°C = 100, 3°C = 0
   const envCO2Score = normalize(co2Current, 500, 280); // 280ppm = 100, 500ppm = 0
@@ -143,7 +149,7 @@ function buildWorldState() {
 
   const gdpGrowth = latest(gdpData?.history || [])?.value || existing?.economy?.gdpGrowth?.global || 3.1;
   const giniHistory = giniData?.history || existing?.economy?.gini?.history || [];
-  const giniCurrent = latest(giniHistory)?.value || 0.42;
+  const giniCurrent = latest(giniHistory)?.value || 42; // World Bank Gini is 0-100 scale (NOT 0-1!)
   const inflationCurrent = latest(inflationData?.history || [])?.value || 6.5;
   const unemploymentCurrent = latest(unemploymentData?.history || [])?.value || 5.8;
 
@@ -347,7 +353,7 @@ function buildWorldState() {
           { name: 'CO2-Konzentration', value: `${Math.round(co2Current)} ppm`, score: Math.round(envCO2Score), trend: 'declining', source: 'NOAA' },
           { name: 'Waldfläche', value: `${forestCurrent || 31.2}%`, score: Math.round(envForestScore), trend: 'declining', source: 'World Bank' },
           { name: 'Erneuerbare Energie', value: `${renewableCurrent}%`, score: Math.round(envRenewableScore), trend: 'improving', source: 'World Bank / IRENA' },
-          { name: 'Luftqualität (Global Avg AQI)', value: 68, score: 45, trend: 'stable', source: 'OpenAQ' },
+          { name: 'Luftqualität (Global Avg AQI)', value: globalAvgAQI, score: globalAvgAQI <= 50 ? 70 : globalAvgAQI <= 100 ? 45 : 20, trend: 'stable', source: 'Open-Meteo' },
           { name: 'Arktis-Eisfläche', value: '4.2 Mio km²', score: 30, trend: 'declining', source: 'NSIDC' }
         ]
       },
@@ -422,10 +428,10 @@ function buildWorldState() {
         source: 'NOAA'
       },
       airQuality: {
-        globalAvgAQI: 68,
+        globalAvgAQI,
         cleanestCities,
         mostPolluted,
-        source: 'OpenAQ / WAQI'
+        source: 'Open-Meteo Air Quality'
       },
       arcticIce: existing?.environment?.arcticIce || {
         current: 4.2, unit: 'million km²', reference1980: 7.8, percentLost: 46.2, source: 'NSIDC'
@@ -603,7 +609,7 @@ function buildDataSourcesList() {
   return [
     { name: 'NASA GISTEMP', url: 'https://data.giss.nasa.gov/gistemp/', trust: 3, lastUpdate: today, category: 'environment' },
     { name: 'NOAA (CO2)', url: 'https://gml.noaa.gov/ccgg/trends/', trust: 3, lastUpdate: today, category: 'environment' },
-    { name: 'OpenAQ', url: 'https://openaq.org/', trust: 2, lastUpdate: today, category: 'environment' },
+    { name: 'Open-Meteo (Air Quality)', url: 'https://air-quality-api.open-meteo.com/', trust: 2, lastUpdate: today, category: 'environment' },
     { name: 'Open-Meteo', url: 'https://open-meteo.com/', trust: 2, lastUpdate: today, category: 'environment' },
     { name: 'World Bank (Environment)', url: 'https://data.worldbank.org/', trust: 3, lastUpdate: today, category: 'environment' },
     { name: 'NSIDC (Arktis)', url: 'https://nsidc.org/', trust: 3, lastUpdate: today, category: 'environment' },
