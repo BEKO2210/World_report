@@ -379,3 +379,50 @@
   .exchange-rates { grid-template-columns: 1fr; }
   .btn { padding: 14px 24px; min-height: 48px; }
 }
+
+/* ─── Language Toggle ─── */
+.lang-toggle-wrapper {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 300;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: rgba(10, 10, 15, 0.65);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-family: var(--font-mono, 'SF Mono', monospace);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transform: scale(1.05);
+}
+.lang-toggle:active {
+  transform: scale(0.97);
+}
+.lang-toggle__icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+.lang-toggle__label {
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .lang-toggle-wrapper { top: 12px; right: 12px; }
+  .lang-toggle { padding: 6px 10px; font-size: 11px; }
+}

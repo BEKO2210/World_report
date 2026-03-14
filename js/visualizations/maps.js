@@ -4,6 +4,7 @@
 
 import { MathUtils } from '../utils/math.js';
 import { DOMUtils } from '../utils/dom.js';
+import { i18n } from '../i18n.js';
 
 // ─── Country data for SVG coloring ───
 // Climate risk: higher = more at risk (based on ND-GAIN vulnerability index approximation)
@@ -181,11 +182,11 @@ export class Maps {
     });
 
     Maps._addLegend(container, [
-      { color: '#a50026', label: 'Extrem hoch' },
-      { color: '#d73027', label: 'Hoch' },
-      { color: '#f46d43', label: 'Mittel' },
-      { color: '#fdae61', label: 'Niedrig' },
-      { color: '#fee08b', label: 'Gering' }
+      { color: '#a50026', label: i18n.t('map.extremelyHigh') },
+      { color: '#d73027', label: i18n.t('map.high') },
+      { color: '#f46d43', label: i18n.t('map.medium') },
+      { color: '#fdae61', label: i18n.t('map.low') },
+      { color: '#fee08b', label: i18n.t('map.veryLow') }
     ]);
 
     // Add temperature label
@@ -243,7 +244,7 @@ export class Maps {
           animationDelay: `${i * 150}ms`,
           boxShadow: `0 0 ${size * 1.5}px ${color}`
         },
-        title: `${conflict.name} (${conflict.type}, Intensität: ${(conflict.intensity * 100).toFixed(0)}%)`
+        title: `${conflict.name} (${conflict.type}, ${i18n.t('map.intensity')} ${(conflict.intensity * 100).toFixed(0)}%)`
       });
 
       // Label for major conflicts
@@ -271,10 +272,10 @@ export class Maps {
     }
 
     Maps._addLegend(container, [
-      { color: '#ff3b30', label: 'Krieg' },
-      { color: '#ff9500', label: 'Konflikt' },
-      { color: '#ffcc00', label: 'Unruhen' },
-      { color: 'rgba(255,149,0,0.5)', label: 'Fluchtrouten' }
+      { color: '#ff3b30', label: i18n.t('map.war') },
+      { color: '#ff9500', label: i18n.t('map.conflict') },
+      { color: '#ffcc00', label: i18n.t('map.unrest') },
+      { color: 'rgba(255,149,0,0.5)', label: i18n.t('map.flightRoutes') }
     ]);
 
     // Refugee badge
@@ -287,7 +288,7 @@ export class Maps {
           fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-mono)',
           zIndex: '5'
         },
-        textContent: `${(refugees.total / 1e6).toFixed(1)} Mio. Vertriebene`
+        textContent: i18n.t('map.mioDisplaced', { val: (refugees.total / 1e6).toFixed(1) })
       });
       overlay.appendChild(badge);
     }
@@ -362,14 +363,14 @@ export class Maps {
     const h = rect.height || 450;
 
     const hotspots = [
-      { name: 'Südsudan', lat: 7.0, lng: 30.0, pct: '63%' },
-      { name: 'Somalia', lat: 5.1, lng: 46.2, pct: '50%' },
-      { name: 'Jemen', lat: 15.5, lng: 48.5, pct: '45%' },
-      { name: 'Afghanistan', lat: 33.0, lng: 65.0, pct: '42%' },
-      { name: 'Sudan', lat: 15.5, lng: 32.5, pct: '37%' },
-      { name: 'Gaza', lat: 31.4, lng: 34.3, pct: '90%' },
-      { name: 'DR Kongo', lat: -4.0, lng: 22.0, pct: '26%' },
-      { name: 'Haiti', lat: 19.0, lng: -72.3, pct: '48%' }
+      { name: i18n.t('map.southSudan'), lat: 7.0, lng: 30.0, pct: '63%' },
+      { name: i18n.t('map.somalia'), lat: 5.1, lng: 46.2, pct: '50%' },
+      { name: i18n.t('map.yemen'), lat: 15.5, lng: 48.5, pct: '45%' },
+      { name: i18n.t('map.afghanistan'), lat: 33.0, lng: 65.0, pct: '42%' },
+      { name: i18n.t('map.sudan'), lat: 15.5, lng: 32.5, pct: '37%' },
+      { name: i18n.t('map.gaza'), lat: 31.4, lng: 34.3, pct: '90%' },
+      { name: i18n.t('map.drCongo'), lat: -4.0, lng: 22.0, pct: '26%' },
+      { name: i18n.t('map.haiti'), lat: 19.0, lng: -72.3, pct: '48%' }
     ];
 
     if (overlay) {
@@ -384,7 +385,7 @@ export class Maps {
             boxShadow: '0 0 8px rgba(255,255,255,0.6)',
             zIndex: '3'
           },
-          title: `${hs.name}: ${hs.pct} akut unterernährt`
+          title: `${hs.name}: ${hs.pct} ${i18n.t('map.acutelyMalnourished')}`
         });
         const label = DOMUtils.create('div', {
           style: {
@@ -402,11 +403,11 @@ export class Maps {
     }
 
     Maps._addLegend(container, [
-      { color: '#67000d', label: 'Hungersnot (IPC 5)' },
-      { color: '#a50f15', label: 'Notfall (IPC 4)' },
-      { color: '#cb181d', label: 'Krise (IPC 3)' },
-      { color: '#ef3b2c', label: 'Stress (IPC 2)' },
-      { color: '#1a1a2e', label: 'Keine Daten' }
+      { color: '#67000d', label: i18n.t('map.famine') },
+      { color: '#a50f15', label: i18n.t('map.emergency') },
+      { color: '#cb181d', label: i18n.t('map.crisis') },
+      { color: '#ef3b2c', label: i18n.t('map.stress') },
+      { color: '#1a1a2e', label: i18n.t('map.noData') }
     ]);
   }
 
@@ -425,11 +426,11 @@ export class Maps {
     });
 
     Maps._addLegend(container, [
-      { color: '#1a9850', label: '>35% geschützt' },
-      { color: '#66bd63', label: '25–35%' },
-      { color: '#a6d96a', label: '15–25%' },
-      { color: '#d9ef8b', label: '8–15%' },
-      { color: '#f46d43', label: '<8% geschützt' }
+      { color: '#1a9850', label: i18n.t('map.protected35') },
+      { color: '#66bd63', label: i18n.t('map.protected25') },
+      { color: '#a6d96a', label: i18n.t('map.protected15') },
+      { color: '#d9ef8b', label: i18n.t('map.protected8') },
+      { color: '#f46d43', label: i18n.t('map.protectedLow') }
     ]);
 
     // Forest badge
@@ -444,7 +445,7 @@ export class Maps {
             fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-mono)',
             zIndex: '5'
           },
-          textContent: `Wald: ${envData.forest.current}% global`
+          textContent: i18n.t('map.forest', { val: envData.forest.current })
         });
         overlay.appendChild(badge);
       }
@@ -467,12 +468,12 @@ export class Maps {
     });
 
     Maps._addLegend(container, [
-      { color: '#006837', label: '>75% erneuerbar' },
-      { color: '#31a354', label: '50–75%' },
-      { color: '#74c476', label: '30–50%' },
-      { color: '#bae4b3', label: '15–30%' },
-      { color: '#edf8e9', label: '5–15%' },
-      { color: '#4a1c1c', label: '<5% (fossil)' }
+      { color: '#006837', label: i18n.t('map.renewable75') },
+      { color: '#31a354', label: i18n.t('map.renewable50') },
+      { color: '#74c476', label: i18n.t('map.renewable30') },
+      { color: '#bae4b3', label: i18n.t('map.renewable15') },
+      { color: '#edf8e9', label: i18n.t('map.renewable5') },
+      { color: '#4a1c1c', label: i18n.t('map.fossil') }
     ]);
 
     // Renewables badge
@@ -487,7 +488,7 @@ export class Maps {
             fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-mono)',
             zIndex: '5'
           },
-          textContent: `${envData.renewableEnergy.current}% global`
+          textContent: i18n.t('map.renewableGlobal', { val: envData.renewableEnergy.current })
         });
         overlay.appendChild(badge);
       }
@@ -570,7 +571,7 @@ export class Maps {
         }
       })
       .catch(() => {
-        svgWrapper.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:14px;">Weltkarte</div>`;
+        svgWrapper.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:14px;">${i18n.t('map.worldMap')}</div>`;
       });
 
     mapEl.appendChild(svgWrapper);

@@ -2,6 +2,8 @@
    BELKIS ONE 1.0 — Math Utilities
    ═══════════════════════════════════════════════════════════ */
 
+import { i18n } from '../i18n.js';
+
 export const MathUtils = {
   // ─── Clamping ───
   clamp(value, min, max) {
@@ -121,9 +123,9 @@ export const MathUtils = {
     if (!Number.isFinite(num)) return '—';
     const abs = Math.abs(num);
     const sign = num < 0 ? '-' : '';
-    if (abs >= 1e12) return sign + (abs / 1e12).toFixed(1) + ' Bio';
-    if (abs >= 1e9) return sign + (abs / 1e9).toFixed(1) + ' Mrd';
-    if (abs >= 1e6) return sign + (abs / 1e6).toFixed(1) + ' Mio';
+    if (abs >= 1e12) return sign + (abs / 1e12).toFixed(1) + ' ' + i18n.t('num.bio');
+    if (abs >= 1e9) return sign + (abs / 1e9).toFixed(1) + ' ' + i18n.t('num.mrd');
+    if (abs >= 1e6) return sign + (abs / 1e6).toFixed(1) + ' ' + i18n.t('num.mio');
     if (abs >= 1e3) return sign + (abs / 1e3).toFixed(1) + 'K';
     return num.toString();
   },
@@ -136,11 +138,11 @@ export const MathUtils = {
 
   // ─── Get zone info from score ───
   getZone(score) {
-    if (score <= 20) return { label: 'KRITISCH', zone: 'critical', color: '#ff3b30' };
-    if (score <= 40) return { label: 'BESORGNISERREGEND', zone: 'concerning', color: '#ff9500' };
-    if (score <= 60) return { label: 'GEMISCHT', zone: 'mixed', color: '#ffcc00' };
-    if (score <= 80) return { label: 'POSITIV', zone: 'positive', color: '#34c759' };
-    return { label: 'EXZELLENT', zone: 'excellent', color: '#00d4ff' };
+    if (score <= 20) return { label: i18n.t('act1.zone.critical'), zone: 'critical', color: '#ff3b30' };
+    if (score <= 40) return { label: i18n.t('act1.zone.concerning'), zone: 'concerning', color: '#ff9500' };
+    if (score <= 60) return { label: i18n.t('act1.zone.mixed'), zone: 'mixed', color: '#ffcc00' };
+    if (score <= 80) return { label: i18n.t('act1.zone.positive'), zone: 'positive', color: '#34c759' };
+    return { label: i18n.t('act1.zone.excellent'), zone: 'excellent', color: '#00d4ff' };
   },
 
   // ─── Get color for temperature anomaly ───

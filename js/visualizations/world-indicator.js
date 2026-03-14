@@ -5,6 +5,7 @@
 import { MathUtils } from '../utils/math.js';
 import { Charts } from './charts.js';
 import { Counter } from './counters.js';
+import { i18n } from '../i18n.js';
 
 export class WorldIndicator {
   constructor(container, data) {
