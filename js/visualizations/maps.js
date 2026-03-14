@@ -87,8 +87,16 @@ export class Maps {
   // ─── Get ISO code from SVG path element ───
   static _getISO(path) {
     if (path.id && path.id.length === 2) return path.id;
+    // Check each class token against CLASS_TO_ISO (handles added classes like map-country--war)
     const cls = path.getAttribute('class');
-    if (cls && CLASS_TO_ISO[cls]) return CLASS_TO_ISO[cls];
+    if (cls) {
+      const tokens = cls.split(/\s+/);
+      // Try full class string first (single-token original class)
+      if (tokens.length === 1 && CLASS_TO_ISO[cls]) return CLASS_TO_ISO[cls];
+      // Multi-word class names: rebuild without our added classes and check
+      const filtered = tokens.filter(t => !t.startsWith('map-country--')).join(' ');
+      if (filtered && CLASS_TO_ISO[filtered]) return CLASS_TO_ISO[filtered];
+    }
     return null;
   }
 
@@ -125,7 +133,7 @@ export class Maps {
     });
   }
 
-  // ─── Clear overlays (points, flows, legends) ───
+  // ─── Clear overlays (points, flows, legends, tooltips) ───
   static _clearOverlays(container) {
     const overlay = container.querySelector('.map-overlay');
     if (overlay) overlay.innerHTML = '';
@@ -133,6 +141,13 @@ export class Maps {
     if (flowSvg) flowSvg.remove();
     const legend = container.querySelector('.map-legend');
     if (legend) legend.remove();
+    // Clean up tooltip + event listeners from previous layer
+    const tip = container.querySelector('.map-tooltip');
+    if (tip) tip.remove();
+    if (container._tooltipCleanup) { container._tooltipCleanup(); container._tooltipCleanup = null; }
+    // Reset cursor on all paths
+    const svg = container.querySelector('.map-svg-wrapper svg');
+    if (svg) svg.querySelectorAll('path').forEach(p => { p.style.cursor = ''; });
   }
 
   // ─── Add legend to map ───
@@ -495,15 +510,18 @@ export class Maps {
       tip.textContent = type ? `${name} — ${type}` : name;
       tip.classList.add('map-tooltip--visible');
 
-      // Position relative to container
+      // Position relative to container, clamped within bounds
       const cRect = container.getBoundingClientRect();
-      let x = e.clientX - cRect.left + 12;
-      let y = e.clientY - cRect.top - 28;
-      // Keep inside container bounds
       const tw = tip.offsetWidth || 120;
+      const th = tip.offsetHeight || 28;
+      let x = e.clientX - cRect.left + 12;
+      let y = e.clientY - cRect.top - th - 6;
+      // Clamp horizontally
       if (x + tw > cRect.width - 8) x = cRect.width - tw - 8;
       if (x < 4) x = 4;
+      // Clamp vertically — flip below cursor if no room above
       if (y < 4) y = e.clientY - cRect.top + 16;
+      if (y + th > cRect.height - 4) y = cRect.height - th - 4;
       tip.style.left = `${x}px`;
       tip.style.top = `${y}px`;
     };
