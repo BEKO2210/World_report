@@ -55,17 +55,33 @@ Browser:
   → ScrollEngine steuert 13 Sektionen via IntersectionObserver
 ```
 
-### World Index Berechnung
+### World Index Berechnung (Tragfähigkeitsprinzip V6 — Mike Hertig)
 
 ```
-worldIndex = environment * 0.25
-           + society    * 0.25
-           + economy    * 0.20
-           + progress   * 0.20
-           + momentum   * 0.10
+rawIndex = environment * 0.25
+         + society    * 0.25
+         + economy    * 0.20
+         + progress   * 0.20
+         + momentum   * 0.10
+
+worldIndex = (rawIndex + existencePenalty + cascadePenalty) × balanceMultiplier
 ```
 
-**Wichtig**: Gewichte MÜSSEN sich zu 1.0 summieren. Jeder Sub-Score ist 0-100.
+**Gewichte** MÜSSEN sich zu 1.0 summieren. Jeder Sub-Score ist 0-100.
+
+**Carrying Capacity Checks:**
+1. **CHECK 1 (Existence)**: Strafe 0 bis -20 wenn Sub-Score < 15 (Existenz-Boden)
+2. **CHECK 2 (Balance)**: Multiplikator 0.85–1.10 basierend auf Anteil verbesserter Indikatoren
+3. **CHECK 3 (Cascading)**: Strafe 0 bis -10 wenn korrelierte Kategorien gleichzeitig fallen
+
+**Drei Indikatoren pro Kategorie:**
+- Buffer Distance: Abstand zur kritischen Schwelle (0-100)
+- Recovery Time: Geschätzte Erholungszeit bei Abwärtstrend
+- Maintenance Cost: Volatilität (Standardabweichung) der letzten Werte
+
+**Erosion/Expansion Spektrum:**
+- Erosion: Stable → Strained → Fragile → Critical → Irreversible
+- Expansion: Stable → Elastic → Capacitive → Expansive → Generative
 
 ### Sub-Score Berechnungen
 

@@ -216,18 +216,18 @@ export class Maps {
   static conflictsLayer(container, conflicts, refugees) {
     Maps._clearOverlays(container);
 
-    // Build conflict data map: merge API data + additional known conflicts (2026)
+    // Build conflict data map: merge API data + additional known conflicts (March 2026)
+    // Sources: ACLED, Crisis Group, CFR, Al Jazeera, Wikipedia
     const CONFLICT_COUNTRIES = {
-      // Wars (highest intensity — bright red glow)
-      UA: 0.95, PS: 0.92, SD: 0.88, MM: 0.75, IL: 0.70,
-      // Armed conflicts
-      SY: 0.65, YE: 0.62, SO: 0.58, CD: 0.55, ML: 0.52,
-      BF: 0.50, NE: 0.48, HT: 0.45,
-      // Iran/Middle East escalation 2026
-      IR: 0.72, LB: 0.60, IQ: 0.50,
-      // Additional active conflicts
-      AF: 0.48, NG: 0.42, ET: 0.40, CF: 0.45, CM: 0.35,
-      MZ: 0.32, PK: 0.38, TD: 0.30, LY: 0.35
+      // Wars (intensity ≥ 0.7 — bright red glow)
+      UA: 0.90, RU: 0.90, PS: 1.0, SD: 0.95, MM: 0.85, IR: 0.90,
+      IL: 0.90, LB: 0.80, CD: 0.80, AF: 0.75, PK: 0.70,
+      // Armed conflicts (0.5–0.69 — orange glow)
+      SS: 0.70, ET: 0.70, ML: 0.70, SY: 0.60, SO: 0.60,
+      BF: 0.65, HT: 0.65, NG: 0.60, YE: 0.55, NE: 0.55,
+      VE: 0.50, MZ: 0.50, EC: 0.50, CO: 0.45, CM: 0.45,
+      // Unrest / lower-intensity (< 0.5 — dark orange glow)
+      CF: 0.45, IQ: 0.35, LY: 0.30, TD: 0.35, MX: 0.45
     };
 
     // Conflict name-to-ISO mapping for data from world-state.json
@@ -286,64 +286,45 @@ export class Maps {
       });
     }
 
-    // Add country name labels on overlay for major conflicts
-    const overlay = container.querySelector('.map-overlay');
-    const rect = container.getBoundingClientRect();
-    const w = rect.width || 900;
-    const h = rect.height || 450;
-
-    const labelData = [
-      { name: 'Ukraine', lat: 49.5, lng: 31.2, type: 'war' },
-      { name: i18n.t('map.gaza'), lat: 31.4, lng: 34.3, type: 'war' },
-      { name: i18n.t('map.sudan'), lat: 15.5, lng: 32.5, type: 'war' },
-      { name: 'Myanmar', lat: 19.8, lng: 96.0, type: 'war' },
-      { name: 'Iran', lat: 32.4, lng: 53.7, type: 'war' },
-      { name: i18n.t('map.syria'), lat: 35.0, lng: 38.0, type: 'conflict' },
-      { name: i18n.t('map.yemen'), lat: 15.6, lng: 48.5, type: 'conflict' },
-      { name: i18n.t('map.drCongo'), lat: -4.0, lng: 22.0, type: 'conflict' },
-      { name: i18n.t('map.lebanon'), lat: 33.9, lng: 35.9, type: 'conflict' },
-      { name: i18n.t('map.somalia'), lat: 5.1, lng: 46.2, type: 'conflict' }
-    ];
-
-    if (overlay) {
-      labelData.forEach((item, i) => {
-        const pos = MathUtils.geoToSVG(item.lat, item.lng, w, h);
-        const color = item.type === 'war' ? '#ff4444' : '#ff9500';
-        const label = DOMUtils.create('div', {
-          className: 'map-conflict-label',
-          style: {
-            position: 'absolute',
-            left: `${pos.x}px`, top: `${pos.y - 10}px`,
-            fontSize: '10px', fontWeight: '600', color: '#fff',
-            whiteSpace: 'nowrap', pointerEvents: 'none', zIndex: '4',
-            textShadow: `0 0 8px ${color}, 0 1px 4px rgba(0,0,0,0.9)`,
-            opacity: '0', transform: 'translateY(4px)',
-            transition: `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms`
-          },
-          textContent: item.name
-        });
-        overlay.appendChild(label);
-        // Trigger animation
-        requestAnimationFrame(() => {
-          label.style.opacity = '1';
-          label.style.transform = 'translateY(0)';
-        });
-      });
+    // Tooltip data for conflict countries (shown on click)
+    const CONFLICT_NAMES = {
+      UA: 'Ukraine', RU: i18n.t('map.russia'), PS: i18n.t('map.gaza'),
+      IL: 'Israel', SD: i18n.t('map.sudan'), MM: 'Myanmar',
+      IR: i18n.t('map.iran'), LB: i18n.t('map.lebanon'),
+      CD: i18n.t('map.drCongo'), AF: i18n.t('map.afghanistan'),
+      PK: 'Pakistan', SS: i18n.t('map.southSudan'), SY: i18n.t('map.syria'),
+      YE: i18n.t('map.yemen'), SO: i18n.t('map.somalia'), HT: 'Haiti',
+      ML: 'Mali', BF: 'Burkina Faso', NE: 'Niger', NG: 'Nigeria',
+      ET: i18n.t('map.ethiopia') || 'Ethiopia', CF: 'Central African Rep.',
+      CM: i18n.t('map.cameroon') || 'Cameroon', MZ: i18n.t('map.mozambique') || 'Mozambique',
+      TD: i18n.t('map.chad') || 'Chad', LY: i18n.t('map.libya') || 'Libya',
+      IQ: i18n.t('map.iraq'), VE: 'Venezuela', EC: 'Ecuador',
+      CO: 'Colombia', MX: 'Mexico'
+    };
+    const CONFLICT_TYPES = {};
+    for (const [iso, val] of Object.entries(CONFLICT_COUNTRIES)) {
+      CONFLICT_TYPES[iso] = val >= 0.7 ? i18n.t('map.war') : val >= 0.5 ? i18n.t('map.conflict') : i18n.t('map.unrest');
     }
+
+    // Enable click-to-show tooltip on highlighted countries
+    Maps._enableCountryTooltip(container, CONFLICT_COUNTRIES, CONFLICT_NAMES, CONFLICT_TYPES);
 
     // Refugee badge
     if (refugees?.total) {
-      const badge = DOMUtils.create('div', {
-        style: {
-          position: 'absolute', top: '8px', right: '8px',
-          padding: '6px 12px', borderRadius: '8px',
-          background: 'rgba(255,59,48,0.85)', color: '#fff',
-          fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-mono)',
-          zIndex: '5'
-        },
-        textContent: i18n.t('map.mioDisplaced', { val: (refugees.total / 1e6).toFixed(1) })
-      });
-      if (overlay) overlay.appendChild(badge);
+      const overlay = container.querySelector('.map-overlay');
+      if (overlay) {
+        const badge = DOMUtils.create('div', {
+          style: {
+            position: 'absolute', top: '8px', right: '8px',
+            padding: '6px 12px', borderRadius: '8px',
+            background: 'rgba(255,59,48,0.85)', color: '#fff',
+            fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-mono)',
+            zIndex: '5'
+          },
+          textContent: i18n.t('map.mioDisplaced', { val: (refugees.total / 1e6).toFixed(1) })
+        });
+        overlay.appendChild(badge);
+      }
     }
 
     Maps._addLegend(container, [
@@ -366,51 +347,38 @@ export class Maps {
       return '#fb6a4a';
     });
 
-    // Add hunger hotspot labels
-    const overlay = container.querySelector('.map-overlay');
-    const rect = container.getBoundingClientRect();
-    const w = rect.width || 900;
-    const h = rect.height || 450;
-
-    const hotspots = [
-      { name: i18n.t('map.southSudan'), lat: 7.0, lng: 30.0, pct: '63%' },
-      { name: i18n.t('map.somalia'), lat: 5.1, lng: 46.2, pct: '50%' },
-      { name: i18n.t('map.yemen'), lat: 15.5, lng: 48.5, pct: '45%' },
-      { name: i18n.t('map.afghanistan'), lat: 33.0, lng: 65.0, pct: '42%' },
-      { name: i18n.t('map.sudan'), lat: 15.5, lng: 32.5, pct: '37%' },
-      { name: i18n.t('map.gaza'), lat: 31.4, lng: 34.3, pct: '90%' },
-      { name: i18n.t('map.drCongo'), lat: -4.0, lng: 22.0, pct: '26%' },
-      { name: i18n.t('map.haiti'), lat: 19.0, lng: -72.3, pct: '48%' }
-    ];
-
-    if (overlay) {
-      hotspots.forEach(hs => {
-        const pos = MathUtils.geoToSVG(hs.lat, hs.lng, w, h);
-        const marker = DOMUtils.create('div', {
-          className: 'map-point',
-          style: {
-            left: `${pos.x}px`, top: `${pos.y}px`,
-            width: '8px', height: '8px',
-            backgroundColor: '#fff', borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255,255,255,0.6)',
-            zIndex: '3'
-          },
-          title: `${hs.name}: ${hs.pct} ${i18n.t('map.acutelyMalnourished')}`
-        });
-        const label = DOMUtils.create('div', {
-          style: {
-            position: 'absolute',
-            left: `${pos.x + 8}px`, top: `${pos.y - 6}px`,
-            fontSize: '10px', color: '#fff', whiteSpace: 'nowrap',
-            textShadow: '0 1px 4px rgba(0,0,0,0.9)',
-            pointerEvents: 'none', zIndex: '4'
-          },
-          textContent: `${hs.name} ${hs.pct}`
-        });
-        overlay.appendChild(marker);
-        overlay.appendChild(label);
-      });
+    // Click-to-show tooltip for hunger countries
+    const HUNGER_NAMES = {};
+    const HUNGER_DETAILS = {};
+    const hotspotPcts = {
+      SS: '63%', SO: '50%', YE: '45%', AF: '42%', SD: '37%',
+      PS: '90%', CD: '26%', HT: '48%', ET: '35%', MM: '30%',
+      CF: '40%', TD: '32%', BF: '28%', MW: '25%', NE: '30%',
+      NG: '22%', ML: '27%', MZ: '20%', SY: '33%', KP: '29%'
+    };
+    for (const iso of Object.keys(HUNGER_RISK)) {
+      HUNGER_NAMES[iso] = {
+        SS: i18n.t('map.southSudan'), SO: i18n.t('map.somalia'),
+        YE: i18n.t('map.yemen'), AF: i18n.t('map.afghanistan'),
+        SD: i18n.t('map.sudan'), PS: i18n.t('map.gaza'),
+        CD: i18n.t('map.drCongo'), HT: i18n.t('map.haiti') || 'Haiti',
+        ET: i18n.t('map.ethiopia') || 'Ethiopia', MM: 'Myanmar',
+        CF: 'Central African Rep.', TD: i18n.t('map.chad') || 'Chad',
+        SY: i18n.t('map.syria'), MZ: i18n.t('map.mozambique') || 'Mozambique',
+        NE: 'Niger', ML: 'Mali', BF: 'Burkina Faso', NG: 'Nigeria',
+        MW: 'Malawi', KP: 'North Korea', BD: 'Bangladesh', PK: 'Pakistan',
+        KH: 'Cambodia', LA: 'Laos', NP: 'Nepal', LB: i18n.t('map.lebanon'),
+        IQ: i18n.t('map.iraq'), IN: 'India', EG: 'Egypt',
+        ZM: 'Zambia', ZW: 'Zimbabwe', LR: 'Liberia', SL: 'Sierra Leone',
+        GT: 'Guatemala', HN: 'Honduras', NI: 'Nicaragua', VE: 'Venezuela',
+        KE: 'Kenya', UG: 'Uganda', TZ: 'Tanzania', RW: 'Rwanda', BI: 'Burundi',
+        GN: 'Guinea', GW: 'Guinea-Bissau', SN: 'Senegal', GM: 'Gambia', MR: 'Mauritania',
+        MG: 'Madagascar', CM: i18n.t('map.cameroon') || 'Cameroon'
+      }[iso] || iso;
+      const pct = hotspotPcts[iso];
+      HUNGER_DETAILS[iso] = pct ? `${pct} ${i18n.t('map.acutelyMalnourished')}` : null;
     }
+    Maps._enableCountryTooltip(container, HUNGER_RISK, HUNGER_NAMES, HUNGER_DETAILS);
 
     Maps._addLegend(container, [
       { color: '#67000d', label: i18n.t('map.famine') },
@@ -503,6 +471,74 @@ export class Maps {
         overlay.appendChild(badge);
       }
     }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  Click-to-show Country Tooltip
+  // ═══════════════════════════════════════════════════════════
+  static _enableCountryTooltip(container, dataMap, names, types) {
+    const svg = container.querySelector('.map-svg-wrapper svg');
+    if (!svg) return;
+
+    // Remove any previous tooltip + listeners
+    const old = container.querySelector('.map-tooltip');
+    if (old) old.remove();
+    if (container._tooltipCleanup) { container._tooltipCleanup(); container._tooltipCleanup = null; }
+
+    // Create tooltip element
+    const tip = DOMUtils.create('div', { className: 'map-tooltip' });
+    container.appendChild(tip);
+
+    const showTip = (e, iso) => {
+      const name = names[iso] || iso;
+      const type = types ? types[iso] : null;
+      tip.textContent = type ? `${name} — ${type}` : name;
+      tip.classList.add('map-tooltip--visible');
+
+      // Position relative to container
+      const cRect = container.getBoundingClientRect();
+      let x = e.clientX - cRect.left + 12;
+      let y = e.clientY - cRect.top - 28;
+      // Keep inside container bounds
+      const tw = tip.offsetWidth || 120;
+      if (x + tw > cRect.width - 8) x = cRect.width - tw - 8;
+      if (x < 4) x = 4;
+      if (y < 4) y = e.clientY - cRect.top + 16;
+      tip.style.left = `${x}px`;
+      tip.style.top = `${y}px`;
+    };
+
+    const hideTip = () => { tip.classList.remove('map-tooltip--visible'); };
+
+    // Add pointer cursor to clickable paths
+    svg.querySelectorAll('path').forEach(p => {
+      const iso = Maps._getISO(p);
+      if (iso && dataMap[iso] !== undefined) p.style.cursor = 'pointer';
+    });
+
+    const onClick = (e) => {
+      const path = e.target.closest('path');
+      if (!path) { hideTip(); return; }
+      const iso = Maps._getISO(path);
+      if (iso && dataMap[iso] !== undefined) {
+        showTip(e, iso);
+      } else {
+        hideTip();
+      }
+    };
+
+    // Dismiss on click outside map
+    const onDocClick = (e) => {
+      if (!container.contains(e.target)) hideTip();
+    };
+
+    svg.addEventListener('click', onClick);
+    document.addEventListener('click', onDocClick);
+
+    container._tooltipCleanup = () => {
+      svg.removeEventListener('click', onClick);
+      document.removeEventListener('click', onDocClick);
+    };
   }
 
   // (Legacy conflictMap removed — replaced by conflictsLayer with country highlighting)

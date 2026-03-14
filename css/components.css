@@ -332,6 +332,9 @@
 .map-legend { z-index: 5; pointer-events: none; }
 
 /* ─── Conflict Country Glow ─── */
+.map-country--war,
+.map-country--conflict,
+.map-country--unrest { cursor: pointer; }
 .map-country--war {
   animation: countryGlowWar 2.5s ease-in-out infinite;
   filter: drop-shadow(0 0 6px rgba(255, 32, 32, 0.8));
@@ -355,6 +358,28 @@
 @keyframes countryGlowUnrest {
   0%, 100% { filter: drop-shadow(0 0 2px rgba(204, 102, 0, 0.3)); opacity: 0.75; }
   50% { filter: drop-shadow(0 0 5px rgba(204, 102, 0, 0.6)); opacity: 0.85; }
+}
+
+/* ─── Map Tooltip (click-to-show) ─── */
+.map-tooltip {
+  position: absolute;
+  z-index: 20;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.map-tooltip--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ─── Chart + Widget + Misc ─── */
