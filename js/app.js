@@ -372,7 +372,7 @@ class BelkisOne {
           <div class="text-label text-muted" style="margin-bottom:var(--space-xs)">Größte Fluchtrouten:</div>
           ${r.flows.slice(0, 5).map(f => `
             <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px">
-              <span>${f.from} → ${f.to}</span>
+              <span>${this._esc(f.from)} → ${this._esc(f.to)}</span>
               <span class="text-mono" style="color:var(--warning)">${MathUtils.formatCompact(f.count)}</span>
             </div>
           `).join('')}
@@ -940,7 +940,7 @@ class BelkisOne {
     const setList = (id, items) => {
       const el = document.querySelector(`#${id} .scenario__list`);
       if (el) {
-        el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+        el.innerHTML = items.map(item => `<li>${this._esc(item)}</li>`).join('');
       }
     };
 
