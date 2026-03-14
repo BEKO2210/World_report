@@ -305,7 +305,7 @@ class BelkisOne {
         const card = DOMUtils.create('div', {
           className: 'aqi-card',
           innerHTML: `
-            <div class="aqi-card__city">${this._esc(city.city)} (${this._esc(city.country)})</div>
+            <div class="aqi-card__city">${this._esc(city.city)}${city.country ? ' (' + this._esc(city.country) + ')' : ''}</div>
             <div class="aqi-card__value" style="color:${color};background:${color}15">AQI ${Number(city.aqi) || 0}</div>
           `
         });

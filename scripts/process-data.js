@@ -80,8 +80,10 @@ function buildWorldState() {
   if (airData?.locations && airData.locations.length > 0) {
     const withAQI = airData.locations
       .map(l => {
+        // Prefer European AQI field, fallback to PM2.5 value
         const pm25 = l.parameters?.find(p => p.parameter === 'pm25' || p.parameter === 'PM2.5');
-        return { city: l.city || l.name, country: l.country, aqi: pm25?.value || null, lat: l.lat, lng: l.lng };
+        const aqiValue = l.aqi || pm25?.value || null;
+        return { city: l.city || l.name, country: l.country || '', aqi: aqiValue, lat: l.lat, lng: l.lng };
       })
       .filter(l => l.aqi !== null && l.aqi > 0);
     withAQI.sort((a, b) => a.aqi - b.aqi);
