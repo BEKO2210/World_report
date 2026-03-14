@@ -295,6 +295,7 @@ export class Maps {
 
   // ─── Refugee flow arcs ───
   static _drawRefugeeFlows(container, flows, w, h) {
+    if (!Array.isArray(flows) || flows.length === 0) return;
     const coords = {
       'Syria': { lat: 35.0, lng: 38.0 }, 'Turkey': { lat: 39.0, lng: 35.0 },
       'Ukraine': { lat: 49.0, lng: 31.0 }, 'Poland': { lat: 52.0, lng: 20.0 },
@@ -312,7 +313,8 @@ export class Maps {
     flowSVG.setAttribute('viewBox', `0 0 ${w} ${h}`);
     flowSVG.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;';
 
-    const maxFlow = Math.max(...flows.map(f => f.count));
+    const flowCounts = flows.map(f => Number(f.count) || 0);
+    const maxFlow = Math.max(...flowCounts, 1);
 
     flows.forEach(flow => {
       const fromCoord = coords[flow.from];

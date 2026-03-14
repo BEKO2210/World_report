@@ -118,11 +118,20 @@ export const MathUtils = {
   },
 
   formatCompact(num) {
-    if (num >= 1e12) return (num / 1e12).toFixed(1) + ' Bio';
-    if (num >= 1e9) return (num / 1e9).toFixed(1) + ' Mrd';
-    if (num >= 1e6) return (num / 1e6).toFixed(1) + ' Mio';
-    if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+    if (!Number.isFinite(num)) return '—';
+    const abs = Math.abs(num);
+    const sign = num < 0 ? '-' : '';
+    if (abs >= 1e12) return sign + (abs / 1e12).toFixed(1) + ' Bio';
+    if (abs >= 1e9) return sign + (abs / 1e9).toFixed(1) + ' Mrd';
+    if (abs >= 1e6) return sign + (abs / 1e6).toFixed(1) + ' Mio';
+    if (abs >= 1e3) return sign + (abs / 1e3).toFixed(1) + 'K';
     return num.toString();
+  },
+
+  // ─── Escape HTML to prevent XSS ───
+  escapeHTML(str) {
+    if (typeof str !== 'string') return String(str ?? '');
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   },
 
   // ─── Get zone info from score ───

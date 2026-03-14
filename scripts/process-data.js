@@ -146,7 +146,7 @@ function buildWorldState() {
   const unemploymentCurrent = latest(unemploymentData?.history || [])?.value || 5.8;
 
   const ecoGDPScore = normalize(gdpGrowth, -5, 6);
-  const ecoGiniScore = normalize(giniCurrent, 0.60, 0.25); // lower Gini = better (0-1 scale)
+  const ecoGiniScore = normalize(giniCurrent, 60, 25); // World Bank Gini is 0-100 scale; lower = better
   const ecoInflScore = normalize(inflationCurrent, 20, 2); // 2% = perfect
   const ecoUnempScore = normalize(unemploymentCurrent, 15, 2);
   const ecoScore = Math.round((ecoGDPScore * 0.3 + ecoGiniScore * 0.25 + ecoInflScore * 0.25 + ecoUnempScore * 0.2) * 10) / 10;
@@ -282,16 +282,16 @@ function buildWorldState() {
   console.log(`  ║  Change: ${worldChange >= 0 ? '+' : ''}${worldChange.toFixed(1).padEnd(20)}║`);
   console.log(`  ╚══════════════════════════════╝\n`);
 
-  // ─── BUILD comparison2000 ───
-  const comparison2000 = existing?.momentum?.comparison2000 || [
+  // ─── BUILD comparison2000 (always recalculate with fresh data) ───
+  const comparison2000 = [
     { name: 'Extreme Armut', then: 1700000000, now: 648000000, improved: true },
     { name: 'Kindersterblichkeit', then: 76, now: childMortCurrent, improved: childMortCurrent < 76 },
     { name: 'Lebenserwartung', then: 67, now: lifeExpCurrent, improved: lifeExpCurrent > 67 },
-    { name: 'Internet-Nutzer', then: 6.7, now: internetCurrent, improved: true },
+    { name: 'Internet-Nutzer', then: 6.7, now: internetCurrent, improved: internetCurrent > 6.7 },
     { name: 'Alphabetisierung', then: 81, now: literacyCurrent, improved: literacyCurrent > 81 },
-    { name: 'CO2-Konzentration', then: 369, now: co2Current, improved: false },
+    { name: 'CO2-Konzentration', then: 369, now: co2Current, improved: co2Current < 369 },
     { name: 'Erneuerbare Energie', then: 17, now: renewableCurrent, improved: renewableCurrent > 17 },
-    { name: 'Mobilfunkverträge', then: 12, now: mobileCurrent, improved: true }
+    { name: 'Mobilfunkverträge', then: 12, now: mobileCurrent, improved: mobileCurrent > 12 }
   ];
 
   // ─── BUILD CONFLICT DATA ───
@@ -338,7 +338,7 @@ function buildWorldState() {
         label: envScore < 20 ? 'KRITISCH' : envScore < 40 ? 'BESORGNISERREGEND' : envScore < 60 ? 'GEMISCHT' : 'POSITIV',
         zone: envScore < 20 ? 'critical' : envScore < 40 ? 'concerning' : envScore < 60 ? 'mixed' : 'positive',
         weight: 0.25,
-        trend: worldChange > 0 ? 'improving' : 'declining',
+        trend: (() => { const d = envScore - (existing?.subScores?.environment?.value || envScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
         change: Math.round((envScore - (existing?.subScores?.environment?.value || envScore)) * 10) / 10,
         indicators: [
           { name: 'Globale Temperaturanomalie', value: `+${tempCurrent}°C`, score: Math.round(envTempScore), trend: 'declining', source: 'NASA GISTEMP' },
@@ -354,7 +354,7 @@ function buildWorldState() {
         label: socScore < 40 ? 'BESORGNISERREGEND' : socScore < 60 ? 'GEMISCHT' : 'POSITIV',
         zone: socScore < 40 ? 'concerning' : socScore < 60 ? 'mixed' : 'positive',
         weight: 0.25,
-        trend: 'stable',
+        trend: (() => { const d = socScore - (existing?.subScores?.society?.value || socScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
         change: Math.round((socScore - (existing?.subScores?.society?.value || socScore)) * 10) / 10,
         indicators: [
           { name: 'Lebenserwartung', value: `${lifeExpCurrent} Jahre`, score: Math.round(socLifeScore), trend: 'improving', source: 'World Bank' },
@@ -370,10 +370,10 @@ function buildWorldState() {
         label: ecoScore < 40 ? 'BESORGNISERREGEND' : ecoScore < 60 ? 'GEMISCHT' : 'POSITIV',
         zone: ecoScore < 40 ? 'concerning' : ecoScore < 60 ? 'mixed' : 'positive',
         weight: 0.20,
-        trend: gdpGrowth > 2 ? 'improving' : 'stable',
+        trend: (() => { const d = ecoScore - (existing?.subScores?.economy?.value || ecoScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
         change: Math.round((ecoScore - (existing?.subScores?.economy?.value || ecoScore)) * 10) / 10,
         indicators: [
-          { name: 'BIP-Wachstum', value: `${gdpGrowth}%`, score: Math.round(ecoGDPScore), trend: gdpGrowth > 2 ? 'improving' : 'stable', source: 'World Bank / IMF' },
+          { name: 'BIP-Wachstum', value: `${gdpGrowth}%`, score: Math.round(ecoGDPScore), trend: ecoGDPScore > 60 ? 'improving' : ecoGDPScore < 40 ? 'declining' : 'stable', source: 'World Bank / IMF' },
           { name: 'Gini-Index', value: giniCurrent, score: Math.round(ecoGiniScore), trend: 'stable', source: 'World Bank' },
           { name: 'Inflation', value: `${inflationCurrent}%`, score: Math.round(ecoInflScore), trend: 'stable', source: 'World Bank' },
           { name: 'Arbeitslosigkeit', value: `${unemploymentCurrent}%`, score: Math.round(ecoUnempScore), trend: 'stable', source: 'World Bank / ILO' },
@@ -385,7 +385,7 @@ function buildWorldState() {
         label: progScore < 40 ? 'BESORGNISERREGEND' : progScore < 60 ? 'GEMISCHT' : progScore < 80 ? 'POSITIV' : 'EXZELLENT',
         zone: progScore < 40 ? 'concerning' : progScore < 60 ? 'mixed' : progScore < 80 ? 'positive' : 'excellent',
         weight: 0.20,
-        trend: 'improving',
+        trend: (() => { const d = progScore - (existing?.subScores?.progress?.value || progScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
         change: Math.round((progScore - (existing?.subScores?.progress?.value || progScore)) * 10) / 10,
         indicators: [
           { name: 'Internet-Durchdringung', value: `${internetCurrent}%`, score: Math.round(progInternetScore), trend: 'improving', source: 'World Bank / ITU' },

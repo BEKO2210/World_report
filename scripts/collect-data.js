@@ -26,12 +26,28 @@ async function fetchJSON(url, options = {}) {
       });
       clearTimeout(timer);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
+      const data = await res.json();
+      if (data === null || data === undefined) throw new Error('Empty JSON response');
+      return data;
     } catch (err) {
       if (attempt === retries) throw err;
       await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
     }
   }
+}
+
+// ─── Safe World Bank data extraction ───
+function extractWorldBankEntries(data, options = {}) {
+  const { roundDigits = 1 } = options;
+  if (!Array.isArray(data) || !Array.isArray(data[1])) return [];
+  return data[1]
+    .filter(e => e && e.value !== null && e.value !== undefined)
+    .map(e => ({
+      year: parseInt(e.date),
+      value: roundDigits >= 0 ? Math.round(e.value * Math.pow(10, roundDigits)) / Math.pow(10, roundDigits) : e.value
+    }))
+    .filter(e => !isNaN(e.year) && Number.isFinite(e.value))
+    .sort((a, b) => a.year - b.year);
 }
 
 async function fetchText(url, options = {}) {
@@ -203,30 +219,24 @@ async function fetchOpenAQ() {
 async function fetchGlobalForestWatch() {
   // World Bank — Forest area (% of land area)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/AG.LND.FRST.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
+  if (entries.length === 0) throw new Error('No forest data returned');
   save('environment', 'forest-area.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchRenewableEnergy() {
   // World Bank — Renewable energy consumption (% of total)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/EG.FEC.RNEW.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
+  if (entries.length === 0) throw new Error('No renewable energy data returned');
   save('environment', 'renewable-energy.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchCO2Emissions() {
   // World Bank — CO2 emissions (metric tons per capita)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/EN.ATM.CO2E.PC?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
+  if (entries.length === 0) throw new Error('No CO2 emissions data returned');
   save('environment', 'co2-emissions-percapita.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -237,60 +247,42 @@ async function fetchCO2Emissions() {
 async function fetchWorldBankPoverty() {
   // World Bank — Poverty headcount at $2.15/day
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SI.POV.DDAY?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('society', 'poverty.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchLifeExpectancy() {
   // World Bank — Life expectancy at birth
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SP.DYN.LE00.IN?format=json&per_page=60&date=1960:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('society', 'life-expectancy.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchChildMortality() {
   // World Bank — Under-5 mortality rate per 1000
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SH.DYN.MORT?format=json&per_page=60&date=1960:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('society', 'child-mortality.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchPopulation() {
   // World Bank — World population
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json&per_page=60&date=1960:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: e.value
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: -1 });
   save('society', 'population.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchAccessElectricity() {
   // World Bank — Access to electricity (% of population)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/EG.ELC.ACCS.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('society', 'electricity-access.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchSafeWater() {
   // World Bank — People using safely managed drinking water (%)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SH.H2O.SMDW.ZS?format=json&per_page=30&date=2000:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('society', 'safe-water.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -319,60 +311,42 @@ async function fetchDiseaseData() {
 async function fetchGDPGrowth() {
   // World Bank — GDP growth (annual %)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('economy', 'gdp-growth.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchGiniIndex() {
-  // World Bank — Gini index
+  // World Bank — Gini index (0-100 scale)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SI.POV.GINI?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('economy', 'gini.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchInflation() {
   // World Bank — Inflation, consumer prices (annual %)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/FP.CPI.TOTL.ZG?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('economy', 'inflation.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchUnemployment() {
   // World Bank — Unemployment (% of total labor force)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SL.UEM.TOTL.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('economy', 'unemployment.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchGDPPerCapita() {
   // World Bank — GDP per capita (current US$)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.PCAP.CD?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value)
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 0 });
   save('economy', 'gdp-per-capita.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchTradeGlobal() {
   // World Bank — Trade (% of GDP)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/NE.TRD.GNFS.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('economy', 'trade.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -413,20 +387,14 @@ async function fetchExchangeRates() {
 async function fetchInternetUsers() {
   // World Bank — Individuals using the Internet (%)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/IT.NET.USER.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('tech', 'internet-users.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchMobileSubscriptions() {
   // World Bank — Mobile cellular subscriptions (per 100 people)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/IT.CEL.SETS.P2?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('tech', 'mobile-subscriptions.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -472,20 +440,14 @@ async function fetchArxivPapers() {
 async function fetchResearchOutputs() {
   // World Bank — Research and development expenditure (% of GDP)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/GB.XPD.RSDV.GD.ZS?format=json&per_page=30&date=1996:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('tech', 'rd-spending.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchPatentApplications() {
   // World Bank — Patent applications, residents + nonresidents
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/IP.PAT.RESD?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: e.value
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: -1 });
   save('tech', 'patents.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -642,50 +604,35 @@ async function fetchSolarActivity() {
 async function fetchEducation() {
   // World Bank — School enrollment, primary (% net)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SE.PRM.NENR?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('society', 'education-enrollment.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchLiteracy() {
   // World Bank — Literacy rate, adult total
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.LITR.ZS?format=json&per_page=30&date=1970:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('tech', 'literacy.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchHealthExpenditure() {
   // World Bank — Current health expenditure (% of GDP)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SH.XPD.CHEX.GD.ZS?format=json&per_page=30&date=2000:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('society', 'health-expenditure.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchMilitaryExpenditure() {
   // World Bank — Military expenditure (% of GDP)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/MS.MIL.XPND.GD.ZS?format=json&per_page=30&date=1990:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 100) / 100
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data, { roundDigits: 2 });
   save('society', 'military-expenditure.json', { history: entries, fetched: new Date().toISOString() });
 }
 
 async function fetchUrbanization() {
   // World Bank — Urban population (% of total)
   const data = await fetchJSON(`https://api.worldbank.org/v2/country/WLD/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=60&date=1960:${CURRENT_YEAR}`);
-  const entries = (data[1] || []).filter(e => e.value !== null).map(e => ({
-    year: parseInt(e.date),
-    value: Math.round(e.value * 10) / 10
-  })).sort((a, b) => a.year - b.year);
+  const entries = extractWorldBankEntries(data);
   save('society', 'urbanization.json', { history: entries, fetched: new Date().toISOString() });
 }
 
@@ -704,9 +651,10 @@ async function fetchRegionalGDP() {
   for (const [code, name] of Object.entries(regions)) {
     try {
       const data = await fetchJSON(`https://api.worldbank.org/v2/country/${code}/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=5&date=${CURRENT_YEAR - 5}:${CURRENT_YEAR}`);
-      const latest = (data[1] || []).find(e => e.value !== null);
-      if (latest) {
-        result.push({ region: name, code, gdpGrowth: Math.round(latest.value * 100) / 100, year: parseInt(latest.date) });
+      const entries = extractWorldBankEntries(data, { roundDigits: 2 });
+      if (entries.length > 0) {
+        const latest = entries[entries.length - 1];
+        result.push({ region: name, code, gdpGrowth: latest.value, year: latest.year });
       }
     } catch { /* skip */ }
   }

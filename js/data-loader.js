@@ -23,7 +23,11 @@ export class DataLoader {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      this.data = await response.json();
+      const json = await response.json();
+      if (!this._validate(json)) {
+        throw new Error('Invalid world-state.json structure');
+      }
+      this.data = json;
       this._saveToCache(this.data);
       return this.data;
     } catch (err) {
@@ -122,6 +126,15 @@ export class DataLoader {
 
   getMeta() {
     return this.data?.meta || {};
+  }
+
+  // ─── Validate loaded data has required structure ───
+  _validate(data) {
+    if (!data || typeof data !== 'object') return false;
+    if (!data.worldIndex || typeof data.worldIndex.value !== 'number') return false;
+    if (!data.subScores) return false;
+    if (!data.environment || !data.society || !data.economy) return false;
+    return true;
   }
 
   // ─── Format timestamp ───

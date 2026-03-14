@@ -8,6 +8,7 @@ import { DOMUtils } from '../utils/dom.js';
 export class Charts {
   // ─── Warming Stripes ───
   static warmingStripes(container, data, progress = 1) {
+    if (!Array.isArray(data) || data.length === 0) return;
     container.innerHTML = '';
     const fragment = document.createDocumentFragment();
 
@@ -33,6 +34,7 @@ export class Charts {
 
   // ─── Line/Area Chart ───
   static lineChart(container, data, options = {}) {
+    if (!Array.isArray(data) || data.length < 2) return;
     const containerWidth = container.getBoundingClientRect().width || 800;
     const isMobile = containerWidth < 500;
     const {
@@ -53,9 +55,10 @@ export class Charts {
     const plotWidth = width - padding.left - padding.right;
     const plotHeight = height - padding.top - padding.bottom;
 
-    const values = data.map(d => d.value);
+    const values = data.map(d => Number(d.value)).filter(Number.isFinite);
+    if (values.length < 2) return;
     const minVal = Math.min(...values) * 0.95;
-    const maxVal = Math.max(...values) * 1.05;
+    const maxVal = Math.max(...values) * 1.05 || 1;
 
     const xScale = (i) => padding.left + (i / (data.length - 1)) * plotWidth;
     const yScale = (v) => padding.top + plotHeight - ((v - minVal) / (maxVal - minVal)) * plotHeight;
@@ -142,6 +145,7 @@ export class Charts {
 
   // ─── Bar Chart ───
   static barChart(container, data, options = {}) {
+    if (!Array.isArray(data) || data.length === 0) return;
     const containerWidth = container.getBoundingClientRect().width || 800;
     const isMobile = containerWidth < 500;
     const {
@@ -187,8 +191,9 @@ export class Charts {
 
   // ─── Sentiment Wave ───
   static sentimentWave(container, data) {
+    if (!Array.isArray(data) || data.length === 0) return;
     container.innerHTML = '';
-    const maxAbs = Math.max(...data.map(Math.abs), 1);
+    const maxAbs = Math.max(...data.filter(Number.isFinite).map(Math.abs), 1);
 
     data.forEach(val => {
       const height = Math.abs(val) / maxAbs * 100;
@@ -289,10 +294,11 @@ export class Charts {
 
   // ─── Inequality Bar ───
   static inequalityBar(container, topPercent, bottomPercent, progress = 1) {
-    const topW = topPercent * MathUtils.clamp(progress, 0, 1);
-    const bottomW = bottomPercent * MathUtils.clamp(progress, 0, 1);
-    // Scale bottom relative to top so the tiny bar is still visible but proportionally correct
-    const scale = 100 / topPercent; // normalize so top = 100% width
+    const top = Number.isFinite(topPercent) ? topPercent : 45.8;
+    const bottom = Number.isFinite(bottomPercent) && bottomPercent > 0 ? bottomPercent : 2.1;
+    const topW = top * MathUtils.clamp(progress, 0, 1);
+    const bottomW = bottom * MathUtils.clamp(progress, 0, 1);
+    const scale = top > 0 ? 100 / top : 1;
 
     container.innerHTML = `
       <div class="inequality-bar__row">
@@ -300,22 +306,24 @@ export class Charts {
         <div class="inequality-bar__track">
           <div class="inequality-bar__fill inequality-bar__fill--top" style="width:${topW * scale}%"></div>
         </div>
-        <div class="inequality-bar__pct inequality-bar__pct--top">${topPercent.toFixed(1)}%</div>
+        <div class="inequality-bar__pct inequality-bar__pct--top">${top.toFixed(1)}%</div>
       </div>
       <div class="inequality-bar__row">
         <div class="inequality-bar__label">Untere 50%</div>
         <div class="inequality-bar__track">
           <div class="inequality-bar__fill inequality-bar__fill--bottom" style="width:${bottomW * scale}%"></div>
         </div>
-        <div class="inequality-bar__pct">${bottomPercent.toFixed(1)}%</div>
+        <div class="inequality-bar__pct">${bottom.toFixed(1)}%</div>
       </div>
-      <div class="inequality-bar__ratio">${(topPercent / bottomPercent).toFixed(0)}× mehr</div>
+      <div class="inequality-bar__ratio">${(top / bottom).toFixed(0)}× mehr</div>
     `;
   }
 
   // ─── Freedom Index Bar ───
   static freedomBar(container, freedom) {
-    const total = freedom.free + freedom.partlyFree + freedom.notFree;
+    if (!freedom) return;
+    const total = (freedom.free || 0) + (freedom.partlyFree || 0) + (freedom.notFree || 0);
+    if (total === 0) return;
     const freeP = (freedom.free / total * 100).toFixed(1);
     const partlyP = (freedom.partlyFree / total * 100).toFixed(1);
     const notFreeP = (freedom.notFree / total * 100).toFixed(1);
@@ -331,6 +339,7 @@ export class Charts {
 
   // ─── Sparkline (Compact Inline Chart) ───
   static sparkline(container, data, options = {}) {
+    if (!Array.isArray(data) || data.length < 2) return;
     const {
       width = container.getBoundingClientRect().width || 200,
       height = 40,
@@ -339,7 +348,8 @@ export class Charts {
       strokeWidth = 1.5
     } = options;
 
-    const values = data.map(d => typeof d === 'number' ? d : d.value);
+    const values = data.map(d => typeof d === 'number' ? d : Number(d.value)).filter(Number.isFinite);
+    if (values.length < 2) return;
     const min = Math.min(...values);
     const max = Math.max(...values);
     const range = max - min || 1;
