@@ -165,7 +165,8 @@ export class Charts {
     const plotWidth = width - padding.left - padding.right;
     const plotHeight = height - padding.top - padding.bottom;
 
-    const values = data.map(d => d.value);
+    const values = data.map(d => Number(d.value)).filter(Number.isFinite);
+    if (values.length === 0) return;
     const maxVal = Math.max(...values) * 1.1;
     const barWidth = (plotWidth - barGap * (data.length - 1)) / data.length;
 
