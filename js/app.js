@@ -96,12 +96,12 @@ class BelkisOne {
 
     canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;';
 
-    window.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', DOMUtils.throttle((e) => {
       if (this.particles) {
         this.particles.mouse.x = e.clientX;
         this.particles.mouse.y = e.clientY;
       }
-    });
+    }, 16));
 
     this.particles = new ParticleSystem(canvas, {
       count: DOMUtils.viewport().isMobile ? 300 : 1000,
