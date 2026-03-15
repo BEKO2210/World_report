@@ -203,17 +203,27 @@ function main() {
     data.subScores.momentum.weight = 0.10;
   }
 
-  // 6. Recalculate World Index if sub-scores were repaired
+  // 6. Validate raw World Index against sub-scores (Carrying Capacity adjusts value separately)
   const recalculated =
     data.subScores.environment.value * data.subScores.environment.weight +
     data.subScores.society.value * data.subScores.society.weight +
     data.subScores.economy.value * data.subScores.economy.weight +
     data.subScores.progress.value * data.subScores.progress.weight +
     data.subScores.momentum.value * data.subScores.momentum.weight;
-  const diff = Math.abs(data.worldIndex.value - recalculated);
+  const rawRef = data.worldIndex.rawValue || data.worldIndex.value;
+  const diff = Math.abs(rawRef - recalculated);
   if (diff > 2) {
-    log('fix', `World Index mismatch: stored=${data.worldIndex.value}, calculated=${recalculated.toFixed(1)} — correcting`);
-    data.worldIndex.value = parseFloat(recalculated.toFixed(1));
+    log('fix', `World Index rawValue mismatch: stored=${rawRef}, calculated=${recalculated.toFixed(1)} — correcting rawValue`);
+    data.worldIndex.rawValue = parseFloat(recalculated.toFixed(1));
+  }
+  // Ensure change and trend are consistent with value and previous
+  if (data.worldIndex.value != null && data.worldIndex.previous != null) {
+    const expectedChange = Math.round((data.worldIndex.value - data.worldIndex.previous) * 10) / 10;
+    if (data.worldIndex.change !== expectedChange) {
+      log('fix', `World Index change mismatch: stored=${data.worldIndex.change}, expected=${expectedChange} — correcting`);
+      data.worldIndex.change = expectedChange;
+      data.worldIndex.trend = expectedChange > 0 ? 'improving' : expectedChange < 0 ? 'declining' : 'stable';
+    }
   }
 
   // 6b. Validate World Index zone matches value
