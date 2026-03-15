@@ -17,6 +17,14 @@ export class WorldIndicator {
     this._counter = null;
   }
 
+  // ─── Update data reference (called on timeline/language change) ───
+  setData(data) {
+    this.data = data;
+    this.targetValue = data.worldIndex.value;
+    this.animated = false;
+    this._counter = null;
+  }
+
   // ─── Animate the indicator based on scroll progress ───
   update(progress) {
     if (progress <= 0) return;
