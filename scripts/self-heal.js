@@ -4,7 +4,7 @@
    Validates, repairs and ensures data integrity
    ═══════════════════════════════════════════════════════════ */
 
-import { readFileSync, writeFileSync, existsSync, copyFileSync, readdirSync, unlinkSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, copyFileSync, readdirSync, unlinkSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -256,6 +256,29 @@ function main() {
         console.log(`[HEAL] Rotated old backup: ${old}`);
       });
     }
+  }
+
+  // 7b. Archive snapshot for timeline feature
+  const HISTORY_DIR = join(__dirname, '..', 'data', 'history');
+  mkdirSync(HISTORY_DIR, { recursive: true });
+
+  const now = new Date();
+  const snapTag = now.toISOString().slice(0, 16).replace(/[-:T]/g, '').replace(/(\d{8})(\d{4})/, '$1-$2');
+  const snapPath = join(HISTORY_DIR, `snapshot-${snapTag}.json`);
+  if (!existsSync(snapPath)) {
+    copyFileSync(DATA_PATH, snapPath);
+    console.log(`[HEAL] 📸 Archived snapshot: snapshot-${snapTag}.json`);
+
+    // Update manifest
+    const manifestPath = join(HISTORY_DIR, 'manifest.json');
+    let manifest = { snapshots: [] };
+    try { manifest = JSON.parse(readFileSync(manifestPath, 'utf-8')); } catch {}
+    manifest.snapshots.unshift({
+      id: snapTag,
+      timestamp: now.toISOString(),
+      worldIndex: data.worldIndex?.value ?? 0
+    });
+    writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
   }
 
   // 8. Save repaired data

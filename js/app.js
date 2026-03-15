@@ -68,6 +68,7 @@ class BelkisOne {
       this._initEasterEgg();
       this._initProlog();
       this._initLangToggle(data);
+      this._initTimeline(data);
 
       this._updateLoading(100);
       setTimeout(() => {
@@ -1102,6 +1103,76 @@ class BelkisOne {
       i18n.toggle();
       // Re-render dynamic content that uses i18n.t()
       this._rebuildDynamic(data);
+    });
+  }
+
+  // ─── Timeline Slider ───
+  async _initTimeline(data) {
+    const wrapper = document.getElementById('timeline-wrapper');
+    const toggle = document.getElementById('timeline-toggle');
+    const panel = document.getElementById('timeline-panel');
+    const range = document.getElementById('timeline-range');
+    const currentLabel = document.getElementById('timeline-current');
+    const startLabel = document.getElementById('timeline-start');
+    if (!wrapper || !range) return;
+
+    // Load manifest
+    const manifest = await this.dataLoader.loadManifest();
+    if (!manifest.snapshots || manifest.snapshots.length < 2) return;
+
+    // Show timeline
+    wrapper.style.display = '';
+    const snapshots = manifest.snapshots; // newest first
+    range.min = 0;
+    range.max = snapshots.length; // max = LIVE
+    range.value = snapshots.length; // Start at LIVE
+
+    const formatLabel = (ts) => {
+      const d = new Date(ts);
+      return d.toLocaleString(i18n.lang === 'en' ? 'en-US' : 'de-DE', {
+        day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
+      });
+    };
+
+    startLabel.textContent = formatLabel(snapshots[snapshots.length - 1].timestamp);
+
+    // Toggle panel
+    toggle.addEventListener('click', () => {
+      panel.classList.toggle('is-open');
+      toggle.classList.toggle('is-active');
+    });
+
+    // Update label on drag
+    range.addEventListener('input', () => {
+      const idx = parseInt(range.value);
+      if (idx >= snapshots.length) {
+        currentLabel.textContent = 'LIVE';
+      } else {
+        const snap = snapshots[snapshots.length - 1 - idx];
+        currentLabel.textContent = formatLabel(snap.timestamp);
+      }
+    });
+
+    // Load snapshot on release
+    let debounceTimer;
+    range.addEventListener('change', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(async () => {
+        const idx = parseInt(range.value);
+        try {
+          let newData;
+          if (idx >= snapshots.length) {
+            newData = await this.dataLoader.load();
+          } else {
+            const snap = snapshots[snapshots.length - 1 - idx];
+            newData = await this.dataLoader.loadSnapshot(snap.id);
+          }
+          this._rebuildDynamic(newData);
+          if (this.worldIndicator) this.worldIndicator.update(1);
+        } catch (err) {
+          console.warn('[Timeline] Failed to load snapshot:', err.message);
+        }
+      }, 300);
     });
   }
 

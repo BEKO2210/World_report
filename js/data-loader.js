@@ -139,6 +139,31 @@ export class DataLoader {
     return true;
   }
 
+  // ─── Load historical snapshot ───
+  async loadSnapshot(snapshotId) {
+    if (!snapshotId || snapshotId === 'live') {
+      return this.load();
+    }
+    const url = `data/history/snapshot-${snapshotId}.json`;
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Snapshot ${snapshotId} not found`);
+    const json = await response.json();
+    if (!this._validate(json)) throw new Error('Invalid snapshot structure');
+    this.data = json;
+    return this.data;
+  }
+
+  // ─── Load timeline manifest ───
+  async loadManifest() {
+    try {
+      const response = await fetch('data/history/manifest.json', { cache: 'no-store' });
+      if (!response.ok) return { snapshots: [] };
+      return response.json();
+    } catch {
+      return { snapshots: [] };
+    }
+  }
+
   // ─── Format timestamp ───
   getLastUpdated() {
     const ts = this.data?.meta?.generated || this.data?.realtime?.lastUpdated;
