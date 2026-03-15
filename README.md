@@ -8,11 +8,11 @@
 ## 🌍 Welt-Indikator: 68.6 / 100 🟢 POSITIV
 
 ```
-██████████████░░░░░░  68.6/100  ↑ +2.5
+██████████████░░░░░░  68.6/100  ↑ +0
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 15.03.2026 00:31 UTC
+> **Letzte Aktualisierung:** 15.03.2026 01:23 UTC
 
 ### Sub-Scores
 
@@ -222,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 15.03.2026 00:31 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 15.03.2026 01:23 UTC | 40/40 Quellen aktiv
 </sub>
