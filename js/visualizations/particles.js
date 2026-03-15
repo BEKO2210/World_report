@@ -111,7 +111,7 @@ export class ParticleSystem {
     this._update(dt);
     this._draw();
 
-    requestAnimationFrame(() => this._loop());
+    this._rafId = requestAnimationFrame(() => this._loop());
   }
 
   _update(dt) {
@@ -259,6 +259,8 @@ export class ParticleSystem {
 
   destroy() {
     this.stop();
+    if (this._rafId) cancelAnimationFrame(this._rafId);
+    if (this._colorAnimId) cancelAnimationFrame(this._colorAnimId);
     window.removeEventListener('resize', this._resizeHandler);
     this.canvas.removeEventListener('mousemove', this._mouseHandler);
     this.canvas.removeEventListener('mouseleave', this._mouseLeaveHandler);

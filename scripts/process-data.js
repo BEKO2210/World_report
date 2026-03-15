@@ -874,4 +874,10 @@ function buildDataSourcesList() {
 }
 
 // Run
-buildWorldState();
+try {
+  buildWorldState();
+} catch (err) {
+  console.error('FATAL: buildWorldState failed:', err.message);
+  console.error(err.stack);
+  process.exit(1);
+}
