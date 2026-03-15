@@ -9,9 +9,10 @@ const DATA_PATHS = ['/world-state.json', '/manifest.json', '/data/'];
 const PRECACHE_ASSETS = [
   './',
   './index.html',
-  './css/style.css',
+  './css/core.css',
   './css/components.css',
   './css/sections.css',
+  './css/animations.css',
   './js/app.js',
   './js/data-loader.js',
   './js/scroll-engine.js',
