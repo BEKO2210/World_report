@@ -139,16 +139,27 @@ export class DataLoader {
     return true;
   }
 
-  // ─── Load historical snapshot ───
+  // ─── Load historical snapshot (cached — snapshots are immutable) ───
   async loadSnapshot(snapshotId) {
     if (!snapshotId || snapshotId === 'live') {
       return this.load();
     }
+    // In-memory cache — snapshots never change, so cache indefinitely
+    if (!this._snapCache) this._snapCache = new Map();
+    if (this._snapCache.has(snapshotId)) {
+      this.data = this._snapCache.get(snapshotId);
+      return this.data;
+    }
     const url = `data/history/snapshot-${snapshotId}.json`;
-    const response = await fetch(url, { cache: 'no-store' });
+    const response = await fetch(url);
     if (!response.ok) throw new Error(`Snapshot ${snapshotId} not found`);
     const json = await response.json();
     if (!this._validate(json)) throw new Error('Invalid snapshot structure');
+    this._snapCache.set(snapshotId, json);
+    // Keep cache bounded (LRU-style: drop oldest when > 20 entries)
+    if (this._snapCache.size > 20) {
+      this._snapCache.delete(this._snapCache.keys().next().value);
+    }
     this.data = json;
     return this.data;
   }

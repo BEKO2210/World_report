@@ -1106,73 +1106,87 @@ class BelkisOne {
     });
   }
 
-  // ─── Timeline Slider ───
+  // ─── Timeline ───
   async _initTimeline(data) {
-    const wrapper = document.getElementById('timeline-wrapper');
-    const toggle = document.getElementById('timeline-toggle');
+    const el = document.getElementById('timeline');
+    const btn = document.getElementById('timeline-btn');
     const panel = document.getElementById('timeline-panel');
     const range = document.getElementById('timeline-range');
-    const currentLabel = document.getElementById('timeline-current');
+    const dateLabel = document.getElementById('timeline-date');
+    const indexLabel = document.getElementById('timeline-index');
     const startLabel = document.getElementById('timeline-start');
-    if (!wrapper || !range) return;
+    if (!el || !range) return;
 
-    // Load manifest
     const manifest = await this.dataLoader.loadManifest();
     if (!manifest.snapshots || manifest.snapshots.length < 2) return;
 
-    // Show timeline
-    wrapper.style.display = '';
-    const snapshots = manifest.snapshots; // newest first
+    // Snapshots: newest-first from manifest. Build a slim lookup for O(1) access.
+    const snaps = manifest.snapshots;
+    const total = snaps.length;
+
+    el.style.display = '';
     range.min = 0;
-    range.max = snapshots.length; // max = LIVE
-    range.value = snapshots.length; // Start at LIVE
+    range.max = total; // total = LIVE position
+    range.value = total;
 
-    const formatLabel = (ts) => {
-      const d = new Date(ts);
-      return d.toLocaleString(i18n.lang === 'en' ? 'en-US' : 'de-DE', {
-        day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
-      });
-    };
-
-    startLabel.textContent = formatLabel(snapshots[snapshots.length - 1].timestamp);
-
-    // Toggle panel
-    toggle.addEventListener('click', () => {
-      panel.classList.toggle('is-open');
-      toggle.classList.toggle('is-active');
+    const locale = () => i18n.lang === 'en' ? 'en-US' : 'de-DE';
+    const fmtDate = (ts) => new Date(ts).toLocaleString(locale(), {
+      day: '2-digit', month: '2-digit', year: '2-digit',
+      hour: '2-digit', minute: '2-digit'
     });
 
-    // Update label on drag
-    range.addEventListener('input', () => {
-      const idx = parseInt(range.value);
-      if (idx >= snapshots.length) {
-        currentLabel.textContent = 'LIVE';
-      } else {
-        const snap = snapshots[snapshots.length - 1 - idx];
-        currentLabel.textContent = formatLabel(snap.timestamp);
+    startLabel.textContent = fmtDate(snaps[total - 1].timestamp);
+
+    // Toggle
+    btn.addEventListener('click', () => {
+      const open = panel.classList.toggle('is-open');
+      btn.classList.toggle('is-active', open);
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!el.contains(e.target)) {
+        panel.classList.remove('is-open');
+        btn.classList.remove('is-active');
       }
     });
 
-    // Load snapshot on release
-    let debounceTimer;
+    // Map slider position → snapshot (0=oldest, total=LIVE)
+    const snapAt = (idx) => idx >= total ? null : snaps[total - 1 - idx];
+
+    // Visual update (no fetch — instant, runs on every input tick)
+    const updateLabel = (idx) => {
+      const isLive = idx >= total;
+      const snap = snapAt(idx);
+      dateLabel.textContent = isLive ? 'LIVE' : fmtDate(snap.timestamp);
+      dateLabel.classList.toggle('is-historical', !isLive);
+      btn.classList.toggle('is-historical', !isLive);
+      indexLabel.textContent = isLive ? '' : `Index ${snap.worldIndex}`;
+    };
+
+    range.addEventListener('input', () => updateLabel(parseInt(range.value)));
+
+    // Fetch + render (debounced, runs only on release)
+    let pending = null;
+    const loadSnapshot = async (idx) => {
+      const myId = pending = {};
+      try {
+        const snap = snapAt(idx);
+        const newData = snap
+          ? await this.dataLoader.loadSnapshot(snap.id)
+          : await this.dataLoader.load();
+        if (pending !== myId) return; // superseded by newer request
+        this._rebuildDynamic(newData);
+        if (this.worldIndicator) this.worldIndicator.update(1);
+      } catch (err) {
+        console.warn('[Timeline] Snapshot load failed:', err.message);
+      }
+    };
+
+    let debounce;
     range.addEventListener('change', () => {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(async () => {
-        const idx = parseInt(range.value);
-        try {
-          let newData;
-          if (idx >= snapshots.length) {
-            newData = await this.dataLoader.load();
-          } else {
-            const snap = snapshots[snapshots.length - 1 - idx];
-            newData = await this.dataLoader.loadSnapshot(snap.id);
-          }
-          this._rebuildDynamic(newData);
-          if (this.worldIndicator) this.worldIndicator.update(1);
-        } catch (err) {
-          console.warn('[Timeline] Failed to load snapshot:', err.message);
-        }
-      }, 300);
+      clearTimeout(debounce);
+      debounce = setTimeout(() => loadSnapshot(parseInt(range.value)), 200);
     });
   }
 

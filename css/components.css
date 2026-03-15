@@ -478,19 +478,17 @@
   .lang-toggle { padding: 6px 10px; font-size: 11px; }
 }
 
-/* ─── Timeline Slider ─── */
-.timeline-wrapper {
+/* ─── Timeline ─── */
+.timeline {
   position: fixed;
   bottom: 16px;
-  right: 80px;
+  left: 16px;
   z-index: 300;
-}
-.timeline-slider {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 8px;
 }
-.timeline-slider__toggle {
+.timeline__btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -501,52 +499,97 @@
   background: rgba(10, 10, 15, 0.65);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
-.timeline-slider__toggle:hover {
+.timeline__btn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.25);
   color: #fff;
-  transform: scale(1.05);
 }
-.timeline-slider__toggle.is-active {
+.timeline__btn.is-active {
   border-color: var(--accent, #00d4ff);
   color: var(--accent, #00d4ff);
 }
-.timeline-slider__panel {
+.timeline__btn.is-historical {
+  border-color: rgba(255, 170, 0, 0.5);
+  color: rgba(255, 170, 0, 0.9);
+}
+.timeline__panel {
   display: none;
   flex-direction: column;
-  padding: 8px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  background: rgba(10, 10, 15, 0.75);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  min-width: 200px;
+  gap: 4px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  width: 220px;
+  max-width: calc(100vw - 80px);
 }
-.timeline-slider__panel.is-open {
+.timeline__panel.is-open { display: flex; }
+.timeline__header {
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
-.timeline-slider__range {
+.timeline__date {
+  font-family: var(--font-mono, 'SF Mono', monospace);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent, #00d4ff);
+  letter-spacing: 0.03em;
+}
+.timeline__date.is-historical { color: rgba(255, 170, 0, 0.9); }
+.timeline__index {
+  font-family: var(--font-mono, 'SF Mono', monospace);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.timeline__range {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
-  accent-color: var(--accent, #00d4ff);
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
   cursor: pointer;
+  margin: 4px 0;
 }
-.timeline-slider__labels {
+.timeline__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent, #00d4ff);
+  border: 2px solid rgba(10, 10, 15, 0.9);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+.timeline__range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent, #00d4ff);
+  border: 2px solid rgba(10, 10, 15, 0.9);
+  cursor: grab;
+}
+.timeline__range:active::-webkit-slider-thumb { transform: scale(1.3); cursor: grabbing; }
+.timeline__range:active::-moz-range-thumb { transform: scale(1.3); cursor: grabbing; }
+.timeline__labels {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono, 'SF Mono', monospace);
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 4px;
-}
-.timeline-slider__current {
-  color: var(--accent, #00d4ff);
-  font-weight: 600;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
 }
 @media (max-width: 640px) {
-  .timeline-wrapper { bottom: 12px; right: 70px; }
-  .timeline-slider__panel { min-width: 160px; }
+  .timeline { bottom: 12px; left: 12px; }
+  .timeline__panel { width: 190px; padding: 8px 10px; }
+  .timeline__range::-webkit-slider-thumb { width: 18px; height: 18px; }
+  .timeline__range::-moz-range-thumb { width: 18px; height: 18px; }
 }
