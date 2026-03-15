@@ -953,7 +953,7 @@
         Komm zurück — und sieh ob sich etwas verändert hat.
       </div>
 
-      <button class="epilog__back-to-top magnetic-wrap" aria-label="Zurück nach oben" data-i18n-aria="epilog.backToTop">↑</button>
+      <button class="epilog__back-to-top-inline" aria-label="Zurück nach oben" data-i18n-aria="epilog.backToTop">↑</button>
 
       <p class="timestamp" style="margin-top:var(--space-xl)"></p>
 
@@ -1053,6 +1053,18 @@
 
     </div>
   </footer>
+
+  <!-- ═══ SCROLL-TO-TOP ═══ -->
+  <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+    <svg class="scroll-top__ring" viewBox="0 0 36 36">
+      <circle class="scroll-top__track" cx="18" cy="18" r="16" fill="none" stroke-width="2"/>
+      <circle class="scroll-top__progress" id="scroll-top-progress" cx="18" cy="18" r="16" fill="none" stroke-width="2"
+              stroke-dasharray="100.53" stroke-dashoffset="100.53" transform="rotate(-90 18 18)"/>
+    </svg>
+    <svg class="scroll-top__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
 
   <!-- ═══ MAIN SCRIPT ═══ -->
   <script type="module" src="js/app.js"></script>

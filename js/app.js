@@ -1030,17 +1030,20 @@ class BelkisOne {
 
   // ─── Interactions ───
   _initInteractions() {
-    const backBtn = document.querySelector('.epilog__back-to-top');
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
+    // Epilog inline back-to-top (simple)
+    const inlineBtn = document.querySelector('.epilog__back-to-top-inline');
+    if (inlineBtn) {
+      inlineBtn.addEventListener('click', () => {
         this.scrollCount++;
         window.scrollTo({ top: 0, behavior: 'smooth' });
         if (this.particles) {
           this.particles.burst(window.innerWidth / 2, window.innerHeight / 2, 50);
         }
       });
-      DOMUtils.magneticEffect(backBtn, 0.25);
     }
+
+    // Fixed scroll-to-top with progress ring + auto-hide
+    this._initScrollTop();
 
     document.querySelectorAll('.btn--primary').forEach(btn => {
       DOMUtils.magneticEffect(btn, 0.2);
@@ -1051,6 +1054,57 @@ class BelkisOne {
         const target = dot.dataset.target;
         if (target) DOMUtils.scrollTo(`#${target}`);
       });
+    });
+  }
+
+  _initScrollTop() {
+    const btn = document.getElementById('scroll-top');
+    const ring = document.getElementById('scroll-top-progress');
+    if (!btn || !ring) return;
+
+    const circumference = 2 * Math.PI * 16; // r=16 from SVG
+    let hideTimer = null;
+    let isVisible = false;
+
+    const show = () => {
+      clearTimeout(hideTimer);
+      if (!isVisible) {
+        btn.classList.remove('is-fading');
+        btn.classList.add('is-visible');
+        isVisible = true;
+      }
+      // Auto-hide after 1.5s
+      hideTimer = setTimeout(() => {
+        btn.classList.add('is-fading');
+        isVisible = false;
+      }, 1500);
+    };
+
+    const updateProgress = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll <= 0) return;
+      const progress = MathUtils.clamp(scrollY / maxScroll, 0, 1);
+      ring.style.strokeDashoffset = circumference * (1 - progress);
+
+      // Only show after scrolling past first viewport
+      if (scrollY > window.innerHeight * 0.5) {
+        show();
+      } else {
+        btn.classList.remove('is-visible');
+        btn.classList.add('is-fading');
+        isVisible = false;
+      }
+    };
+
+    window.addEventListener('scroll', DOMUtils.throttle(updateProgress, 50), { passive: true });
+
+    btn.addEventListener('click', () => {
+      this.scrollCount++;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (this.particles) {
+        this.particles.burst(window.innerWidth / 2, window.innerHeight / 2, 50);
+      }
     });
   }
 
