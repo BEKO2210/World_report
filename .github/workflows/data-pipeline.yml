@@ -192,7 +192,7 @@ jobs:
         run: |
           git config user.name "World.One Pipeline"
           git config user.email "pipeline@world.one"
-          git add data/processed/world-state.json data/processed/world-state.backup.json data/processed/heal-log.json README.md
+          git add data/processed/world-state.json data/processed/world-state.backup.json data/processed/heal-log.json data/history/ README.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
