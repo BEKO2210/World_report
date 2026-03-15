@@ -46,12 +46,14 @@ class BelkisOne {
       this._updateLoading(10);
 
       const data = await this.dataLoader.load();
+      this._currentData = data;
       this._updateLoading(40);
 
       this._initParticles();
       this._updateLoading(60);
 
-      this._initScrollEngine(data);
+      this._initScrollEngine();
+
       this._updateLoading(70);
 
       this.cinematic.init();
@@ -67,8 +69,8 @@ class BelkisOne {
       this._initTopBar();
       this._initEasterEgg();
       this._initProlog();
-      this._initLangToggle(data);
-      this._initTimeline(data);
+      this._initLangToggle();
+      this._initTimeline();
 
       this._updateLoading(100);
       setTimeout(() => {
@@ -117,7 +119,7 @@ class BelkisOne {
   }
 
   // ─── Scroll Engine Registration ───
-  _initScrollEngine(data) {
+  _initScrollEngine() {
     const engine = this.scrollEngine;
 
     const sectionIds = [
@@ -128,7 +130,7 @@ class BelkisOne {
 
     sectionIds.forEach(id => {
       engine.register(id, (progress, section) => {
-        this._onSectionProgress(id, progress, section, data);
+        this._onSectionProgress(id, progress, section, this._currentData);
       });
     });
 
@@ -1146,7 +1148,7 @@ class BelkisOne {
   }
 
   // ─── Language Toggle ───
-  _initLangToggle(data) {
+  _initLangToggle() {
     const btn = document.getElementById('lang-toggle');
     if (!btn) return;
 
@@ -1156,12 +1158,12 @@ class BelkisOne {
     btn.addEventListener('click', () => {
       i18n.toggle();
       // Re-render dynamic content that uses i18n.t()
-      this._rebuildDynamic(data);
+      this._rebuildDynamic(this._currentData);
     });
   }
 
   // ─── Timeline ───
-  async _initTimeline(data) {
+  async _initTimeline() {
     const el = document.getElementById('timeline');
     const btn = document.getElementById('timeline-btn');
     const panel = document.getElementById('timeline-panel');
@@ -1231,7 +1233,6 @@ class BelkisOne {
           : await this.dataLoader.load();
         if (pending !== myId) return; // superseded by newer request
         this._rebuildDynamic(newData);
-        if (this.worldIndicator) this.worldIndicator.update(1);
       } catch (err) {
         console.warn('[Timeline] Snapshot load failed:', err.message);
       }
@@ -1245,6 +1246,8 @@ class BelkisOne {
   }
 
   _rebuildDynamic(data) {
+    this._currentData = data;
+
     // Re-render prolog title and subtitle (no typewriter on toggle — instant text)
     const prologTitle = document.querySelector('.prolog__title');
     if (prologTitle) {
@@ -1317,8 +1320,9 @@ class BelkisOne {
     this._economyBuilt = false;
     this._progressBuilt = false;
 
-    // Update world indicator zone label
+    // Update world indicator with new data
     if (this.worldIndicator) {
+      this.worldIndicator.setData(data);
       this.worldIndicator.update(1);
     }
   }
