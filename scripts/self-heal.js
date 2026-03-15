@@ -269,16 +269,21 @@ function main() {
     copyFileSync(DATA_PATH, snapPath);
     console.log(`[HEAL] 📸 Archived snapshot: snapshot-${snapTag}.json`);
 
-    // Update manifest
+    // Update manifest (keep max 50,000 entries ≈ 34 years at 4/day)
+    const MAX_MANIFEST_ENTRIES = 50000;
     const manifestPath = join(HISTORY_DIR, 'manifest.json');
     let manifest = { snapshots: [] };
     try { manifest = JSON.parse(readFileSync(manifestPath, 'utf-8')); } catch {}
     manifest.snapshots.unshift({
       id: snapTag,
       timestamp: now.toISOString(),
-      worldIndex: data.worldIndex?.value ?? 0
+      worldIndex: Math.round((data.worldIndex?.value ?? 0) * 10) / 10
     });
-    writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+    // Trim old entries from manifest (files stay on disk for direct access)
+    if (manifest.snapshots.length > MAX_MANIFEST_ENTRIES) {
+      manifest.snapshots = manifest.snapshots.slice(0, MAX_MANIFEST_ENTRIES);
+    }
+    writeFileSync(manifestPath, JSON.stringify(manifest));
   }
 
   // 8. Save repaired data
