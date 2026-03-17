@@ -311,13 +311,74 @@ function buildWorldState() {
   const electricityCurrent = latest(electricityData?.history || [])?.value || 91;
   const waterCurrent = latest(waterData?.history || [])?.value || 74;
 
+  // ─── CONFLICT / REFUGEE / FREEDOM DATA (used in scoring) ───
+  const conflicts = existing?.society?.conflicts || {
+    activeCount: 56,
+    locations: [
+      { name: 'Ukraine', lat: 48.38, lng: 31.17, type: 'war', intensity: 0.95 },
+      { name: 'Gaza', lat: 31.35, lng: 34.31, type: 'war', intensity: 0.98 },
+      { name: 'Sudan', lat: 15.50, lng: 32.56, type: 'war', intensity: 0.85 },
+      { name: 'Myanmar', lat: 19.76, lng: 96.07, type: 'conflict', intensity: 0.70 },
+      { name: 'Äthiopien', lat: 9.15, lng: 40.49, type: 'conflict', intensity: 0.60 },
+      { name: 'Jemen', lat: 15.55, lng: 48.52, type: 'war', intensity: 0.75 },
+      { name: 'Somalia', lat: 5.15, lng: 46.20, type: 'conflict', intensity: 0.65 },
+      { name: 'DR Kongo', lat: -4.04, lng: 21.76, type: 'conflict', intensity: 0.70 },
+      { name: 'Sahel', lat: 14.50, lng: -1.50, type: 'conflict', intensity: 0.60 },
+      { name: 'Haiti', lat: 18.97, lng: -72.28, type: 'unrest', intensity: 0.50 }
+    ],
+    source: 'ACLED'
+  };
+  const refugees = existing?.society?.refugees || {
+    total: 108400000, displaced: 68300000, asylumseekers: 6900000,
+    flows: [
+      { from: 'Syria', to: 'Turkey', count: 3200000 },
+      { from: 'Ukraine', to: 'Poland', count: 1800000 },
+      { from: 'Venezuela', to: 'Colombia', count: 2500000 },
+      { from: 'Afghanistan', to: 'Pakistan', count: 1700000 },
+      { from: 'Sudan', to: 'Chad', count: 1100000 },
+      { from: 'Myanmar', to: 'Bangladesh', count: 960000 },
+      { from: 'Somalia', to: 'Kenya', count: 580000 },
+      { from: 'DRC', to: 'Uganda', count: 470000 }
+    ],
+    source: 'UNHCR'
+  };
+  const freedom = existing?.society?.freedom || {
+    free: 84, partlyFree: 56, notFree: 55, trendDecline: true, yearDecline: 18, source: 'Freedom House'
+  };
+
   const socLifeScore = normalize(lifeExpCurrent, 50, 85);
   const socMortScore = normalize(childMortCurrent, 100, 5); // lower = better
   const socElecScore = normalize(electricityCurrent, 50, 100);
   const socWaterScore = normalize(waterCurrent, 40, 100);
-  const socScore = Math.round((socLifeScore * 0.3 + socMortScore * 0.3 + socElecScore * 0.2 + socWaterScore * 0.2) * 10) / 10;
 
-  console.log(`  Society Score:     ${socScore} (life:${socLifeScore.toFixed(0)} mort:${socMortScore.toFixed(0)} elec:${socElecScore.toFixed(0)} water:${socWaterScore.toFixed(0)})`);
+  // Conflict score: combination of active conflict count and average intensity
+  const conflictCount = conflicts.activeCount || 56;
+  const avgIntensity = conflicts.locations?.length > 0
+    ? conflicts.locations.reduce((s, c) => s + c.intensity, 0) / conflicts.locations.length
+    : 0.72;
+  const conflictMetric = (clamp(conflictCount, 0, 80) / 80) * 60 + avgIntensity * 40;
+  const socConflictScore = normalize(conflictMetric, 100, 0); // worst=100 (80+ conflicts, max intensity), best=0
+
+  // Refugee score: total displaced people in millions
+  const refugeeMillions = (refugees.total || 108400000) / 1e6;
+  const socRefugeeScore = normalize(refugeeMillions, 150, 0); // worst=150M, best=0
+
+  // Freedom score: percentage of countries rated "Free"
+  const totalCountries = freedom.free + freedom.partlyFree + freedom.notFree;
+  const freePercent = (freedom.free / totalCountries) * 100;
+  const socFreedomScore = normalize(freePercent, 20, 70); // worst=20%, best=70%
+
+  const socScore = Math.round((
+    socLifeScore * 0.20 +
+    socMortScore * 0.20 +
+    socElecScore * 0.12 +
+    socWaterScore * 0.13 +
+    socConflictScore * 0.15 +
+    socRefugeeScore * 0.10 +
+    socFreedomScore * 0.10
+  ) * 10) / 10;
+
+  console.log(`  Society Score:     ${socScore} (life:${socLifeScore.toFixed(0)} mort:${socMortScore.toFixed(0)} elec:${socElecScore.toFixed(0)} water:${socWaterScore.toFixed(0)} conflict:${socConflictScore.toFixed(0)} refugee:${socRefugeeScore.toFixed(0)} freedom:${socFreedomScore.toFixed(0)})`);
 
   // ─── ECONOMY ───
   const gdpData = readRaw('economy', 'gdp-growth.json');
@@ -449,6 +510,7 @@ function buildWorldState() {
   addMomentum('Gesundheitsausgaben', healthExpData?.history, true);
   addMomentum('Urbanisierung', urbanData?.history, true);
   addMomentum('Patentanmeldungen', patentData?.history, true);
+  addMomentum('Militärausgaben (% BIP)', militaryData?.history, false); // lower military spending = better
 
   // Fall back to existing if not enough indicators computed
   const finalMomentum = momentumIndicators.length >= 10 ? momentumIndicators : (existing?.momentum?.indicators || momentumIndicators);
@@ -525,24 +587,6 @@ function buildWorldState() {
     { name: 'Mobilfunkverträge', then: 12, now: mobileCurrent, improved: mobileCurrent > 12 }
   ];
 
-  // ─── BUILD CONFLICT DATA ───
-  const conflicts = existing?.society?.conflicts || {
-    activeCount: 56,
-    locations: [
-      { name: 'Ukraine', lat: 48.38, lng: 31.17, type: 'war', intensity: 0.95 },
-      { name: 'Gaza', lat: 31.35, lng: 34.31, type: 'war', intensity: 0.98 },
-      { name: 'Sudan', lat: 15.50, lng: 32.56, type: 'war', intensity: 0.85 },
-      { name: 'Myanmar', lat: 19.76, lng: 96.07, type: 'conflict', intensity: 0.70 },
-      { name: 'Äthiopien', lat: 9.15, lng: 40.49, type: 'conflict', intensity: 0.60 },
-      { name: 'Jemen', lat: 15.55, lng: 48.52, type: 'war', intensity: 0.75 },
-      { name: 'Somalia', lat: 5.15, lng: 46.20, type: 'conflict', intensity: 0.65 },
-      { name: 'DR Kongo', lat: -4.04, lng: 21.76, type: 'conflict', intensity: 0.70 },
-      { name: 'Sahel', lat: 14.50, lng: -1.50, type: 'conflict', intensity: 0.60 },
-      { name: 'Haiti', lat: 18.97, lng: -72.28, type: 'unrest', intensity: 0.50 }
-    ],
-    source: 'ACLED'
-  };
-
   // ─── ASSEMBLE FINAL STATE ───
   const worldState = {
     meta: {
@@ -597,10 +641,11 @@ function buildWorldState() {
         indicators: [
           { name: 'Lebenserwartung', value: `${lifeExpCurrent} Jahre`, score: Math.round(socLifeScore), trend: 'improving', source: 'World Bank' },
           { name: 'Kindersterblichkeit', value: `${childMortCurrent}/1000`, score: Math.round(socMortScore), trend: 'improving', source: 'World Bank' },
-          { name: 'Aktive Konflikte', value: conflicts.activeCount, score: 25, trend: 'declining', source: 'ACLED' },
+          { name: 'Aktive Konflikte', value: conflicts.activeCount, score: Math.round(socConflictScore), trend: 'declining', source: 'ACLED' },
           { name: 'Elektrizitätszugang', value: `${electricityCurrent}%`, score: Math.round(socElecScore), trend: 'improving', source: 'World Bank' },
           { name: 'Trinkwasserzugang', value: `${waterCurrent}%`, score: Math.round(socWaterScore), trend: 'improving', source: 'World Bank' },
-          { name: 'Menschen auf der Flucht', value: '108.4 Mio', score: 20, trend: 'declining', source: 'UNHCR' }
+          { name: 'Menschen auf der Flucht', value: `${(refugees.total / 1e6).toFixed(1)} Mio`, score: Math.round(socRefugeeScore), trend: 'declining', source: 'UNHCR' },
+          { name: 'Politische Freiheit', value: `${freedom.free} frei / ${freedom.notFree} unfrei`, score: Math.round(socFreedomScore), trend: freedom.trendDecline ? 'declining' : 'stable', source: 'Freedom House' }
         ]
       },
       economy: {
@@ -674,23 +719,8 @@ function buildWorldState() {
 
     society: {
       conflicts,
-      refugees: existing?.society?.refugees || {
-        total: 108400000, displaced: 68300000, asylumseekers: 6900000,
-        flows: [
-          { from: 'Syria', to: 'Turkey', count: 3200000 },
-          { from: 'Ukraine', to: 'Poland', count: 1800000 },
-          { from: 'Venezuela', to: 'Colombia', count: 2500000 },
-          { from: 'Afghanistan', to: 'Pakistan', count: 1700000 },
-          { from: 'Sudan', to: 'Chad', count: 1100000 },
-          { from: 'Myanmar', to: 'Bangladesh', count: 960000 },
-          { from: 'Somalia', to: 'Kenya', count: 580000 },
-          { from: 'DRC', to: 'Uganda', count: 470000 }
-        ],
-        source: 'UNHCR'
-      },
-      freedom: existing?.society?.freedom || {
-        free: 84, partlyFree: 56, notFree: 55, trendDecline: true, yearDecline: 18, source: 'Freedom House'
-      },
+      refugees,
+      freedom,
       lifeExpectancy: {
         global: lifeExpCurrent,
         highest: existing?.society?.lifeExpectancy?.highest || { country: 'Japan', value: 84.8 },
