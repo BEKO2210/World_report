@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BELKIS ONE — Globales Echtzeit-Analyse-Dashboard. Der Zustand der Welt in einem Scroll-Erlebnis.">
+  <meta name="description" content="World.One — Globales Echtzeit-Analyse-Dashboard. Der Zustand der Welt in einem Scroll-Erlebnis.">
   <meta name="theme-color" content="#0a0a0f">
-  <title>BELKIS ONE 1.0 — Der Zustand der Welt</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icon/icon-192.png">
+  <title>World.One 1.0 — Der Zustand der Welt</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/core.css">
@@ -20,8 +24,8 @@
     <div class="loading-screen__orb">
       <div class="loading-screen__orb-core"></div>
     </div>
-    <div class="loading-screen__text">BELKIS ONE</div>
-    <div class="loading-screen__sub">Lade Weltdaten aus 40+ Quellen</div>
+    <div class="loading-screen__text">World.One</div>
+    <div class="loading-screen__sub" data-i18n="loading.sub">Lade Weltdaten aus 40+ Quellen</div>
     <div class="loading-screen__bar">
       <div class="loading-screen__progress" style="width: 0%"></div>
     </div>
@@ -31,12 +35,12 @@
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
   <!-- ═══ NAVIGATION DOTS ═══ -->
-  <nav class="nav-dots" aria-label="Sektions-Navigation"></nav>
+  <nav class="nav-dots" aria-label="Sektions-Navigation" data-i18n-aria="nav.aria"></nav>
 
   <!-- ═══ TOP BAR — Live Status ═══ -->
   <header class="top-bar" aria-label="Status">
     <div class="top-bar__left">
-      <span class="top-bar__brand">BELKIS ONE</span>
+      <span class="top-bar__brand">World.One</span>
       <span class="top-bar__version">1.0</span>
     </div>
     <div class="top-bar__right">
@@ -56,47 +60,80 @@
         <div class="prolog__orb-ring prolog__orb-ring--2"></div>
         <div class="prolog__orb-ring prolog__orb-ring--3"></div>
       </div>
-      <div class="prolog__brand" aria-hidden="true">BELKIS ONE</div>
+      <div class="prolog__brand" aria-hidden="true">World.One</div>
       <h1 class="prolog__title"></h1>
       <p class="prolog__subtitle"></p>
       <div class="prolog__meta reveal">
         <div class="prolog__meta-item">
           <span class="prolog__meta-value" id="prolog-sources">40+</span>
-          <span class="prolog__meta-label">Datenquellen</span>
+          <span class="prolog__meta-label" data-i18n="prolog.sources">Datenquellen</span>
         </div>
         <div class="prolog__meta-divider"></div>
         <div class="prolog__meta-item">
           <span class="prolog__meta-value">6h</span>
-          <span class="prolog__meta-label">Update-Zyklus</span>
+          <span class="prolog__meta-label" data-i18n="prolog.cycle">Update-Zyklus</span>
         </div>
         <div class="prolog__meta-divider"></div>
         <div class="prolog__meta-item">
           <span class="prolog__meta-value" id="prolog-rate">100%</span>
-          <span class="prolog__meta-label">Erfolgsrate</span>
+          <span class="prolog__meta-label" data-i18n="prolog.rate">Erfolgsrate</span>
         </div>
       </div>
     </div>
     <div class="scroll-hint" aria-hidden="true">
-      <span>Scroll um zu erfahren</span>
+      <span data-i18n="prolog.scroll">Scroll um zu erfahren</span>
       <span class="scroll-hint__arrow">↓</span>
     </div>
   </section>
 
+  <!-- ═══ TIMELINE ═══ -->
+  <div class="timeline" id="timeline" style="display:none">
+    <button class="timeline__btn" id="timeline-btn" aria-label="Timeline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </button>
+    <div class="timeline__panel" id="timeline-panel">
+      <div class="timeline__header">
+        <span class="timeline__date" id="timeline-date">LIVE</span>
+        <span class="timeline__index" id="timeline-index"></span>
+      </div>
+      <input type="range" id="timeline-range" min="0" max="0" value="0" step="1" class="timeline__range">
+      <div class="timeline__labels">
+        <span id="timeline-start">—</span>
+        <span id="timeline-end">LIVE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LANGUAGE TOGGLE ═══ -->
+  <div class="lang-toggle-wrapper">
+    <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+      <span class="lang-toggle__icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </span>
+      <span class="lang-toggle__label">EN</span>
+    </button>
+  </div>
+
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- AKT 1 — DER WELT-INDIKATOR                           -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="akt-indicator" class="section akt-indicator" data-section="akt-indicator" aria-label="Welt-Indikator">
+  <section id="akt-indicator" class="section akt-indicator" data-section="akt-indicator" aria-label="Welt-Indikator" data-i18n-aria="act1.title">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 01</span>
-        <h2 class="text-section">Der Welt-Indikator</h2>
-        <p class="section-desc">Berechnet aus hunderten Datenpunkten. Kein Algorithmus, kein KI-Modell — reiner Code, reale Daten.</p>
+        <span class="section-label" data-i18n="act1.label">AKT 01</span>
+        <h2 class="text-section" data-i18n="act1.title">Der Welt-Indikator</h2>
+        <p class="section-desc" data-i18n="act1.desc">Berechnet aus hunderten Datenpunkten. Kein Algorithmus, kein KI-Modell — reiner Code, reale Daten.</p>
       </div>
 
       <div class="world-indicator reveal">
         <div class="world-indicator__endpoints">
-          <span>KOLLAPS</span>
-          <span>GOLDENES ZEITALTER</span>
+          <span data-i18n="act1.collapse">KOLLAPS</span>
+          <span data-i18n="act1.golden">GOLDENES ZEITALTER</span>
         </div>
         <div class="world-indicator__scale">
           <div class="world-indicator__track"></div>
@@ -105,11 +142,11 @@
         </div>
         <div class="world-indicator__zones">
           <span class="world-indicator__zone-mark">0</span>
-          <span class="world-indicator__zone-mark">KRITISCH</span>
-          <span class="world-indicator__zone-mark">BESORGNISERREGEND</span>
-          <span class="world-indicator__zone-mark">GEMISCHT</span>
-          <span class="world-indicator__zone-mark">POSITIV</span>
-          <span class="world-indicator__zone-mark">EXZELLENT</span>
+          <span class="world-indicator__zone-mark" data-i18n="act1.zone.critical">KRITISCH</span>
+          <span class="world-indicator__zone-mark" data-i18n="act1.zone.concerning">BESORGNISERREGEND</span>
+          <span class="world-indicator__zone-mark" data-i18n="act1.zone.mixed">GEMISCHT</span>
+          <span class="world-indicator__zone-mark" data-i18n="act1.zone.positive">POSITIV</span>
+          <span class="world-indicator__zone-mark" data-i18n="act1.zone.excellent">EXZELLENT</span>
           <span class="world-indicator__zone-mark">100</span>
         </div>
         <div class="world-indicator__value">
@@ -124,8 +161,8 @@
       <div class="info-box reveal" style="margin-top:var(--space-lg)">
         <div class="info-box__icon">?</div>
         <div class="info-box__content">
-          <strong>Wie wird der Index berechnet?</strong>
-          <p>Gewichteter Durchschnitt aus 5 Kategorien: Umwelt (25%), Gesellschaft (25%), Wirtschaft (20%), Fortschritt (20%), Momentum (10%). Jede Kategorie wird aus Dutzenden Indikatoren normalisiert auf 0–100.</p>
+          <strong data-i18n="act1.howTitle">Wie wird der Index berechnet?</strong>
+          <p data-i18n="act1.howText">Gewichteter Durchschnitt aus 5 Kategorien: Umwelt (25%), Gesellschaft (25%), Wirtschaft (20%), Fortschritt (20%), Momentum (10%). Jede Kategorie wird aus Dutzenden Indikatoren normalisiert auf 0–100.</p>
         </div>
       </div>
 
@@ -135,36 +172,36 @@
           <span class="sub-score__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
           <div class="sub-score__gauge"></div>
           <span class="sub-score__value text-mono">0</span>
-          <span class="sub-score__name">Umwelt</span>
-          <span class="sub-score__detail">25% Gewichtung</span>
+          <span class="sub-score__name" data-i18n="act1.sub.environment">Umwelt</span>
+          <span class="sub-score__detail" data-i18n="act1.sub.weight25">25% Gewichtung</span>
         </div>
         <div class="sub-score reveal" data-subscore="society" role="listitem">
           <span class="sub-score__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
           <div class="sub-score__gauge"></div>
           <span class="sub-score__value text-mono">0</span>
-          <span class="sub-score__name">Gesellschaft</span>
-          <span class="sub-score__detail">25% Gewichtung</span>
+          <span class="sub-score__name" data-i18n="act1.sub.society">Gesellschaft</span>
+          <span class="sub-score__detail" data-i18n="act1.sub.weight25">25% Gewichtung</span>
         </div>
         <div class="sub-score reveal" data-subscore="economy" role="listitem">
           <span class="sub-score__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
           <div class="sub-score__gauge"></div>
           <span class="sub-score__value text-mono">0</span>
-          <span class="sub-score__name">Wirtschaft</span>
-          <span class="sub-score__detail">20% Gewichtung</span>
+          <span class="sub-score__name" data-i18n="act1.sub.economy">Wirtschaft</span>
+          <span class="sub-score__detail" data-i18n="act1.sub.weight20">20% Gewichtung</span>
         </div>
         <div class="sub-score reveal" data-subscore="progress" role="listitem">
           <span class="sub-score__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
           <div class="sub-score__gauge"></div>
           <span class="sub-score__value text-mono">0</span>
-          <span class="sub-score__name">Fortschritt</span>
-          <span class="sub-score__detail">20% Gewichtung</span>
+          <span class="sub-score__name" data-i18n="act1.sub.progress">Fortschritt</span>
+          <span class="sub-score__detail" data-i18n="act1.sub.weight20">20% Gewichtung</span>
         </div>
         <div class="sub-score reveal" data-subscore="momentum" role="listitem">
           <span class="sub-score__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
           <div class="sub-score__gauge"></div>
           <span class="sub-score__value text-mono">0</span>
-          <span class="sub-score__name">Momentum</span>
-          <span class="sub-score__detail">10% Gewichtung</span>
+          <span class="sub-score__name" data-i18n="act1.sub.momentum">Momentum</span>
+          <span class="sub-score__detail" data-i18n="act1.sub.weight10">10% Gewichtung</span>
         </div>
       </div>
     </div>
@@ -176,15 +213,15 @@
   <section id="akt-environment" class="section akt-environment" data-section="akt-environment" aria-label="Umwelt">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 02 — UMWELT</span>
-        <h2 class="text-section">Der Planet atmet</h2>
-        <p class="section-desc">Temperatur, CO2, Luft, Eis, Wald, Erneuerbare — die Vitaldaten unserer Erde.</p>
+        <span class="section-label" data-i18n="act2.label">AKT 02 — UMWELT</span>
+        <h2 class="text-section" data-i18n="act2.title">Der Planet atmet</h2>
+        <p class="section-desc" data-i18n="act2.desc">Temperatur, CO2, Luft, Eis, Wald, Erneuerbare — die Vitaldaten unserer Erde.</p>
       </div>
 
       <!-- Warming Stripes -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Temperaturanomalie 1880–2026</h3>
-        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)">Jeder Streifen = ein Jahr. Blau = kühler, Rot = wärmer als der Durchschnitt (1951–1980).</p>
+        <h3 class="text-sub" data-i18n="act2.tempTitle">Temperaturanomalie 1880–2026</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)" data-i18n="act2.tempDesc">Jeder Streifen = ein Jahr. Blau = kühler, Rot = wärmer als der Durchschnitt (1951–1980).</p>
         <div id="warming-stripes" class="warming-stripes" role="img" aria-label="Warming Stripes Visualisierung"></div>
       </div>
 
@@ -198,7 +235,7 @@
           <div class="data-card__hero">
             <span class="data-card__value" data-counter data-target="421" data-suffix=" ppm" data-decimals="0" style="color:var(--warning)">0 ppm</span>
           </div>
-          <p class="data-card__explain">Parts per Million in der Atmosphäre. Vor der Industrialisierung: ~280 ppm. Höchster Wert seit 800.000 Jahren.</p>
+          <p class="data-card__explain" data-i18n="act2.co2Explain">Parts per Million in der Atmosphäre. Vor der Industrialisierung: ~280 ppm. Höchster Wert seit 800.000 Jahren.</p>
           <div id="co2-sparkline" class="data-card__sparkline"></div>
         </div>
 
@@ -210,14 +247,14 @@
           <div class="data-card__hero">
             <span class="data-card__value" id="temp-anomaly-value" style="color:var(--danger-light)">+0.00°C</span>
           </div>
-          <p class="data-card__explain">Abweichung vom Durchschnitt (1951–1980). Das 1.5°C-Ziel von Paris ist fast erreicht.</p>
+          <p class="data-card__explain" data-i18n="act2.tempExplain">Abweichung vom Durchschnitt (1951–1980). Das 1.5°C-Ziel von Paris ist fast erreicht.</p>
           <div id="temp-sparkline" class="data-card__sparkline"></div>
         </div>
       </div>
 
       <!-- CO2 Full Chart -->
       <div class="reveal" style="margin-top:var(--space-lg)">
-        <h3 class="text-sub">CO2-Konzentration über die Zeit</h3>
+        <h3 class="text-sub" data-i18n="act2.co2ChartTitle">CO2-Konzentration über die Zeit</h3>
         <div id="co2-chart" class="chart-container" role="img" aria-label="CO2-Konzentration über Zeit"></div>
       </div>
 
@@ -225,7 +262,7 @@
       <div class="bento-grid bento-grid--3 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">ARKTISCHES EIS</span>
+            <span class="data-card__label" data-i18n="act2.arcticIce">ARKTISCHES EIS</span>
             <span class="data-card__trend data-card__trend--down">-46.2%</span>
           </div>
           <div class="data-card__comparison">
@@ -235,49 +272,49 @@
             </div>
             <span class="data-card__compare-arrow">→</span>
             <div class="data-card__compare-item">
-              <span class="data-card__compare-label">Heute</span>
+              <span class="data-card__compare-label" data-i18n="act2.today">Heute</span>
               <span class="data-card__compare-value" style="color:#ff6b6b" data-counter data-target="4.2" data-decimals="1" data-suffix=" Mio km²">0</span>
             </div>
           </div>
-          <p class="data-card__explain">Eisverlust entspricht etwa der Fläche von Indien.</p>
+          <p class="data-card__explain" data-i18n="act2.arcticExplain">Eisverlust entspricht etwa der Fläche von Indien.</p>
         </div>
 
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">WALDFLÄCHE</span>
+            <span class="data-card__label" data-i18n="act2.forestLabel">WALDFLÄCHE</span>
             <span class="data-card__source">World Bank</span>
           </div>
           <div class="data-card__hero">
             <span class="data-card__value" id="forest-value" style="color:#34c759">0%</span>
           </div>
-          <p class="data-card__explain">Anteil der Landfläche mit Wald. ~10 Mio Hektar Verlust pro Jahr.</p>
+          <p class="data-card__explain" data-i18n="act2.forestExplain">Anteil der Landfläche mit Wald. ~10 Mio Hektar Verlust pro Jahr.</p>
           <div id="forest-sparkline" class="data-card__sparkline"></div>
         </div>
 
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">ERNEUERBARE ENERGIEN</span>
+            <span class="data-card__label" data-i18n="act2.renewableLabel">ERNEUERBARE ENERGIEN</span>
             <span class="data-card__source">World Bank</span>
           </div>
           <div class="data-card__hero">
             <span class="data-card__value" id="renewable-value" style="color:#00d4ff">0%</span>
           </div>
-          <p class="data-card__explain">Anteil am Gesamtverbrauch. Wächst exponentiell dank Solar & Wind.</p>
+          <p class="data-card__explain" data-i18n="act2.renewableExplain">Anteil am Gesamtverbrauch. Wächst exponentiell dank Solar & Wind.</p>
           <div id="renewable-sparkline" class="data-card__sparkline"></div>
         </div>
       </div>
 
       <!-- Air Quality -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Luftqualität weltweit</h3>
-        <p class="text-label text-muted" style="margin-bottom:var(--space-md)">AQI: 0–50 gut, 51–100 moderat, 101–150 ungesund für empfindliche Gruppen, 150+ ungesund</p>
+        <h3 class="text-sub" data-i18n="act2.airTitle">Luftqualität weltweit</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-md)" data-i18n="act2.airDesc">AQI: 0–50 gut, 51–100 moderat, 101–150 ungesund für empfindliche Gruppen, 150+ ungesund</p>
         <div class="air-quality-grid" id="air-quality-grid"></div>
       </div>
 
       <!-- Weather -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Aktuelle Wetterdaten</h3>
-        <p class="text-label text-muted" style="margin-bottom:var(--space-md)">Echtzeitdaten aus 8 Metropolen via Open-Meteo</p>
+        <h3 class="text-sub" data-i18n="act2.weatherTitle">Aktuelle Wetterdaten</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-md)" data-i18n="act2.weatherDesc">Echtzeitdaten aus 8 Metropolen via Open-Meteo</p>
         <div class="weather-grid" id="weather-grid"></div>
       </div>
     </div>
@@ -289,93 +326,93 @@
   <section id="akt-society" class="section akt-society" data-section="akt-society" aria-label="Gesellschaft">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 03 — GESELLSCHAFT</span>
-        <h2 class="text-section">Wir Menschen</h2>
-        <p class="section-desc">8.1 Milliarden. Konflikte, Flucht, Freiheit, Gesundheit — wie es uns geht.</p>
+        <span class="section-label" data-i18n="act3.label">AKT 03 — GESELLSCHAFT</span>
+        <h2 class="text-section" data-i18n="act3.title">Wir Menschen</h2>
+        <p class="section-desc" data-i18n="act3.desc">8.1 Milliarden. Konflikte, Flucht, Freiheit, Gesundheit — wie es uns geht.</p>
       </div>
 
       <!-- Key Stats -->
       <div class="bento-grid bento-grid--4 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">WELTBEVÖLKERUNG</div>
+          <div class="data-card__label" data-i18n="act3.population">WELTBEVÖLKERUNG</div>
           <div class="data-card__value data-card__value--sm" data-counter data-target="8100" data-suffix=" Mio" style="color:var(--text-primary)">0</div>
-          <div class="data-card__mini-context">+1% pro Jahr</div>
+          <div class="data-card__mini-context" data-i18n="act3.popContext">+1% pro Jahr</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">AKTIVE KONFLIKTE</div>
+          <div class="data-card__label" data-i18n="act3.conflicts">AKTIVE KONFLIKTE</div>
           <div class="data-card__value data-card__value--sm" id="conflicts-count" style="color:var(--danger)">0</div>
-          <div class="data-card__mini-context">Kriege & bewaffnete Konflikte</div>
+          <div class="data-card__mini-context" data-i18n="act3.conflictsContext">Kriege & bewaffnete Konflikte</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">LEBENSERWARTUNG</div>
+          <div class="data-card__label" data-i18n="act3.lifeExp">LEBENSERWARTUNG</div>
           <div class="data-card__value data-card__value--sm" data-counter data-target="73.4" data-decimals="1" data-suffix=" J." style="color:#e8a87c">0</div>
-          <div class="data-card__mini-context">1960: nur 52.6 Jahre</div>
+          <div class="data-card__mini-context" data-i18n="act3.lifeExpContext">1960: nur 52.6 Jahre</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">KINDERSTERBLICHKEIT</div>
+          <div class="data-card__label" data-i18n="act3.childMort">KINDERSTERBLICHKEIT</div>
           <div class="data-card__value data-card__value--sm" id="child-mortality-value" style="color:var(--warning)">0</div>
-          <div class="data-card__mini-context">pro 1000 Lebendgeburten</div>
+          <div class="data-card__mini-context" data-i18n="act3.childMortContext">pro 1000 Lebendgeburten</div>
         </div>
       </div>
 
       <!-- Conflict Map -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Aktive Konflikte weltweit</h3>
-        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)">Größe = Intensität. Rot = Krieg, Orange = Konflikt, Gelb = Unruhen</p>
+        <h3 class="text-sub" data-i18n="act3.conflictMapTitle">Aktive Konflikte weltweit</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)" data-i18n="act3.conflictMapDesc">Größe = Intensität. Rot = Krieg, Orange = Konflikt, Gelb = Unruhen</p>
         <div id="conflict-map" style="width:100%;min-height:300px;position:relative"></div>
       </div>
 
       <!-- Refugees -->
       <div class="refugee-counter reveal">
         <div class="refugee-counter__number" data-counter data-target="108400000" data-suffix="compact">0</div>
-        <div class="refugee-counter__label">Menschen auf der Flucht weltweit</div>
+        <div class="refugee-counter__label" data-i18n="act3.refugeeLabel">Menschen auf der Flucht weltweit</div>
         <div class="refugee-counter__breakdown" id="refugee-breakdown"></div>
-        <p class="text-micro text-muted" style="margin-top:var(--space-xs)">Quelle: UNHCR 2026 — Mehr als je zuvor in der Geschichte</p>
+        <p class="text-micro text-muted" style="margin-top:var(--space-xs)" data-i18n="act3.refugeeSource">Quelle: UNHCR 2026 — Mehr als je zuvor in der Geschichte</p>
       </div>
 
       <!-- Freedom -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub text-center">Freiheitsindex weltweit</h3>
-        <p class="text-label text-muted text-center" style="margin-bottom:var(--space-sm)">195 Länder bewertet nach politischen Rechten & bürgerlichen Freiheiten</p>
+        <h3 class="text-sub text-center" data-i18n="act3.freedomTitle">Freiheitsindex weltweit</h3>
+        <p class="text-label text-muted text-center" style="margin-bottom:var(--space-sm)" data-i18n="act3.freedomDesc">195 Länder bewertet nach politischen Rechten & bürgerlichen Freiheiten</p>
         <div class="freedom-legend">
-          <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#34c759"></span><span>Frei (84)</span></div>
-          <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#ffcc00"></span><span>Teilweise frei (56)</span></div>
-          <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#ff3b30"></span><span>Nicht frei (55)</span></div>
+          <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#34c759"></span><span data-i18n="act3.free">Frei (84)</span></div>
+          <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#ffcc00"></span><span data-i18n="act3.partlyFree">Teilweise frei (56)</span></div>
+          <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#ff3b30"></span><span data-i18n="act3.notFree">Nicht frei (55)</span></div>
         </div>
-        <p class="text-label text-muted text-center" style="margin-top:var(--space-sm)">18. Jahr in Folge mit Rückgang — Freedom House 2026</p>
+        <p class="text-label text-muted text-center" style="margin-top:var(--space-sm)" data-i18n="act3.freedomDecline">18. Jahr in Folge mit Rückgang — Freedom House 2026</p>
       </div>
 
       <!-- Life Expectancy + Infrastructure -->
       <div class="bento-grid bento-grid--2 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">LEBENSERWARTUNG</span>
-            <span class="data-card__trend data-card__trend--up">+20.8 J. seit 1960</span>
+            <span class="data-card__label" data-i18n="act3.lifeExpLabel">LEBENSERWARTUNG</span>
+            <span class="data-card__trend data-card__trend--up" data-i18n="act3.lifeExpTrend">+20.8 J. seit 1960</span>
           </div>
           <div id="life-expectancy-chart" class="chart-container" role="img" aria-label="Lebenserwartung"></div>
-          <p class="data-card__explain">Haupttreiber: Medizin, Hygiene, Ernährung.</p>
+          <p class="data-card__explain" data-i18n="act3.lifeExpExplain">Haupttreiber: Medizin, Hygiene, Ernährung.</p>
         </div>
 
         <div class="data-card reveal">
-          <div class="data-card__header"><span class="data-card__label">INFRASTRUKTUR-ZUGANG</span></div>
+          <div class="data-card__header"><span class="data-card__label" data-i18n="act3.infraLabel">INFRASTRUKTUR-ZUGANG</span></div>
           <div class="infra-bars" id="infra-bars">
             <div class="infra-bar">
-              <div class="infra-bar__label">Strom</div>
+              <div class="infra-bar__label" data-i18n="act3.infraElec">Strom</div>
               <div class="infra-bar__track"><div class="infra-bar__fill" id="electricity-bar" style="width:0%;background:#ffcc00"></div></div>
               <div class="infra-bar__value" id="electricity-value">0%</div>
             </div>
             <div class="infra-bar">
-              <div class="infra-bar__label">Sauberes Wasser</div>
+              <div class="infra-bar__label" data-i18n="act3.infraWater">Sauberes Wasser</div>
               <div class="infra-bar__track"><div class="infra-bar__fill" id="water-bar" style="width:0%;background:#5ac8fa"></div></div>
               <div class="infra-bar__value" id="water-value">0%</div>
             </div>
             <div class="infra-bar">
-              <div class="infra-bar__label">Bildung</div>
+              <div class="infra-bar__label" data-i18n="act3.infraEdu">Bildung</div>
               <div class="infra-bar__track"><div class="infra-bar__fill" id="education-bar" style="width:0%;background:#34c759"></div></div>
               <div class="infra-bar__value" id="education-value">0%</div>
             </div>
           </div>
-          <p class="data-card__explain">Milliarden haben heute Zugang zu Grundversorgung — historisch einzigartig.</p>
+          <p class="data-card__explain" data-i18n="act3.infraExplain">Milliarden haben heute Zugang zu Grundversorgung — historisch einzigartig.</p>
         </div>
       </div>
     </div>
@@ -387,54 +424,54 @@
   <section id="akt-economy" class="section akt-economy" data-section="akt-economy" aria-label="Wirtschaft">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 04 — WIRTSCHAFT</span>
-        <h2 class="text-section">Der Motor</h2>
-        <p class="section-desc">Reichtum, Armut, Ungleichheit, Handel — die Zahlen hinter dem System.</p>
+        <span class="section-label" data-i18n="act4.label">AKT 04 — WIRTSCHAFT</span>
+        <h2 class="text-section" data-i18n="act4.title">Der Motor</h2>
+        <p class="section-desc" data-i18n="act4.desc">Reichtum, Armut, Ungleichheit, Handel — die Zahlen hinter dem System.</p>
       </div>
 
       <!-- Wealth Comparison -->
       <div class="wealth-comparison reveal">
         <div class="wealth-comparison__side">
           <div class="wealth-comparison__value" style="color:#ffd700" data-counter data-target="2781">0</div>
-          <div class="wealth-comparison__label">Milliardäre weltweit</div>
-          <div class="wealth-comparison__sub">besitzen 45.8% des Weltvermögens</div>
+          <div class="wealth-comparison__label" data-i18n="act4.billionaires">Milliardäre weltweit</div>
+          <div class="wealth-comparison__sub" data-i18n="act4.billionairesOwn">besitzen 45.8% des Weltvermögens</div>
         </div>
         <div class="wealth-comparison__vs">vs.</div>
         <div class="wealth-comparison__side">
           <div class="wealth-comparison__value" style="color:#ff9500" data-counter data-target="648" data-suffix=" Mio">0</div>
-          <div class="wealth-comparison__label">Menschen in extremer Armut</div>
-          <div class="wealth-comparison__sub">unter $2.15 pro Tag</div>
+          <div class="wealth-comparison__label" data-i18n="act4.poverty">Menschen in extremer Armut</div>
+          <div class="wealth-comparison__sub" data-i18n="act4.povertyThreshold">unter $2.15 pro Tag</div>
         </div>
       </div>
 
       <!-- Inequality -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Globale Vermögensverteilung</h3>
-        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)">Das reichste 1% besitzt mehr als die untere Hälfte der Menschheit zusammen.</p>
+        <h3 class="text-sub" data-i18n="act4.wealthTitle">Globale Vermögensverteilung</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)" data-i18n="act4.wealthDesc">Das reichste 1% besitzt mehr als die untere Hälfte der Menschheit zusammen.</p>
         <div id="inequality-bar" class="inequality-bar"></div>
       </div>
 
       <!-- Economy Stats -->
       <div class="bento-grid bento-grid--4 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">BIP-WACHSTUM</div>
+          <div class="data-card__label" data-i18n="act4.gdpGrowth">BIP-WACHSTUM</div>
           <div class="data-card__value data-card__value--sm" data-counter data-target="3.1" data-decimals="1" data-suffix="%" style="color:#34c759">0</div>
-          <div class="data-card__mini-context">Global 2026</div>
+          <div class="data-card__mini-context" data-i18n="act4.gdpContext">Global 2026</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">INFLATION</div>
+          <div class="data-card__label" data-i18n="act4.inflation">INFLATION</div>
           <div class="data-card__value data-card__value--sm" id="inflation-value" style="color:var(--warning)">0%</div>
-          <div class="data-card__mini-context">Verbraucherpreise</div>
+          <div class="data-card__mini-context" data-i18n="act4.inflationContext">Verbraucherpreise</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">ARBEITSLOSIGKEIT</div>
+          <div class="data-card__label" data-i18n="act4.unemployment">ARBEITSLOSIGKEIT</div>
           <div class="data-card__value data-card__value--sm" id="unemployment-value" style="color:var(--warning-dark)">0%</div>
-          <div class="data-card__mini-context">Weltweite Quote</div>
+          <div class="data-card__mini-context" data-i18n="act4.unemploymentContext">Weltweite Quote</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">BIP PRO KOPF</div>
+          <div class="data-card__label" data-i18n="act4.gdpPerCapita">BIP PRO KOPF</div>
           <div class="data-card__value data-card__value--sm" id="gdp-per-capita-value" style="color:var(--progress)">$0</div>
-          <div class="data-card__mini-context">Durchschnitt</div>
+          <div class="data-card__mini-context" data-i18n="act4.gdpPerCapitaContext">Durchschnitt</div>
         </div>
       </div>
 
@@ -451,13 +488,13 @@
 
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">GLOBALER HANDEL</span>
+            <span class="data-card__label" data-i18n="act4.tradeLabel">GLOBALER HANDEL</span>
             <span class="data-card__source">World Bank</span>
           </div>
           <div class="data-card__hero">
             <span class="data-card__value" id="trade-value" style="color:var(--progress)">0%</span>
           </div>
-          <p class="data-card__explain">Handel als % des BIP. Rückläufig seit 2008 durch Protektionismus.</p>
+          <p class="data-card__explain" data-i18n="act4.tradeExplain">Handel als % des BIP. Rückläufig seit 2008 durch Protektionismus.</p>
           <div id="trade-sparkline" class="data-card__sparkline"></div>
         </div>
       </div>
@@ -466,14 +503,14 @@
       <div class="bento-grid bento-grid--2 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">WECHSELKURSE (USD)</span>
+            <span class="data-card__label" data-i18n="act4.exchangeLabel">WECHSELKURSE (USD)</span>
             <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
           </div>
           <div class="exchange-rates" id="exchange-rates"></div>
         </div>
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">REGIONALES BIP-WACHSTUM</span>
+            <span class="data-card__label" data-i18n="act4.regionalGdp">REGIONALES BIP-WACHSTUM</span>
           </div>
           <div class="regional-gdp" id="regional-gdp"></div>
         </div>
@@ -487,59 +524,59 @@
   <section id="akt-progress" class="section akt-progress" data-section="akt-progress" aria-label="Fortschritt">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 05 — FORTSCHRITT</span>
-        <h2 class="text-section">Die Kurve</h2>
-        <p class="section-desc">Wissenschaft, Technologie, Bildung — der Fortschritt ist exponentiell.</p>
+        <span class="section-label" data-i18n="act5.label">AKT 05 — FORTSCHRITT</span>
+        <h2 class="text-section" data-i18n="act5.title">Die Kurve</h2>
+        <p class="section-desc" data-i18n="act5.desc">Wissenschaft, Technologie, Bildung — der Fortschritt ist exponentiell.</p>
       </div>
 
       <!-- Key Stats -->
       <div class="bento-grid bento-grid--4 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">INTERNET-NUTZER</div>
+          <div class="data-card__label" data-i18n="act5.internet">INTERNET-NUTZER</div>
           <div class="data-card__value data-card__value--sm" data-counter data-target="67.4" data-decimals="1" data-suffix="%" style="color:#5ac8fa">0</div>
-          <div class="data-card__mini-context">5.4 Mrd online</div>
+          <div class="data-card__mini-context" data-i18n="act5.internetContext">5.4 Mrd online</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">ALPHABETISIERUNG</div>
+          <div class="data-card__label" data-i18n="act5.literacy">ALPHABETISIERUNG</div>
           <div class="data-card__value data-card__value--sm" data-counter data-target="87.4" data-decimals="1" data-suffix="%" style="color:#34c759">0</div>
-          <div class="data-card__mini-context">1900: nur ~21%</div>
+          <div class="data-card__mini-context" data-i18n="act5.literacyContext">1900: nur ~21%</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">MOBILFUNK</div>
+          <div class="data-card__label" data-i18n="act5.mobile">MOBILFUNK</div>
           <div class="data-card__value data-card__value--sm" id="mobile-value" style="color:#ff9500">0</div>
-          <div class="data-card__mini-context">Abos/100 Menschen</div>
+          <div class="data-card__mini-context" data-i18n="act5.mobileContext">Abos/100 Menschen</div>
         </div>
         <div class="data-card data-card--compact reveal">
-          <div class="data-card__label">F&E-AUSGABEN</div>
+          <div class="data-card__label" data-i18n="act5.rd">F&amp;E-AUSGABEN</div>
           <div class="data-card__value data-card__value--sm" id="rd-value" style="color:#00d4ff">0%</div>
-          <div class="data-card__mini-context">% des globalen BIP</div>
+          <div class="data-card__mini-context" data-i18n="act5.rdContext">% des globalen BIP</div>
         </div>
       </div>
 
       <!-- Publications -->
       <div class="reveal" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Wissenschaftliche Publikationen pro Jahr</h3>
-        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)">Exponentielles Wissenwachstum seit den 1990ern</p>
+        <h3 class="text-sub" data-i18n="act5.pubTitle">Wissenschaftliche Publikationen pro Jahr</h3>
+        <p class="text-label text-muted" style="margin-bottom:var(--space-sm)" data-i18n="act5.pubDesc">Exponentielles Wissenwachstum seit den 1990ern</p>
         <div id="publications-chart" class="chart-container" role="img" aria-label="Publikationen"></div>
       </div>
 
       <!-- GitHub Pulse -->
       <div class="data-card data-card--featured reveal" style="margin-top:var(--space-xl)">
         <div class="data-card__header">
-          <span class="data-card__label">GITHUB GLOBAL PULSE</span>
+          <span class="data-card__label" data-i18n="act5.githubLabel">GITHUB GLOBAL PULSE</span>
           <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
         </div>
         <div class="github-pulse">
           <div class="github-pulse__stat">
             <div class="github-pulse__counter" data-counter data-target="142" data-suffix=" Mio">0</div>
-            <div class="github-pulse__label">Commits / Tag</div>
+            <div class="github-pulse__label" data-i18n="act5.commitsDay">Commits / Tag</div>
           </div>
           <div class="github-pulse__stat">
             <div class="github-pulse__counter" data-counter data-target="120" data-suffix=" Mio">0</div>
-            <div class="github-pulse__label">Aktive Entwickler</div>
+            <div class="github-pulse__label" data-i18n="act5.activeDev">Aktive Entwickler</div>
           </div>
         </div>
-        <p class="data-card__explain">Open Source treibt Innovation. Entwickler weltweit lösen gemeinsam Probleme.</p>
+        <p class="data-card__explain" data-i18n="act5.githubExplain">Open Source treibt Innovation. Entwickler weltweit lösen gemeinsam Probleme.</p>
         <div id="github-repos" class="github-repos"></div>
       </div>
 
@@ -547,19 +584,19 @@
       <div class="bento-grid bento-grid--2 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">INTERNET-DURCHDRINGUNG</span>
+            <span class="data-card__label" data-i18n="act5.internetPen">INTERNET-DURCHDRINGUNG</span>
             <span class="data-card__trend data-card__trend--up">1995: 0.8%</span>
           </div>
           <div id="internet-chart" class="chart-container" role="img" aria-label="Internet"></div>
         </div>
         <div class="data-card reveal">
-          <div class="data-card__header"><span class="data-card__label">ALPHABETISIERUNG</span></div>
+          <div class="data-card__header"><span class="data-card__label" data-i18n="act5.literacyLabel">ALPHABETISIERUNG</span></div>
           <div class="freedom-legend" style="margin-bottom:var(--space-sm)">
             <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#5ac8fa;opacity:0.7"></span><span id="literacy-male-label">Männer: 90.1%</span></div>
             <div class="freedom-legend__item"><span class="freedom-legend__dot" style="background:#34c759"></span><span id="literacy-female-label">Frauen: 84.7%</span></div>
           </div>
           <div id="literacy-stairs" class="literacy-stairs" role="img" aria-label="Alphabetisierung"></div>
-          <p class="data-card__explain" id="literacy-gap-text">Geschlechterlücke schließt sich — aber noch 5.4% Differenz.</p>
+          <p class="data-card__explain" id="literacy-gap-text"></p>
         </div>
       </div>
 
@@ -567,14 +604,14 @@
       <div class="bento-grid bento-grid--2 reveal-stagger" style="margin-top:var(--space-xl)">
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">RAUMFAHRT-NEWS</span>
+            <span class="data-card__label" data-i18n="act5.spaceflight">RAUMFAHRT-NEWS</span>
             <span class="data-card__source">Spaceflight News</span>
           </div>
           <div class="news-list" id="spaceflight-news"></div>
         </div>
         <div class="data-card reveal">
           <div class="data-card__header">
-            <span class="data-card__label">NEUESTE WISSENSCHAFT</span>
+            <span class="data-card__label" data-i18n="act5.latestScience">NEUESTE WISSENSCHAFT</span>
             <span class="data-card__source">arXiv.org</span>
           </div>
           <div class="news-list" id="arxiv-papers"></div>
@@ -589,9 +626,9 @@
   <section id="akt-realtime" class="section akt-realtime" data-section="akt-realtime" aria-label="Echtzeit-Daten">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 06 — ECHTZEIT</span>
-        <h2 class="text-section">Echtzeit-Pulse</h2>
-        <p class="section-desc">Live-Daten aus aller Welt — aktualisiert alle 6 Stunden aus Dutzenden APIs.</p>
+        <span class="section-label" data-i18n="act6.label">AKT 06 — ECHTZEIT</span>
+        <h2 class="text-section" data-i18n="act6.title">Echtzeit-Pulse</h2>
+        <p class="section-desc" data-i18n="act6.desc">Live-Daten aus aller Welt — aktualisiert alle 6 Stunden aus Dutzenden APIs.</p>
       </div>
       <p class="timestamp reveal" style="margin-bottom:var(--space-lg)"></p>
 
@@ -599,11 +636,11 @@
         <!-- Earthquakes -->
         <div class="widget widget--wide reveal">
           <div class="widget__header">
-            <span class="widget__title">Erdbeben (24h)</span>
+            <span class="widget__title" data-i18n="act6.earthquakes">Erdbeben (24h)</span>
             <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
           </div>
           <div class="widget__body">
-            <p class="text-micro text-muted" style="margin-bottom:var(--space-xs)">USGS — Alle Beben M2.5+ in 24h</p>
+            <p class="text-micro text-muted" style="margin-bottom:var(--space-xs)" data-i18n="act6.earthquakesDesc">USGS — Alle Beben M2.5+ in 24h</p>
             <ul id="earthquake-list" class="earthquake-list" aria-label="Erdbeben"></ul>
           </div>
           <div class="widget__glow" style="--accent:#ff6b6b" aria-hidden="true"></div>
@@ -612,7 +649,7 @@
         <!-- Air Quality -->
         <div class="widget reveal">
           <div class="widget__header">
-            <span class="widget__title">Sauberste Städte</span>
+            <span class="widget__title" data-i18n="act6.cleanCities">Sauberste Städte</span>
             <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
           </div>
           <div class="widget__body"><ul id="clean-cities" class="earthquake-list"></ul></div>
@@ -621,7 +658,7 @@
 
         <div class="widget reveal">
           <div class="widget__header">
-            <span class="widget__title">Schmutzigste Städte</span>
+            <span class="widget__title" data-i18n="act6.dirtyCities">Schmutzigste Städte</span>
             <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
           </div>
           <div class="widget__body"><ul id="dirty-cities" class="earthquake-list"></ul></div>
@@ -631,15 +668,15 @@
         <!-- Sentiment -->
         <div class="widget reveal">
           <div class="widget__header">
-            <span class="widget__title">Nachrichten-Sentiment</span>
+            <span class="widget__title" data-i18n="act6.sentiment">Nachrichten-Sentiment</span>
             <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
           </div>
           <div class="widget__body">
-            <p class="text-micro text-muted" style="margin-bottom:var(--space-xs)">GDELT globale Nachrichtenstimmung</p>
+            <p class="text-micro text-muted" style="margin-bottom:var(--space-xs)" data-i18n="act6.sentimentDesc">GDELT globale Nachrichtenstimmung</p>
             <div id="sentiment-wave" class="sentiment-wave" role="img" aria-label="Sentiment"></div>
             <div class="text-center text-muted" style="margin-top:var(--space-xs)">
               Score: <span class="text-mono" id="sentiment-score" style="color:#ff6b6b">-0.42</span>
-              <span id="sentiment-label">(Leicht Negativ)</span>
+              <span id="sentiment-label"></span>
             </div>
           </div>
         </div>
@@ -650,30 +687,30 @@
           <div class="widget__body text-center">
             <div id="fear-greed-gauge" class="fear-greed-gauge" role="img" aria-label="Fear & Greed"></div>
             <div class="text-label text-muted" style="margin-top:var(--space-sm)" id="fear-greed-label">Fear (38/100)</div>
-            <p class="text-micro text-muted">0 = Angst, 100 = Gier</p>
+            <p class="text-micro text-muted" data-i18n="act6.fearGreedScale">0 = Angst, 100 = Gier</p>
           </div>
         </div>
 
         <!-- Solar -->
         <div class="widget reveal">
-          <div class="widget__header"><span class="widget__title">Sonnenaktivität</span></div>
-          <div class="widget__body" id="solar-activity"><div class="text-center text-muted">Lade...</div></div>
+          <div class="widget__header"><span class="widget__title" data-i18n="act6.solar">Sonnenaktivität</span></div>
+          <div class="widget__body" id="solar-activity"><div class="text-center text-muted" data-i18n="act6.loading">Lade...</div></div>
         </div>
 
         <!-- Volcanic -->
         <div class="widget reveal">
-          <div class="widget__header"><span class="widget__title">Vulkane</span></div>
-          <div class="widget__body" id="volcanic-activity"><div class="text-center text-muted">Lade...</div></div>
+          <div class="widget__header"><span class="widget__title" data-i18n="act6.volcanic">Vulkane</span></div>
+          <div class="widget__body" id="volcanic-activity"><div class="text-center text-muted" data-i18n="act6.loading">Lade...</div></div>
         </div>
 
         <!-- News -->
         <div class="widget widget--wide reveal">
           <div class="widget__header">
-            <span class="widget__title">Globale Nachrichten</span>
+            <span class="widget__title" data-i18n="act6.news">Globale Nachrichten</span>
             <span class="live-badge live-badge--sm"><span class="live-badge__dot"></span> LIVE</span>
           </div>
           <div class="widget__body">
-            <p class="text-micro text-muted" style="margin-bottom:var(--space-xs)">UN, WHO, BBC, Al Jazeera, Guardian, DW, NASA, ReliefWeb u.a.</p>
+            <p class="text-micro text-muted" style="margin-bottom:var(--space-xs)" data-i18n="act6.newsDesc">UN, WHO, BBC, Al Jazeera, Guardian, DW, NASA, ReliefWeb u.a.</p>
             <div class="news-list" id="global-news"></div>
           </div>
         </div>
@@ -687,37 +724,37 @@
   <section id="akt-momentum" class="section akt-momentum" data-section="akt-momentum" aria-label="Momentum">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 07 — MOMENTUM</span>
-        <h2 class="momentum-question">Wird es besser — oder schlechter?</h2>
-        <p class="section-desc">Nicht wo wir stehen — sondern wohin wir uns bewegen.</p>
+        <span class="section-label" data-i18n="act7.label">AKT 07 — MOMENTUM</span>
+        <h2 class="momentum-question" data-i18n="act7.question">Wird es besser — oder schlechter?</h2>
+        <p class="section-desc" data-i18n="act7.desc">Nicht wo wir stehen — sondern wohin wir uns bewegen.</p>
       </div>
 
       <div class="info-box reveal" style="margin-bottom:var(--space-lg)">
         <div class="info-box__icon">i</div>
-        <div class="info-box__content">
+        <div class="info-box__content" data-i18n="act7.method" data-i18n-html>
           <strong>Methodik:</strong> Vergleich der letzten 3 Jahre mit den 3 Jahren davor für jeden Indikator.
         </div>
       </div>
 
-      <h3 class="text-sub text-center reveal">20 Schlüssel-Indikatoren</h3>
+      <h3 class="text-sub text-center reveal" data-i18n="act7.keyIndicators">20 Schlüssel-Indikatoren</h3>
       <div id="momentum-list" class="momentum-list" role="list"></div>
 
       <div class="momentum-summary reveal" id="momentum-summary">
-        <span style="color:#34c759" data-counter data-target="14">0</span> von
-        <span data-counter data-target="20">0</span> Trends positiv
+        <span style="color:#34c759" data-counter data-target="14">0</span> /
+        <span data-counter data-target="20">0</span> <span data-i18n="act7.trendsPositive">Trends positiv</span>
       </div>
 
       <!-- 2000 vs Today -->
       <div class="reveal" style="margin-top:var(--space-2xl)">
-        <h3 class="text-sub text-center">Die Welt 2000 vs. Heute</h3>
-        <p class="text-label text-muted text-center" style="margin-bottom:var(--space-md)">25 Jahre Veränderung — die Fakten</p>
+        <h3 class="text-sub text-center" data-i18n="act7.vsToday">Die Welt 2000 vs. Heute</h3>
+        <p class="text-label text-muted text-center" style="margin-bottom:var(--space-md)" data-i18n="act7.vsTodayDesc">25 Jahre Veränderung — die Fakten</p>
         <div id="comparison-grid" class="comparison-grid" role="list"></div>
       </div>
 
       <!-- Gauge -->
       <div class="reveal text-center" style="margin-top:var(--space-xl)">
-        <h3 class="text-sub">Momentum-Score</h3>
-        <p class="text-muted" style="margin-bottom:var(--space-md)">Der Richtungsvektor der Menschheit.</p>
+        <h3 class="text-sub" data-i18n="act7.momentumScore">Momentum-Score</h3>
+        <p class="text-muted" style="margin-bottom:var(--space-md)" data-i18n="act7.momentumDesc">Der Richtungsvektor der Menschheit.</p>
         <div id="momentum-gauge" class="gauge" style="display:inline-flex;margin:0 auto"></div>
       </div>
     </div>
@@ -729,29 +766,29 @@
   <section id="akt-crisis-map" class="section akt-crisis-map" data-section="akt-crisis-map" aria-label="Krisenkarte">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 08 — KRISEN</span>
-        <h2 class="text-section text-center">Die Karte der Krisen</h2>
-        <p class="section-desc text-center">Klima, Konflikte, Hunger, Naturkatastrophen — und Hoffnung.</p>
+        <span class="section-label" data-i18n="act8.label">AKT 08 — KRISEN</span>
+        <h2 class="text-section text-center" data-i18n="act8.title">Die Karte der Krisen</h2>
+        <p class="section-desc text-center" data-i18n="act8.desc">Klima, Konflikte, Hunger, Naturkatastrophen — und Hoffnung.</p>
       </div>
 
       <div class="crisis-layers reveal">
-        <button class="crisis-layer-btn is-active" data-layer="climate">Klimarisiko</button>
-        <button class="crisis-layer-btn" data-layer="conflicts">Konflikte</button>
-        <button class="crisis-layer-btn" data-layer="hunger">Hungerkrisen</button>
-        <button class="crisis-layer-btn" data-layer="nature">Naturschutz</button>
-        <button class="crisis-layer-btn" data-layer="energy">Erneuerbare</button>
+        <button class="crisis-layer-btn is-active" data-layer="climate" data-i18n="act8.climate">Klimarisiko</button>
+        <button class="crisis-layer-btn" data-layer="conflicts" data-i18n="act8.conflicts">Konflikte</button>
+        <button class="crisis-layer-btn" data-layer="hunger" data-i18n="act8.hunger">Hungerkrisen</button>
+        <button class="crisis-layer-btn" data-layer="nature" data-i18n="act8.nature">Naturschutz</button>
+        <button class="crisis-layer-btn" data-layer="energy" data-i18n="act8.energy">Erneuerbare</button>
       </div>
 
       <div id="crisis-map-container" class="reveal" style="width:100%;min-height:400px;position:relative;margin-top:var(--space-md)">
         <div style="width:100%;height:400px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:var(--text-muted)">
-          Interaktive Weltkarte — Layer ein/ausschaltbar
+          <span data-i18n="act8.mapPlaceholder">Interaktive Weltkarte — Layer ein/ausschaltbar</span>
         </div>
       </div>
 
       <div class="info-box reveal" style="margin-top:var(--space-lg)">
         <div class="info-box__icon">!</div>
         <div class="info-box__content">
-          Die Realität ist komplex. Es gibt Krisen und Fortschritt — gleichzeitig, überall. Die Frage ist nicht ob, sondern wie schnell wir reagieren.
+          <span data-i18n="act8.infoText">Die Realität ist komplex. Es gibt Krisen und Fortschritt — gleichzeitig, überall. Die Frage ist nicht ob, sondern wie schnell wir reagieren.</span>
         </div>
       </div>
     </div>
@@ -763,16 +800,16 @@
   <section id="akt-scenarios" class="section akt-scenarios" data-section="akt-scenarios" aria-label="Szenarien">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 09 — SZENARIEN</span>
-        <h2 class="text-section text-center">Drei Zukünfte</h2>
-        <p class="section-desc text-center">Projektionen bis 2050 — basierend auf aktuellen Trends und wissenschaftlichen Modellen.</p>
+        <span class="section-label" data-i18n="act9.label">AKT 09 — SZENARIEN</span>
+        <h2 class="text-section text-center" data-i18n="act9.title">Drei Zukünfte</h2>
+        <p class="section-desc text-center" data-i18n="act9.desc">Projektionen bis 2050 — basierend auf aktuellen Trends und wissenschaftlichen Modellen.</p>
       </div>
 
       <div class="scenarios-grid reveal-stagger">
         <div id="scenario-bau" class="scenario scenario--bau reveal">
-          <div class="scenario__badge" style="color:#ff9500">PFAD A</div>
-          <div class="scenario__title" style="color:#ff9500">Weiter so</div>
-          <div class="scenario__subtitle">Business as Usual</div>
+          <div class="scenario__badge" style="color:#ff9500" data-i18n="act9.pathA">PFAD A</div>
+          <div class="scenario__title" style="color:#ff9500" data-i18n="act9.bauTitle">Weiter so</div>
+          <div class="scenario__subtitle" data-i18n="act9.bauSub">Business as Usual</div>
           <div class="scenario__scores">
             <div class="scenario__score-item">
               <span class="scenario__score-label">2030</span>
@@ -788,9 +825,9 @@
         </div>
 
         <div id="scenario-worst" class="scenario scenario--worst reveal">
-          <div class="scenario__badge" style="color:#ff3b30">PFAD B</div>
-          <div class="scenario__title" style="color:#ff3b30">Schlimmster Fall</div>
-          <div class="scenario__subtitle">Kippunkte überschritten</div>
+          <div class="scenario__badge" style="color:#ff3b30" data-i18n="act9.pathB">PFAD B</div>
+          <div class="scenario__title" style="color:#ff3b30" data-i18n="act9.worstTitle">Schlimmster Fall</div>
+          <div class="scenario__subtitle" data-i18n="act9.worstSub">Kippunkte überschritten</div>
           <div class="scenario__scores">
             <div class="scenario__score-item">
               <span class="scenario__score-label">2030</span>
@@ -806,9 +843,9 @@
         </div>
 
         <div id="scenario-best" class="scenario scenario--best reveal">
-          <div class="scenario__badge" style="color:#00d4ff">PFAD C</div>
-          <div class="scenario__title" style="color:#00d4ff">Bestmöglicher Kurs</div>
-          <div class="scenario__subtitle">Volle Kooperation</div>
+          <div class="scenario__badge" style="color:#00d4ff" data-i18n="act9.pathC">PFAD C</div>
+          <div class="scenario__title" style="color:#00d4ff" data-i18n="act9.bestTitle">Bestmöglicher Kurs</div>
+          <div class="scenario__subtitle" data-i18n="act9.bestSub">Volle Kooperation</div>
           <div class="scenario__scores">
             <div class="scenario__score-item">
               <span class="scenario__score-label">2030</span>
@@ -832,37 +869,37 @@
   <section id="akt-sources" class="section akt-sources" data-section="akt-sources" aria-label="Datenquellen">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 10 — TRANSPARENZ</span>
-        <h2 class="text-section text-center">Datenquellen & Transparenz</h2>
-        <p class="section-desc text-center">Jeder Datenpunkt überprüfbar. Jede Quelle verlinkt. Open Source.</p>
+        <span class="section-label" data-i18n="act10.label">AKT 10 — TRANSPARENZ</span>
+        <h2 class="text-section text-center" data-i18n="act10.title">Datenquellen & Transparenz</h2>
+        <p class="section-desc text-center" data-i18n="act10.desc">Jeder Datenpunkt überprüfbar. Jede Quelle verlinkt. Open Source.</p>
       </div>
 
       <!-- Pipeline Status -->
       <div class="pipeline-status reveal" style="margin-bottom:var(--space-xl)">
         <div class="pipeline-status__item">
           <span class="pipeline-status__value" id="sources-total">40+</span>
-          <span class="pipeline-status__label">Quellen</span>
+          <span class="pipeline-status__label" data-i18n="act10.sources">Quellen</span>
         </div>
         <div class="pipeline-status__item">
           <span class="pipeline-status__value" id="sources-success" style="color:#34c759">0</span>
-          <span class="pipeline-status__label">Erfolgreich</span>
+          <span class="pipeline-status__label" data-i18n="act10.successful">Erfolgreich</span>
         </div>
         <div class="pipeline-status__item">
           <span class="pipeline-status__value" id="sources-rate" style="color:#00d4ff">0%</span>
-          <span class="pipeline-status__label">Rate</span>
+          <span class="pipeline-status__label" data-i18n="act10.rate">Rate</span>
         </div>
         <div class="pipeline-status__item">
           <span class="pipeline-status__value" id="next-update">—</span>
-          <span class="pipeline-status__label">Nächstes Update</span>
+          <span class="pipeline-status__label" data-i18n="act10.nextUpdate">Nächstes Update</span>
         </div>
       </div>
 
       <div id="sources-grid" class="sources-grid reveal-stagger" role="list"></div>
 
       <div class="methodology-note reveal">
-        <h3 class="text-sub" style="margin-bottom:var(--space-sm)">Methodik</h3>
-        <p>Keine KI. Nur Code und Daten. Alle Berechnungen open-source und reproduzierbar.</p>
-        <p class="text-label text-muted" style="margin-top:var(--space-sm)">
+        <h3 class="text-sub" style="margin-bottom:var(--space-sm)" data-i18n="act10.methodTitle">Methodik</h3>
+        <p data-i18n="act10.methodText">Keine KI. Nur Code und Daten. Alle Berechnungen open-source und reproduzierbar.</p>
+        <p class="text-label text-muted" style="margin-top:var(--space-sm)" data-i18n="act10.methodNote">
           Der Welt-Indikator basiert auf gewichteten normalisierten Sub-Scores (0–100).
         </p>
       </div>
@@ -875,33 +912,33 @@
   <section id="akt-action" class="section akt-action" data-section="akt-action" aria-label="Dein Beitrag">
     <div class="container section__content">
       <div class="section-header reveal">
-        <span class="section-label">AKT 11 — HANDELN</span>
-        <h2 class="action-question">Du hast die Daten gesehen.<br>Was kannst DU tun?</h2>
+        <span class="section-label" data-i18n="act11.label">AKT 11 — HANDELN</span>
+        <h2 class="action-question" data-i18n="act11.question" data-i18n-html>Du hast die Daten gesehen.<br>Was kannst DU tun?</h2>
       </div>
 
       <div class="actions-grid reveal-stagger">
         <div class="action-card reveal">
           <div class="action-card__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <div class="action-card__title">Lokal handeln</div>
-          <div class="action-card__desc">Wählen. Community-Projekte. Lokalpolitik mitgestalten.</div>
-          <div class="action-card__impact">Wirkung: Deine Stadt</div>
+          <div class="action-card__title" data-i18n="act11.localTitle">Lokal handeln</div>
+          <div class="action-card__desc" data-i18n="act11.localDesc">Wählen. Community-Projekte. Lokalpolitik mitgestalten.</div>
+          <div class="action-card__impact" data-i18n="act11.localImpact">Wirkung: Deine Stadt</div>
         </div>
 
         <div class="action-card reveal">
           <div class="action-card__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <div class="action-card__title">Digital beitragen</div>
-          <div class="action-card__desc">Open Source. Datenprojekte. Wissen teilen.</div>
-          <div class="action-card__impact">Wirkung: Global, sofort</div>
+          <div class="action-card__title" data-i18n="act11.digitalTitle">Digital beitragen</div>
+          <div class="action-card__desc" data-i18n="act11.digitalDesc">Open Source. Datenprojekte. Wissen teilen.</div>
+          <div class="action-card__impact" data-i18n="act11.digitalImpact">Wirkung: Global, sofort</div>
         </div>
 
         <div class="action-card action-card--featured reveal">
           <div class="action-card__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-          <div class="action-card__title">Global wirken</div>
-          <div class="action-card__desc">Gezielte Spenden. Effektiver Altruismus.</div>
+          <div class="action-card__title" data-i18n="act11.globalTitle">Global wirken</div>
+          <div class="action-card__desc" data-i18n="act11.globalDesc">Gezielte Spenden. Effektiver Altruismus.</div>
           <div class="action-card__examples">
-            <div class="action-card__example">1€ = 4 Mahlzeiten</div>
-            <div class="action-card__example">5€ = 1 Impfung</div>
-            <div class="action-card__example">25€ = 1 Monat Schule</div>
+            <div class="action-card__example" data-i18n="act11.example1">1€ = 4 Mahlzeiten</div>
+            <div class="action-card__example" data-i18n="act11.example2">5€ = 1 Impfung</div>
+            <div class="action-card__example" data-i18n="act11.example3">25€ = 1 Monat Schule</div>
           </div>
         </div>
       </div>
@@ -915,16 +952,16 @@
     <div class="container section__content text-center">
       <div class="epilog__value text-hero" data-counter data-target="47.3" data-decimals="1">0</div>
 
-      <div class="epilog__message">
+      <div class="epilog__message" data-i18n="epilog.message" data-i18n-html>
         Die Daten aktualisieren sich alle 6 Stunden.<br>
         Komm zurück — und sieh ob sich etwas verändert hat.
       </div>
 
-      <button class="epilog__back-to-top magnetic-wrap" aria-label="Zurück nach oben">↑</button>
+      <button class="epilog__back-to-top-inline" aria-label="Zurück nach oben" data-i18n-aria="epilog.backToTop">↑</button>
 
       <p class="timestamp" style="margin-top:var(--space-xl)"></p>
 
-      <div class="easter-egg" style="margin-top:var(--space-xl);color:var(--text-muted);font-size:var(--text-body)">
+      <div class="easter-egg" style="margin-top:var(--space-xl);color:var(--text-muted);font-size:var(--text-body)" data-i18n="epilog.easterEgg" data-i18n-html>
         Du interessierst dich.<br>Das ist der erste Schritt.
       </div>
     </div>
@@ -937,10 +974,10 @@
       <!-- Mitmachen -->
       <div class="site-footer__contrib">
         <p class="site-footer__invite">
-          Open Source — Beiträge willkommen!
+          <span data-i18n="footer.invite">Open Source — Beiträge willkommen!</span>
           <a href="https://github.com/BEKO2210/World_report" target="_blank" rel="noopener">GitHub</a>
         </p>
-        <p class="site-footer__contrib-text">
+        <p class="site-footer__contrib-text" data-i18n="footer.contrib">
           Übersetzungen, Detail-Ansichten, Verbesserungen, Issues — jede Hilfe zählt.
         </p>
       </div>
@@ -949,9 +986,9 @@
 
       <!-- Impressum (§ 5 TMG / § 18 MStV) -->
       <details class="site-footer__legal">
-        <summary>Impressum</summary>
+        <summary data-i18n="footer.impressum">Impressum</summary>
         <div class="site-footer__legal-body">
-          <p><strong>Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV</strong></p>
+          <p><strong data-i18n="footer.impressumLegal">Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV</strong></p>
           <p>
             Belkis Aslani<br>
             Vogelsangstr. 32<br>
@@ -959,7 +996,7 @@
             Deutschland
           </p>
           <p>
-            <strong>Kontakt</strong><br>
+            <strong data-i18n="footer.contact">Kontakt</strong><br>
             Telefon: +49 176 81462526<br>
             E-Mail: <a href="mailto:belkis.aslani@gmail.com">belkis.aslani@gmail.com</a>
           </p>
@@ -970,7 +1007,7 @@
 
       <!-- Datenschutz -->
       <details class="site-footer__legal">
-        <summary>Datenschutzerklärung</summary>
+        <summary data-i18n="footer.privacy">Datenschutzerklärung</summary>
         <div class="site-footer__legal-body">
           <p><strong>1. Verantwortlicher</strong><br>
             Belkis Aslani, Vogelsangstr. 32, 71691 Freiberg am Neckar.
@@ -996,7 +1033,7 @@
 
       <!-- Haftungsausschluss -->
       <details class="site-footer__legal">
-        <summary>Haftungsausschluss</summary>
+        <summary data-i18n="footer.disclaimer">Haftungsausschluss</summary>
         <div class="site-footer__legal-body">
           <p><strong>Haftung für Inhalte</strong><br>
             Die Inhalte dieser Website werden mit größtmöglicher Sorgfalt erstellt.
@@ -1021,9 +1058,22 @@
     </div>
   </footer>
 
+  <!-- ═══ SCROLL-TO-TOP ═══ -->
+  <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+    <svg class="scroll-top__ring" viewBox="0 0 36 36">
+      <circle class="scroll-top__track" cx="18" cy="18" r="16" fill="none" stroke-width="2"/>
+      <circle class="scroll-top__progress" id="scroll-top-progress" cx="18" cy="18" r="16" fill="none" stroke-width="2"
+              stroke-dasharray="100.53" stroke-dashoffset="100.53" transform="rotate(-90 18 18)"/>
+    </svg>
+    <svg class="scroll-top__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
   <!-- ═══ MAIN SCRIPT ═══ -->
   <script type="module" src="js/app.js"></script>
   <script>document.getElementById('footer-year').textContent=new Date().getFullYear()</script>
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js')}</script>
 
 </body>
 </html>

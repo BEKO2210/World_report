@@ -1,10 +1,11 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — World Indicator (Das Herzstück)
+   World.One 1.0 — World Indicator (Das Herzstück)
    ═══════════════════════════════════════════════════════════ */
 
 import { MathUtils } from '../utils/math.js';
 import { Charts } from './charts.js';
 import { Counter } from './counters.js';
+import { i18n } from '../i18n.js';
 
 export class WorldIndicator {
   constructor(container, data) {
@@ -13,6 +14,14 @@ export class WorldIndicator {
     this.animated = false;
     this.currentValue = 0;
     this.targetValue = data.worldIndex.value;
+    this._counter = null;
+  }
+
+  // ─── Update data reference (called on timeline/language change) ───
+  setData(data) {
+    this.data = data;
+    this.targetValue = data.worldIndex.value;
+    this.animated = false;
     this._counter = null;
   }
 
@@ -70,8 +79,6 @@ export class WorldIndicator {
 
     const subScores = this.data.subScores;
     const categories = ['environment', 'society', 'economy', 'progress', 'momentum'];
-    const icons = ['globe', 'people', 'dollar', 'pulse', 'trending'];
-    const names = ['Umwelt', 'Gesellschaft', 'Wirtschaft', 'Fortschritt', 'Momentum'];
 
     categories.forEach((cat, i) => {
       const scoreData = subScores[cat];

@@ -1,28 +1,28 @@
-# BELKIS ONE 1.0
+# World.One 1.0
 
 > **Der Zustand der Welt in einem einzigen Scroll-Erlebnis.**
 > Ein Vermächtnis aus Daten, Code und der Überzeugung, dass Transparenz die Welt verbessert.
 
 ---
 
-## 🌍 Welt-Indikator: 66.1 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 64.5 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.1/100  ↑ +0
+█████████████░░░░░░░  64.5/100  ↑ +0
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 14.03.2026 06:45 UTC
+> **Letzte Aktualisierung:** 20.03.2026 12:58 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
 | 🟡 Umwelt | **45.4**/100 | → +0 | 25% |
-| 🟢 Gesellschaft | **67.8**/100 | → +0 | 25% |
+| 🟡 Gesellschaft | **55.9**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73.7**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **77.7**/100 | → +0 | 20% |
-| 🟢 Momentum | **75**/100 | → +0 | 10% |
+| 🟢 Momentum | **71.4**/100 | → +0 | 10% |
 
 ---
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **76** | WAQI |
+| Luftqualität (Ø) | AQI **56** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -65,14 +65,14 @@
 |-----------|------|--------|
 | Erdbeben (24h) | **8** Beben M2.5+ | USGS |
 | Nachrichten-Sentiment | **-0.42** (Leicht Negativ) | GDELT |
-| Crypto Fear & Greed | **16/100** (Extreme Fear) | Alternative.me |
+| Crypto Fear & Greed | **11/100** (Extreme Fear) | Alternative.me |
 
 ---
 
-## 📈 Momentum: 15/20 Trends positiv
+## 📈 Momentum: 15/21 Trends positiv
 
 <details>
-<summary>Alle 20 Indikatoren anzeigen</summary>
+<summary>Alle 21 Indikatoren anzeigen</summary>
 
 #### ✅ Verbessert sich (15)
 - **Kindersterblichkeit**: -4.5%
@@ -91,12 +91,13 @@
 - **Urbanisierung**: +1.6%
 - **Patentanmeldungen**: +1.2%
 
-#### ❌ Verschlechtert sich (5)
+#### ❌ Verschlechtert sich (6)
 - **Lebenserwartung**: -0.1%
 - **CO2-Konzentration**: +2.0%
 - **Waldfläche**: -0.3%
 - **Inflation**: +120.9%
 - **CO2 pro Kopf**: +1.4%
+- **Militärausgaben (% BIP)**: +5.6%
 
 </details>
 
@@ -115,7 +116,7 @@
 ## 🏗️ Architektur
 
 ```
-belkis-one/
+world-one/
 ├── index.html                    # Entry Point — 12 Scroll-Sektionen
 ├── css/
 │   ├── core.css                  # Design System, Custom Properties, Reset
@@ -156,39 +157,39 @@ belkis-one/
 
 | Quelle | Vertrauen | Letztes Update |
 |--------|-----------|----------------|
-| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-14 |
-| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-14 |
-| [Open-Meteo (Air Quality)](https://air-quality-api.open-meteo.com/) | ⭐⭐ | 2026-03-14 |
-| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-14 |
-| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-14 |
-| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-14 |
-| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-14 |
-| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-14 |
-| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-14 |
-| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-14 |
-| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-14 |
-| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-14 |
-| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-14 |
-| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-14 |
-| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-03-14 |
-| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-03-14 |
-| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-03-14 |
-| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-03-14 |
-| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-03-14 |
-| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-03-14 |
-| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-03-14 |
-| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-03-14 |
-| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-14 |
-| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-14 |
+| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-03-20 |
+| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-03-20 |
+| [Open-Meteo (Air Quality)](https://air-quality-api.open-meteo.com/) | ⭐⭐ | 2026-03-20 |
+| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-03-20 |
+| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-03-20 |
+| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-03-20 |
+| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-03-20 |
+| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-03-20 |
+| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-03-20 |
+| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-03-20 |
+| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-03-20 |
+| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-03-20 |
+| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-03-20 |
+| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-03-20 |
+| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-03-20 |
+| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-03-20 |
+| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-03-20 |
+| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-03-20 |
+| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-03-20 |
+| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-03-20 |
+| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-03-20 |
+| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-03-20 |
+| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-03-20 |
+| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-03-20 |
 
 ## 🚀 Setup
 
@@ -205,7 +206,7 @@ npx serve .
 
 1. Repository-Settings → Pages → Source: **GitHub Actions**
 2. Die Pipeline läuft automatisch alle 6 Stunden
-3. Manuell: Actions → BELKIS ONE → Run workflow
+3. Manuell: Actions → World.One → Run workflow
 
 ## 🧬 Das Vermächtnis
 
@@ -222,5 +223,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der BELKIS ONE Pipeline | 14.03.2026 06:45 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 20.03.2026 12:58 UTC | 40/40 Quellen aktiv
 </sub>

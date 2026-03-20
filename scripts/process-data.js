@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ═══════════════════════════════════════════════════════════════
-   BELKIS ONE — Data Processing Engine
+   World.One — Data Processing Engine
    Transforms raw data into world-state.json
    ═══════════════════════════════════════════════════════════════ */
 
@@ -35,6 +35,189 @@ function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
 function normalize(value, worst, best) {
   if (best === worst) return 50;
   return clamp(((value - worst) / (best - worst)) * 100, 0, 100);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CARRYING CAPACITY PRINCIPLE V6 — Mike Hertig
+// Tragfähigkeitsprinzip: Existence, Balance, Cascading
+// ═══════════════════════════════════════════════════════════════
+
+// Erosion / Expansion spectrum positions
+const SPECTRUM = {
+  erosion: ['irreversible', 'critical', 'fragile', 'strained', 'stable'],
+  expansion: ['stable', 'elastic', 'capacitive', 'expansive', 'generative']
+};
+
+// Critical existence thresholds — below these, the system is in danger
+const EXISTENCE_FLOOR = 15;   // Any sub-score below 15 = existence check fails
+const EXISTENCE_WARN = 25;    // Below 25 = severe strain
+
+// Known cascading relationships: [source, target, strength]
+// If source is declining AND target is declining, cascade amplifies
+const CASCADE_PAIRS = [
+  ['environment', 'society', 0.6],    // Environmental decline → health/displacement
+  ['society', 'economy', 0.4],        // Social instability → economic damage
+  ['economy', 'progress', 0.3],       // Economic stagnation → less R&D/education
+  ['environment', 'economy', 0.3],    // Climate damage → economic cost
+  ['progress', 'environment', 0.2],   // Tech progress → can help environment (positive cascade)
+  ['society', 'environment', 0.2]     // Social stability → environmental policy
+];
+
+/**
+ * CHECK 1: EXISTENCE — Are minimum conditions met?
+ * If any category drops below the floor, the system faces collapse risk.
+ * Returns a penalty (0 to -20) applied to the raw index.
+ */
+function checkExistence(scores) {
+  let penalty = 0;
+  const categories = Object.keys(scores);
+
+  for (const cat of categories) {
+    const val = scores[cat];
+    if (val < EXISTENCE_FLOOR) {
+      // Critical existence failure — severe penalty
+      penalty -= 10 + (EXISTENCE_FLOOR - val) * 0.5;
+    } else if (val < EXISTENCE_WARN) {
+      // Strained — moderate penalty
+      penalty -= (EXISTENCE_WARN - val) * 0.3;
+    }
+  }
+
+  return clamp(penalty, -20, 0);
+}
+
+/**
+ * CHECK 2: BALANCE — Is the system consuming more than it can sustain?
+ * Compares declining vs improving trends across all momentum indicators.
+ * Returns a multiplier (0.85 to 1.10).
+ */
+function checkBalance(momentumIndicators) {
+  if (!momentumIndicators || momentumIndicators.length === 0) return 1.0;
+
+  const improving = momentumIndicators.filter(i => i.direction === 'improving').length;
+  const total = momentumIndicators.length;
+  const ratio = improving / total;
+
+  // ratio 0.0 = all declining → 0.85 multiplier (heavy load)
+  // ratio 0.5 = balanced → 1.0 (neutral)
+  // ratio 1.0 = all improving → 1.10 (regenerative)
+  return 0.85 + ratio * 0.25;
+}
+
+/**
+ * CHECK 3: CASCADING — Does the output of one category erode another?
+ * If correlated pairs are both declining, amplify the penalty.
+ * Returns a penalty (0 to -10).
+ */
+function checkCascading(scores, trends) {
+  let penalty = 0;
+
+  for (const [source, target, strength] of CASCADE_PAIRS) {
+    const srcTrend = trends[source];
+    const tgtTrend = trends[target];
+
+    if (srcTrend === 'declining' && tgtTrend === 'declining') {
+      // Both declining: negative cascade in action
+      // Penalty scales with how far below 50 each score is
+      const srcDistance = Math.max(0, 50 - scores[source]) / 50;
+      const tgtDistance = Math.max(0, 50 - scores[target]) / 50;
+      penalty -= (srcDistance + tgtDistance) * strength * 10;
+    } else if (srcTrend === 'improving' && tgtTrend === 'improving') {
+      // Both improving: positive cascade (small bonus)
+      penalty += strength * 0.5;
+    }
+  }
+
+  return clamp(penalty, -10, 2);
+}
+
+/**
+ * THREE INDICATORS per category:
+ * 1. Buffer Distance — how far from the critical floor? (0-100)
+ * 2. Recovery Time — based on trend velocity, how many periods to recover? (lower = better)
+ * 3. Maintenance Cost — volatility of recent values (lower = more stable)
+ */
+function calculateIndicators(score, history, higherIsBetter = true) {
+  // Buffer Distance: how far from critical zone (0-20)
+  const bufferDistance = clamp((score - EXISTENCE_FLOOR) / (100 - EXISTENCE_FLOOR) * 100, 0, 100);
+
+  // Recovery Time: based on trend direction and speed
+  let recoveryTime = 0; // 0 = no recovery needed
+  if (history && history.length >= 4) {
+    const recent = history.slice(-3);
+    const earlier = history.slice(-6, -3);
+    if (recent.length > 0 && earlier.length > 0) {
+      const recentAvg = recent.reduce((s, h) => s + (h.value ?? h), 0) / recent.length;
+      const earlierAvg = earlier.reduce((s, h) => s + (h.value ?? h), 0) / earlier.length;
+      const velocity = recentAvg - earlierAvg;
+      const isImproving = higherIsBetter ? velocity > 0 : velocity < 0;
+
+      if (!isImproving && Math.abs(velocity) > 0.01) {
+        // Declining: estimate periods to reach critical floor
+        const distanceToFloor = score - EXISTENCE_FLOOR;
+        recoveryTime = distanceToFloor > 0 ? Math.ceil(distanceToFloor / Math.abs(velocity)) : 99;
+      }
+    }
+  }
+
+  // Maintenance Cost: standard deviation of recent values (volatility)
+  let maintenanceCost = 0;
+  if (history && history.length >= 3) {
+    const recentValues = history.slice(-6).map(h => h.value ?? h);
+    const mean = recentValues.reduce((s, v) => s + v, 0) / recentValues.length;
+    const variance = recentValues.reduce((s, v) => s + (v - mean) ** 2, 0) / recentValues.length;
+    maintenanceCost = Math.sqrt(variance);
+  }
+
+  return { bufferDistance: Math.round(bufferDistance * 10) / 10, recoveryTime, maintenanceCost: Math.round(maintenanceCost * 100) / 100 };
+}
+
+/**
+ * Determine position on the Erosion/Expansion spectrum.
+ * Uses buffer distance + trend direction.
+ */
+function getSpectrumPosition(score, trend) {
+  // Base position from score
+  if (score < 15) return { direction: 'erosion', position: 'irreversible', level: -4 };
+  if (score < 25) return { direction: 'erosion', position: 'critical', level: -3 };
+  if (score < 40) return { direction: 'erosion', position: trend === 'declining' ? 'fragile' : 'strained', level: trend === 'declining' ? -2 : -1 };
+  if (score < 55) return { direction: 'neutral', position: 'stable', level: 0 };
+  if (score < 70) return { direction: 'expansion', position: trend === 'improving' ? 'elastic' : 'stable', level: trend === 'improving' ? 1 : 0 };
+  if (score < 85) return { direction: 'expansion', position: trend === 'improving' ? 'capacitive' : 'elastic', level: trend === 'improving' ? 2 : 1 };
+  if (score < 95) return { direction: 'expansion', position: 'expansive', level: 3 };
+  return { direction: 'expansion', position: 'generative', level: 4 };
+}
+
+/**
+ * FULL CARRYING CAPACITY CALCULATION
+ * Applies all three checks to compute the adjusted World Index.
+ */
+function applyCarryingCapacity(rawIndex, scores, trends, momentumIndicators) {
+  const existencePenalty = checkExistence(scores);
+  const balanceMultiplier = checkBalance(momentumIndicators);
+  const cascadePenalty = checkCascading(scores, trends);
+
+  const adjustedIndex = clamp(
+    (rawIndex + existencePenalty + cascadePenalty) * balanceMultiplier,
+    0, 100
+  );
+
+  return {
+    rawIndex,
+    adjustedIndex: Math.round(adjustedIndex * 10) / 10,
+    checks: {
+      existence: { penalty: Math.round(existencePenalty * 10) / 10, passed: existencePenalty === 0 },
+      balance: { multiplier: Math.round(balanceMultiplier * 1000) / 1000, ratio: momentumIndicators.length > 0 ? momentumIndicators.filter(i => i.direction === 'improving').length / momentumIndicators.length : 0.5 },
+      cascading: { penalty: Math.round(cascadePenalty * 10) / 10, activePairs: CASCADE_PAIRS.filter(([s, t]) => trends[s] === 'declining' && trends[t] === 'declining').length }
+    },
+    spectrum: {
+      environment: getSpectrumPosition(scores.environment, trends.environment),
+      society: getSpectrumPosition(scores.society, trends.society),
+      economy: getSpectrumPosition(scores.economy, trends.economy),
+      progress: getSpectrumPosition(scores.progress, trends.progress),
+      momentum: getSpectrumPosition(scores.momentum, trends.momentum || 'stable')
+    }
+  };
 }
 
 // ─── Merge helper: use new data if available, fall back to existing ───
@@ -128,13 +311,74 @@ function buildWorldState() {
   const electricityCurrent = latest(electricityData?.history || [])?.value || 91;
   const waterCurrent = latest(waterData?.history || [])?.value || 74;
 
+  // ─── CONFLICT / REFUGEE / FREEDOM DATA (used in scoring) ───
+  const conflicts = existing?.society?.conflicts || {
+    activeCount: 56,
+    locations: [
+      { name: 'Ukraine', lat: 48.38, lng: 31.17, type: 'war', intensity: 0.95 },
+      { name: 'Gaza', lat: 31.35, lng: 34.31, type: 'war', intensity: 0.98 },
+      { name: 'Sudan', lat: 15.50, lng: 32.56, type: 'war', intensity: 0.85 },
+      { name: 'Myanmar', lat: 19.76, lng: 96.07, type: 'conflict', intensity: 0.70 },
+      { name: 'Äthiopien', lat: 9.15, lng: 40.49, type: 'conflict', intensity: 0.60 },
+      { name: 'Jemen', lat: 15.55, lng: 48.52, type: 'war', intensity: 0.75 },
+      { name: 'Somalia', lat: 5.15, lng: 46.20, type: 'conflict', intensity: 0.65 },
+      { name: 'DR Kongo', lat: -4.04, lng: 21.76, type: 'conflict', intensity: 0.70 },
+      { name: 'Sahel', lat: 14.50, lng: -1.50, type: 'conflict', intensity: 0.60 },
+      { name: 'Haiti', lat: 18.97, lng: -72.28, type: 'unrest', intensity: 0.50 }
+    ],
+    source: 'ACLED'
+  };
+  const refugees = existing?.society?.refugees || {
+    total: 108400000, displaced: 68300000, asylumseekers: 6900000,
+    flows: [
+      { from: 'Syria', to: 'Turkey', count: 3200000 },
+      { from: 'Ukraine', to: 'Poland', count: 1800000 },
+      { from: 'Venezuela', to: 'Colombia', count: 2500000 },
+      { from: 'Afghanistan', to: 'Pakistan', count: 1700000 },
+      { from: 'Sudan', to: 'Chad', count: 1100000 },
+      { from: 'Myanmar', to: 'Bangladesh', count: 960000 },
+      { from: 'Somalia', to: 'Kenya', count: 580000 },
+      { from: 'DRC', to: 'Uganda', count: 470000 }
+    ],
+    source: 'UNHCR'
+  };
+  const freedom = existing?.society?.freedom || {
+    free: 84, partlyFree: 56, notFree: 55, trendDecline: true, yearDecline: 18, source: 'Freedom House'
+  };
+
   const socLifeScore = normalize(lifeExpCurrent, 50, 85);
   const socMortScore = normalize(childMortCurrent, 100, 5); // lower = better
   const socElecScore = normalize(electricityCurrent, 50, 100);
   const socWaterScore = normalize(waterCurrent, 40, 100);
-  const socScore = Math.round((socLifeScore * 0.3 + socMortScore * 0.3 + socElecScore * 0.2 + socWaterScore * 0.2) * 10) / 10;
 
-  console.log(`  Society Score:     ${socScore} (life:${socLifeScore.toFixed(0)} mort:${socMortScore.toFixed(0)} elec:${socElecScore.toFixed(0)} water:${socWaterScore.toFixed(0)})`);
+  // Conflict score: combination of active conflict count and average intensity
+  const conflictCount = conflicts.activeCount || 56;
+  const avgIntensity = conflicts.locations?.length > 0
+    ? conflicts.locations.reduce((s, c) => s + c.intensity, 0) / conflicts.locations.length
+    : 0.72;
+  const conflictMetric = (clamp(conflictCount, 0, 80) / 80) * 60 + avgIntensity * 40;
+  const socConflictScore = normalize(conflictMetric, 100, 0); // worst=100 (80+ conflicts, max intensity), best=0
+
+  // Refugee score: total displaced people in millions
+  const refugeeMillions = (refugees.total || 108400000) / 1e6;
+  const socRefugeeScore = normalize(refugeeMillions, 150, 0); // worst=150M, best=0
+
+  // Freedom score: percentage of countries rated "Free"
+  const totalCountries = freedom.free + freedom.partlyFree + freedom.notFree;
+  const freePercent = (freedom.free / totalCountries) * 100;
+  const socFreedomScore = normalize(freePercent, 20, 70); // worst=20%, best=70%
+
+  const socScore = Math.round((
+    socLifeScore * 0.20 +
+    socMortScore * 0.20 +
+    socElecScore * 0.12 +
+    socWaterScore * 0.13 +
+    socConflictScore * 0.15 +
+    socRefugeeScore * 0.10 +
+    socFreedomScore * 0.10
+  ) * 10) / 10;
+
+  console.log(`  Society Score:     ${socScore} (life:${socLifeScore.toFixed(0)} mort:${socMortScore.toFixed(0)} elec:${socElecScore.toFixed(0)} water:${socWaterScore.toFixed(0)} conflict:${socConflictScore.toFixed(0)} refugee:${socRefugeeScore.toFixed(0)} freedom:${socFreedomScore.toFixed(0)})`);
 
   // ─── ECONOMY ───
   const gdpData = readRaw('economy', 'gdp-growth.json');
@@ -266,6 +510,7 @@ function buildWorldState() {
   addMomentum('Gesundheitsausgaben', healthExpData?.history, true);
   addMomentum('Urbanisierung', urbanData?.history, true);
   addMomentum('Patentanmeldungen', patentData?.history, true);
+  addMomentum('Militärausgaben (% BIP)', militaryData?.history, false); // lower military spending = better
 
   // Fall back to existing if not enough indicators computed
   const finalMomentum = momentumIndicators.length >= 10 ? momentumIndicators : (existing?.momentum?.indicators || momentumIndicators);
@@ -274,8 +519,8 @@ function buildWorldState() {
 
   console.log(`  Momentum Score:    ${momentumScore} (${positiveCount}/${finalMomentum.length} improving)\n`);
 
-  // ─── WORLD INDEX ───
-  const worldIndex = Math.round((
+  // ─── WORLD INDEX (Carrying Capacity Principle V6) ───
+  const rawIndex = Math.round((
     envScore * 0.25 +
     socScore * 0.25 +
     ecoScore * 0.20 +
@@ -283,16 +528,52 @@ function buildWorldState() {
     momentumScore * 0.10
   ) * 10) / 10;
 
+  // Collect scores and trends for carrying capacity checks
+  const categoryScores = {
+    environment: envScore, society: socScore, economy: ecoScore,
+    progress: progScore, momentum: momentumScore
+  };
+  const categoryTrends = {};
+  for (const [cat, val] of Object.entries(categoryScores)) {
+    const prev = existing?.subScores?.[cat]?.value || val;
+    const d = val - prev;
+    categoryTrends[cat] = d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable';
+  }
+
+  // Apply Carrying Capacity Principle (3 checks)
+  const carryingCapacity = applyCarryingCapacity(rawIndex, categoryScores, categoryTrends, finalMomentum);
+  const worldIndex = carryingCapacity.adjustedIndex;
+
+  // Calculate per-category carrying capacity indicators
+  const categoryHistories = {
+    environment: tempHistory,
+    society: lifeExpHistory,
+    economy: gdpData?.history || [],
+    progress: internetHistory,
+    momentum: [] // momentum has no direct history
+  };
+  const carryingIndicators = {};
+  for (const [cat, score] of Object.entries(categoryScores)) {
+    carryingIndicators[cat] = calculateIndicators(score, categoryHistories[cat]);
+  }
+
   const prevWorldIndex = existing?.worldIndex?.value || 46.8;
   const worldChange = Math.round((worldIndex - prevWorldIndex) * 10) / 10;
   const zone = worldIndex < 20 ? 'critical' : worldIndex < 40 ? 'concerning' : worldIndex < 60 ? 'mixed' : worldIndex < 80 ? 'positive' : 'excellent';
   const zoneLabels = { critical: 'KOLLAPS', concerning: 'BESORGNISERREGEND', mixed: 'GEMISCHT', positive: 'POSITIV', excellent: 'EXZELLENT' };
 
-  console.log(`  ╔══════════════════════════════╗`);
-  console.log(`  ║  WORLD INDEX: ${worldIndex.toFixed(1)} / 100     ║`);
-  console.log(`  ║  Zone: ${zoneLabels[zone].padEnd(22)}║`);
-  console.log(`  ║  Change: ${worldChange >= 0 ? '+' : ''}${worldChange.toFixed(1).padEnd(20)}║`);
-  console.log(`  ╚══════════════════════════════╝\n`);
+  console.log(`  ╔══════════════════════════════════════════════╗`);
+  console.log(`  ║  CARRYING CAPACITY PRINCIPLE V6              ║`);
+  console.log(`  ║  Raw Index:    ${rawIndex.toFixed(1).padEnd(30)}║`);
+  console.log(`  ║  Check 1 (Existence):  ${String(carryingCapacity.checks.existence.penalty).padEnd(22)}║`);
+  console.log(`  ║  Check 2 (Balance):    ×${carryingCapacity.checks.balance.multiplier.toFixed(3).padEnd(21)}║`);
+  console.log(`  ║  Check 3 (Cascading):  ${String(carryingCapacity.checks.cascading.penalty).padEnd(22)}║`);
+  console.log(`  ║  ──────────────────────────────────────────  ║`);
+  console.log(`  ║  WORLD INDEX: ${worldIndex.toFixed(1)} / 100                   ║`);
+  console.log(`  ║  Zone: ${zoneLabels[zone].padEnd(38)}║`);
+  console.log(`  ║  Change: ${worldChange >= 0 ? '+' : ''}${worldChange.toFixed(1).padEnd(36)}║`);
+  console.log(`  ╚══════════════════════════════════════════════╝`);
+  console.log(`  Spectrum: ${Object.entries(carryingCapacity.spectrum).map(([k, v]) => `${k}=${v.position}`).join(', ')}\n`);
 
   // ─── BUILD comparison2000 (always recalculate with fresh data) ───
   const comparison2000 = [
@@ -305,24 +586,6 @@ function buildWorldState() {
     { name: 'Erneuerbare Energie', then: 17, now: renewableCurrent, improved: renewableCurrent > 17 },
     { name: 'Mobilfunkverträge', then: 12, now: mobileCurrent, improved: mobileCurrent > 12 }
   ];
-
-  // ─── BUILD CONFLICT DATA ───
-  const conflicts = existing?.society?.conflicts || {
-    activeCount: 56,
-    locations: [
-      { name: 'Ukraine', lat: 48.38, lng: 31.17, type: 'war', intensity: 0.95 },
-      { name: 'Gaza', lat: 31.35, lng: 34.31, type: 'war', intensity: 0.98 },
-      { name: 'Sudan', lat: 15.50, lng: 32.56, type: 'war', intensity: 0.85 },
-      { name: 'Myanmar', lat: 19.76, lng: 96.07, type: 'conflict', intensity: 0.70 },
-      { name: 'Äthiopien', lat: 9.15, lng: 40.49, type: 'conflict', intensity: 0.60 },
-      { name: 'Jemen', lat: 15.55, lng: 48.52, type: 'war', intensity: 0.75 },
-      { name: 'Somalia', lat: 5.15, lng: 46.20, type: 'conflict', intensity: 0.65 },
-      { name: 'DR Kongo', lat: -4.04, lng: 21.76, type: 'conflict', intensity: 0.70 },
-      { name: 'Sahel', lat: 14.50, lng: -1.50, type: 'conflict', intensity: 0.60 },
-      { name: 'Haiti', lat: 18.97, lng: -72.28, type: 'unrest', intensity: 0.50 }
-    ],
-    source: 'ACLED'
-  };
 
   // ─── ASSEMBLE FINAL STATE ───
   const worldState = {
@@ -337,11 +600,18 @@ function buildWorldState() {
 
     worldIndex: {
       value: worldIndex,
+      rawValue: rawIndex,
       label: zoneLabels[zone],
       zone,
       previous: prevWorldIndex,
       change: worldChange,
-      trend: worldChange > 0 ? 'improving' : worldChange < 0 ? 'declining' : 'stable'
+      trend: worldChange > 0 ? 'improving' : worldChange < 0 ? 'declining' : 'stable',
+      carryingCapacity: {
+        checks: carryingCapacity.checks,
+        spectrum: carryingCapacity.spectrum,
+        indicators: carryingIndicators,
+        method: 'Tragfähigkeitsprinzip V6 — Mike Hertig'
+      }
     },
 
     subScores: {
@@ -371,10 +641,11 @@ function buildWorldState() {
         indicators: [
           { name: 'Lebenserwartung', value: `${lifeExpCurrent} Jahre`, score: Math.round(socLifeScore), trend: 'improving', source: 'World Bank' },
           { name: 'Kindersterblichkeit', value: `${childMortCurrent}/1000`, score: Math.round(socMortScore), trend: 'improving', source: 'World Bank' },
-          { name: 'Aktive Konflikte', value: conflicts.activeCount, score: 25, trend: 'declining', source: 'ACLED' },
+          { name: 'Aktive Konflikte', value: conflicts.activeCount, score: Math.round(socConflictScore), trend: 'declining', source: 'ACLED' },
           { name: 'Elektrizitätszugang', value: `${electricityCurrent}%`, score: Math.round(socElecScore), trend: 'improving', source: 'World Bank' },
           { name: 'Trinkwasserzugang', value: `${waterCurrent}%`, score: Math.round(socWaterScore), trend: 'improving', source: 'World Bank' },
-          { name: 'Menschen auf der Flucht', value: '108.4 Mio', score: 20, trend: 'declining', source: 'UNHCR' }
+          { name: 'Menschen auf der Flucht', value: `${(refugees.total / 1e6).toFixed(1)} Mio`, score: Math.round(socRefugeeScore), trend: 'declining', source: 'UNHCR' },
+          { name: 'Politische Freiheit', value: `${freedom.free} frei / ${freedom.notFree} unfrei`, score: Math.round(socFreedomScore), trend: freedom.trendDecline ? 'declining' : 'stable', source: 'Freedom House' }
         ]
       },
       economy: {
@@ -448,23 +719,8 @@ function buildWorldState() {
 
     society: {
       conflicts,
-      refugees: existing?.society?.refugees || {
-        total: 108400000, displaced: 68300000, asylumseekers: 6900000,
-        flows: [
-          { from: 'Syria', to: 'Turkey', count: 3200000 },
-          { from: 'Ukraine', to: 'Poland', count: 1800000 },
-          { from: 'Venezuela', to: 'Colombia', count: 2500000 },
-          { from: 'Afghanistan', to: 'Pakistan', count: 1700000 },
-          { from: 'Sudan', to: 'Chad', count: 1100000 },
-          { from: 'Myanmar', to: 'Bangladesh', count: 960000 },
-          { from: 'Somalia', to: 'Kenya', count: 580000 },
-          { from: 'DRC', to: 'Uganda', count: 470000 }
-        ],
-        source: 'UNHCR'
-      },
-      freedom: existing?.society?.freedom || {
-        free: 84, partlyFree: 56, notFree: 55, trendDecline: true, yearDecline: 18, source: 'Freedom House'
-      },
+      refugees,
+      freedom,
       lifeExpectancy: {
         global: lifeExpCurrent,
         highest: existing?.society?.lifeExpectancy?.highest || { country: 'Japan', value: 84.8 },
@@ -648,4 +904,10 @@ function buildDataSourcesList() {
 }
 
 // Run
-buildWorldState();
+try {
+  buildWorldState();
+} catch (err) {
+  console.error('FATAL: buildWorldState failed:', err.message);
+  console.error(err.stack);
+  process.exit(1);
+}

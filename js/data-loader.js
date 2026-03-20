@@ -1,11 +1,13 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Data Loader & Cache
+   World.One 1.0 — Data Loader & Cache
    ═══════════════════════════════════════════════════════════ */
+
+import { i18n } from './i18n.js';
 
 export class DataLoader {
   constructor(options = {}) {
     this.dataUrl = options.url || 'data/processed/world-state.json';
-    this.cacheKey = options.cacheKey || 'belkis-one-data';
+    this.cacheKey = options.cacheKey || 'world-one-data';
     this.cacheTTL = options.cacheTTL || 6 * 60 * 60 * 1000; // 6 hours
     this.data = null;
     this.loading = false;
@@ -137,12 +139,49 @@ export class DataLoader {
     return true;
   }
 
+  // ─── Load historical snapshot (cached — snapshots are immutable) ───
+  async loadSnapshot(snapshotId) {
+    if (!snapshotId || snapshotId === 'live') {
+      return this.load();
+    }
+    // In-memory cache — snapshots never change, so cache indefinitely
+    if (!this._snapCache) this._snapCache = new Map();
+    if (this._snapCache.has(snapshotId)) {
+      this.data = this._snapCache.get(snapshotId);
+      return this.data;
+    }
+    const url = `data/history/snapshot-${snapshotId}.json`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Snapshot ${snapshotId} not found`);
+    const json = await response.json();
+    if (!this._validate(json)) throw new Error('Invalid snapshot structure');
+    this._snapCache.set(snapshotId, json);
+    // Keep cache bounded (LRU-style: drop oldest when > 20 entries)
+    if (this._snapCache.size > 20) {
+      this._snapCache.delete(this._snapCache.keys().next().value);
+    }
+    this.data = json;
+    return this.data;
+  }
+
+  // ─── Load timeline manifest ───
+  async loadManifest() {
+    try {
+      const response = await fetch('data/history/manifest.json', { cache: 'no-store' });
+      if (!response.ok) return { snapshots: [] };
+      return response.json();
+    } catch {
+      return { snapshots: [] };
+    }
+  }
+
   // ─── Format timestamp ───
   getLastUpdated() {
     const ts = this.data?.meta?.generated || this.data?.realtime?.lastUpdated;
-    if (!ts) return 'Unbekannt';
+    if (!ts) return i18n.t('js.unknown');
     const d = new Date(ts);
-    return d.toLocaleString('de-DE', {
+    const locale = i18n.lang === 'en' ? 'en-US' : 'de-DE';
+    return d.toLocaleString(locale, {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',

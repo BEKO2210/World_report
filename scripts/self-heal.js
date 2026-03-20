@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE — Self-Healing System
+   World.One — Self-Healing System
    Validates, repairs and ensures data integrity
    ═══════════════════════════════════════════════════════════ */
 
-import { readFileSync, writeFileSync, existsSync, copyFileSync, readdirSync, unlinkSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, copyFileSync, readdirSync, unlinkSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -58,7 +58,7 @@ function validateRange(obj, path, min, max, label) {
 
 function main() {
   console.log('\n═══════════════════════════════════════');
-  console.log('  BELKIS ONE — Self-Healing System');
+  console.log('  World.One — Self-Healing System');
   console.log('═══════════════════════════════════════\n');
 
   // 1. Check if data file exists
@@ -203,17 +203,27 @@ function main() {
     data.subScores.momentum.weight = 0.10;
   }
 
-  // 6. Recalculate World Index if sub-scores were repaired
+  // 6. Validate raw World Index against sub-scores (Carrying Capacity adjusts value separately)
   const recalculated =
     data.subScores.environment.value * data.subScores.environment.weight +
     data.subScores.society.value * data.subScores.society.weight +
     data.subScores.economy.value * data.subScores.economy.weight +
     data.subScores.progress.value * data.subScores.progress.weight +
     data.subScores.momentum.value * data.subScores.momentum.weight;
-  const diff = Math.abs(data.worldIndex.value - recalculated);
+  const rawRef = data.worldIndex.rawValue || data.worldIndex.value;
+  const diff = Math.abs(rawRef - recalculated);
   if (diff > 2) {
-    log('fix', `World Index mismatch: stored=${data.worldIndex.value}, calculated=${recalculated.toFixed(1)} — correcting`);
-    data.worldIndex.value = parseFloat(recalculated.toFixed(1));
+    log('fix', `World Index rawValue mismatch: stored=${rawRef}, calculated=${recalculated.toFixed(1)} — correcting rawValue`);
+    data.worldIndex.rawValue = parseFloat(recalculated.toFixed(1));
+  }
+  // Ensure change and trend are consistent with value and previous
+  if (data.worldIndex.value != null && data.worldIndex.previous != null) {
+    const expectedChange = Math.round((data.worldIndex.value - data.worldIndex.previous) * 10) / 10;
+    if (data.worldIndex.change !== expectedChange) {
+      log('fix', `World Index change mismatch: stored=${data.worldIndex.change}, expected=${expectedChange} — correcting`);
+      data.worldIndex.change = expectedChange;
+      data.worldIndex.trend = expectedChange > 0 ? 'improving' : expectedChange < 0 ? 'declining' : 'stable';
+    }
   }
 
   // 6b. Validate World Index zone matches value
@@ -246,6 +256,34 @@ function main() {
         console.log(`[HEAL] Rotated old backup: ${old}`);
       });
     }
+  }
+
+  // 7b. Archive snapshot for timeline feature
+  const HISTORY_DIR = join(__dirname, '..', 'data', 'history');
+  mkdirSync(HISTORY_DIR, { recursive: true });
+
+  const now = new Date();
+  const snapTag = now.toISOString().slice(0, 16).replace(/[-:T]/g, '').replace(/(\d{8})(\d{4})/, '$1-$2');
+  const snapPath = join(HISTORY_DIR, `snapshot-${snapTag}.json`);
+  if (!existsSync(snapPath)) {
+    copyFileSync(DATA_PATH, snapPath);
+    console.log(`[HEAL] 📸 Archived snapshot: snapshot-${snapTag}.json`);
+
+    // Update manifest (keep max 50,000 entries ≈ 34 years at 4/day)
+    const MAX_MANIFEST_ENTRIES = 50000;
+    const manifestPath = join(HISTORY_DIR, 'manifest.json');
+    let manifest = { snapshots: [] };
+    try { manifest = JSON.parse(readFileSync(manifestPath, 'utf-8')); } catch {}
+    manifest.snapshots.unshift({
+      id: snapTag,
+      timestamp: now.toISOString(),
+      worldIndex: Math.round((data.worldIndex?.value ?? 0) * 10) / 10
+    });
+    // Trim old entries from manifest (files stay on disk for direct access)
+    if (manifest.snapshots.length > MAX_MANIFEST_ENTRIES) {
+      manifest.snapshots = manifest.snapshots.slice(0, MAX_MANIFEST_ENTRIES);
+    }
+    writeFileSync(manifestPath, JSON.stringify(manifest));
   }
 
   // 8. Save repaired data

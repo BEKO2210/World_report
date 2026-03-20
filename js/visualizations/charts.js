@@ -1,9 +1,10 @@
 /* ═══════════════════════════════════════════════════════════
-   BELKIS ONE 1.0 — Chart Visualizations (SVG-based)
+   World.One 1.0 — Chart Visualizations (SVG-based)
    ═══════════════════════════════════════════════════════════ */
 
 import { MathUtils } from '../utils/math.js';
 import { DOMUtils } from '../utils/dom.js';
+import { i18n } from '../i18n.js';
 
 export class Charts {
   // ─── Warming Stripes ───
@@ -164,7 +165,8 @@ export class Charts {
     const plotWidth = width - padding.left - padding.right;
     const plotHeight = height - padding.top - padding.bottom;
 
-    const values = data.map(d => d.value);
+    const values = data.map(d => Number(d.value)).filter(Number.isFinite);
+    if (values.length === 0) return;
     const maxVal = Math.max(...values) * 1.1;
     const barWidth = (plotWidth - barGap * (data.length - 1)) / data.length;
 
@@ -305,20 +307,20 @@ export class Charts {
 
     container.innerHTML = `
       <div class="inequality-bar__row">
-        <div class="inequality-bar__label">Top 1%</div>
+        <div class="inequality-bar__label">${i18n.t('chart.top1')}</div>
         <div class="inequality-bar__track">
           <div class="inequality-bar__fill inequality-bar__fill--top" style="width:${topW * scale}%"></div>
         </div>
         <div class="inequality-bar__pct inequality-bar__pct--top">${top.toFixed(1)}%</div>
       </div>
       <div class="inequality-bar__row">
-        <div class="inequality-bar__label">Untere 50%</div>
+        <div class="inequality-bar__label">${i18n.t('chart.bottom50')}</div>
         <div class="inequality-bar__track">
           <div class="inequality-bar__fill inequality-bar__fill--bottom" style="width:${bottomW * scale}%"></div>
         </div>
         <div class="inequality-bar__pct">${bottom.toFixed(1)}%</div>
       </div>
-      <div class="inequality-bar__ratio">${(top / bottom).toFixed(0)}× mehr</div>
+      <div class="inequality-bar__ratio">${(top / bottom).toFixed(0)}${i18n.t('chart.timesMore')}</div>
     `;
   }
 
