@@ -220,6 +220,101 @@ function applyCarryingCapacity(rawIndex, scores, trends, momentumIndicators) {
   };
 }
 
+// ═══════════════════════════════════════════════════════════════
+// REALTIME PULSE — Micro-variations from live data signals
+// Adds ±0.5–3 points per category based on current real-time data
+// ═══════════════════════════════════════════════════════════════
+
+function calculateRealtimePulse({ earthquakeData, weatherData, volcanicData, gdeltTone, cryptoData, githubData, arxivData }) {
+  const pulse = { environment: 0, society: 0, economy: 0, progress: 0, details: {} };
+
+  // ─── ENVIRONMENT PULSE ───
+  // Earthquake activity: many or strong quakes = slight negative
+  const quakes = earthquakeData?.quakes || [];
+  const quakeCount = earthquakeData?.count || quakes.length;
+  const maxMag = quakes.reduce((m, q) => Math.max(m, q.magnitude || 0), 0);
+  if (quakeCount > 0) {
+    // 0-10 quakes = neutral, 10-30 = slight negative, 30+ = more negative
+    const countPenalty = clamp((quakeCount - 10) / 40, 0, 1) * -1.0;
+    // Magnitude > 5.5 adds extra penalty
+    const magPenalty = maxMag > 5.5 ? clamp((maxMag - 5.5) / 2.5, 0, 1) * -0.8 : 0;
+    pulse.environment += countPenalty + magPenalty;
+    pulse.details.quakeCount = quakeCount;
+    pulse.details.maxMagnitude = maxMag;
+  }
+
+  // Volcanic activity: alerts present = slight negative
+  const volcanicAlerts = volcanicData?.alerts || [];
+  if (volcanicAlerts.length > 0) {
+    pulse.environment -= clamp(volcanicAlerts.length * 0.15, 0, 0.5);
+    pulse.details.volcanicAlerts = volcanicAlerts.length;
+  }
+
+  // Weather extremes: average temperature across cities vs. moderate baseline (~15°C)
+  const cities = weatherData?.cities || [];
+  if (cities.length > 0) {
+    const temps = cities.map(c => c.current?.temperature_2m).filter(t => t != null);
+    if (temps.length > 0) {
+      const avgTemp = temps.reduce((s, t) => s + t, 0) / temps.length;
+      // Deviation from moderate 15°C — extremes in either direction = slight penalty
+      const deviation = Math.abs(avgTemp - 15);
+      pulse.environment -= clamp((deviation - 10) / 20, 0, 0.5);
+      pulse.details.avgGlobalTemp = Math.round(avgTemp * 10) / 10;
+    }
+  }
+
+  pulse.environment = clamp(Math.round(pulse.environment * 100) / 100, -2, 0.5);
+
+  // ─── SOCIETY PULSE ───
+  // News sentiment (GDELT tone): negative tone = penalty, positive = bonus
+  const sentimentScore = typeof gdeltTone?.data === 'object'
+    ? (gdeltTone.data.score ?? null)
+    : null;
+  if (sentimentScore !== null) {
+    // GDELT tone typically ranges -3 to +3, centered around -0.5
+    // Shift so that -0.5 is neutral
+    const shifted = sentimentScore + 0.5;
+    pulse.society += clamp(shifted * 0.6, -1.5, 1.0);
+    pulse.details.newsSentiment = sentimentScore;
+  }
+
+  // Large earthquakes (M6+) have humanitarian impact
+  if (maxMag >= 6.0) {
+    pulse.society -= clamp((maxMag - 6.0) / 2.0, 0, 1.0);
+  }
+
+  pulse.society = clamp(Math.round(pulse.society * 100) / 100, -2, 1.0);
+
+  // ─── ECONOMY PULSE ───
+  // Crypto Fear & Greed Index: 0-25 = extreme fear, 75-100 = extreme greed
+  const cryptoFG = cryptoData?.current?.value ?? null;
+  if (cryptoFG !== null) {
+    // Neutral at 50, slight penalty below 25, slight bonus above 65
+    const deviation = (cryptoFG - 50) / 50; // -1 to +1
+    pulse.economy += clamp(deviation * 0.8, -1.0, 0.5);
+    pulse.details.cryptoFearGreed = cryptoFG;
+  }
+
+  pulse.economy = clamp(Math.round(pulse.economy * 100) / 100, -1.5, 0.5);
+
+  // ─── PROGRESS PULSE ───
+  // GitHub & arXiv activity as innovation signal
+  const arxivCount = arxivData?.papers?.length || 0;
+  if (arxivCount > 0) {
+    // Any fresh papers = small positive signal
+    pulse.progress += clamp(arxivCount / 30, 0, 0.5);
+    pulse.details.arxivPapers = arxivCount;
+  }
+  const githubRepos = githubData?.topRepos?.length || 0;
+  if (githubRepos > 0) {
+    pulse.progress += clamp(githubRepos / 30, 0, 0.3);
+  }
+
+  pulse.progress = clamp(Math.round(pulse.progress * 100) / 100, -0.5, 1.0);
+
+  return pulse;
+}
+
 // ─── Merge helper: use new data if available, fall back to existing ───
 function merge(newData, existingData, key) {
   if (newData && (Array.isArray(newData) ? newData.length > 0 : Object.keys(newData).length > 0)) {
@@ -519,25 +614,51 @@ function buildWorldState() {
 
   console.log(`  Momentum Score:    ${momentumScore} (${positiveCount}/${finalMomentum.length} improving)\n`);
 
+  // ─── REALTIME PULSE — micro-variations from live signals ───
+  // Use raw data when available, fall back to existing world-state data
+  const pulseEarthquakes = earthquakeData || {
+    quakes: existing?.realtime?.earthquakes?.last24h || [],
+    count: existing?.realtime?.earthquakes?.total24h || 0
+  };
+  const pulseWeather = weatherData || { cities: existing?.environment?.weather || [] };
+  const pulseVolcanic = volcanicData || { alerts: existing?.realtime?.volcanic || [] };
+  const pulseSentiment = gdeltTone || (existing?.realtime?.newsSentiment ? { data: existing.realtime.newsSentiment } : null);
+  const pulseCrypto = cryptoData || (existing?.economy?.cryptoFearGreed ? { current: existing.economy.cryptoFearGreed } : null);
+  const pulseGithub = githubData || existing?.progress?.github || null;
+  const pulseArxiv = arxivData || { papers: existing?.progress?.publications?.latestArxiv || [] };
+
+  const realtimePulse = calculateRealtimePulse({
+    earthquakeData: pulseEarthquakes, weatherData: pulseWeather,
+    volcanicData: pulseVolcanic, gdeltTone: pulseSentiment,
+    cryptoData: pulseCrypto, githubData: pulseGithub, arxivData: pulseArxiv
+  });
+
+  const envScoreAdj = clamp(Math.round((envScore + realtimePulse.environment) * 10) / 10, 0, 100);
+  const socScoreAdj = clamp(Math.round((socScore + realtimePulse.society) * 10) / 10, 0, 100);
+  const ecoScoreAdj = clamp(Math.round((ecoScore + realtimePulse.economy) * 10) / 10, 0, 100);
+  const progScoreAdj = clamp(Math.round((progScore + realtimePulse.progress) * 10) / 10, 0, 100);
+
+  console.log(`  Realtime Pulse:    env:${realtimePulse.environment} soc:${realtimePulse.society} eco:${realtimePulse.economy} prog:${realtimePulse.progress}`);
+
   // ─── WORLD INDEX (Carrying Capacity Principle V6) ───
   const rawIndex = Math.round((
-    envScore * 0.25 +
-    socScore * 0.25 +
-    ecoScore * 0.20 +
-    progScore * 0.20 +
+    envScoreAdj * 0.25 +
+    socScoreAdj * 0.25 +
+    ecoScoreAdj * 0.20 +
+    progScoreAdj * 0.20 +
     momentumScore * 0.10
   ) * 10) / 10;
 
   // Collect scores and trends for carrying capacity checks
   const categoryScores = {
-    environment: envScore, society: socScore, economy: ecoScore,
-    progress: progScore, momentum: momentumScore
+    environment: envScoreAdj, society: socScoreAdj, economy: ecoScoreAdj,
+    progress: progScoreAdj, momentum: momentumScore
   };
   const categoryTrends = {};
   for (const [cat, val] of Object.entries(categoryScores)) {
     const prev = existing?.subScores?.[cat]?.value || val;
     const d = val - prev;
-    categoryTrends[cat] = d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable';
+    categoryTrends[cat] = d > 0.2 ? 'improving' : d < -0.2 ? 'declining' : 'stable';
   }
 
   // Apply Carrying Capacity Principle (3 checks)
@@ -595,7 +716,8 @@ function buildWorldState() {
       sources_count: 40,
       sources_available: readRaw('.', 'collection-manifest.json')?.success?.length || existing?.meta?.sources_available || 22,
       sources_success_rate: readRaw('.', 'collection-manifest.json')?.successRate || 100,
-      next_update: new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString()
+      next_update: new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString(),
+      realtimePulse: realtimePulse
     },
 
     worldIndex: {
@@ -616,12 +738,12 @@ function buildWorldState() {
 
     subScores: {
       environment: {
-        value: envScore,
-        label: envScore < 20 ? 'KRITISCH' : envScore < 40 ? 'BESORGNISERREGEND' : envScore < 60 ? 'GEMISCHT' : 'POSITIV',
-        zone: envScore < 20 ? 'critical' : envScore < 40 ? 'concerning' : envScore < 60 ? 'mixed' : 'positive',
+        value: envScoreAdj,
+        label: envScoreAdj < 20 ? 'KRITISCH' : envScoreAdj < 40 ? 'BESORGNISERREGEND' : envScoreAdj < 60 ? 'GEMISCHT' : 'POSITIV',
+        zone: envScoreAdj < 20 ? 'critical' : envScoreAdj < 40 ? 'concerning' : envScoreAdj < 60 ? 'mixed' : 'positive',
         weight: 0.25,
-        trend: (() => { const d = envScore - (existing?.subScores?.environment?.value || envScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
-        change: Math.round((envScore - (existing?.subScores?.environment?.value || envScore)) * 10) / 10,
+        trend: (() => { const d = envScoreAdj - (existing?.subScores?.environment?.value || envScoreAdj); return d > 0.2 ? 'improving' : d < -0.2 ? 'declining' : 'stable'; })(),
+        change: Math.round((envScoreAdj - (existing?.subScores?.environment?.value || envScoreAdj)) * 10) / 10,
         indicators: [
           { name: 'Globale Temperaturanomalie', value: `+${tempCurrent}°C`, score: Math.round(envTempScore), trend: 'declining', source: 'NASA GISTEMP' },
           { name: 'CO2-Konzentration', value: `${Math.round(co2Current)} ppm`, score: Math.round(envCO2Score), trend: 'declining', source: 'NOAA' },
@@ -632,12 +754,12 @@ function buildWorldState() {
         ]
       },
       society: {
-        value: socScore,
-        label: socScore < 40 ? 'BESORGNISERREGEND' : socScore < 60 ? 'GEMISCHT' : 'POSITIV',
-        zone: socScore < 40 ? 'concerning' : socScore < 60 ? 'mixed' : 'positive',
+        value: socScoreAdj,
+        label: socScoreAdj < 40 ? 'BESORGNISERREGEND' : socScoreAdj < 60 ? 'GEMISCHT' : 'POSITIV',
+        zone: socScoreAdj < 40 ? 'concerning' : socScoreAdj < 60 ? 'mixed' : 'positive',
         weight: 0.25,
-        trend: (() => { const d = socScore - (existing?.subScores?.society?.value || socScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
-        change: Math.round((socScore - (existing?.subScores?.society?.value || socScore)) * 10) / 10,
+        trend: (() => { const d = socScoreAdj - (existing?.subScores?.society?.value || socScoreAdj); return d > 0.2 ? 'improving' : d < -0.2 ? 'declining' : 'stable'; })(),
+        change: Math.round((socScoreAdj - (existing?.subScores?.society?.value || socScoreAdj)) * 10) / 10,
         indicators: [
           { name: 'Lebenserwartung', value: `${lifeExpCurrent} Jahre`, score: Math.round(socLifeScore), trend: 'improving', source: 'World Bank' },
           { name: 'Kindersterblichkeit', value: `${childMortCurrent}/1000`, score: Math.round(socMortScore), trend: 'improving', source: 'World Bank' },
@@ -649,12 +771,12 @@ function buildWorldState() {
         ]
       },
       economy: {
-        value: ecoScore,
-        label: ecoScore < 40 ? 'BESORGNISERREGEND' : ecoScore < 60 ? 'GEMISCHT' : 'POSITIV',
-        zone: ecoScore < 40 ? 'concerning' : ecoScore < 60 ? 'mixed' : 'positive',
+        value: ecoScoreAdj,
+        label: ecoScoreAdj < 40 ? 'BESORGNISERREGEND' : ecoScoreAdj < 60 ? 'GEMISCHT' : 'POSITIV',
+        zone: ecoScoreAdj < 40 ? 'concerning' : ecoScoreAdj < 60 ? 'mixed' : 'positive',
         weight: 0.20,
-        trend: (() => { const d = ecoScore - (existing?.subScores?.economy?.value || ecoScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
-        change: Math.round((ecoScore - (existing?.subScores?.economy?.value || ecoScore)) * 10) / 10,
+        trend: (() => { const d = ecoScoreAdj - (existing?.subScores?.economy?.value || ecoScoreAdj); return d > 0.2 ? 'improving' : d < -0.2 ? 'declining' : 'stable'; })(),
+        change: Math.round((ecoScoreAdj - (existing?.subScores?.economy?.value || ecoScoreAdj)) * 10) / 10,
         indicators: [
           { name: 'BIP-Wachstum', value: `${gdpGrowth}%`, score: Math.round(ecoGDPScore), trend: ecoGDPScore > 60 ? 'improving' : ecoGDPScore < 40 ? 'declining' : 'stable', source: 'World Bank / IMF' },
           { name: 'Gini-Index', value: giniCurrent, score: Math.round(ecoGiniScore), trend: 'stable', source: 'World Bank' },
@@ -664,12 +786,12 @@ function buildWorldState() {
         ]
       },
       progress: {
-        value: progScore,
-        label: progScore < 40 ? 'BESORGNISERREGEND' : progScore < 60 ? 'GEMISCHT' : progScore < 80 ? 'POSITIV' : 'EXZELLENT',
-        zone: progScore < 40 ? 'concerning' : progScore < 60 ? 'mixed' : progScore < 80 ? 'positive' : 'excellent',
+        value: progScoreAdj,
+        label: progScoreAdj < 40 ? 'BESORGNISERREGEND' : progScoreAdj < 60 ? 'GEMISCHT' : progScoreAdj < 80 ? 'POSITIV' : 'EXZELLENT',
+        zone: progScoreAdj < 40 ? 'concerning' : progScoreAdj < 60 ? 'mixed' : progScoreAdj < 80 ? 'positive' : 'excellent',
         weight: 0.20,
-        trend: (() => { const d = progScore - (existing?.subScores?.progress?.value || progScore); return d > 0.5 ? 'improving' : d < -0.5 ? 'declining' : 'stable'; })(),
-        change: Math.round((progScore - (existing?.subScores?.progress?.value || progScore)) * 10) / 10,
+        trend: (() => { const d = progScoreAdj - (existing?.subScores?.progress?.value || progScoreAdj); return d > 0.2 ? 'improving' : d < -0.2 ? 'declining' : 'stable'; })(),
+        change: Math.round((progScoreAdj - (existing?.subScores?.progress?.value || progScoreAdj)) * 10) / 10,
         indicators: [
           { name: 'Internet-Durchdringung', value: `${internetCurrent}%`, score: Math.round(progInternetScore), trend: 'improving', source: 'World Bank / ITU' },
           { name: 'Alphabetisierung', value: `${literacyCurrent}%`, score: Math.round(progLiteracyScore), trend: 'improving', source: 'World Bank / UNESCO' },
