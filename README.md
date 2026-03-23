@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 64.2 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 64.7 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  64.2/100  ↑ +0
+█████████████░░░░░░░  64.7/100  ↑ +0.5
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 23.03.2026 07:10 UTC
+> **Letzte Aktualisierung:** 23.03.2026 13:09 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.1**/100 | → +0 | 25% |
+| 🟡 Umwelt | **47.5**/100 | ↑ +3.4 | 25% |
 | 🟡 Gesellschaft | **55.8**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **78.5**/100 | → +0 | 20% |
-| 🟢 Momentum | **71.4**/100 | → +0 | 10% |
+| 🟢 Momentum | **70**/100 | → +0 | 10% |
 
 ---
 
@@ -69,14 +69,13 @@
 
 ---
 
-## 📈 Momentum: 15/21 Trends positiv
+## 📈 Momentum: 14/20 Trends positiv
 
 <details>
-<summary>Alle 21 Indikatoren anzeigen</summary>
+<summary>Alle 20 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (15)
+#### ✅ Verbessert sich (14)
 - **Kindersterblichkeit**: -4.5%
-- **Erneuerbare Energie**: +6.6%
 - **Internet-Zugang**: +12.1%
 - **BIP-Wachstum**: +48.9%
 - **Arbeitslosigkeit**: -19.1%
@@ -223,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 23.03.2026 07:10 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 23.03.2026 13:09 UTC | 39/40 Quellen aktiv
 </sub>
