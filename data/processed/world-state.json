@@ -1,18 +1,18 @@
 {
   "meta": {
-    "generated": "2026-03-24T13:10:57.211Z",
+    "generated": "2026-03-24T19:03:15.731Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-03-24T19:10:57.212Z",
+    "next_update": "2026-03-25T01:03:15.731Z",
     "realtimePulse": {
-      "environment": -1.54,
+      "environment": -1.24,
       "society": -0.75,
       "economy": -0.62,
       "progress": 0.8,
       "details": {
-        "quakeCount": 46,
+        "quakeCount": 34,
         "maxMagnitude": 7.5,
         "avgGlobalTemp": 18,
         "cryptoFearGreed": 11,
@@ -21,12 +21,12 @@
     }
   },
   "worldIndex": {
-    "value": 64,
-    "rawValue": 62.2,
+    "value": 64.1,
+    "rawValue": 62.3,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 63,
-    "change": 1,
+    "previous": 64,
+    "change": 0.1,
     "trend": "improving",
     "carryingCapacity": {
       "checks": {
@@ -72,7 +72,7 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34,
+          "bufferDistance": 34.4,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
@@ -102,12 +102,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 43.9,
+      "value": 44.2,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "stable",
-      "change": 0.1,
+      "trend": "improving",
+      "change": 0.3,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +139,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 67,
+          "value": 70,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -1196,65 +1196,72 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 67,
+      "globalAvgAQI": 70,
       "cleanestCities": [
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 18,
+          "aqi": 20,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "Lagos",
           "country": "",
-          "aqi": 28,
+          "aqi": 25,
           "lat": 6.45,
           "lng": 3.4
         },
         {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 36,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
           "city": "Tokyo",
           "country": "",
-          "aqi": 41,
+          "aqi": 35,
           "lat": 35.68,
           "lng": 139.69
         },
         {
-          "city": "Mexico City",
+          "city": "Berlin",
           "country": "",
-          "aqi": 51,
-          "lat": 19.43,
-          "lng": -99.13
+          "aqi": 39,
+          "lat": 52.52,
+          "lng": 13.41
+        },
+        {
+          "city": "London",
+          "country": "",
+          "aqi": 42,
+          "lat": 51.51,
+          "lng": -0.13
         }
       ],
       "mostPolluted": [
         {
-          "city": "Beijing",
-          "country": "",
-          "aqi": 153,
-          "lat": 39.9,
-          "lng": 116.4
-        },
-        {
           "city": "Delhi",
           "country": "",
-          "aqi": 141,
+          "aqi": 181,
           "lat": 28.61,
           "lng": 77.21
         },
         {
+          "city": "Beijing",
+          "country": "",
+          "aqi": 152,
+          "lat": 39.9,
+          "lng": 116.4
+        },
+        {
           "city": "Mumbai",
           "country": "",
-          "aqi": 70,
+          "aqi": 69,
           "lat": 19.08,
           "lng": 72.88
+        },
+        {
+          "city": "São Paulo",
+          "country": "",
+          "aqi": 69,
+          "lat": -23.55,
+          "lng": -46.63
         },
         {
           "city": "Cairo",
@@ -1262,13 +1269,6 @@
           "aqi": 66,
           "lat": 30.04,
           "lng": 31.24
-        },
-        {
-          "city": "Los Angeles",
-          "country": "",
-          "aqi": 65,
-          "lat": 34.05,
-          "lng": -118.24
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1628,11 +1628,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-03-24T14:00",
+          "time": "2026-03-24T20:00",
           "interval": 900,
-          "temperature_2m": 15.4,
-          "relative_humidity_2m": 42,
-          "wind_speed_10m": 15.1,
+          "temperature_2m": 13.6,
+          "relative_humidity_2m": 44,
+          "wind_speed_10m": 11.8,
           "weather_code": 3
         }
       },
@@ -1641,11 +1641,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-03-24T09:00",
+          "time": "2026-03-24T15:00",
           "interval": 900,
-          "temperature_2m": 1.5,
-          "relative_humidity_2m": 70,
-          "wind_speed_10m": 12.9,
+          "temperature_2m": 9.1,
+          "relative_humidity_2m": 25,
+          "wind_speed_10m": 5.5,
           "weather_code": 0
         }
       },
@@ -1654,10 +1654,10 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-03-24T22:00",
+          "time": "2026-03-25T04:00",
           "interval": 900,
-          "temperature_2m": 9.9,
-          "relative_humidity_2m": 66,
+          "temperature_2m": 6.9,
+          "relative_humidity_2m": 75,
           "wind_speed_10m": 2.6,
           "weather_code": 2
         }
@@ -1667,12 +1667,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-03-25T00:00",
+          "time": "2026-03-25T06:00",
           "interval": 900,
-          "temperature_2m": 19.9,
-          "relative_humidity_2m": 89,
-          "wind_speed_10m": 3.1,
-          "weather_code": 2
+          "temperature_2m": 16.8,
+          "relative_humidity_2m": 98,
+          "wind_speed_10m": 3,
+          "weather_code": 45
         }
       },
       {
@@ -1680,11 +1680,11 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-03-24T10:00",
+          "time": "2026-03-24T16:00",
           "interval": 900,
-          "temperature_2m": 22.9,
-          "relative_humidity_2m": 73,
-          "wind_speed_10m": 4.9,
+          "temperature_2m": 29.1,
+          "relative_humidity_2m": 38,
+          "wind_speed_10m": 1.8,
           "weather_code": 1
         }
       },
@@ -1693,11 +1693,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-03-24T14:00",
+          "time": "2026-03-24T20:00",
           "interval": 900,
-          "temperature_2m": 31.8,
-          "relative_humidity_2m": 66,
-          "wind_speed_10m": 17.2,
+          "temperature_2m": 28.8,
+          "relative_humidity_2m": 80,
+          "wind_speed_10m": 13.8,
           "weather_code": 3
         }
       },
@@ -1706,11 +1706,11 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-03-24T18:30",
+          "time": "2026-03-25T00:30",
           "interval": 900,
-          "temperature_2m": 28.8,
-          "relative_humidity_2m": 69,
-          "wind_speed_10m": 14.3,
+          "temperature_2m": 28.5,
+          "relative_humidity_2m": 76,
+          "wind_speed_10m": 7.5,
           "weather_code": 1
         }
       },
@@ -1719,12 +1719,12 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-03-24T13:00",
+          "time": "2026-03-24T19:00",
           "interval": 900,
-          "temperature_2m": 14,
-          "relative_humidity_2m": 66,
-          "wind_speed_10m": 22.7,
-          "weather_code": 3
+          "temperature_2m": 11.2,
+          "relative_humidity_2m": 80,
+          "wind_speed_10m": 27.4,
+          "weather_code": 2
         }
       }
     ]
@@ -4053,73 +4053,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 482978,
-          "forks": 45457,
+          "stars": 483064,
+          "forks": 45465,
           "language": "Markdown",
-          "updated": "2026-03-24T13:07:57Z"
+          "updated": "2026-03-24T18:58:54Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 448440,
-          "forks": 33730,
+          "stars": 448527,
+          "forks": 33738,
           "language": null,
-          "updated": "2026-03-24T13:09:14Z"
+          "updated": "2026-03-24T18:59:10Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 438777,
-          "forks": 43753,
+          "stars": 438785,
+          "forks": 43755,
           "language": "TypeScript",
-          "updated": "2026-03-24T13:01:40Z"
+          "updated": "2026-03-24T18:19:33Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 415477,
-          "forks": 45024,
+          "stars": 415673,
+          "forks": 45047,
           "language": "Python",
-          "updated": "2026-03-24T13:09:51Z"
+          "updated": "2026-03-24T19:01:56Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 384510,
-          "forks": 66047,
+          "stars": 384535,
+          "forks": 66050,
           "language": "Python",
-          "updated": "2026-03-24T13:09:51Z"
+          "updated": "2026-03-24T18:48:10Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 351569,
-          "forks": 43845,
+          "stars": 351603,
+          "forks": 43849,
           "language": "TypeScript",
-          "updated": "2026-03-24T13:08:31Z"
+          "updated": "2026-03-24T19:02:16Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 340040,
-          "forks": 55011,
+          "stars": 340082,
+          "forks": 55013,
           "language": "Python",
-          "updated": "2026-03-24T13:09:53Z"
+          "updated": "2026-03-24T18:58:48Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 338158,
-          "forks": 81616,
+          "stars": 338198,
+          "forks": 81623,
           "language": null,
-          "updated": "2026-03-24T13:03:12Z"
+          "updated": "2026-03-24T18:58:46Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 333762,
-          "forks": 65065,
+          "stars": 334175,
+          "forks": 65178,
           "language": "TypeScript",
-          "updated": "2026-03-24T13:09:59Z"
+          "updated": "2026-03-24T19:01:51Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 288754,
+          "stars": 288789,
           "forks": 27475,
           "language": "Python",
-          "updated": "2026-03-24T13:08:19Z"
+          "updated": "2026-03-24T18:26:29Z"
         }
       ],
       "source": "GitHub"
@@ -4596,70 +4596,110 @@
     },
     "spaceflight": [
       {
-        "title": "SES targets 28 satellites with K2 Space for next-gen MEO network",
-        "published": "2026-03-24T13:00:14Z",
-        "source": "SpaceNews",
-        "summary": "\nSES announced plans March 24 to order an initial 28 satellites from manufacturing startup K2 Space for meoSphere, a next-generation MEO network slated to be in operation by 2030.\nThe post SES targets"
-      },
-      {
-        "title": "Orbital data centers, part 1: There’s no way this is economically viable, right?",
-        "published": "2026-03-24T11:00:59Z",
-        "source": "Arstechnica",
-        "summary": "\"This is not physically impossible; it’s only a question of whether this is a rational thing.\""
-      },
-      {
-        "title": "Fusion engine for missile warning lacks a government dataset",
-        "published": "2026-03-24T10:30:00Z",
-        "source": "SpaceNews",
-        "summary": "\nWASHINGTON – National missile warning and tracking could be improved if all government agencies shared the raw data they gather. “There are agencies that have sensors that can provide data that would"
-      },
-      {
-        "title": "Smile fuelled for launch",
-        "published": "2026-03-24T10:00:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
-      },
-      {
-        "title": "XRISM solves famous star’s 50-year mystery",
-        "published": "2026-03-24T08:00:00Z",
-        "source": "ESA",
-        "summary": "An invisible companion consuming material from the naked-eye star gamma-Cas has been revealed as the culprit for curious X-rays coming from the stellar system. This closes the case on a mystery that h"
-      },
-      {
-        "title": "US-Based Katalyst Selects Ariane 6 to Launch Satellite Servicing Spacecraft",
-        "published": "2026-03-24T07:05:02Z",
-        "source": "European Spaceflight",
-        "summary": "Arizona-headquartered space operations company Katalyst Space Technologies has signed a contract with Arianespace to launch its NEXUS-1 satellite servicing spacecraft aboard an Ariane 6 in 2027. The N"
-      },
-      {
-        "title": "Tropical Cyclone Narelle Crosses Australia",
-        "published": "2026-03-24T04:01:00Z",
+        "title": "La NASA presenta iniciativas para cumplir con la política espacial nacional de Estados Unidos",
+        "published": "2026-03-24T18:24:46Z",
         "source": "NASA",
-        "summary": "The powerful storm lashed the northern edge of the continent with damaging winds and drenching rain as it made landfall multiple times."
+        "summary": "Read this news release in English here. Como parte de su evento “Ignition” (Encendido) celebrado el martes, la NASA anunció una serie de iniciativas transformadoras a nivel de toda la agencia, diseñad"
       },
       {
-        "title": "Progress on Starbase Pads ahead of Block 3 Starships",
-        "published": "2026-03-24T02:21:59Z",
-        "source": "NASASpaceflight",
-        "summary": "In a flurry of ground activity that underscores SpaceX’s relentless drive for launch cadence, engineers…\r\nThe post Progress on Starbase Pads ahead of Block 3 Starships appeared first on NASASpaceFligh"
-      },
-      {
-        "title": "Launch Preview: Russia to debut Soyuz-5; Falcon 9 and Atlas V to launch internet satellites",
-        "published": "2026-03-23T21:50:46Z",
-        "source": "NASASpaceflight",
-        "summary": "The United States, Russia, China, New Zealand, and Norway are all set to host launches…\r\nThe post Launch Preview: Russia to debut Soyuz-5; Falcon 9 and Atlas V to launch internet satellites appeared f"
-      },
-      {
-        "title": "Space Force adds cyber units to guard rocket launches",
-        "published": "2026-03-23T21:37:35Z",
+        "title": "China’s Astronstone raises $29 million for reusable rocket with chopstick-style recovery",
+        "published": "2026-03-24T17:14:20Z",
         "source": "SpaceNews",
-        "summary": "\n‘Cyber defense’ squadrons at Cape Canaveral and Vandenberg reflect growing concern over malicious hacks\nThe post Space Force adds cyber units to guard rocket launches appeared first on SpaceNews."
+        "summary": "\nAstronstone, one of China’s younger launch startups, has secured new funding as it builds toward the first flight of its reusable AS-1 rocket. \nThe post China’s Astronstone raises $29 million for reu"
+      },
+      {
+        "title": "NASA Rolls Out New Moon Plan",
+        "published": "2026-03-24T16:55:27Z",
+        "source": "SpacePolicyOnline.com",
+        "summary": "NASA is again revising its plan to return astronauts to the Moon and establish a sustainable presence there.  With the launch of the Artemis II crew around the Moon coming […]"
+      },
+      {
+        "title": "Space Development Agency slows satellite launches to focus on on-orbit performance",
+        "published": "2026-03-24T16:35:34Z",
+        "source": "SpaceNews",
+        "summary": "\nThe agency’s acting director says checkout, orbit-raising and network testing are pacing the program\nThe post Space Development Agency slows satellite launches to focus on on-orbit performance appear"
+      },
+      {
+        "title": "NASA halts work on Gateway to develop a lunar base",
+        "published": "2026-03-24T16:09:46Z",
+        "source": "SpaceNews",
+        "summary": "\nNASA is halting plans to develop the lunar Gateway and instead focusing on the development of a lunar base.\nThe post NASA halts work on Gateway to develop a lunar base appeared first on SpaceNews."
+      },
+      {
+        "title": "Space Force officer shares intelligence on threats to space systems",
+        "published": "2026-03-24T15:48:00Z",
+        "source": "SpaceNews",
+        "summary": "\nWASHINGTON – Electronic warfare is a growing threat to U.S. space systems, according to a March 23 unclassified briefing by U.S. Space Force Chief Master Sergeant Ron Lerch, senior enlisted advisor t"
+      },
+      {
+        "title": "NASA Research Proposes Technology to Seek Earth-Like Exoplanets",
+        "published": "2026-03-24T14:18:59Z",
+        "source": "NASA",
+        "summary": "As NASA seeks to understand the mysteries of the universe, the agency is advancing technologies to locate and explore Earth-like planets far beyond our solar system. A key element of this research inv"
+      },
+      {
+        "title": "SpaceEye-T: 25 cm Satellite Imagery and Tasking Now Available Through Pacific Geomatics Limited",
+        "published": "2026-03-24T14:00:00Z",
+        "source": "SpaceNews",
+        "summary": "\nVictoria, Canada / Daejeon, South Korea – March 24, 2026 – Canadian and international organizations can now access SpaceEye-T imagery and tasking services through Pacific Geomatics Limited, one of th"
+      },
+      {
+        "title": "NASA’s Water-Hunting Tool Will Help Scout Moon’s South Pole",
+        "published": "2026-03-24T13:59:00Z",
+        "source": "NASA",
+        "summary": "NASA is joining international partners to hunt for ice on the Moon in support of future human exploration. The agency is providing a water-detecting instrument, the Neutron Spectrometer System (NSS), "
+      },
+      {
+        "title": "NASA Unveils Initiatives to Achieve America’s National Space Policy",
+        "published": "2026-03-24T13:01:25Z",
+        "source": "NASA",
+        "summary": "As part of its “Ignition” event on Tuesday, NASA announced a series of transformative agencywide initiatives designed to achieve President Donald J. Trump’s National Space Policy and advance American "
       }
     ]
   },
   "realtime": {
     "earthquakes": {
       "last24h": [
+        {
+          "location": "62 km S of Whites City, New Mexico",
+          "magnitude": 2.5,
+          "depth": 3.7108,
+          "lat": 31.615,
+          "lng": -104.389,
+          "time": "2026-03-24T17:41:05.487Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "223 km ESE of Attu Station, Alaska",
+          "magnitude": 4.3,
+          "depth": 32.4,
+          "lat": 51.877,
+          "lng": 176.065,
+          "time": "2026-03-24T16:55:57.289Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "45 km S of Adak, Alaska",
+          "magnitude": 4.6,
+          "depth": 35,
+          "lat": 51.4687,
+          "lng": -176.6553,
+          "time": "2026-03-24T16:43:29.836Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "2 km WSW of G. L. Garcia, Puerto Rico",
+          "magnitude": 2.63,
+          "depth": 25.14,
+          "lat": 18.1228333333333,
+          "lng": -66.1275,
+          "time": "2026-03-24T16:22:56.700Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
         {
           "location": "60 km WSW of Pacasmayo, Peru",
           "magnitude": 4.4,
@@ -4699,49 +4739,9 @@
           "time": "2026-03-24T09:14:56.449Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "87 km WNW of Puerto, Chile",
-          "magnitude": 4.6,
-          "depth": 23.996,
-          "lat": -20.021,
-          "lng": -70.9608,
-          "time": "2026-03-24T09:07:19.643Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "south of the Fiji Islands",
-          "magnitude": 4.7,
-          "depth": 489.894,
-          "lat": -23.9111,
-          "lng": -179.6566,
-          "time": "2026-03-24T08:34:38.707Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "4 km ESE of San Ramon, CA",
-          "magnitude": 3.02,
-          "depth": 8.22000026702881,
-          "lat": 37.7648315429688,
-          "lng": -121.937835693359,
-          "time": "2026-03-24T07:31:47.000Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "158 km W of Neiafu, Tonga",
-          "magnitude": 4.6,
-          "depth": 192.935,
-          "lat": -18.5916,
-          "lng": -175.4885,
-          "time": "2026-03-24T06:45:57.643Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 46,
+      "total24h": 34,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4770,28 +4770,94 @@
     },
     "news": [
       {
-        "title": "NASA Unveils Initiatives to Achieve America’s National Space Policy",
-        "pubDate": "Tue, 24 Mar 2026 13:01:25 +0000",
-        "link": "https://www.nasa.gov/news-release/nasa-unveils-initiatives-to-achieve-americas-national-space-policy/",
+        "title": "La NASA presenta iniciativas para cumplir con la política espacial nacional de Estados Unidos",
+        "pubDate": "Tue, 24 Mar 2026 18:24:46 +0000",
+        "link": "https://www.nasa.gov/news-release/la-nasa-presenta-iniciativas-para-cumplir-con-la-politica-espacial-nacional-de-estados-unidos/",
         "source": "NASA"
       },
       {
-        "title": "Israel says it will take control of large buffer zone in southern Lebanon",
-        "pubDate": "Tue, 24 Mar 2026 12:51:01 GMT",
-        "link": "https://www.bbc.com/news/articles/cy91j9qwp4do?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Russia launches 948 drones at Ukraine in largest attack over 24-hour period",
+        "pubDate": "Tue, 24 Mar 2026 18:12:36 GMT",
+        "link": "https://www.bbc.com/news/articles/cz90gpyw90wo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Adviser questions US justification for war on Iran",
-        "pubDate": "Tue, 24 Mar 2026 12:49:57 +0000",
-        "link": "https://www.aljazeera.com/video/quotable/2026/3/24/adviser-questions-us-justification-for-war-on-iran?traffic_source=rss",
+        "title": "Iran names successor to security chief killed in US-Israeli attack",
+        "pubDate": "Tue, 24 Mar 2026 18:11:47 +0000",
+        "link": "https://www.aljazeera.com/news/2026/3/24/mohammad-bagher-zolghadr-succeeds-slain-larijani-as-iran-security-chief?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "The US should end the war asap",
-        "pubDate": "Tue, 24 Mar 2026 12:43:44 +0000",
-        "link": "https://www.aljazeera.com/opinions/2026/3/24/the-us-should-end-the-war-asap?traffic_source=rss",
+        "title": "Afghanistan frees detained US citizen Dennis Coyle as gesture of ‘goodwill’",
+        "pubDate": "Tue, 24 Mar 2026 18:11:34 +0000",
+        "link": "https://www.aljazeera.com/news/2026/3/24/afghanistan-frees-detained-us-citizen-dennis-coyle-as-gesture-of-goodwill?traffic_source=rss",
         "source": "Al Jazeera"
+      },
+      {
+        "title": "Israeli strike lands near Roman ruins in Lebanon",
+        "pubDate": "Tue, 24 Mar 2026 18:06:04 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/24/israeli-strike-lands-near-roman-ruins-in-lebanon?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Lebanon&#039;s humanitarian crisis worsens as fighting continues",
+        "pubDate": "Tue, 24 Mar 2026 18:06:00 GMT",
+        "link": "https://www.dw.com/en/lebanon-s-humanitarian-crisis-worsens-as-fighting-continues/a-76512884?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "'Truly magical woman': Tributes to Married at First Sight's Mel Schilling",
+        "pubDate": "Tue, 24 Mar 2026 17:59:25 GMT",
+        "link": "https://www.bbc.com/news/articles/c8ejk0z430jo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "French economic growth undercut by war in Iran, national statistics office says",
+        "pubDate": "Tue, 24 Mar 2026 17:42:59 GMT",
+        "link": "https://www.france24.com/en/france/20260324-french-economic-growth-undercut-by-war-in-iran-national-statistics-office-says",
+        "source": "France24"
+      },
+      {
+        "title": "Everyday life in Asia is being upended by Iran war fuel crisis",
+        "pubDate": "Tue, 24 Mar 2026 17:12:50 GMT",
+        "link": "https://www.bbc.com/news/articles/c1450zj6n48o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Is Iran's parliamentary speaker Ghalibaf negotiating with the US?",
+        "pubDate": "Tue, 24 Mar 2026 17:11:56 GMT",
+        "link": "https://www.france24.com/en/middle-east/20260324-iran-s-parliamentary-speaker-ghalibaf-floated-as-possible-us-interlocutor",
+        "source": "France24"
+      },
+      {
+        "title": "Oil refinery explosion reported in Texas",
+        "pubDate": "Tue, 24 Mar 2026 17:05:24 GMT",
+        "link": "https://www.france24.com/en/video/20260324-oil-refinery-explosion-reported-in-texas",
+        "source": "France24"
+      },
+      {
+        "title": "NASA plans moon base instead of orbital lunar station",
+        "pubDate": "Tue, 24 Mar 2026 16:46:00 GMT",
+        "link": "https://www.dw.com/en/nasa-plans-moon-base-instead-of-orbital-lunar-station/a-76510267?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Who wins what in the EU&#039;s new trade deal with Australia?",
+        "pubDate": "Tue, 24 Mar 2026 16:08:00 GMT",
+        "link": "https://www.dw.com/en/who-wins-what-in-the-eu-s-new-trade-deal-with-australia/a-76509304?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "NASA Research Proposes Technology to Seek Earth-Like Exoplanets",
+        "pubDate": "Tue, 24 Mar 2026 14:18:59 +0000",
+        "link": "https://www.nasa.gov/directorates/stmd/nasa-research-proposes-technology-to-seek-earth-like-exoplanets/",
+        "source": "NASA"
+      },
+      {
+        "title": "NASA’s Water-Hunting Tool Will Help Scout Moon’s South Pole",
+        "pubDate": "Tue, 24 Mar 2026 13:59:00 +0000",
+        "link": "https://www.nasa.gov/solar-system/moon/nasas-water-hunting-tool-will-help-scout-moons-south-pole/",
+        "source": "NASA"
       },
       {
         "title": "‘Extraordinary event’ for mountain gorillas as new twins born in DRC",
@@ -4800,94 +4866,28 @@
         "source": "Guardian"
       },
       {
-        "title": "Anger in Cyprus as Iran war spotlights &#039;colonial&#039; UK bases",
-        "pubDate": "Tue, 24 Mar 2026 12:38:00 GMT",
-        "link": "https://www.dw.com/en/anger-in-cyprus-as-iran-war-spotlights-colonial-uk-bases/a-76502214?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Missing Iranian uranium hinders Trump’s victory declaration",
-        "pubDate": "Tue, 24 Mar 2026 12:36:31 +0000",
-        "link": "https://www.aljazeera.com/video/quotable/2026/3/24/missing-iranian-uranium-hinders-trumps-victory-declaration?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "French judge probes ex-EU border chief for complicity in crimes against humanity",
-        "pubDate": "Tue, 24 Mar 2026 12:34:17 GMT",
-        "link": "https://www.france24.com/en/europe/20260324-french-judge-probes-ex-eu-border-chief-for-complicity-crimes-against-humanity",
-        "source": "France24"
-      },
-      {
-        "title": "Danes vote as Mette Frederiksen seeks third term as PM",
-        "pubDate": "Tue, 24 Mar 2026 12:26:42 GMT",
-        "link": "https://www.bbc.com/news/articles/cvgk02j4l4ko?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Australia and EU agree sweeping trade deal in face of global uncertainty",
-        "pubDate": "Tue, 24 Mar 2026 12:14:15 GMT",
-        "link": "https://www.bbc.com/news/articles/cly6g6l6lq7o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Sudan Crisis Situation Analysis: (Period: 09/03/26 - 15/03/26)",
-        "pubDate": "Tue, 24 Mar 2026 12:06:25 +0000",
-        "link": "https://reliefweb.int/report/sudan/sudan-crisis-situation-analysis-period-090326-150326",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "Ukraine CWG Technical Working Group, 05 March 2026 [Meeting Minutes]",
-        "pubDate": "Tue, 24 Mar 2026 12:03:44 +0000",
-        "link": "https://reliefweb.int/report/ukraine/ukraine-cwg-technical-working-group-05-march-2026-meeting-minutes",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "Sudan Situation | Child Protection Dashboard (Published 24 March 2026)",
-        "pubDate": "Tue, 24 Mar 2026 12:03:19 +0000",
-        "link": "https://reliefweb.int/report/sudan/sudan-situation-child-protection-dashboard-published-24-march-2026",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "MIDDLE EAST LIVE 24 March: West Bank attacks and Lebanon in focus",
+        "title": "‘Truly transformative’ new diagnostic tools can help end tuberculosis",
         "pubDate": "Tue, 24 Mar 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/03/1167187",
+        "link": "https://news.un.org/feed/view/en/story/2026/03/1167190",
         "source": "UN News"
       },
       {
-        "title": "The end of Meloni's invincibility? Italian papers react to her failed referendum",
-        "pubDate": "Tue, 24 Mar 2026 11:47:04 GMT",
-        "link": "https://www.france24.com/en/tv-shows/press-review/20260324-the-end-of-meloni-s-invincibility-italian-papers-react-to-her-failed-referendum",
-        "source": "France24"
+        "title": "Sudan: Hospital strike highlights surge in drone attacks on civilians",
+        "pubDate": "Tue, 24 Mar 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/03/1167189",
+        "source": "UN News"
       },
       {
-        "title": "'Iran and Hezbollah still able to coordinate strikes on Israel'",
-        "pubDate": "Tue, 24 Mar 2026 11:31:43 GMT",
-        "link": "https://www.france24.com/en/iran-and-hezbollah-still-able-to-coordinate-strikes-on-israel",
-        "source": "France24"
+        "title": "Haitian gangs expand reach as police are accused of ‘summary executions’",
+        "pubDate": "Tue, 24 Mar 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/03/1167188",
+        "source": "UN News"
       },
       {
         "title": "Smile fuelled for launch",
         "pubDate": "Tue, 24 Mar 2026 11:00:00 +0100",
         "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Images/2026/03/Smile_fuelled_for_launch]]>",
         "source": "ESA"
-      },
-      {
-        "title": "XRISM solves famous star’s 50-year mystery",
-        "pubDate": "Tue, 24 Mar 2026 09:00:00 +0100",
-        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/XRISM_solves_famous_star_s_50-year_mystery]]>",
-        "source": "ESA"
-      },
-      {
-        "title": "Tropical Cyclone Narelle Crosses Australia",
-        "pubDate": "Tue, 24 Mar 2026 04:01:00 +0000",
-        "link": "https://science.nasa.gov/earth/earth-observatory/tropical-cyclone-narelle-crosses-australia/",
-        "source": "NASA"
-      },
-      {
-        "title": "Australia and EU strike free trade deal",
-        "pubDate": "Tue, 24 Mar 2026 01:28:00 GMT",
-        "link": "https://www.dw.com/en/australia-and-eu-strike-free-trade-deal/a-76496671?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
       }
     ],
     "volcanic": [],
@@ -4941,7 +4941,7 @@
         "sunspots": 78.2
       }
     ],
-    "lastUpdated": "2026-03-24T13:10:57.212Z"
+    "lastUpdated": "2026-03-24T19:03:15.732Z"
   },
   "momentum": {
     "indicators": [
