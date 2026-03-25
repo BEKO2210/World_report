@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generated": "2026-03-25T02:07:52.741Z",
+    "generated": "2026-03-25T07:03:04.718Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-03-25T08:07:52.741Z",
+    "next_update": "2026-03-25T13:03:04.718Z",
     "realtimePulse": {
-      "environment": -1.49,
-      "society": -0.7,
+      "environment": -0.7,
+      "society": 0.05,
       "economy": -0.58,
       "progress": 0.8,
       "details": {
-        "quakeCount": 44,
-        "maxMagnitude": 7.5,
-        "avgGlobalTemp": 17,
+        "quakeCount": 38,
+        "maxMagnitude": 5.2,
+        "avgGlobalTemp": 16.8,
         "newsSentiment": -0.42,
         "cryptoFearGreed": 14,
         "arxivPapers": 20
@@ -22,13 +22,13 @@
     }
   },
   "worldIndex": {
-    "value": 64,
-    "rawValue": 62.2,
+    "value": 64.8,
+    "rawValue": 62.6,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 64.1,
-    "change": -0.1,
-    "trend": "declining",
+    "previous": 64,
+    "change": 0.8,
+    "trend": "improving",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -40,7 +40,7 @@
           "ratio": 0.7142857142857143
         },
         "cascading": {
-          "penalty": 0,
+          "penalty": 0.4,
           "activePairs": 0
         }
       },
@@ -52,8 +52,8 @@
         },
         "society": {
           "direction": "expansion",
-          "position": "stable",
-          "level": 0
+          "position": "elastic",
+          "level": 1
         },
         "economy": {
           "direction": "expansion",
@@ -73,13 +73,13 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34,
+          "bufferDistance": 34.9,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 47.3,
-          "recoveryTime": 604,
+          "bufferDistance": 48.2,
+          "recoveryTime": 616,
           "maintenanceCost": 0.69
         },
         "economy": {
@@ -103,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 43.9,
+      "value": 44.7,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "declining",
-      "change": -0.3,
+      "trend": "improving",
+      "change": 0.8,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -140,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 72,
+          "value": 69,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -155,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.2,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "stable",
-      "change": 0,
+      "trend": "improving",
+      "change": 0.8,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -1197,7 +1197,7 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 72,
+      "globalAvgAQI": 69,
       "cleanestCities": [
         {
           "city": "Lagos",
@@ -1209,7 +1209,7 @@
         {
           "city": "London",
           "country": "",
-          "aqi": 35,
+          "aqi": 29,
           "lat": 51.51,
           "lng": -0.13
         },
@@ -1223,14 +1223,14 @@
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 36,
+          "aqi": 38,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "Mexico City",
           "country": "",
-          "aqi": 49,
+          "aqi": 43,
           "lat": 19.43,
           "lng": -99.13
         }
@@ -1239,37 +1239,37 @@
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 191,
+          "aqi": 185,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 152,
+          "aqi": 145,
           "lat": 39.9,
           "lng": 116.4
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 65,
+          "aqi": 67,
           "lat": 19.08,
           "lng": 72.88
         },
         {
-          "city": "Cairo",
-          "country": "",
-          "aqi": 64,
-          "lat": 30.04,
-          "lng": 31.24
-        },
-        {
           "city": "Los Angeles",
           "country": "",
-          "aqi": 64,
+          "aqi": 65,
           "lat": 34.05,
           "lng": -118.24
+        },
+        {
+          "city": "São Paulo",
+          "country": "",
+          "aqi": 63,
+          "lat": -23.55,
+          "lng": -46.63
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1629,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-03-25T03:00",
+          "time": "2026-03-25T08:00",
           "interval": 900,
-          "temperature_2m": 11.1,
-          "relative_humidity_2m": 47,
-          "wind_speed_10m": 13.7,
+          "temperature_2m": 11.9,
+          "relative_humidity_2m": 52,
+          "wind_speed_10m": 18.6,
           "weather_code": 3
         }
       },
@@ -1642,12 +1642,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-03-24T22:00",
+          "time": "2026-03-25T03:00",
           "interval": 900,
-          "temperature_2m": 3.1,
-          "relative_humidity_2m": 55,
-          "wind_speed_10m": 12.2,
-          "weather_code": 3
+          "temperature_2m": 2.1,
+          "relative_humidity_2m": 69,
+          "wind_speed_10m": 13,
+          "weather_code": 0
         }
       },
       {
@@ -1655,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-03-25T11:00",
+          "time": "2026-03-25T16:00",
           "interval": 900,
-          "temperature_2m": 9.8,
-          "relative_humidity_2m": 67,
-          "wind_speed_10m": 2.5,
-          "weather_code": 3
+          "temperature_2m": 9.5,
+          "relative_humidity_2m": 94,
+          "wind_speed_10m": 2.9,
+          "weather_code": 51
         }
       },
       {
@@ -1668,12 +1668,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-03-25T13:00",
+          "time": "2026-03-25T18:00",
           "interval": 900,
-          "temperature_2m": 27.7,
-          "relative_humidity_2m": 42,
-          "wind_speed_10m": 4,
-          "weather_code": 0
+          "temperature_2m": 27.8,
+          "relative_humidity_2m": 48,
+          "wind_speed_10m": 6.5,
+          "weather_code": 1
         }
       },
       {
@@ -1681,12 +1681,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-03-24T23:00",
+          "time": "2026-03-25T04:00",
           "interval": 900,
-          "temperature_2m": 21.3,
-          "relative_humidity_2m": 92,
-          "wind_speed_10m": 1.8,
-          "weather_code": 2
+          "temperature_2m": 19.4,
+          "relative_humidity_2m": 98,
+          "wind_speed_10m": 1.6,
+          "weather_code": 45
         }
       },
       {
@@ -1694,11 +1694,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-03-25T03:00",
+          "time": "2026-03-25T08:00",
           "interval": 900,
-          "temperature_2m": 27.9,
-          "relative_humidity_2m": 85,
-          "wind_speed_10m": 10.3,
+          "temperature_2m": 28.4,
+          "relative_humidity_2m": 83,
+          "wind_speed_10m": 10.5,
           "weather_code": 3
         }
       },
@@ -1707,12 +1707,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-03-25T07:30",
+          "time": "2026-03-25T12:30",
           "interval": 900,
-          "temperature_2m": 27.5,
+          "temperature_2m": 28,
           "relative_humidity_2m": 84,
-          "wind_speed_10m": 7.1,
-          "weather_code": 1
+          "wind_speed_10m": 10.4,
+          "weather_code": 2
         }
       },
       {
@@ -1720,12 +1720,12 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-03-25T02:00",
+          "time": "2026-03-25T07:00",
           "interval": 900,
-          "temperature_2m": 7.7,
-          "relative_humidity_2m": 66,
-          "wind_speed_10m": 22.7,
-          "weather_code": 0
+          "temperature_2m": 7.3,
+          "relative_humidity_2m": 67,
+          "wind_speed_10m": 18.7,
+          "weather_code": 3
         }
       }
     ]
@@ -4020,28 +4020,28 @@
       ],
       "latestArxiv": [
         {
-          "title": "The Separating Noether Number of Finite Abelian Groups",
-          "published": "2026-03-24T13:07:27Z",
-          "category": "math.AC"
+          "title": "OccAny: Generalized Unconstrained Urban 3D Occupancy",
+          "published": "2026-03-24T17:59:58Z",
+          "category": "cs.CV"
         },
         {
-          "title": "PHANTOM Hand",
-          "published": "2026-03-24T12:52:18Z",
-          "category": "cs.RO"
+          "title": "Tunable Floquet selection rules in a driven Ising chain",
+          "published": "2026-03-24T17:58:08Z",
+          "category": "cond-mat.other"
         },
         {
-          "title": "Can Language Models Pass Software Testing Certification Exams? a case study",
-          "published": "2026-03-24T12:38:37Z",
+          "title": "Failure of contextual invariance in gender inference with large language models",
+          "published": "2026-03-24T17:52:22Z",
+          "category": "cs.CL"
+        },
+        {
+          "title": "ReqFusion: A Multi-Provider Framework for Automated PEGS Analysis Across Software Domains",
+          "published": "2026-03-24T17:45:40Z",
           "category": "cs.SE"
         },
         {
-          "title": "The relief distribution problem with trucks and drones under incomplete demand information",
-          "published": "2026-03-24T12:33:48Z",
-          "category": "math.OC"
-        },
-        {
-          "title": "Agentic Verifier-in-the-Loop Solver Orchestration for Cell-Free Massive MIMO Downlink Power Control",
-          "published": "2026-03-24T12:25:27Z",
+          "title": "Index-Based Scheduling for a Resource-Constrained Quantum Switch",
+          "published": "2026-03-24T17:42:01Z",
           "category": "cs.IT"
         }
       ],
@@ -4054,73 +4054,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 483129,
-          "forks": 45470,
+          "stars": 483184,
+          "forks": 45474,
           "language": "Markdown",
-          "updated": "2026-03-25T02:05:10Z"
+          "updated": "2026-03-25T06:59:45Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 448589,
-          "forks": 33742,
+          "stars": 448647,
+          "forks": 33744,
           "language": null,
-          "updated": "2026-03-25T02:01:33Z"
+          "updated": "2026-03-25T07:01:07Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 438790,
-          "forks": 43757,
+          "stars": 438805,
+          "forks": 43760,
           "language": "TypeScript",
-          "updated": "2026-03-25T01:41:44Z"
+          "updated": "2026-03-25T06:58:09Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 415741,
-          "forks": 45058,
+          "stars": 415824,
+          "forks": 45064,
           "language": "Python",
-          "updated": "2026-03-25T02:06:05Z"
+          "updated": "2026-03-25T06:56:31Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 384541,
-          "forks": 66051,
+          "stars": 384550,
+          "forks": 66053,
           "language": "Python",
-          "updated": "2026-03-25T01:55:35Z"
+          "updated": "2026-03-25T06:58:03Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 351621,
-          "forks": 43851,
+          "stars": 351644,
+          "forks": 43852,
           "language": "TypeScript",
-          "updated": "2026-03-25T02:01:30Z"
+          "updated": "2026-03-25T06:54:13Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 340109,
-          "forks": 55018,
+          "stars": 340131,
+          "forks": 55019,
           "language": "Python",
-          "updated": "2026-03-25T01:58:48Z"
+          "updated": "2026-03-25T06:51:44Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 338208,
-          "forks": 81621,
+          "stars": 338219,
+          "forks": 81622,
           "language": null,
-          "updated": "2026-03-25T01:49:46Z"
+          "updated": "2026-03-25T06:44:00Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 334505,
-          "forks": 65263,
+          "stars": 334928,
+          "forks": 65375,
           "language": "TypeScript",
-          "updated": "2026-03-25T02:05:38Z"
+          "updated": "2026-03-25T07:00:54Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 288822,
-          "forks": 27476,
+          "stars": 288861,
+          "forks": 27478,
           "language": "Python",
-          "updated": "2026-03-25T01:57:25Z"
+          "updated": "2026-03-25T06:34:54Z"
         }
       ],
       "source": "GitHub"
@@ -4597,6 +4597,12 @@
     },
     "spaceflight": [
       {
+        "title": "Kona Storms Flood Oʻahu",
+        "published": "2026-03-25T04:01:00Z",
+        "source": "NASA",
+        "summary": "Back-to-back subtropical cyclones in March fueled destructive flash flooding on several of the Hawaiian Islands."
+      },
+      {
         "title": "NASA outlines ambitious $20 billion plan for moon base",
         "published": "2026-03-25T00:56:20Z",
         "source": "Spaceflight Now",
@@ -4649,18 +4655,52 @@
         "published": "2026-03-24T18:57:22Z",
         "source": "SpaceNews",
         "summary": "\nWashington, D.C., March 24, 2026 – OrbitsIQ Global (OIQ), an innovator in AI-driven secure connectivity across terrestrial and satellite networks, today announced a major technological milestone achi"
-      },
-      {
-        "title": "NASA unveils Space Reactor-1 Freedom mission to Mars in 2028",
-        "published": "2026-03-24T18:52:39Z",
-        "source": "NASASpaceflight",
-        "summary": "In a significant NASA announcement, Administrator Jared Isaacman and agency leaders outlined plans for a…\nThe post NASA unveils Space Reactor-1 Freedom mission to Mars in 2028 appeared first on NASASp"
       }
     ]
   },
   "realtime": {
     "earthquakes": {
       "last24h": [
+        {
+          "location": "27 km E of Chase, Alaska",
+          "magnitude": 2.7,
+          "depth": 19.5,
+          "lat": 62.42,
+          "lng": -149.573,
+          "time": "2026-03-25T04:55:16.406Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "57 km S of Chiniak, Alaska",
+          "magnitude": 2.6,
+          "depth": 5,
+          "lat": 57.094,
+          "lng": -152.332,
+          "time": "2026-03-25T03:36:46.846Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "48 km NW of San Antonio, Puerto Rico",
+          "magnitude": 3.14,
+          "depth": 13.95,
+          "lat": 18.8168333333333,
+          "lng": -67.4045,
+          "time": "2026-03-25T02:44:17.780Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "135 km W of Neiafu, Tonga",
+          "magnitude": 4.9,
+          "depth": 212.009,
+          "lat": -18.7237,
+          "lng": -175.268,
+          "time": "2026-03-25T02:24:39.961Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
         {
           "location": "55 km SSE of Whites City, New Mexico",
           "magnitude": 2.6,
@@ -4700,49 +4740,9 @@
           "time": "2026-03-25T00:23:10.542Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "18 km W of Cohoe, Alaska",
-          "magnitude": 2.5,
-          "depth": 63.5,
-          "lat": 60.377,
-          "lng": -151.64,
-          "time": "2026-03-25T00:19:48.840Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "122 km NNW of Finschhafen, Papua New Guinea",
-          "magnitude": 4.4,
-          "depth": 175.248,
-          "lat": -5.6309,
-          "lng": 147.2365,
-          "time": "2026-03-24T22:59:03.409Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "172 km SE of Petropavlovsk-Kamchatsky, Russia",
-          "magnitude": 4.9,
-          "depth": 10,
-          "lat": 52.2052,
-          "lng": 160.7438,
-          "time": "2026-03-24T22:35:48.738Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "25 km NNE of Santa Rosa de Tastil, Argentina",
-          "magnitude": 4.3,
-          "depth": 275.713,
-          "lat": -24.2287,
-          "lng": -65.8955,
-          "time": "2026-03-24T22:02:17.627Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 44,
+      "total24h": 38,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4771,45 +4771,87 @@
     },
     "news": [
       {
-        "title": "Philippines declares national emergency as fuel supplies dwindle",
-        "pubDate": "Wed, 25 Mar 2026 01:38:49 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/25/philippines-declares-national-emergency-as-fuel-supplies-dwindle?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Indian police manage long lines as panic grows over fuel shortages",
-        "pubDate": "Wed, 25 Mar 2026 01:35:56 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/25/indian-police-manage-long-lines-as-panic-grows-over-fuel-shortages?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Israeli and Palestinian mothers call for peace on barefoot walk",
-        "pubDate": "Wed, 25 Mar 2026 01:18:01 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/3/25/israeli-and-palestinian-mothers-call-for-peace-on-barefoot-walk?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Denmark's Frederiksen weakened by election setback, coalition talks loom",
-        "pubDate": "Wed, 25 Mar 2026 01:04:45 GMT",
-        "link": "https://www.france24.com/en/europe/20260325-denmark-frederiksen-weakened-by-election-setback-coalition-talks-loom",
+        "title": "Football: France have arrived in Boston to face Brazil and Colombia",
+        "pubDate": "Wed, 25 Mar 2026 06:16:41 GMT",
+        "link": "https://www.france24.com/en/tv-shows/sports/20260325-football-france-have-arrived-in-boston-to-face-brazil-and-colombia",
         "source": "France24"
       },
       {
-        "title": "US proposes 15-point plan as Iran opens Hormuz to 'non-hostile' oil vessels",
-        "pubDate": "Wed, 25 Mar 2026 00:05:03 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260325-us-proposes-15-point-plan-as-iran-opens-hormuz-to-non-hostile-oil-vessels",
-        "source": "France24"
-      },
-      {
-        "title": "Oil at $150 will trigger global recession, says boss of financial giant BlackRock",
-        "pubDate": "Wed, 25 Mar 2026 00:00:20 GMT",
-        "link": "https://www.bbc.com/news/articles/c9wqrdkx8ppo?at_medium=RSS&amp;at_campaign=rss",
+        "title": "'He liked the fear in our eyes', Epstein survivors tell BBC",
+        "pubDate": "Wed, 25 Mar 2026 06:00:23 GMT",
+        "link": "https://www.bbc.com/news/articles/cy81n9wexx6o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Hungary is 'the Kremlin's biggest agent in the EU', analyst says",
-        "pubDate": "Tue, 24 Mar 2026 22:07:16 GMT",
-        "link": "https://www.france24.com/en/tv-shows/a-propos/20260324-hungary-is-the-kremlin-s-biggest-agent-in-the-eu-analyst-says",
+        "title": "Bangladesh Humanitarian Bulletin (Issue 1, March 2026)",
+        "pubDate": "Wed, 25 Mar 2026 05:57:25 +0000",
+        "link": "https://reliefweb.int/report/bangladesh/bangladesh-humanitarian-bulletin-issue-1-march-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Amid US-Israeli attacks, people in Iran struggle to survive ailing economy",
+        "pubDate": "Wed, 25 Mar 2026 05:41:14 +0000",
+        "link": "https://www.aljazeera.com/features/2026/3/25/amid-us-israeli-attacks-people-in-iran-struggle-to-survive-ailing-economy?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "From Pakistan to Egypt, Iran war drives up fuel prices in the Global South",
+        "pubDate": "Wed, 25 Mar 2026 05:20:18 +0000",
+        "link": "https://www.aljazeera.com/economy/2026/3/25/from-pakistan-to-egypt-iran-war-drives-up-fuel-prices-in-the-global-south?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "OpenAI pulls AI video app Sora as concerns grow on deepfake videos",
+        "pubDate": "Wed, 25 Mar 2026 04:59:56 +0000",
+        "link": "https://www.aljazeera.com/economy/2026/3/25/openai-pulls-ai-video-app-sora-as-concerns-grow-on-deepfake-videos?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Situation Report - Sri Lanka 25th March 2026 at 1000hrs - (Additional details included) – Ditwah",
+        "pubDate": "Wed, 25 Mar 2026 04:53:05 +0000",
+        "link": "https://reliefweb.int/report/sri-lanka/situation-report-sri-lanka-25th-march-2026-1000hrs-additional-details-included-ditwah",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "OpenAI ends Disney partnership as it closes Sora video-making app",
+        "pubDate": "Wed, 25 Mar 2026 04:48:56 GMT",
+        "link": "https://www.bbc.com/news/articles/c3w3e467ewqo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Kona Storms Flood Oʻahu",
+        "pubDate": "Wed, 25 Mar 2026 04:01:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/kona-storms-flood-o%ca%bbahu/",
+        "source": "NASA"
+      },
+      {
+        "title": "Capacity Strengthening Landscape Assessment | Ukraine (February 2026)",
+        "pubDate": "Wed, 25 Mar 2026 04:00:25 +0000",
+        "link": "https://reliefweb.int/report/ukraine/capacity-strengthening-landscape-assessment-ukraine-february-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Tough negotiations loom as Denmark's Social Democrats fail to secure a majority",
+        "pubDate": "Wed, 25 Mar 2026 03:40:53 GMT",
+        "link": "https://www.bbc.com/news/articles/c74v5qynl9vo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Middle East live: Israeli strikes on South Lebanon leave nine dead",
+        "pubDate": "Wed, 25 Mar 2026 03:21:39 GMT",
+        "link": "https://www.france24.com/en/middle-east/20260325-middle-east-live-israeli-strikes-on-south-lebanon-leave-nine-dead",
+        "source": "France24"
+      },
+      {
+        "title": "Lebo M sues comedian Learnmore Jonasi claiming Circle of Life misrepresentation",
+        "pubDate": "Wed, 25 Mar 2026 03:06:10 GMT",
+        "link": "https://www.theguardian.com/culture/2026/mar/25/ebo-m-lion-king-circle-of-life-chant-learnmore-jonasi-lawsuit",
+        "source": "Guardian"
+      },
+      {
+        "title": "Denmark's Frederiksen weakened by election setback, coalition talks loom",
+        "pubDate": "Wed, 25 Mar 2026 02:31:24 GMT",
+        "link": "https://www.france24.com/en/video/20260325-denmark-s-frederiksen-weakened-by-election-setback-coalition-talks-loom",
         "source": "France24"
       },
       {
@@ -4819,28 +4861,10 @@
         "source": "NASA"
       },
       {
-        "title": "Russia launches 948 drones at Ukraine in largest attack over 24-hour period",
-        "pubDate": "Tue, 24 Mar 2026 21:47:10 GMT",
-        "link": "https://www.bbc.com/news/articles/cz90gpyw90wo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
         "title": "Reminders of Where We&#8217;ve Been, Where We&#8217;re Going",
         "pubDate": "Tue, 24 Mar 2026 20:59:15 +0000",
         "link": "https://www.nasa.gov/image-article/reminders-of-where-weve-been-where-were-going/",
         "source": "NASA"
-      },
-      {
-        "title": "3 Ways Students Can Get Involved With Artemis",
-        "pubDate": "Tue, 24 Mar 2026 20:41:08 +0000",
-        "link": "https://www.nasa.gov/learning-resources/3-ways-students-can-get-involved-with-artemis/",
-        "source": "NASA"
-      },
-      {
-        "title": "Pilots killed in LaGuardia plane crash named",
-        "pubDate": "Tue, 24 Mar 2026 20:34:20 GMT",
-        "link": "https://www.bbc.com/news/articles/cz67jq0enwpo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
       },
       {
         "title": "French municipal vote: What do results mean for 2027 ballot?",
@@ -4865,30 +4889,6 @@
         "pubDate": "Tue, 24 Mar 2026 12:42:56 GMT",
         "link": "https://www.theguardian.com/environment/2026/mar/24/mountain-gorillas-twins-born-drc-aoe",
         "source": "Guardian"
-      },
-      {
-        "title": "World News in Brief: Airstrikes continue in Ukraine, refugees return to DR Congo, emergency aid for the ‘Dry Corridor’",
-        "pubDate": "Tue, 24 Mar 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/03/1167193",
-        "source": "UN News"
-      },
-      {
-        "title": "‘Truly transformative’ new diagnostic tools can help end tuberculosis",
-        "pubDate": "Tue, 24 Mar 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/03/1167190",
-        "source": "UN News"
-      },
-      {
-        "title": "Sudan: Hospital strike highlights surge in drone attacks on civilians",
-        "pubDate": "Tue, 24 Mar 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/03/1167189",
-        "source": "UN News"
-      },
-      {
-        "title": "Smile fuelled for launch",
-        "pubDate": "Tue, 24 Mar 2026 11:00:00 +0100",
-        "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Images/2026/03/Smile_fuelled_for_launch]]>",
-        "source": "ESA"
       }
     ],
     "volcanic": [],
@@ -4942,7 +4942,7 @@
         "sunspots": 78.2
       }
     ],
-    "lastUpdated": "2026-03-25T02:07:52.742Z"
+    "lastUpdated": "2026-03-25T07:03:04.718Z"
   },
   "momentum": {
     "indicators": [
