@@ -1,33 +1,34 @@
 {
   "meta": {
-    "generated": "2026-04-03T02:12:13.928Z",
+    "generated": "2026-04-03T07:08:33.342Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 39,
-    "sources_success_rate": 98,
-    "next_update": "2026-04-03T08:12:13.929Z",
+    "sources_available": 40,
+    "sources_success_rate": 100,
+    "next_update": "2026-04-03T13:08:33.342Z",
     "realtimePulse": {
-      "environment": -1.22,
-      "society": -0.1,
+      "environment": -1.13,
+      "society": 0.05,
       "economy": -0.66,
       "progress": 0.8,
       "details": {
-        "quakeCount": 86,
-        "maxMagnitude": 6.2,
-        "avgGlobalTemp": 17.4,
+        "quakeCount": 76,
+        "maxMagnitude": 5.9,
+        "avgGlobalTemp": 16.5,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 9,
         "arxivPapers": 20
       }
     }
   },
   "worldIndex": {
-    "value": 64.6,
-    "rawValue": 62.4,
+    "value": 64.3,
+    "rawValue": 62.5,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 64,
-    "change": 0.6,
-    "trend": "improving",
+    "previous": 64.6,
+    "change": -0.3,
+    "trend": "declining",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -39,7 +40,7 @@
           "ratio": 0.7142857142857143
         },
         "cascading": {
-          "penalty": 0.4,
+          "penalty": 0,
           "activePairs": 0
         }
       },
@@ -72,13 +73,13 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.4,
+          "bufferDistance": 34.5,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48,
-          "recoveryTime": 613,
+          "bufferDistance": 48.2,
+          "recoveryTime": 616,
           "maintenanceCost": 0.69
         },
         "economy": {
@@ -102,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.2,
+      "value": 44.3,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "improving",
-      "change": 0.4,
+      "trend": "stable",
+      "change": 0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 59,
+          "value": 63,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.8,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "improving",
-      "change": 0.5,
+      "change": 0.2,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -218,7 +219,7 @@
       "zone": "positive",
       "weight": 0.2,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0,
       "indicators": [
         {
           "name": "BIP-Wachstum",
@@ -1196,79 +1197,79 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 59,
+      "globalAvgAQI": 63,
       "cleanestCities": [
         {
-          "city": "Los Angeles",
+          "city": "Sydney",
           "country": "",
-          "aqi": 23,
-          "lat": 34.05,
-          "lng": -118.24
-        },
-        {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 26,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
-          "city": "London",
-          "country": "",
-          "aqi": 27,
-          "lat": 51.51,
-          "lng": -0.13
+          "aqi": 24,
+          "lat": -33.87,
+          "lng": 151.21
         },
         {
           "city": "São Paulo",
           "country": "",
-          "aqi": 30,
+          "aqi": 28,
           "lat": -23.55,
           "lng": -46.63
         },
         {
-          "city": "Sydney",
+          "city": "London",
           "country": "",
-          "aqi": 31,
-          "lat": -33.87,
-          "lng": 151.21
+          "aqi": 29,
+          "lat": 51.51,
+          "lng": -0.13
+        },
+        {
+          "city": "Berlin",
+          "country": "",
+          "aqi": 30,
+          "lat": 52.52,
+          "lng": 13.41
+        },
+        {
+          "city": "Los Angeles",
+          "country": "",
+          "aqi": 34,
+          "lat": 34.05,
+          "lng": -118.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 123,
+          "aqi": 128,
           "lat": 39.9,
           "lng": 116.4
         },
         {
-          "city": "Cairo",
-          "country": "",
-          "aqi": 106,
-          "lat": 30.04,
-          "lng": 31.24
-        },
-        {
           "city": "Delhi",
           "country": "",
-          "aqi": 89,
+          "aqi": 115,
           "lat": 28.61,
           "lng": 77.21
         },
         {
-          "city": "Mexico City",
+          "city": "Cairo",
           "country": "",
-          "aqi": 69,
-          "lat": 19.43,
-          "lng": -99.13
+          "aqi": 96,
+          "lat": 30.04,
+          "lng": 31.24
         },
         {
           "city": "Lagos",
           "country": "",
-          "aqi": 62,
+          "aqi": 71,
           "lat": 6.45,
           "lng": 3.4
+        },
+        {
+          "city": "Mexico City",
+          "country": "",
+          "aqi": 70,
+          "lat": 19.43,
+          "lng": -99.13
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1628,12 +1629,12 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-03T04:00",
+          "time": "2026-04-03T09:00",
           "interval": 900,
-          "temperature_2m": 7.9,
-          "relative_humidity_2m": 83,
-          "wind_speed_10m": 13,
-          "weather_code": 3
+          "temperature_2m": 5.3,
+          "relative_humidity_2m": 55,
+          "wind_speed_10m": 11.2,
+          "weather_code": 1
         }
       },
       {
@@ -1641,11 +1642,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-02T22:00",
+          "time": "2026-04-03T03:00",
           "interval": 900,
-          "temperature_2m": 5.6,
-          "relative_humidity_2m": 87,
-          "wind_speed_10m": 11.5,
+          "temperature_2m": 4.9,
+          "relative_humidity_2m": 94,
+          "wind_speed_10m": 11.2,
           "weather_code": 3
         }
       },
@@ -1654,11 +1655,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-03T11:00",
+          "time": "2026-04-03T16:00",
           "interval": 900,
-          "temperature_2m": 16.9,
-          "relative_humidity_2m": 51,
-          "wind_speed_10m": 6.6,
+          "temperature_2m": 17.5,
+          "relative_humidity_2m": 55,
+          "wind_speed_10m": 8.4,
           "weather_code": 0
         }
       },
@@ -1667,12 +1668,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-03T13:00",
+          "time": "2026-04-03T18:00",
           "interval": 900,
-          "temperature_2m": 24.5,
-          "relative_humidity_2m": 61,
-          "wind_speed_10m": 18,
-          "weather_code": 2
+          "temperature_2m": 21.4,
+          "relative_humidity_2m": 68,
+          "wind_speed_10m": 15.1,
+          "weather_code": 3
         }
       },
       {
@@ -1680,11 +1681,11 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-02T23:00",
+          "time": "2026-04-03T04:00",
           "interval": 900,
-          "temperature_2m": 22.1,
-          "relative_humidity_2m": 87,
-          "wind_speed_10m": 2.5,
+          "temperature_2m": 20.2,
+          "relative_humidity_2m": 90,
+          "wind_speed_10m": 3.1,
           "weather_code": 0
         }
       },
@@ -1693,12 +1694,12 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-03T03:00",
+          "time": "2026-04-03T08:00",
           "interval": 900,
-          "temperature_2m": 26.4,
-          "relative_humidity_2m": 91,
-          "wind_speed_10m": 1.1,
-          "weather_code": 3
+          "temperature_2m": 25.9,
+          "relative_humidity_2m": 95,
+          "wind_speed_10m": 1.4,
+          "weather_code": 45
         }
       },
       {
@@ -1706,12 +1707,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-03T07:30",
+          "time": "2026-04-03T12:30",
           "interval": 900,
-          "temperature_2m": 27.1,
-          "relative_humidity_2m": 80,
-          "wind_speed_10m": 9,
-          "weather_code": 2
+          "temperature_2m": 28,
+          "relative_humidity_2m": 75,
+          "wind_speed_10m": 10.6,
+          "weather_code": 3
         }
       },
       {
@@ -1719,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-03T03:00",
+          "time": "2026-04-03T08:00",
           "interval": 900,
-          "temperature_2m": 8.7,
-          "relative_humidity_2m": 78,
-          "wind_speed_10m": 14.8,
+          "temperature_2m": 8.9,
+          "relative_humidity_2m": 92,
+          "wind_speed_10m": 16.6,
           "weather_code": 3
         }
       }
@@ -4019,29 +4020,29 @@
       ],
       "latestArxiv": [
         {
-          "title": "On the intersection of $\\mathfrak{F}$-maximal subgroups of a finite group",
-          "published": "2026-04-02T16:02:10Z",
-          "category": "math.GR"
+          "title": "Modulate-and-Map: Crossmodal Feature Mapping with Cross-View Modulation for 3D Anomaly Detection",
+          "published": "2026-04-02T17:59:51Z",
+          "category": "cs.CV"
         },
         {
-          "title": "Blinded Radiologist and LLM-Based Evaluation of LLM-Generated Japanese Translations of Chest CT Reports: Comparative Study",
-          "published": "2026-04-02T15:59:40Z",
-          "category": "cs.AI"
-        },
-        {
-          "title": "What can be computed in average anonymous networks?",
-          "published": "2026-04-02T15:49:35Z",
-          "category": "cs.DC"
-        },
-        {
-          "title": "Intersections and the Bézout Range: Abelian Varieties",
-          "published": "2026-04-02T15:46:28Z",
-          "category": "math.AG"
-        },
-        {
-          "title": "Do Lexical and Contextual Coreference Resolution Systems Degrade Differently under Mention Noise? An Empirical Study on Scientific Software Mentions",
-          "published": "2026-04-02T15:37:03Z",
+          "title": "Grounded Token Initialization for New Vocabulary in LMs for Generative Recommendation",
+          "published": "2026-04-02T17:59:19Z",
           "category": "cs.CL"
+        },
+        {
+          "title": "Robust Correlation-Induced Localization Under Time-Reversal Symmetry Breaking",
+          "published": "2026-04-02T17:58:41Z",
+          "category": "cond-mat.dis-nn"
+        },
+        {
+          "title": "No Single Best Model for Diversity: Learning a Router for Sample Diversity",
+          "published": "2026-04-02T17:58:37Z",
+          "category": "cs.CL"
+        },
+        {
+          "title": "Large values of exponential sums with multiplicative coefficients",
+          "published": "2026-04-02T17:50:12Z",
+          "category": "math.NT"
         }
       ],
       "source": "arXiv / Scopus"
@@ -4053,73 +4054,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 485699,
-          "forks": 45683,
+          "stars": 485758,
+          "forks": 45692,
           "language": "Markdown",
-          "updated": "2026-04-03T02:07:21Z"
+          "updated": "2026-04-03T06:58:53Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 451286,
-          "forks": 33908,
+          "stars": 451355,
+          "forks": 33920,
           "language": null,
-          "updated": "2026-04-03T02:11:13Z"
+          "updated": "2026-04-03T07:05:59Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 440600,
-          "forks": 43975,
+          "stars": 440641,
+          "forks": 43986,
           "language": "TypeScript",
-          "updated": "2026-04-03T02:08:38Z"
+          "updated": "2026-04-03T07:06:50Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 418529,
-          "forks": 45482,
+          "stars": 418597,
+          "forks": 45500,
           "language": "Python",
-          "updated": "2026-04-03T02:07:10Z"
+          "updated": "2026-04-03T07:05:59Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 384922,
-          "forks": 66084,
+          "stars": 384935,
+          "forks": 66087,
           "language": "Python",
-          "updated": "2026-04-03T02:11:13Z"
+          "updated": "2026-04-03T06:47:26Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 352100,
-          "forks": 43863,
+          "stars": 352114,
+          "forks": 43862,
           "language": "TypeScript",
-          "updated": "2026-04-03T01:59:50Z"
+          "updated": "2026-04-03T07:00:38Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 346124,
-          "forks": 68887,
+          "stars": 346432,
+          "forks": 68976,
           "language": "TypeScript",
-          "updated": "2026-04-03T02:10:31Z"
+          "updated": "2026-04-03T07:03:31Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 341143,
-          "forks": 55176,
+          "stars": 341173,
+          "forks": 55182,
           "language": "Python",
-          "updated": "2026-04-03T02:05:29Z"
+          "updated": "2026-04-03T07:00:50Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 340184,
-          "forks": 81843,
+          "stars": 340205,
+          "forks": 81848,
           "language": null,
-          "updated": "2026-04-03T02:11:19Z"
+          "updated": "2026-04-03T07:04:17Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 290354,
-          "forks": 27562,
+          "stars": 290389,
+          "forks": 27561,
           "language": "Python",
-          "updated": "2026-04-03T02:08:49Z"
+          "updated": "2026-04-03T07:05:07Z"
         }
       ],
       "source": "GitHub"
@@ -4596,6 +4597,36 @@
     },
     "spaceflight": [
       {
+        "title": "Barents Sea Tied to Low Arctic Sea Ice",
+        "published": "2026-04-03T04:00:00Z",
+        "source": "NASA",
+        "summary": "Patches of open water in the region contributed to low sea ice extent across the Arctic in March 2026, which tied with the lowest maximum observed in the satellite record."
+      },
+      {
+        "title": "Artemis II Orion performs TLI Burn — Now headed to the Moon",
+        "published": "2026-04-03T03:46:22Z",
+        "source": "NASASpaceflight",
+        "summary": "In a historic milestone more than 50 years in the making, NASA’s Orion spacecraft Integrity…\r\nThe post Artemis II Orion performs TLI Burn — Now headed to the Moon appeared first on NASASpaceFlight.com"
+      },
+      {
+        "title": "NASA’s Artemis II Mission Leaves Earth Orbit for Flight around Moon",
+        "published": "2026-04-03T02:48:08Z",
+        "source": "NASA",
+        "summary": "For the first time in more than 50 years, astronauts on a NASA mission are bound to fly around the Moon after successfully completing a key burn of Orion’s main engine. With the approximately six-minu"
+      },
+      {
+        "title": "Artemis 2 heads to the moon",
+        "published": "2026-04-03T02:30:13Z",
+        "source": "SpaceNews",
+        "summary": "NASA’s Artemis 2 mission is on its way to the moon after a successful maneuver April 2.\r\nThe post Artemis 2 heads to the moon appeared first on SpaceNews."
+      },
+      {
+        "title": "Four astronauts are now inexorably bound for the Moon",
+        "published": "2026-04-03T02:17:37Z",
+        "source": "Arstechnica",
+        "summary": "“I don’t think we could be more pleased.\""
+      },
+      {
         "title": "Four Astronauts Headed to Moon After Successful TLI Burn",
         "published": "2026-04-03T02:03:08Z",
         "source": "SpacePolicyOnline.com",
@@ -4605,7 +4636,7 @@
         "title": "Swift spacecraft reorientation buys time for reboost mission",
         "published": "2026-04-02T23:35:06Z",
         "source": "SpaceNews",
-        "summary": "\nNASA modified operations of an astrophysics spacecraft in a decaying orbit to buy more time for a mission later this year that will attempt to raise its orbit.\nThe post Swift spacecraft reorientation"
+        "summary": "NASA modified operations of an astrophysics spacecraft in a decaying orbit to buy more time for a mission later this year that will attempt to raise its orbit.\r\nThe post Swift spacecraft reorientation"
       },
       {
         "title": "Former Sierra Space CEO Tom Vice to lead Astrion",
@@ -4624,36 +4655,6 @@
         "published": "2026-04-02T17:17:43Z",
         "source": "SpaceNews",
         "summary": "\nThe ‘unpriced change order’ supports satellite launches while officials reassess long-delayed ground system\nThe post Pentagon awards Raytheon $45 million for GPS ground system as program future is re"
-      },
-      {
-        "title": "Artemis II Astronauts Launch to Moon",
-        "published": "2026-04-02T16:50:01Z",
-        "source": "NASA",
-        "summary": "NASA’s Space Launch System rocket and Orion spacecraft lift off in this April 1, 2026, image. NASA’s Artemis II mission will take NASA astronauts Reid Wiseman, Victor Glover, and Christina Koch, and C"
-      },
-      {
-        "title": "Artemis 2 crew blasts off on historic moon mission",
-        "published": "2026-04-02T15:52:07Z",
-        "source": "Spaceflight Now",
-        "summary": "A three-man one-woman crew blasted off on a voyage to the moon Wednesday, riding atop the world's most powerful operational rocket as it roared away on a trail-blazing flight to help pave the way for "
-      },
-      {
-        "title": "Artemis II Rises",
-        "published": "2026-04-02T15:31:38Z",
-        "source": "Space Scout",
-        "summary": "Artemis II took to the skies at 6:35 PM EDT on Wednesday afternoon, paying off years of hard work and planning by NASA and its partners."
-      },
-      {
-        "title": "How to follow the Smile launch live",
-        "published": "2026-04-02T15:00:00Z",
-        "source": "ESA",
-        "summary": "ESA will be broadcasting live as the European-Chinese Smile mission launches at 07:29 BST/08:29 CEST (03:29 local time) on 9 April 2026."
-      },
-      {
-        "title": "Moog Technology Successfully Steers Artemis II Launch",
-        "published": "2026-04-02T14:55:23Z",
-        "source": "SpaceNews",
-        "summary": "East Aurora, NY — Moog Inc. (NYSE: MOG.A and MOG.B), a worldwide designer, manufacturer, and systems integrator of high-performance precision motion and fluid controls and control systems, provided th"
       }
     ]
   },
@@ -4661,87 +4662,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "124 km WNW of Ternate, Indonesia",
-          "magnitude": 5.3,
+          "location": "95 km N of Charlotte Amalie, U.S. Virgin Islands",
+          "magnitude": 3.37,
+          "depth": 9.81,
+          "lat": 19.1983333333333,
+          "lng": -64.8635,
+          "time": "2026-04-03T05:42:12.190Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "101 km E of Bitung, Indonesia",
+          "magnitude": 5.2,
           "depth": 35,
-          "lat": 1.0169,
-          "lng": 126.288,
-          "time": "2026-04-03T01:44:13.456Z",
+          "lat": 1.4051,
+          "lng": 126.0406,
+          "time": "2026-04-03T04:42:05.125Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "118 km W of Ternate, Indonesia",
-          "magnitude": 4.6,
-          "depth": 35,
-          "lat": 0.9461,
-          "lng": 126.3273,
-          "time": "2026-04-03T01:02:39.395Z",
+          "location": "232 km ESE of Attu Station, Alaska",
+          "magnitude": 4,
+          "depth": 40.232,
+          "lat": 51.9767,
+          "lng": 176.2978,
+          "time": "2026-04-03T04:27:59.613Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "19 km NE of Upper Lake, CA",
-          "magnitude": 2.98,
-          "depth": 7.09999990463257,
-          "lat": 39.296501159668,
-          "lng": -122.777000427246,
-          "time": "2026-04-03T00:57:12.890Z",
+          "location": "107 km N of Yakutat, Alaska",
+          "magnitude": 2.7,
+          "depth": 5,
+          "lat": 60.498,
+          "lng": -140.0112,
+          "time": "2026-04-03T04:12:49.616Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "130 km WNW of Ternate, Indonesia",
-          "magnitude": 5.3,
-          "depth": 35,
-          "lat": 1.2437,
-          "lng": 126.2978,
-          "time": "2026-04-03T00:32:57.016Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "120 km WNW of Ternate, Indonesia",
-          "magnitude": 5.6,
-          "depth": 35,
-          "lat": 1.3163,
-          "lng": 126.4332,
-          "time": "2026-04-03T00:22:20.421Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "6 km ESE of Carpinteria, CA",
-          "magnitude": 2.48,
-          "depth": 2.07,
-          "lat": 34.3705,
-          "lng": -119.4645,
-          "time": "2026-04-02T23:43:29.350Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "73 km NNE of Isangel, Vanuatu",
+          "location": "111 km WNW of Ternate, Indonesia",
           "magnitude": 5.4,
-          "depth": 278.376,
-          "lat": -18.906,
-          "lng": 169.4841,
-          "time": "2026-04-02T23:22:14.773Z",
+          "depth": 35,
+          "lat": 1.0005,
+          "lng": 126.4074,
+          "time": "2026-04-03T03:37:16.087Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "67 km N of Hatillo, Puerto Rico",
-          "magnitude": 3.35,
-          "depth": 30.55,
-          "lat": 19.0956666666667,
-          "lng": -66.7993333333333,
-          "time": "2026-04-02T23:09:17.030Z",
+          "location": "57 km NW of San Antonio, Puerto Rico",
+          "magnitude": 3.34,
+          "depth": 10.92,
+          "lat": 18.8978333333333,
+          "lng": -67.4355,
+          "time": "2026-04-03T03:36:42.640Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "35 km SSW of Primo Tapia, B.C., MX",
+          "magnitude": 2.96831934164542,
+          "depth": 16.4300003051758,
+          "lat": 31.9286670684814,
+          "lng": -117.056167602539,
+          "time": "2026-04-03T03:05:42.380Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "5 km NE of Agra, Oklahoma",
+          "magnitude": 2.49,
+          "depth": 13.99,
+          "lat": 35.92716667,
+          "lng": -96.82766667,
+          "time": "2026-04-03T02:58:56.479Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 86,
+      "total24h": 76,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4770,22 +4771,88 @@
     },
     "news": [
       {
-        "title": "Southern Syria Under Pressure: Israeli Operations, Civilian Dynamics, and Emerging Risk Trajectories",
-        "pubDate": "Fri, 03 Apr 2026 02:05:32 +0000",
-        "link": "https://reliefweb.int/report/syrian-arab-republic/southern-syria-under-pressure-israeli-operations-civilian-dynamics-and-emerging-risk-trajectories",
+        "title": "Paris police ban annual French Muslim event over ‘major terrorist risk’ from far-right groups",
+        "pubDate": "Fri, 03 Apr 2026 06:47:43 GMT",
+        "link": "https://www.france24.com/en/france/20260403-paris-police-ban-annual-french-muslim-event-cite-major-terrorist-risk-far-right-groups",
+        "source": "France24"
+      },
+      {
+        "title": "Situation Report - Sri Lanka 03rd April 2026 at 1000hrs - (Additional details included) – Ditwah",
+        "pubDate": "Fri, 03 Apr 2026 06:43:55 +0000",
+        "link": "https://reliefweb.int/report/sri-lanka/situation-report-sri-lanka-03rd-april-2026-1000hrs-additional-details-included-ditwah",
         "source": "ReliefWeb"
       },
       {
-        "title": "Abris communautaires au Niger: protéger les enfants et permettre aux femmes de restaurer les terres",
-        "pubDate": "Fri, 03 Apr 2026 01:53:12 +0000",
-        "link": "https://reliefweb.int/report/niger/abris-communautaires-au-niger-proteger-les-enfants-et-permettre-aux-femmes-de-restaurer-les-terres",
+        "title": "Iran war: What is happening on day 35 of US-Israeli attacks?",
+        "pubDate": "Fri, 03 Apr 2026 06:42:33 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/3/iran-war-what-is-happening-on-day-35-of-us-israeli-attacks?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Nigeria: Borno, Adamawa, and Yobe (BAY) states - Situation Report, 3 April 2026",
+        "pubDate": "Fri, 03 Apr 2026 06:29:10 +0000",
+        "link": "https://reliefweb.int/report/nigeria/nigeria-borno-adamawa-and-yobe-bay-states-situation-report-3-april-2026",
         "source": "ReliefWeb"
       },
       {
-        "title": "How community shelters protect children and help women restore degraded lands in Niger",
-        "pubDate": "Fri, 03 Apr 2026 01:51:02 +0000",
-        "link": "https://reliefweb.int/report/niger/how-community-shelters-protect-children-and-help-women-restore-degraded-lands-niger",
+        "title": "Myanmar’s coup leader elected president by pro-military parliament",
+        "pubDate": "Fri, 03 Apr 2026 06:05:30 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/3/myanmars-coup-leader-elected-president-by-pro-military-parliament?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "UNHCR-IOM Pakistan Flash update # 88 on Arrest and Detention/Flow Monitoring, 15 Sep 2023 to 28 March 2026",
+        "pubDate": "Fri, 03 Apr 2026 06:03:12 +0000",
+        "link": "https://reliefweb.int/report/pakistan/unhcr-iom-pakistan-flash-update-88-arrest-and-detentionflow-monitoring-15-sep-2023-28-march-2026",
         "source": "ReliefWeb"
+      },
+      {
+        "title": "How China’s ‘teapot’ refineries are cushioning it from Iran war oil crisis",
+        "pubDate": "Fri, 03 Apr 2026 05:57:07 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/3/how-chinas-teapot-refineries-are-cushioning-it-from-iran-war-oil-crisis?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "‘Disturbing trend’ of US-Israeli strikes hitting non-military targets in Iran",
+        "pubDate": "Fri, 03 Apr 2026 05:38:46 GMT",
+        "link": "https://www.france24.com/en/disturbing-trend-of-us-israeli-strikes-hitting-non-military-targets-in-iran",
+        "source": "France24"
+      },
+      {
+        "title": "New Tottenham boss De Zerbi apologises to fans for Greenwood comments",
+        "pubDate": "Fri, 03 Apr 2026 05:33:33 GMT",
+        "link": "https://www.france24.com/en/tv-shows/sports/20260403-new-tottenham-boss-de-zerbi-apologises-fans-for-greenwood-comments",
+        "source": "France24"
+      },
+      {
+        "title": "Are Iran-allied paramilitaries dragging Iraq into the war?",
+        "pubDate": "Fri, 3 Apr 2026 05:07:00 GMT",
+        "link": "https://www.dw.com/en/are-iran-allied-paramilitaries-dragging-iraq-into-the-war/a-76643752?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Barents Sea Tied to Low Arctic Sea Ice",
+        "pubDate": "Fri, 03 Apr 2026 04:00:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/barents-sea-tied-to-low-arctic-sea-ice/",
+        "source": "NASA"
+      },
+      {
+        "title": "Artemis II astronauts leave Earth&#039;s orbit, rocket towards moon",
+        "pubDate": "Fri, 3 Apr 2026 03:38:00 GMT",
+        "link": "https://www.dw.com/en/artemis-ii-astronauts-leave-earth-s-orbit-rocket-towards-moon/a-76649996?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Artemis II blasts ever closer to the far side of the Moon",
+        "pubDate": "Fri, 03 Apr 2026 03:35:28 GMT",
+        "link": "https://www.bbc.com/news/articles/c937g7nd5x4o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "NASA’s Artemis II Mission Leaves Earth Orbit for Flight around Moon",
+        "pubDate": "Fri, 03 Apr 2026 02:48:08 +0000",
+        "link": "https://www.nasa.gov/news-release/nasas-artemis-ii-mission-leaves-earth-orbit-for-flight-around-moon/",
+        "source": "NASA"
       },
       {
         "title": "Trump removes US Attorney General Pam Bondi",
@@ -4794,63 +4861,15 @@
         "source": "BBC World"
       },
       {
-        "title": "Artemis II astronauts ignite engines and head for lunar flyby",
-        "pubDate": "Fri, 03 Apr 2026 00:16:00 GMT",
-        "link": "https://www.france24.com/en/technology/20260403-artemis-ii-astronauts-ignite-engines-and-head-for-lunar-flyby",
-        "source": "France24"
-      },
-      {
-        "title": "Trump unveils 100 percent tariff on drugs to push for pharmaceutical deals",
-        "pubDate": "Thu, 02 Apr 2026 23:38:53 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/2/trump-unveils-100-percent-tariff-on-drugs-to-push-for-pharmaceutical-deals?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
         "title": "Iran war could make beer and bottled water pricier for Indians",
         "pubDate": "Thu, 02 Apr 2026 23:16:37 GMT",
         "link": "https://www.bbc.com/news/articles/c5ywqky5dd7o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "US court orders resentencing for Colorado clerk involved in election scheme",
-        "pubDate": "Thu, 02 Apr 2026 22:56:55 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/2/us-court-orders-resentencing-for-colorado-clerk-involved-in-election-scheme?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Judge dismisses most of Blake Lively's claims in Justin Baldoni harassment suit",
-        "pubDate": "Thu, 02 Apr 2026 22:47:48 GMT",
-        "link": "https://www.bbc.com/news/articles/c3ex59yy4j2o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Rights groups, Milwaukee leaders slam ICE’s arrest of Palestinian advocate",
-        "pubDate": "Thu, 02 Apr 2026 22:45:48 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/2/rights-groups-milwaukee-leaders-slam-ices-arrest-of-palestinian-advocate?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Trump signs order threatening up to 100% tariffs on pharmaceuticals",
-        "pubDate": "Thu, 02 Apr 2026 22:37:28 GMT",
-        "link": "https://www.france24.com/en/americas/20260402-trump-signs-order-threatening-up-to-100-tariffs-on-pharmaceuticals",
-        "source": "France24"
-      },
-      {
-        "title": "Trump sacks attorney general, replaces with ex-personal lawyer",
-        "pubDate": "Thu, 02 Apr 2026 21:54:15 GMT",
-        "link": "https://www.france24.com/en/trump-sacks-attorney-general-replaces-with-ex-personal-lawyer",
-        "source": "France24"
-      },
-      {
         "title": "Trump removes Attorney General Pam Bondi",
         "pubDate": "Thu, 2 Apr 2026 17:30:00 GMT",
         "link": "https://www.dw.com/en/trump-removes-attorney-general-pam-bondi/a-76648584?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Burkina Faso: Army behind most civilian deaths — report",
-        "pubDate": "Thu, 2 Apr 2026 17:12:00 GMT",
-        "link": "https://www.dw.com/en/burkina-faso-army-behind-most-civilian-deaths-report/a-76648315?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
@@ -4866,27 +4885,9 @@
         "source": "Guardian"
       },
       {
-        "title": "Middle East war: Few solutions to fuel shortages in Africa",
-        "pubDate": "Thu, 2 Apr 2026 16:08:00 GMT",
-        "link": "https://www.dw.com/en/middle-east-war-few-solutions-to-fuel-shortages-in-africa/a-76642504?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
         "title": "How to follow the Smile launch live",
         "pubDate": "Thu, 02 Apr 2026 17:00:00 +0200",
         "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Smile/How_to_follow_the_Smile_launch_live]]>",
-        "source": "ESA"
-      },
-      {
-        "title": "Five things Juice has revealed about Comet 3I/ATLAS",
-        "pubDate": "Thu, 02 Apr 2026 15:00:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Juice/Five_things_Juice_has_revealed_about_Comet_3I_ATLAS]]>",
-        "source": "ESA"
-      },
-      {
-        "title": "Smile: A global answer to a global mystery",
-        "pubDate": "Thu, 02 Apr 2026 15:00:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Videos/2026/04/Smile_A_global_answer_to_a_global_mystery]]>",
         "source": "ESA"
       }
     ],
@@ -4941,7 +4942,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-03T02:12:13.929Z"
+    "lastUpdated": "2026-04-03T07:08:33.342Z"
   },
   "momentum": {
     "indicators": [
