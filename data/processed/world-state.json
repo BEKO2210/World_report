@@ -1,34 +1,33 @@
 {
   "meta": {
-    "generated": "2026-04-02T18:57:32.661Z",
+    "generated": "2026-04-03T02:12:13.928Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 40,
-    "sources_success_rate": 100,
-    "next_update": "2026-04-03T00:57:32.662Z",
+    "sources_available": 39,
+    "sources_success_rate": 98,
+    "next_update": "2026-04-03T08:12:13.929Z",
     "realtimePulse": {
-      "environment": -1.61,
-      "society": -0.65,
-      "economy": -0.61,
+      "environment": -1.22,
+      "society": -0.1,
+      "economy": -0.66,
       "progress": 0.8,
       "details": {
-        "quakeCount": 90,
-        "maxMagnitude": 7.4,
-        "avgGlobalTemp": 16.8,
-        "newsSentiment": -0.42,
-        "cryptoFearGreed": 12,
+        "quakeCount": 86,
+        "maxMagnitude": 6.2,
+        "avgGlobalTemp": 17.4,
+        "cryptoFearGreed": 9,
         "arxivPapers": 20
       }
     }
   },
   "worldIndex": {
-    "value": 64,
-    "rawValue": 62.2,
+    "value": 64.6,
+    "rawValue": 62.4,
     "label": "POSITIV",
     "zone": "positive",
     "previous": 64,
-    "change": 0,
-    "trend": "stable",
+    "change": 0.6,
+    "trend": "improving",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -40,7 +39,7 @@
           "ratio": 0.7142857142857143
         },
         "cascading": {
-          "penalty": 0,
+          "penalty": 0.4,
           "activePairs": 0
         }
       },
@@ -52,8 +51,8 @@
         },
         "society": {
           "direction": "expansion",
-          "position": "stable",
-          "level": 0
+          "position": "elastic",
+          "level": 1
         },
         "economy": {
           "direction": "expansion",
@@ -73,17 +72,17 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 33.9,
+          "bufferDistance": 34.4,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 47.4,
-          "recoveryTime": 605,
+          "bufferDistance": 48,
+          "recoveryTime": 613,
           "maintenanceCost": 0.69
         },
         "economy": {
-          "bufferDistance": 68.4,
+          "bufferDistance": 68.2,
           "recoveryTime": 0,
           "maintenanceCost": 2.76
         },
@@ -103,12 +102,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 43.8,
+      "value": 44.2,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "stable",
-      "change": 0,
+      "trend": "improving",
+      "change": 0.4,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -140,7 +139,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 57,
+          "value": 59,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -155,12 +154,12 @@
       ]
     },
     "society": {
-      "value": 55.3,
+      "value": 55.8,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "stable",
-      "change": 0,
+      "trend": "improving",
+      "change": 0.5,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -214,12 +213,12 @@
       ]
     },
     "economy": {
-      "value": 73.1,
+      "value": 73,
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
       "trend": "stable",
-      "change": 0,
+      "change": -0.1,
       "indicators": [
         {
           "name": "BIP-Wachstum",
@@ -1197,63 +1196,63 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 57,
+      "globalAvgAQI": 59,
       "cleanestCities": [
         {
           "city": "Los Angeles",
           "country": "",
-          "aqi": 21,
+          "aqi": 23,
           "lat": 34.05,
           "lng": -118.24
         },
         {
-          "city": "Sydney",
-          "country": "",
-          "aqi": 26,
-          "lat": -33.87,
-          "lng": 151.21
-        },
-        {
-          "city": "London",
-          "country": "",
-          "aqi": 28,
-          "lat": 51.51,
-          "lng": -0.13
-        },
-        {
           "city": "Berlin",
           "country": "",
-          "aqi": 30,
+          "aqi": 26,
           "lat": 52.52,
           "lng": 13.41
         },
         {
-          "city": "Lagos",
+          "city": "London",
+          "country": "",
+          "aqi": 27,
+          "lat": 51.51,
+          "lng": -0.13
+        },
+        {
+          "city": "São Paulo",
+          "country": "",
+          "aqi": 30,
+          "lat": -23.55,
+          "lng": -46.63
+        },
+        {
+          "city": "Sydney",
           "country": "",
           "aqi": 31,
-          "lat": 6.45,
-          "lng": 3.4
+          "lat": -33.87,
+          "lng": 151.21
         }
       ],
       "mostPolluted": [
         {
-          "city": "Cairo",
-          "country": "",
-          "aqi": 112,
-          "lat": 30.04,
-          "lng": 31.24
-        },
-        {
           "city": "Beijing",
           "country": "",
-          "aqi": 104,
+          "aqi": 123,
           "lat": 39.9,
           "lng": 116.4
         },
         {
+          "city": "Cairo",
+          "country": "",
+          "aqi": 106,
+          "lat": 30.04,
+          "lng": 31.24
+        },
+        {
           "city": "Delhi",
           "country": "",
-          "aqi": 101,
+          "aqi": 89,
           "lat": 28.61,
           "lng": 77.21
         },
@@ -1265,11 +1264,11 @@
           "lng": -99.13
         },
         {
-          "city": "São Paulo",
+          "city": "Lagos",
           "country": "",
-          "aqi": 48,
-          "lat": -23.55,
-          "lng": -46.63
+          "aqi": 62,
+          "lat": 6.45,
+          "lng": 3.4
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1629,11 +1628,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-02T20:45",
+          "time": "2026-04-03T04:00",
           "interval": 900,
-          "temperature_2m": 11.1,
-          "relative_humidity_2m": 49,
-          "wind_speed_10m": 4.5,
+          "temperature_2m": 7.9,
+          "relative_humidity_2m": 83,
+          "wind_speed_10m": 13,
           "weather_code": 3
         }
       },
@@ -1642,11 +1641,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-02T14:45",
+          "time": "2026-04-02T22:00",
           "interval": 900,
-          "temperature_2m": 7.1,
-          "relative_humidity_2m": 86,
-          "wind_speed_10m": 17.7,
+          "temperature_2m": 5.6,
+          "relative_humidity_2m": 87,
+          "wind_speed_10m": 11.5,
           "weather_code": 3
         }
       },
@@ -1655,11 +1654,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-03T03:45",
+          "time": "2026-04-03T11:00",
           "interval": 900,
-          "temperature_2m": 6.7,
-          "relative_humidity_2m": 68,
-          "wind_speed_10m": 4,
+          "temperature_2m": 16.9,
+          "relative_humidity_2m": 51,
+          "wind_speed_10m": 6.6,
           "weather_code": 0
         }
       },
@@ -1668,12 +1667,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-03T05:45",
+          "time": "2026-04-03T13:00",
           "interval": 900,
-          "temperature_2m": 15.9,
-          "relative_humidity_2m": 100,
-          "wind_speed_10m": 3.7,
-          "weather_code": 45
+          "temperature_2m": 24.5,
+          "relative_humidity_2m": 61,
+          "wind_speed_10m": 18,
+          "weather_code": 2
         }
       },
       {
@@ -1681,12 +1680,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-02T15:45",
+          "time": "2026-04-02T23:00",
           "interval": 900,
-          "temperature_2m": 27.2,
-          "relative_humidity_2m": 59,
-          "wind_speed_10m": 9.7,
-          "weather_code": 3
+          "temperature_2m": 22.1,
+          "relative_humidity_2m": 87,
+          "wind_speed_10m": 2.5,
+          "weather_code": 0
         }
       },
       {
@@ -1694,11 +1693,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-02T19:45",
+          "time": "2026-04-03T03:00",
           "interval": 900,
-          "temperature_2m": 27.8,
-          "relative_humidity_2m": 84,
-          "wind_speed_10m": 5.4,
+          "temperature_2m": 26.4,
+          "relative_humidity_2m": 91,
+          "wind_speed_10m": 1.1,
           "weather_code": 3
         }
       },
@@ -1707,12 +1706,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-03T00:15",
+          "time": "2026-04-03T07:30",
           "interval": 900,
-          "temperature_2m": 27.5,
-          "relative_humidity_2m": 73,
-          "wind_speed_10m": 4,
-          "weather_code": 0
+          "temperature_2m": 27.1,
+          "relative_humidity_2m": 80,
+          "wind_speed_10m": 9,
+          "weather_code": 2
         }
       },
       {
@@ -1720,12 +1719,12 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-02T19:45",
+          "time": "2026-04-03T03:00",
           "interval": 900,
-          "temperature_2m": 11.4,
-          "relative_humidity_2m": 43,
-          "wind_speed_10m": 7.6,
-          "weather_code": 0
+          "temperature_2m": 8.7,
+          "relative_humidity_2m": 78,
+          "wind_speed_10m": 14.8,
+          "weather_code": 3
         }
       }
     ]
@@ -3973,20 +3972,20 @@
       "source": "World Bank"
     },
     "cryptoFearGreed": {
-      "value": 12,
+      "value": 9,
       "label": "Extreme Fear",
-      "timestamp": "2026-04-02T00:00:00.000Z"
+      "timestamp": "2026-04-03T00:00:00.000Z"
     },
     "exchangeRates": {
-      "EUR": 0.862388,
-      "GBP": 0.751313,
-      "JPY": 158.650911,
-      "CNY": 6.885772,
-      "INR": 93.552697,
-      "BRL": 5.161875,
-      "RUB": 80.422695,
-      "KRW": 1510.452079,
-      "CHF": 0.793889
+      "EUR": 0.866351,
+      "GBP": 0.755813,
+      "JPY": 159.430862,
+      "CNY": 6.894725,
+      "INR": 93.269547,
+      "BRL": 5.161081,
+      "RUB": 80.260774,
+      "KRW": 1512.550826,
+      "CHF": 0.79868
     }
   },
   "progress": {
@@ -4020,29 +4019,29 @@
       ],
       "latestArxiv": [
         {
-          "title": "Information content of JWST transmission spectroscopy of the exoplanet HAT-P-12b from the optical to the mid-infrared",
-          "published": "2026-04-01T17:57:47Z",
-          "category": "astro-ph.EP"
+          "title": "On the intersection of $\\mathfrak{F}$-maximal subgroups of a finite group",
+          "published": "2026-04-02T16:02:10Z",
+          "category": "math.GR"
         },
         {
-          "title": "Rotationally invariant first passage percolation: Breaking the $n/\\log n$ variance barrier",
-          "published": "2026-04-01T17:53:51Z",
-          "category": "math.PR"
+          "title": "Blinded Radiologist and LLM-Based Evaluation of LLM-Generated Japanese Translations of Chest CT Reports: Comparative Study",
+          "published": "2026-04-02T15:59:40Z",
+          "category": "cs.AI"
         },
         {
-          "title": "The Recipe Matters More Than the Kitchen:Mathematical Foundations of the AI Weather Prediction Pipeline",
-          "published": "2026-04-01T17:53:51Z",
-          "category": "cs.LG"
+          "title": "What can be computed in average anonymous networks?",
+          "published": "2026-04-02T15:49:35Z",
+          "category": "cs.DC"
         },
         {
-          "title": "LLM REgression with a Latent Iterative State Head",
-          "published": "2026-04-01T17:50:32Z",
+          "title": "Intersections and the Bézout Range: Abelian Varieties",
+          "published": "2026-04-02T15:46:28Z",
+          "category": "math.AG"
+        },
+        {
+          "title": "Do Lexical and Contextual Coreference Resolution Systems Degrade Differently under Mention Noise? An Empirical Study on Scientific Software Mentions",
+          "published": "2026-04-02T15:37:03Z",
           "category": "cs.CL"
-        },
-        {
-          "title": "Solutions of Calabi-Yau Differential Operators as Truncated p-adic Series and Efficient Computation of Zeta Functions",
-          "published": "2026-04-01T17:38:00Z",
-          "category": "math.NT"
         }
       ],
       "source": "arXiv / Scopus"
@@ -4054,73 +4053,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 485639,
-          "forks": 45679,
+          "stars": 485699,
+          "forks": 45683,
           "language": "Markdown",
-          "updated": "2026-04-02T18:49:47Z"
+          "updated": "2026-04-03T02:07:21Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 451194,
-          "forks": 33907,
+          "stars": 451286,
+          "forks": 33908,
           "language": null,
-          "updated": "2026-04-02T18:51:24Z"
+          "updated": "2026-04-03T02:11:13Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 440573,
-          "forks": 43970,
+          "stars": 440600,
+          "forks": 43975,
           "language": "TypeScript",
-          "updated": "2026-04-02T18:36:04Z"
+          "updated": "2026-04-03T02:08:38Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 418476,
-          "forks": 45464,
+          "stars": 418529,
+          "forks": 45482,
           "language": "Python",
-          "updated": "2026-04-02T18:48:36Z"
+          "updated": "2026-04-03T02:07:10Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 384907,
+          "stars": 384922,
           "forks": 66084,
           "language": "Python",
-          "updated": "2026-04-02T18:42:48Z"
+          "updated": "2026-04-03T02:11:13Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 352087,
-          "forks": 43864,
+          "stars": 352100,
+          "forks": 43863,
           "language": "TypeScript",
-          "updated": "2026-04-02T18:44:37Z"
+          "updated": "2026-04-03T01:59:50Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 345900,
-          "forks": 68800,
+          "stars": 346124,
+          "forks": 68887,
           "language": "TypeScript",
-          "updated": "2026-04-02T18:54:47Z"
+          "updated": "2026-04-03T02:10:31Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 341078,
-          "forks": 55169,
+          "stars": 341143,
+          "forks": 55176,
           "language": "Python",
-          "updated": "2026-04-02T18:54:25Z"
+          "updated": "2026-04-03T02:05:29Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 340174,
-          "forks": 81846,
+          "stars": 340184,
+          "forks": 81843,
           "language": null,
-          "updated": "2026-04-02T18:42:30Z"
+          "updated": "2026-04-03T02:11:19Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 290306,
-          "forks": 27558,
+          "stars": 290354,
+          "forks": 27562,
           "language": "Python",
-          "updated": "2026-04-02T18:51:04Z"
+          "updated": "2026-04-03T02:08:49Z"
         }
       ],
       "source": "GitHub"
@@ -4597,6 +4596,30 @@
     },
     "spaceflight": [
       {
+        "title": "Four Astronauts Headed to Moon After Successful TLI Burn",
+        "published": "2026-04-03T02:03:08Z",
+        "source": "SpacePolicyOnline.com",
+        "summary": "After a day in earth orbit checking out systems on the Orion capsule, the Artemis II crew is headed to the Moon.  Earlier today the Mission Management Team gave them […]"
+      },
+      {
+        "title": "Swift spacecraft reorientation buys time for reboost mission",
+        "published": "2026-04-02T23:35:06Z",
+        "source": "SpaceNews",
+        "summary": "\nNASA modified operations of an astrophysics spacecraft in a decaying orbit to buy more time for a mission later this year that will attempt to raise its orbit.\nThe post Swift spacecraft reorientation"
+      },
+      {
+        "title": "Former Sierra Space CEO Tom Vice to lead Astrion",
+        "published": "2026-04-02T20:44:39Z",
+        "source": "SpaceNews",
+        "summary": "\nHuntsville-based defense contractor focuses on systems engineering and integration, and space mission assurance\nThe post Former Sierra Space CEO Tom Vice to lead Astrion  appeared first on SpaceNews."
+      },
+      {
+        "title": "Optical terminals still a bottleneck in Pentagon’s proliferated constellation",
+        "published": "2026-04-02T19:39:49Z",
+        "source": "SpaceNews",
+        "summary": "\nGP Sandhoo: ‘From an optical communications terminal perspective, we’re not there yet on how many we need’\nThe post Optical terminals still a bottleneck in Pentagon’s proliferated constellation appea"
+      },
+      {
         "title": "Pentagon awards Raytheon $45 million for GPS ground system as program future is reassessed",
         "published": "2026-04-02T17:17:43Z",
         "source": "SpaceNews",
@@ -4631,30 +4654,6 @@
         "published": "2026-04-02T14:55:23Z",
         "source": "SpaceNews",
         "summary": "East Aurora, NY — Moog Inc. (NYSE: MOG.A and MOG.B), a worldwide designer, manufacturer, and systems integrator of high-performance precision motion and fluid controls and control systems, provided th"
-      },
-      {
-        "title": "Artemis II is unlikely to be the cultural touchstone Apollo 8 was, and that's OK",
-        "published": "2026-04-02T14:46:36Z",
-        "source": "Arstechnica",
-        "summary": "NASA has struggled to deal with the widespread sentiment that NASA has “been there, done that.\""
-      },
-      {
-        "title": "Carmel Ortiz on the evolving landscape of satellite communications",
-        "published": "2026-04-02T14:42:23Z",
-        "source": "SpaceNews",
-        "summary": "\nIn this week’s episode of Space Minds, host Mike Gruss interviews Carmel Ortiz, senior vice president of medium-Earth-orbit constellation programs at SES. They discuss new technology to help satellit"
-      },
-      {
-        "title": "Phantom Space buys thermal specialist to support orbital data center push",
-        "published": "2026-04-02T13:06:18Z",
-        "source": "SpaceNews",
-        "summary": "\nPhantom Space has acquired satellite thermal hardware provider Thermal Management Technologies to bolster development of its planned Phantom Cloud orbital data center constellation.\nThe post Phantom "
-      },
-      {
-        "title": "A silicon chip that can do it all",
-        "published": "2026-04-02T13:00:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
       }
     ]
   },
@@ -4662,87 +4661,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "95 km N of Charlotte Amalie, U.S. Virgin Islands",
-          "magnitude": 3.31,
-          "depth": 68.21,
-          "lat": 19.206,
-          "lng": -64.8823333333333,
-          "time": "2026-04-02T18:16:40.800Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "116 km E of Bitung, Indonesia",
-          "magnitude": 5.1,
-          "depth": 35,
-          "lat": 1.2405,
-          "lng": 126.1543,
-          "time": "2026-04-02T16:10:26.585Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "81 km WSW of Nabire, Indonesia",
+          "location": "124 km WNW of Ternate, Indonesia",
           "magnitude": 5.3,
-          "depth": 33.785,
-          "lat": -3.7097,
-          "lng": 134.8597,
-          "time": "2026-04-02T15:36:36.646Z",
+          "depth": 35,
+          "lat": 1.0169,
+          "lng": 126.288,
+          "time": "2026-04-03T01:44:13.456Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "131 km E of Bitung, Indonesia",
-          "magnitude": 5.1,
-          "depth": 10,
-          "lat": 1.5322,
-          "lng": 126.3035,
-          "time": "2026-04-02T15:34:23.732Z",
+          "location": "118 km W of Ternate, Indonesia",
+          "magnitude": 4.6,
+          "depth": 35,
+          "lat": 0.9461,
+          "lng": 126.3273,
+          "time": "2026-04-03T01:02:39.395Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "105 km N of Charlotte Amalie, U.S. Virgin Islands",
-          "magnitude": 3.36,
-          "depth": 11.47,
-          "lat": 19.2908333333333,
-          "lng": -64.8611666666667,
-          "time": "2026-04-02T15:32:00.990Z",
+          "location": "19 km NE of Upper Lake, CA",
+          "magnitude": 2.98,
+          "depth": 7.09999990463257,
+          "lat": 39.296501159668,
+          "lng": -122.777000427246,
+          "time": "2026-04-03T00:57:12.890Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "81 km N of Cruz Bay, U.S. Virgin Islands",
-          "magnitude": 3.42,
-          "depth": 93.47,
-          "lat": 19.0705,
-          "lng": -64.7463333333333,
-          "time": "2026-04-02T15:18:03.880Z",
+          "location": "130 km WNW of Ternate, Indonesia",
+          "magnitude": 5.3,
+          "depth": 35,
+          "lat": 1.2437,
+          "lng": 126.2978,
+          "time": "2026-04-03T00:32:57.016Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "55 km W of Happy Valley, Alaska",
-          "magnitude": 3.1,
-          "depth": 118.3,
-          "lat": 60.048,
-          "lng": -152.709,
-          "time": "2026-04-02T15:14:22.297Z",
+          "location": "120 km WNW of Ternate, Indonesia",
+          "magnitude": 5.6,
+          "depth": 35,
+          "lat": 1.3163,
+          "lng": 126.4332,
+          "time": "2026-04-03T00:22:20.421Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "84 km N of Charlotte Amalie, U.S. Virgin Islands",
-          "magnitude": 3.19,
-          "depth": 20.65,
-          "lat": 19.1023333333333,
-          "lng": -64.9671666666667,
-          "time": "2026-04-02T14:54:53.760Z",
+          "location": "6 km ESE of Carpinteria, CA",
+          "magnitude": 2.48,
+          "depth": 2.07,
+          "lat": 34.3705,
+          "lng": -119.4645,
+          "time": "2026-04-02T23:43:29.350Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "73 km NNE of Isangel, Vanuatu",
+          "magnitude": 5.4,
+          "depth": 278.376,
+          "lat": -18.906,
+          "lng": 169.4841,
+          "time": "2026-04-02T23:22:14.773Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "67 km N of Hatillo, Puerto Rico",
+          "magnitude": 3.35,
+          "depth": 30.55,
+          "lat": 19.0956666666667,
+          "lng": -66.7993333333333,
+          "time": "2026-04-02T23:09:17.030Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 90,
+      "total24h": 86,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4765,33 +4764,81 @@
       "source": "GDELT"
     },
     "cryptoFearGreed": {
-      "value": 12,
+      "value": 9,
       "label": "Extreme Fear",
       "source": "Alternative.me"
     },
     "news": [
       {
-        "title": "'An eye for an eye': Israel’s death penalty law is retaliatory and electorally motivated",
-        "pubDate": "Thu, 02 Apr 2026 17:48:33 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260402-an-eye-for-an-eye-israel-death-penalty-law-is-retaliatory-and-electorally-motivated",
+        "title": "Southern Syria Under Pressure: Israeli Operations, Civilian Dynamics, and Emerging Risk Trajectories",
+        "pubDate": "Fri, 03 Apr 2026 02:05:32 +0000",
+        "link": "https://reliefweb.int/report/syrian-arab-republic/southern-syria-under-pressure-israeli-operations-civilian-dynamics-and-emerging-risk-trajectories",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Abris communautaires au Niger: protéger les enfants et permettre aux femmes de restaurer les terres",
+        "pubDate": "Fri, 03 Apr 2026 01:53:12 +0000",
+        "link": "https://reliefweb.int/report/niger/abris-communautaires-au-niger-proteger-les-enfants-et-permettre-aux-femmes-de-restaurer-les-terres",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "How community shelters protect children and help women restore degraded lands in Niger",
+        "pubDate": "Fri, 03 Apr 2026 01:51:02 +0000",
+        "link": "https://reliefweb.int/report/niger/how-community-shelters-protect-children-and-help-women-restore-degraded-lands-niger",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Trump removes US Attorney General Pam Bondi",
+        "pubDate": "Fri, 03 Apr 2026 00:31:27 GMT",
+        "link": "https://www.bbc.com/news/articles/ce843ge47z4o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Artemis II astronauts ignite engines and head for lunar flyby",
+        "pubDate": "Fri, 03 Apr 2026 00:16:00 GMT",
+        "link": "https://www.france24.com/en/technology/20260403-artemis-ii-astronauts-ignite-engines-and-head-for-lunar-flyby",
         "source": "France24"
       },
       {
-        "title": "UN experts urge investigation into Israel’s killing of Lebanese journalists",
-        "pubDate": "Thu, 02 Apr 2026 17:47:36 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/2/un-experts-urge-investigation-into-israels-killing-of-lebanese-journalists?traffic_source=rss",
+        "title": "Trump unveils 100 percent tariff on drugs to push for pharmaceutical deals",
+        "pubDate": "Thu, 02 Apr 2026 23:38:53 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/2/trump-unveils-100-percent-tariff-on-drugs-to-push-for-pharmaceutical-deals?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Pastor’s White House prayer claims Iranians seek death of all Jews",
-        "pubDate": "Thu, 02 Apr 2026 17:42:04 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/2/pastors-white-house-prayer-claims-iranians-seek-death-of-all-jews?traffic_source=rss",
+        "title": "Iran war could make beer and bottled water pricier for Indians",
+        "pubDate": "Thu, 02 Apr 2026 23:16:37 GMT",
+        "link": "https://www.bbc.com/news/articles/c5ywqky5dd7o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "US court orders resentencing for Colorado clerk involved in election scheme",
+        "pubDate": "Thu, 02 Apr 2026 22:56:55 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/2/us-court-orders-resentencing-for-colorado-clerk-involved-in-election-scheme?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Trump fires loyalist Pam Bondi as US attorney general",
-        "pubDate": "Thu, 02 Apr 2026 17:34:07 GMT",
-        "link": "https://www.france24.com/en/americas/20260402-trump-fires-loyalist-pam-bondi-as-us-attorney-general",
+        "title": "Judge dismisses most of Blake Lively's claims in Justin Baldoni harassment suit",
+        "pubDate": "Thu, 02 Apr 2026 22:47:48 GMT",
+        "link": "https://www.bbc.com/news/articles/c3ex59yy4j2o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Rights groups, Milwaukee leaders slam ICE’s arrest of Palestinian advocate",
+        "pubDate": "Thu, 02 Apr 2026 22:45:48 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/2/rights-groups-milwaukee-leaders-slam-ices-arrest-of-palestinian-advocate?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Trump signs order threatening up to 100% tariffs on pharmaceuticals",
+        "pubDate": "Thu, 02 Apr 2026 22:37:28 GMT",
+        "link": "https://www.france24.com/en/americas/20260402-trump-signs-order-threatening-up-to-100-tariffs-on-pharmaceuticals",
+        "source": "France24"
+      },
+      {
+        "title": "Trump sacks attorney general, replaces with ex-personal lawyer",
+        "pubDate": "Thu, 02 Apr 2026 21:54:15 GMT",
+        "link": "https://www.france24.com/en/trump-sacks-attorney-general-replaces-with-ex-personal-lawyer",
         "source": "France24"
       },
       {
@@ -4801,22 +4848,10 @@
         "source": "DW News"
       },
       {
-        "title": "Mohamed Salah: Football, Faith &amp; Changing Perceptions",
-        "pubDate": "Thu, 02 Apr 2026 17:27:54 +0000",
-        "link": "https://www.aljazeera.com/video/game-theory/2026/4/2/aje-onl-salaheffect_v6-020426?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
         "title": "Burkina Faso: Army behind most civilian deaths — report",
         "pubDate": "Thu, 2 Apr 2026 17:12:00 GMT",
         "link": "https://www.dw.com/en/burkina-faso-army-behind-most-civilian-deaths-report/a-76648315?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
-      },
-      {
-        "title": "Iran's two largest steel plants shut down due to strikes, companies say",
-        "pubDate": "Thu, 02 Apr 2026 17:01:08 GMT",
-        "link": "https://www.bbc.com/news/articles/c1w4pdexxqpo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
       },
       {
         "title": "Artemis II Astronauts Launch to Moon",
@@ -4831,34 +4866,16 @@
         "source": "Guardian"
       },
       {
-        "title": "2026 Contemporary Art Biennale: Lebanon’s art, old and new",
-        "pubDate": "Thu, 02 Apr 2026 16:17:52 GMT",
-        "link": "https://www.france24.com/en/tv-shows/arts24/20260402-2026-contemporary-art-biennale-lebanon-s-art-old-and-new",
-        "source": "France24"
-      },
-      {
         "title": "Middle East war: Few solutions to fuel shortages in Africa",
         "pubDate": "Thu, 2 Apr 2026 16:08:00 GMT",
         "link": "https://www.dw.com/en/middle-east-war-few-solutions-to-fuel-shortages-in-africa/a-76642504?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "Baby shot dead in pram in New York City, police say",
-        "pubDate": "Thu, 02 Apr 2026 15:20:02 GMT",
-        "link": "https://www.bbc.com/news/articles/c203w57pkn3o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
         "title": "How to follow the Smile launch live",
         "pubDate": "Thu, 02 Apr 2026 17:00:00 +0200",
         "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Smile/How_to_follow_the_Smile_launch_live]]>",
         "source": "ESA"
-      },
-      {
-        "title": "'Be serious... don't speak every day': Macron criticises Trump approach to Iran war",
-        "pubDate": "Thu, 02 Apr 2026 13:41:27 GMT",
-        "link": "https://www.bbc.com/news/articles/cevk0e4ykwko?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
       },
       {
         "title": "Five things Juice has revealed about Comet 3I/ATLAS",
@@ -4871,24 +4888,6 @@
         "pubDate": "Thu, 02 Apr 2026 15:00:00 +0200",
         "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Videos/2026/04/Smile_A_global_answer_to_a_global_mystery]]>",
         "source": "ESA"
-      },
-      {
-        "title": "Guterres warns of ‘wider war’ as Middle East conflict enters second month",
-        "pubDate": "Thu, 02 Apr 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/04/1167244",
-        "source": "UN News"
-      },
-      {
-        "title": "Middle East crisis exposes global energy fault line as UN urges shift to renewables",
-        "pubDate": "Thu, 02 Apr 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/04/1167243",
-        "source": "UN News"
-      },
-      {
-        "title": "MIDDLE EAST LIVE 2 April: Civilian impact deepens as UN chief says ‘we must find a peaceful way out’ before region is engulfed by war",
-        "pubDate": "Thu, 02 Apr 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/04/1167242",
-        "source": "UN News"
       }
     ],
     "volcanic": [],
@@ -4942,7 +4941,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-02T18:57:32.662Z"
+    "lastUpdated": "2026-04-03T02:12:13.929Z"
   },
   "momentum": {
     "indicators": [
@@ -5161,231 +5160,231 @@
       "name": "NASA GISTEMP",
       "url": "https://data.giss.nasa.gov/gistemp/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "environment"
     },
     {
       "name": "NOAA (CO2)",
       "url": "https://gml.noaa.gov/ccgg/trends/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "environment"
     },
     {
       "name": "Open-Meteo (Air Quality)",
       "url": "https://air-quality-api.open-meteo.com/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "environment"
     },
     {
       "name": "Open-Meteo",
       "url": "https://open-meteo.com/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "environment"
     },
     {
       "name": "World Bank (Environment)",
       "url": "https://data.worldbank.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "environment"
     },
     {
       "name": "NSIDC (Arktis)",
       "url": "https://nsidc.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "environment"
     },
     {
       "name": "World Bank (Society)",
       "url": "https://data.worldbank.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "society"
     },
     {
       "name": "ACLED (Konflikte)",
       "url": "https://acleddata.com/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "society"
     },
     {
       "name": "UNHCR",
       "url": "https://data.unhcr.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "society"
     },
     {
       "name": "Freedom House",
       "url": "https://freedomhouse.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "society"
     },
     {
       "name": "disease.sh",
       "url": "https://disease.sh/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "society"
     },
     {
       "name": "World Bank (Economy)",
       "url": "https://data.worldbank.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "economy"
     },
     {
       "name": "IMF WEO",
       "url": "https://www.imf.org/en/Publications/WEO",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "economy"
     },
     {
       "name": "Alternative.me (Crypto)",
       "url": "https://alternative.me/crypto/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "economy"
     },
     {
       "name": "Exchange Rate API",
       "url": "https://open.er-api.com/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "economy"
     },
     {
       "name": "World Bank (Tech)",
       "url": "https://data.worldbank.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "progress"
     },
     {
       "name": "GitHub API",
       "url": "https://api.github.com/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "progress"
     },
     {
       "name": "arXiv",
       "url": "https://arxiv.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "progress"
     },
     {
       "name": "Spaceflight News",
       "url": "https://spaceflightnewsapi.net/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "progress"
     },
     {
       "name": "USGS Earthquakes",
       "url": "https://earthquake.usgs.gov/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "GDELT Project",
       "url": "https://www.gdeltproject.org/",
       "trust": 2,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "UN News (RSS)",
       "url": "https://news.un.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "WHO News (RSS)",
       "url": "https://www.who.int/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "UNHCR (RSS)",
       "url": "https://www.unhcr.org/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "ReliefWeb (RSS)",
       "url": "https://reliefweb.int/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "NASA (RSS)",
       "url": "https://www.nasa.gov/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "BBC World (RSS)",
       "url": "https://www.bbc.com/news/world",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "DW News (RSS)",
       "url": "https://www.dw.com/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "Al Jazeera (RSS)",
       "url": "https://www.aljazeera.com/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "Guardian World (RSS)",
       "url": "https://www.theguardian.com/world",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "France24 (RSS)",
       "url": "https://www.france24.com/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "NOAA Space Weather",
       "url": "https://www.swpc.noaa.gov/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     },
     {
       "name": "USGS Volcanoes",
       "url": "https://volcanoes.usgs.gov/",
       "trust": 3,
-      "lastUpdate": "2026-04-02",
+      "lastUpdate": "2026-04-03",
       "category": "realtime"
     }
   ]
