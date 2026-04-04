@@ -12,14 +12,14 @@
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 04.04.2026 07:01 UTC
+> **Letzte Aktualisierung:** 04.04.2026 12:54 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.3**/100 | → +0 | 25% |
-| 🟡 Gesellschaft | **56**/100 | → +0.1 | 25% |
+| 🟡 Umwelt | **44.2**/100 | → -0.1 | 25% |
+| 🟡 Gesellschaft | **56**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73.1**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **78.5**/100 | → +0 | 20% |
 | 🟢 Momentum | **71.4**/100 | → +0 | 10% |
@@ -223,5 +223,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 04.04.2026 07:01 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 04.04.2026 12:54 UTC | 40/40 Quellen aktiv
 </sub>
