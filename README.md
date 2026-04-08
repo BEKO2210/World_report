@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 64.5 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 65.6 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  64.5/100  ↑ +0.1
+█████████████░░░░░░░  65.6/100  ↑ +1.1
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 08.04.2026 13:19 UTC
+> **Letzte Aktualisierung:** 08.04.2026 19:18 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.7**/100 | → +0.1 | 25% |
+| 🟡 Umwelt | **44.7**/100 | → +0 | 25% |
 | 🟡 Gesellschaft | **56**/100 | → +0 | 25% |
-| 🟢 Wirtschaft | **73.2**/100 | → +0 | 20% |
-| 🟢 Fortschritt | **78.5**/100 | → +0 | 20% |
-| 🟢 Momentum | **71.4**/100 | → +0 | 10% |
+| 🟢 Wirtschaft | **68.3**/100 | ↓ -4.9 | 20% |
+| 🟢 Fortschritt | **78.1**/100 | ↓ -0.4 | 20% |
+| 🟢 Momentum | **80**/100 | → +0 | 10% |
 
 ---
 
@@ -34,14 +34,14 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **58** | WAQI |
+| Luftqualität (Ø) | AQI **56** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
 | Aktive Konflikte | **56** | ACLED |
 | Menschen auf der Flucht | **108.4 Mio** | UNHCR |
-| Lebenserwartung | **73.3 Jahre** | WHO |
+| Lebenserwartung | **73.5 Jahre** | WHO |
 | Freiheitsindex | 84 frei / 56 teilw. / 55 unfrei | Freedom House |
 
 ### 💰 Wirtschaft
@@ -69,13 +69,14 @@
 
 ---
 
-## 📈 Momentum: 15/21 Trends positiv
+## 📈 Momentum: 16/20 Trends positiv
 
 <details>
-<summary>Alle 21 Indikatoren anzeigen</summary>
+<summary>Alle 20 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (15)
-- **Kindersterblichkeit**: -4.5%
+#### ✅ Verbessert sich (16)
+- **Lebenserwartung**: +1.6%
+- **Kindersterblichkeit**: -2.3%
 - **Erneuerbare Energie**: +6.6%
 - **Internet-Zugang**: +12.1%
 - **BIP-Wachstum**: +48.9%
@@ -84,18 +85,16 @@
 - **Globaler Handel**: +7.8%
 - **Alphabetisierung**: +0.7%
 - **Mobilfunk**: +3.8%
-- **F&E Ausgaben**: +15.7%
+- **F&E Ausgaben**: +10.8%
 - **Elektrizitätszugang**: +1.4%
 - **Trinkwasser**: +2.7%
 - **Gesundheitsausgaben**: +1.0%
 - **Urbanisierung**: +1.6%
 - **Patentanmeldungen**: +1.2%
 
-#### ❌ Verschlechtert sich (6)
-- **Lebenserwartung**: -0.1%
+#### ❌ Verschlechtert sich (4)
 - **CO2-Konzentration**: +2.0%
 - **Waldfläche**: -0.3%
-- **Inflation**: +120.9%
 - **CO2 pro Kopf**: +1.4%
 - **Militärausgaben (% BIP)**: +5.6%
 
@@ -223,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 08.04.2026 13:19 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 08.04.2026 19:18 UTC | 39/40 Quellen aktiv
 </sub>
