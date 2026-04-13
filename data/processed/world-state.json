@@ -1,33 +1,34 @@
 {
   "meta": {
-    "generated": "2026-04-13T13:24:46.841Z",
+    "generated": "2026-04-13T19:14:00.568Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-04-13T19:24:46.842Z",
+    "next_update": "2026-04-14T01:14:00.568Z",
     "realtimePulse": {
       "environment": -0.85,
-      "society": 0,
+      "society": 0.05,
       "economy": -0.61,
       "progress": 0.8,
       "details": {
         "quakeCount": 44,
         "maxMagnitude": 5.5,
-        "avgGlobalTemp": 18.9,
+        "avgGlobalTemp": 19.9,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 12,
         "arxivPapers": 20
       }
     }
   },
   "worldIndex": {
-    "value": 65.6,
+    "value": 65.5,
     "rawValue": 62.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.4,
-    "change": 0.2,
-    "trend": "improving",
+    "previous": 65.6,
+    "change": -0.1,
+    "trend": "declining",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -39,7 +40,7 @@
           "ratio": 0.8
         },
         "cascading": {
-          "penalty": 0.1,
+          "penalty": 0,
           "activePairs": 0
         }
       },
@@ -61,8 +62,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         },
         "momentum": {
           "direction": "expansion",
@@ -77,7 +78,7 @@
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -106,8 +107,8 @@
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "improving",
-      "change": 0.2,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 70,
+          "value": 65,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -262,8 +263,8 @@
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -1196,79 +1197,79 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 70,
+      "globalAvgAQI": 65,
       "cleanestCities": [
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 12,
+          "aqi": 9,
           "lat": -33.87,
           "lng": 151.21
         },
         {
-          "city": "Los Angeles",
-          "country": "",
-          "aqi": 29,
-          "lat": 34.05,
-          "lng": -118.24
-        },
-        {
           "city": "London",
           "country": "",
-          "aqi": 35,
+          "aqi": 28,
           "lat": 51.51,
           "lng": -0.13
         },
         {
           "city": "Berlin",
           "country": "",
-          "aqi": 36,
+          "aqi": 31,
           "lat": 52.52,
           "lng": 13.41
         },
         {
-          "city": "São Paulo",
+          "city": "Los Angeles",
           "country": "",
-          "aqi": 50,
-          "lat": -23.55,
-          "lng": -46.63
+          "aqi": 36,
+          "lat": 34.05,
+          "lng": -118.24
+        },
+        {
+          "city": "Cairo",
+          "country": "",
+          "aqi": 40,
+          "lat": 30.04,
+          "lng": 31.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 246,
+          "aqi": 211,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 76,
+          "aqi": 75,
           "lat": 39.9,
           "lng": 116.4
         },
         {
+          "city": "Tokyo",
+          "country": "",
+          "aqi": 74,
+          "lat": 35.68,
+          "lng": 139.69
+        },
+        {
           "city": "Mexico City",
           "country": "",
-          "aqi": 73,
+          "aqi": 72,
           "lat": 19.43,
           "lng": -99.13
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 73,
+          "aqi": 72,
           "lat": 19.08,
           "lng": 72.88
-        },
-        {
-          "city": "Tokyo",
-          "country": "",
-          "aqi": 66,
-          "lat": 35.68,
-          "lng": 139.69
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1628,12 +1629,12 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-13T15:15",
+          "time": "2026-04-13T21:00",
           "interval": 900,
-          "temperature_2m": 13.5,
-          "relative_humidity_2m": 39,
-          "wind_speed_10m": 15,
-          "weather_code": 3
+          "temperature_2m": 13.1,
+          "relative_humidity_2m": 42,
+          "wind_speed_10m": 15.3,
+          "weather_code": 61
         }
       },
       {
@@ -1641,12 +1642,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-13T09:15",
+          "time": "2026-04-13T15:00",
           "interval": 900,
-          "temperature_2m": 12.2,
-          "relative_humidity_2m": 86,
-          "wind_speed_10m": 7.2,
-          "weather_code": 3
+          "temperature_2m": 26.4,
+          "relative_humidity_2m": 47,
+          "wind_speed_10m": 27.3,
+          "weather_code": 2
         }
       },
       {
@@ -1654,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-13T22:15",
+          "time": "2026-04-14T04:00",
           "interval": 900,
-          "temperature_2m": 14.2,
-          "relative_humidity_2m": 95,
-          "wind_speed_10m": 3.8,
-          "weather_code": 0
+          "temperature_2m": 13.1,
+          "relative_humidity_2m": 99,
+          "wind_speed_10m": 2.5,
+          "weather_code": 3
         }
       },
       {
@@ -1667,11 +1668,11 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-13T23:15",
+          "time": "2026-04-14T05:00",
           "interval": 900,
-          "temperature_2m": 14.3,
-          "relative_humidity_2m": 62,
-          "wind_speed_10m": 4.1,
+          "temperature_2m": 11.1,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 3.7,
           "weather_code": 0
         }
       },
@@ -1680,12 +1681,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-13T10:15",
+          "time": "2026-04-13T16:00",
           "interval": 900,
-          "temperature_2m": 23,
-          "relative_humidity_2m": 71,
-          "wind_speed_10m": 1.8,
-          "weather_code": 1
+          "temperature_2m": 26.9,
+          "relative_humidity_2m": 40,
+          "wind_speed_10m": 2.3,
+          "weather_code": 3
         }
       },
       {
@@ -1693,12 +1694,12 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-13T14:15",
+          "time": "2026-04-13T20:00",
           "interval": 900,
-          "temperature_2m": 33.1,
-          "relative_humidity_2m": 61,
-          "wind_speed_10m": 16.2,
-          "weather_code": 2
+          "temperature_2m": 28.7,
+          "relative_humidity_2m": 82,
+          "wind_speed_10m": 10.6,
+          "weather_code": 3
         }
       },
       {
@@ -1706,12 +1707,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-13T18:45",
+          "time": "2026-04-14T00:30",
           "interval": 900,
-          "temperature_2m": 28.5,
-          "relative_humidity_2m": 82,
-          "wind_speed_10m": 10.8,
-          "weather_code": 1
+          "temperature_2m": 28.1,
+          "relative_humidity_2m": 86,
+          "wind_speed_10m": 3.1,
+          "weather_code": 2
         }
       },
       {
@@ -1719,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-13T14:15",
+          "time": "2026-04-13T20:00",
           "interval": 900,
-          "temperature_2m": 12,
+          "temperature_2m": 11.4,
           "relative_humidity_2m": 62,
-          "wind_speed_10m": 11.5,
+          "wind_speed_10m": 6.5,
           "weather_code": 3
         }
       }
@@ -3944,73 +3945,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 489768,
-          "forks": 46238,
+          "stars": 489862,
+          "forks": 46250,
           "language": "Markdown",
-          "updated": "2026-04-13T13:20:16Z"
+          "updated": "2026-04-13T19:12:21Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 454820,
-          "forks": 34193,
+          "stars": 454925,
+          "forks": 34198,
           "language": null,
-          "updated": "2026-04-13T13:17:07Z"
+          "updated": "2026-04-13T19:12:38Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 442779,
-          "forks": 44271,
+          "stars": 442795,
+          "forks": 44274,
           "language": "TypeScript",
-          "updated": "2026-04-13T13:21:19Z"
+          "updated": "2026-04-13T19:04:55Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 421262,
-          "forks": 45861,
+          "stars": 421373,
+          "forks": 45885,
           "language": "Python",
-          "updated": "2026-04-13T13:14:41Z"
+          "updated": "2026-04-13T19:13:09Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 385442,
-          "forks": 66102,
+          "stars": 385464,
+          "forks": 66107,
           "language": "Python",
-          "updated": "2026-04-13T13:13:52Z"
+          "updated": "2026-04-13T18:55:00Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 356216,
-          "forks": 72182,
+          "stars": 356447,
+          "forks": 72241,
           "language": "TypeScript",
-          "updated": "2026-04-13T13:22:53Z"
+          "updated": "2026-04-13T19:11:02Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 352813,
-          "forks": 43906,
+          "stars": 352845,
+          "forks": 43907,
           "language": "TypeScript",
-          "updated": "2026-04-13T13:20:09Z"
+          "updated": "2026-04-13T19:12:55Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 342556,
-          "forks": 55348,
+          "stars": 342603,
+          "forks": 55353,
           "language": "Python",
-          "updated": "2026-04-13T13:21:56Z"
+          "updated": "2026-04-13T19:10:23Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 340844,
-          "forks": 81918,
+          "stars": 340865,
+          "forks": 81917,
           "language": null,
-          "updated": "2026-04-13T13:23:19Z"
+          "updated": "2026-04-13T18:56:16Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 292055,
-          "forks": 27663,
+          "stars": 292112,
+          "forks": 27665,
           "language": "Python",
-          "updated": "2026-04-13T13:02:46Z"
+          "updated": "2026-04-13T19:12:36Z"
         }
       ],
       "source": "GitHub"
@@ -4497,58 +4498,58 @@
         "summary": "Since July 2025, the European Space Agency’s pair of Proba-3 satellites has already created 57 artificial solar eclipses. So far, the mission has collected more than 250 hours of high-resolution video"
       },
       {
-        "title": "Orbit is filling up fast. Now comes the awkward bit: pre-empting and handling a crisis.",
-        "published": "2026-04-13T13:00:00Z",
-        "source": "SpaceNews",
-        "summary": "\nEarth’s orbit is “on track for a catastrophe.” That was the rather alarming prediction of the authors of a recent piece published in The Conversation. As the argument goes, orbit is filling up fast, "
-      },
-      {
-        "title": "Atomic-6 unveils online marketplace for orbital data centers",
-        "published": "2026-04-13T13:00:00Z",
-        "source": "SpaceNews",
-        "summary": "\nODC.space aims to streamline procurement of satellites for on-orbit computing\nThe post Atomic-6 unveils online marketplace for orbital data centers appeared first on SpaceNews."
-      },
-      {
-        "title": "Hubble Spies an Active Spiral",
-        "published": "2026-04-13T12:24:40Z",
+        "title": "NASA to Host Artemis II Crew Postflight News Conference",
+        "published": "2026-04-13T18:16:30Z",
         "source": "NASA",
-        "summary": "A luminous swirl set against the deep black of space, the barred spiral galaxy IC 486 glows with a soft, ethereal light in this new NASA Hubble Space Telescope image. IC 486 lies right on the edge of "
+        "summary": "Fresh off their return to Earth, the Artemis II astronauts will hold a news conference at 2:30 p.m. EDT Thursday, April 16, at NASA’s Johnson Space Center in Houston to discuss their historic mission "
       },
       {
-        "title": "Artemis II: around the Moon in 10 days",
-        "published": "2026-04-13T11:30:00Z",
-        "source": "ESA",
-        "summary": "Artemis II completed a 10-day journey around the Moon, carrying humanity farther into space than it has gone in over 50 years."
-      },
-      {
-        "title": "Key Senate appropriator rejects proposed NASA budget cuts",
-        "published": "2026-04-13T11:09:34Z",
+        "title": "Phantom Space eyes edge in orbital data race with thermal deal",
+        "published": "2026-04-13T18:15:57Z",
         "source": "SpaceNews",
-        "summary": "\nThe chairman of the Senate appropriations subcommittee that funds NASA says he opposes proposed cuts to part of NASA’s budget and will seek to fund the agency at 2026 levels.\nThe post Key Senate appr"
+        "summary": "\nPhantom Space believes it now has the key pieces of a vertically integrated model to compete on the edges of the emerging orbital data center market, where industry giants are already staking claims "
       },
       {
-        "title": "Q&A: Building a broadband constellation for a contested space era",
-        "published": "2026-04-13T11:00:00Z",
+        "title": "Aerospace to support industry with government furnished talent",
+        "published": "2026-04-13T18:10:42Z",
         "source": "SpaceNews",
-        "summary": "\nAs a wave of plans for low Earth orbit (LEO) broadband constellations enters the market, a 63-year-old former NASA Branch Chief and Google executive is betting on narrow beams, higher […]\nThe post Q&"
+        "summary": "\nThe Aerospace Corp. plans to offer industry access to its expertise and facilities through a new program called government furnished talent (GFT). By providing companies with access to the Federally "
       },
       {
-        "title": "Sophia and Kepler to marry orbital compute with optical links",
-        "published": "2026-04-13T04:01:00Z",
+        "title": "Spring fever pitch: Three questions to listen for this Space Symposium",
+        "published": "2026-04-13T17:50:55Z",
         "source": "SpaceNews",
-        "summary": "\nCOLORADO SPRINGS – Sophia Space will begin deploying edge compute nodes on Kepler Communications satellites in late 2026, under a strategic pact announced April 13. Through the partnership, Sophia Sp"
+        "summary": "\nA historic mission to the moon. A record-setting budget for the Space Force. Billions of dollars in new valuations. As the 41st Space Symposium opens in Colorado Springs, optimism is bountiful for th"
       },
       {
-        "title": "What’s Happening in Space Policy April 12-18, 2026",
-        "published": "2026-04-12T20:43:58Z",
-        "source": "SpacePolicyOnline.com",
-        "summary": "Here is SpacePolicyOnline.com’s list of space policy events for the week of April 12-18, 2026 and any insight we can offer about them. The House and Senate are in session […]"
+        "title": "The path to $50 billion in new space investment",
+        "published": "2026-04-13T17:41:12Z",
+        "source": "SpaceNews",
+        "summary": "\nThe future of space is commercial, with American companies critical to establishing a moon base and developing a vibrant economy in low Earth orbit (LEO) and beyond. The Trump administration has set "
       },
       {
-        "title": "Ship 39 and Booster 19 Roll out for Static Fire Testing",
-        "published": "2026-04-12T13:05:40Z",
-        "source": "NASASpaceflight",
-        "summary": "Following the successful return of Orion, attention for the Artemis program has now shifted to…\r\nThe post Ship 39 and Booster 19 Roll out for Static Fire Testing appeared first on NASASpaceFlight.com."
+        "title": "Artemis II Astronauts Aboard USS John P. Murtha",
+        "published": "2026-04-13T17:30:49Z",
+        "source": "NASA",
+        "summary": "The first astronauts to travel to the Moon in more than half a century are back on Earth after a record-setting mission aboard NASA’s Artemis II test flight. NASA astronauts Reid Wiseman (commander), "
+      },
+      {
+        "title": "Artemis II Safe and Sound on Earth",
+        "published": "2026-04-13T17:01:34Z",
+        "source": "Space Scout",
+        "summary": "After spending nine days in space, visiting the Moon for the first time in a generation, and traveling farther from home than anyone in history, the crew of NASA’s Artemis II mission is safe on Earth "
+      },
+      {
+        "title": "Amazon reveals aviation antenna as LEO inflight connectivity race intensifies",
+        "published": "2026-04-13T16:49:44Z",
+        "source": "SpaceNews",
+        "summary": "\nAmazon has unveiled the antenna its upcoming constellation would use to provide gigabit speeds to commercial aircraft, after gaining ground with major airlines despite Starlink’s LEO broadband domina"
+      },
+      {
+        "title": "Live coverage: Space Station to capture, berth Cygnus XL ’S.S. Steven R. Nagel’ cargo spacecraft",
+        "published": "2026-04-13T16:01:20Z",
+        "source": "Spaceflight Now",
+        "summary": "The vehicle launched on a SpaceX Falcon 9 rocket from Cape Canaveral Space Force Station on Saturday, April 11, at 7:41 a.m. EDT (1141 UTC). Capture by the space station’s Canadarm2 is anticipated on "
       }
     ]
   },
@@ -4556,82 +4557,82 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "Fiji region",
+          "location": "77 km N of Cruz Bay, U.S. Virgin Islands",
+          "magnitude": 3.14,
+          "depth": 32.01,
+          "lat": 19.0276666666667,
+          "lng": -64.7918333333333,
+          "time": "2026-04-13T17:56:54.760Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "146 km ESE of Modisi, Indonesia",
           "magnitude": 4.4,
-          "depth": 623.494,
-          "lat": -18.7612,
-          "lng": -177.6335,
-          "time": "2026-04-13T12:25:42.722Z",
+          "depth": 35,
+          "lat": -0.0383,
+          "lng": 125.6562,
+          "time": "2026-04-13T17:53:48.482Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "168 km NE of Lospalos, Timor Leste",
+          "location": "35 km WSW of Makamba, Burundi",
           "magnitude": 4.4,
-          "depth": 136.41,
-          "lat": -7.4943,
-          "lng": 128.1276,
-          "time": "2026-04-13T11:02:14.319Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "12 km S of Guánica, Puerto Rico",
-          "magnitude": 2.45,
-          "depth": 12.86,
-          "lat": 17.8588333333333,
-          "lng": -66.8858333333333,
-          "time": "2026-04-13T10:07:26.970Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "66 km NE of Cruz Bay, U.S. Virgin Islands",
-          "magnitude": 3.28,
-          "depth": 58.85,
-          "lat": 18.7555,
-          "lng": -64.352,
-          "time": "2026-04-13T10:04:35.140Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "20 km NNW of Wujia, China",
-          "magnitude": 4.5,
           "depth": 10,
-          "lat": 29.7974,
-          "lng": 105.2952,
-          "time": "2026-04-13T08:39:50.000Z",
+          "lat": -4.3118,
+          "lng": 29.5399,
+          "time": "2026-04-13T17:11:44.707Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "105 km WNW of Yakutat, Alaska",
-          "magnitude": 2.9,
-          "depth": 5,
-          "lat": 59.79,
-          "lng": -141.543,
-          "time": "2026-04-13T08:24:06.355Z",
+          "location": "147 km SW of Akhiok, Alaska",
+          "magnitude": 3.2,
+          "depth": 45.2,
+          "lat": 55.947,
+          "lng": -155.739,
+          "time": "2026-04-13T16:53:07.786Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "33 km NW of Rincón, Puerto Rico",
-          "magnitude": 2.89,
-          "depth": 16.51,
-          "lat": 18.5481666666667,
-          "lng": -67.4791666666667,
-          "time": "2026-04-13T07:25:33.070Z",
+          "location": "107 km WNW of Yakutat, Alaska",
+          "magnitude": 2.5,
+          "depth": 0.1,
+          "lat": 59.823,
+          "lng": -141.551,
+          "time": "2026-04-13T16:16:28.135Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "137 km NW of Ternate, Indonesia",
-          "magnitude": 4.9,
-          "depth": 44.942,
-          "lat": 1.4988,
-          "lng": 126.3683,
-          "time": "2026-04-13T06:59:43.987Z",
+          "location": "58 km NW of Raumati Beach, New Zealand",
+          "magnitude": 4.2,
+          "depth": 68.822,
+          "lat": -40.529,
+          "lng": 174.516,
+          "time": "2026-04-13T15:26:24.844Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "149 km SE of Bitung, Indonesia",
+          "magnitude": 4.4,
+          "depth": 39.083,
+          "lat": 0.4343,
+          "lng": 126.0301,
+          "time": "2026-04-13T14:44:57.209Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "98 km S of King Cove, Alaska",
+          "magnitude": 3.3,
+          "depth": 35,
+          "lat": 54.1777,
+          "lng": -162.3728,
+          "time": "2026-04-13T13:28:08.104Z",
           "tsunami": false,
           "type": "earthquake"
         }
@@ -4665,82 +4666,112 @@
     },
     "news": [
       {
-        "title": "Cold Response 2026: NATO holds Arctic drills to test readiness against Russia",
-        "pubDate": "Mon, 13 Apr 2026 13:22:14 GMT",
-        "link": "https://www.france24.com/en/tv-shows/focus/20260413-cold-response-2026-nato-holds-arctic-drills-to-test-readiness-against-russia",
-        "source": "France24"
-      },
-      {
-        "title": "World: HCI Condemns the Tragic Killing of More Than 1,000 Humanitarian Workers",
-        "pubDate": "Mon, 13 Apr 2026 13:18:05 +0000",
-        "link": "https://reliefweb.int/report/world/hci-condemns-tragic-killing-more-1000-humanitarian-workers",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "#KeepEyesOnSudan Coalition Mark 3 Years of Sudan Conflict Downing Street this week to call for essential and urgent action",
-        "pubDate": "Mon, 13 Apr 2026 13:13:55 +0000",
-        "link": "https://reliefweb.int/report/sudan/keepeyesonsudan-coalition-mark-3-years-sudan-conflict-downing-street-week-call-essential-and-urgent-action",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "Australia appoints first female army chief",
-        "pubDate": "Mon, 13 Apr 2026 12:53:00 GMT",
-        "link": "https://www.dw.com/en/australia-appoints-first-female-army-chief/a-76763950?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Israeli forces kill three Palestinians in Gaza, arrest dozens in West Bank",
-        "pubDate": "Mon, 13 Apr 2026 12:52:40 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/13/israeli-forces-kill-three-palestinians-in-gaza-arrest-dozens-in-west-bank?traffic_source=rss",
+        "title": "Orban was defeated in Hungary, but Orbanism lives on",
+        "pubDate": "Mon, 13 Apr 2026 18:56:31 +0000",
+        "link": "https://www.aljazeera.com/opinions/2026/4/13/orban-was-defeated-in-hungary-but-orbanism-lives-on?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Pope says he has 'no fear' of Trump after scathing criticism",
-        "pubDate": "Mon, 13 Apr 2026 12:50:30 GMT",
+        "title": "French court rules cement giant Lafarge guilty of funding Syrian terrorism",
+        "pubDate": "Mon, 13 Apr 2026 18:52:20 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/13/french-court-rules-cement-giant-lafarge-guilty-of-funding-syrian-terrorism?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Flag, anthem restrictions dropped for Russian, Belarusian swimmers",
+        "pubDate": "Mon, 13 Apr 2026 18:50:20 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/13/flag-anthem-restrictions-dropped-for-russian-belarusian-swimmers?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Haiti: Drame à la Citadelle Laferrière : Communiqué du Bureau de la Coordonnatrice résidente et humanitaire",
+        "pubDate": "Mon, 13 Apr 2026 18:37:30 +0000",
+        "link": "https://reliefweb.int/report/haiti/drame-la-citadelle-laferriere-communique-du-bureau-de-la-coordonnatrice-residente-et-humanitaire",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "French court jails Lafarge former CEO for funding IS in Syria",
+        "pubDate": "Mon, 13 Apr 2026 18:36:38 GMT",
+        "link": "https://www.france24.com/en/french-court-jails-lafarge-former-ceo-for-funding-is-in-syria",
+        "source": "France24"
+      },
+      {
+        "title": "Hungary will be \"a tough partner, but a partner\" on Ukraine, expert says",
+        "pubDate": "Mon, 13 Apr 2026 18:34:22 GMT",
+        "link": "https://www.france24.com/en/hungary-will-be-a-tough-partner-but-a-partner-on-ukraine-expert-says",
+        "source": "France24"
+      },
+      {
+        "title": "Haiti: Tragedy at the Citadelle Laferrière: Statement from the Office of the Resident and Humanitarian Coordinator",
+        "pubDate": "Mon, 13 Apr 2026 18:22:59 +0000",
+        "link": "https://reliefweb.int/report/haiti/tragedy-citadelle-laferriere-statement-office-resident-and-humanitarian-coordinator",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "NASA to Host Artemis II Crew Postflight News Conference",
+        "pubDate": "Mon, 13 Apr 2026 18:16:30 +0000",
+        "link": "https://www.nasa.gov/news-release/nasa-to-host-artemis-ii-crew-postflight-news-conference/",
+        "source": "NASA"
+      },
+      {
+        "title": "Italian PM condemns ally Trump over 'unacceptable' Pope criticism",
+        "pubDate": "Mon, 13 Apr 2026 17:32:43 GMT",
         "link": "https://www.bbc.com/news/articles/cp841y07w5xo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Mozambique 2026 Flood Humanitarian Response - as of 13 April 2026 [EN/PT]",
-        "pubDate": "Mon, 13 Apr 2026 12:43:30 +0000",
-        "link": "https://reliefweb.int/report/mozambique/mozambique-2026-flood-humanitarian-response-13-april-2026-enpt",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "At least six killed in Israeli strikes in southern Lebanon",
-        "pubDate": "Mon, 13 Apr 2026 12:39:20 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/13/at-least-six-killed-in-israeli-strikes-in-southern-lebanon?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Burkina Faso: Moving forward without democracy",
-        "pubDate": "Mon, 13 Apr 2026 12:26:00 GMT",
-        "link": "https://www.dw.com/en/burkina-faso-moving-forward-without-democracy/a-76760621?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Hubble Spies an Active Spiral",
-        "pubDate": "Mon, 13 Apr 2026 12:24:40 +0000",
-        "link": "https://science.nasa.gov/missions/hubble/hubble-spies-an-active-spiral/",
+        "title": "Artemis II Astronauts Aboard USS John P. Murtha",
+        "pubDate": "Mon, 13 Apr 2026 17:30:49 +0000",
+        "link": "https://www.nasa.gov/image-article/artemis-ii-astronauts-aboard-uss-john-p-murtha/",
         "source": "NASA"
       },
       {
-        "title": "Ghanaian footballer killed after armed attackers open fire at team bus",
-        "pubDate": "Mon, 13 Apr 2026 12:23:55 GMT",
-        "link": "https://www.bbc.com/news/articles/czx97pkyy9po?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
+        "title": "Guam, Northern Mariana Islands | Tropical cyclone SINLAKU - DG ECHO Daily Map | 13/04/2026",
+        "pubDate": "Mon, 13 Apr 2026 17:17:19 +0000",
+        "link": "https://reliefweb.int/map/guam/guam-northern-mariana-islands-tropical-cyclone-sinlaku-dg-echo-daily-map-13042026",
+        "source": "ReliefWeb"
       },
       {
-        "title": "Pope Leo XIV lands in Algeria for first-ever visit by a pontiff",
-        "pubDate": "Mon, 13 Apr 2026 12:20:20 GMT",
-        "link": "https://www.france24.com/en/video/20260413-pope-leo-xiv-lands-in-algeria-for-first-ever-visit-by-a-pontiff",
+        "title": "US maritime restrictions increase economic pressure on Iran",
+        "pubDate": "Mon, 13 Apr 2026 16:31:00 GMT",
+        "link": "https://www.dw.com/en/us-maritime-restrictions-increase-economic-pressure-on-iran/a-76760110?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Pope Leo visits Algeria in sign of Africa’s growing importance to Catholic church",
+        "pubDate": "Mon, 13 Apr 2026 16:26:47 GMT",
+        "link": "https://www.theguardian.com/world/2026/apr/13/pope-leo-visits-algeria-africa-tour-catholic-church",
+        "source": "Guardian"
+      },
+      {
+        "title": "Benin's opposition candidate concedes defeat to Wadagni in presidential vote",
+        "pubDate": "Mon, 13 Apr 2026 16:19:51 GMT",
+        "link": "https://www.france24.com/en/africa/20260413-benin-opposition-candidate-concedes-defeat-to-romuald-wadagni-in-presidential-vote",
         "source": "France24"
       },
       {
-        "title": "Cement company Lafarge found guilty in Syria terrorism financing case",
-        "pubDate": "Mon, 13 Apr 2026 12:18:27 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/13/cement-company-lafarge-found-guilty-in-syria-terrorism-financing-case?traffic_source=rss",
-        "source": "Al Jazeera"
+        "title": "Ex-Nigerian oil minister denies taking bribes",
+        "pubDate": "Mon, 13 Apr 2026 16:05:59 GMT",
+        "link": "https://www.bbc.com/news/articles/crl141ern74o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Iran war: Talks collapse is bad news for ordinary Iranians",
+        "pubDate": "Mon, 13 Apr 2026 15:13:00 GMT",
+        "link": "https://www.dw.com/en/iran-war-talks-collapse-is-bad-news-for-ordinary-iranians/a-76767100?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "End of the Orban era: Hungary and Europe breathe again",
+        "pubDate": "Mon, 13 Apr 2026 14:49:00 GMT",
+        "link": "https://www.dw.com/en/end-of-the-orban-era-hungary-and-europe-breathe-again/a-76766410?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "NASA Night-light Imagery Tracks US Energy Transition, Global Volatility",
+        "pubDate": "Mon, 13 Apr 2026 14:31:16 +0000",
+        "link": "https://science.nasa.gov/earth/human-dimensions/earth-at-night/nasa-night-light-imagery-tracks-us-energy-transition-global-volatility/",
+        "source": "NASA"
       },
       {
         "title": "Ghanaian winger Dominic Frimpong killed at age of 20 in attack on team bus",
@@ -4749,40 +4780,10 @@
         "source": "Guardian"
       },
       {
-        "title": "‘Change is feasible’ in Hungary after Magyar victory: FT reporter Marton Dunai",
-        "pubDate": "Mon, 13 Apr 2026 12:13:48 GMT",
-        "link": "https://www.france24.com/en/tv-shows/perspective/20260413-change-is-feasible-in-hungary-after-magyar-victory-ft-reporter-marton-dunai",
-        "source": "France24"
-      },
-      {
-        "title": "MIDDLE EAST LIVE 13 April: US-Iran talks falter; Strait of Hormuz uncertainty deepens",
+        "title": "‘Clock is ticking’: Hormuz disruption raises fears of global food crisis",
         "pubDate": "Mon, 13 Apr 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/04/1167285",
+        "link": "https://news.un.org/feed/view/en/story/2026/04/1167289",
         "source": "UN News"
-      },
-      {
-        "title": "Pope Leo: I am not afraid of Trump administration",
-        "pubDate": "Mon, 13 Apr 2026 11:09:00 GMT",
-        "link": "https://www.dw.com/en/pope-leo-i-am-not-afraid-of-trump-administration/a-76763503?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Orbán era swept away by Péter Magyar's Hungary election landslide",
-        "pubDate": "Mon, 13 Apr 2026 11:03:12 GMT",
-        "link": "https://www.bbc.com/news/articles/cd9vg782kx7o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "And the election winner is … the candidate who can afford Africa’s soaring nomination fees",
-        "pubDate": "Mon, 13 Apr 2026 11:00:38 GMT",
-        "link": "https://www.theguardian.com/global-development/2026/apr/13/elections-africa-soaring-nomination-fees-djibouti-benin",
-        "source": "Guardian"
-      },
-      {
-        "title": "First Proba-3 science: surprisingly speedy solar wind",
-        "pubDate": "Mon, 13 Apr 2026 11:00:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/First_Proba-3_science_surprisingly_speedy_solar_wind]]>",
-        "source": "ESA"
       }
     ],
     "volcanic": [],
@@ -4836,7 +4837,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-13T13:24:46.842Z"
+    "lastUpdated": "2026-04-13T19:14:00.568Z"
   },
   "momentum": {
     "indicators": [
