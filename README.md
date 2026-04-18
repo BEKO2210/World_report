@@ -8,19 +8,19 @@
 ## 🌍 Welt-Indikator: 65.6 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  65.6/100  ↑ +0.1
+█████████████░░░░░░░  65.6/100  ↑ +0
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 17.04.2026 18:59 UTC
+> **Letzte Aktualisierung:** 18.04.2026 02:13 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.9**/100 | ↑ +0.4 | 25% |
-| 🟡 Gesellschaft | **55.9**/100 | → +0 | 25% |
-| 🟢 Wirtschaft | **68.3**/100 | → +0 | 20% |
+| 🟡 Umwelt | **44.8**/100 | → -0.1 | 25% |
+| 🟡 Gesellschaft | **56**/100 | → +0.1 | 25% |
+| 🟢 Wirtschaft | **68.4**/100 | → +0.1 | 20% |
 | 🟢 Fortschritt | **78.1**/100 | → +0 | 20% |
 | 🟢 Momentum | **80**/100 | → +0 | 10% |
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **62** | WAQI |
+| Luftqualität (Ø) | AQI **68** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -65,7 +65,7 @@
 |-----------|------|--------|
 | Erdbeben (24h) | **8** Beben M2.5+ | USGS |
 | Nachrichten-Sentiment | **-0.42** (Leicht Negativ) | GDELT |
-| Crypto Fear & Greed | **21/100** (Extreme Fear) | Alternative.me |
+| Crypto Fear & Greed | **26/100** (Fear) | Alternative.me |
 
 ---
 
@@ -156,39 +156,39 @@ world-one/
 
 | Quelle | Vertrauen | Letztes Update |
 |--------|-----------|----------------|
-| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-04-17 |
-| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-04-17 |
-| [Open-Meteo (Air Quality)](https://air-quality-api.open-meteo.com/) | ⭐⭐ | 2026-04-17 |
-| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-04-17 |
-| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-04-17 |
-| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-04-17 |
-| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-04-17 |
-| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-04-17 |
-| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-04-17 |
-| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-04-17 |
-| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-04-17 |
-| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-04-17 |
-| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-04-17 |
-| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-04-17 |
-| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-04-17 |
-| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-04-17 |
-| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-04-17 |
-| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-04-17 |
-| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-04-17 |
-| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-04-17 |
-| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-04-17 |
-| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-04-17 |
-| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-04-17 |
-| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-04-17 |
+| [NASA GISTEMP](https://data.giss.nasa.gov/gistemp/) | ⭐⭐⭐ | 2026-04-18 |
+| [NOAA (CO2)](https://gml.noaa.gov/ccgg/trends/) | ⭐⭐⭐ | 2026-04-18 |
+| [Open-Meteo (Air Quality)](https://air-quality-api.open-meteo.com/) | ⭐⭐ | 2026-04-18 |
+| [Open-Meteo](https://open-meteo.com/) | ⭐⭐ | 2026-04-18 |
+| [World Bank (Environment)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [NSIDC (Arktis)](https://nsidc.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [World Bank (Society)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [ACLED (Konflikte)](https://acleddata.com/) | ⭐⭐⭐ | 2026-04-18 |
+| [UNHCR](https://data.unhcr.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [Freedom House](https://freedomhouse.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [disease.sh](https://disease.sh/) | ⭐⭐ | 2026-04-18 |
+| [World Bank (Economy)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [IMF WEO](https://www.imf.org/en/Publications/WEO) | ⭐⭐⭐ | 2026-04-18 |
+| [Alternative.me (Crypto)](https://alternative.me/crypto/) | ⭐⭐ | 2026-04-18 |
+| [Exchange Rate API](https://open.er-api.com/) | ⭐⭐ | 2026-04-18 |
+| [World Bank (Tech)](https://data.worldbank.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [GitHub API](https://api.github.com/) | ⭐⭐ | 2026-04-18 |
+| [arXiv](https://arxiv.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [Spaceflight News](https://spaceflightnewsapi.net/) | ⭐⭐ | 2026-04-18 |
+| [USGS Earthquakes](https://earthquake.usgs.gov/) | ⭐⭐⭐ | 2026-04-18 |
+| [GDELT Project](https://www.gdeltproject.org/) | ⭐⭐ | 2026-04-18 |
+| [UN News (RSS)](https://news.un.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [WHO News (RSS)](https://www.who.int/) | ⭐⭐⭐ | 2026-04-18 |
+| [UNHCR (RSS)](https://www.unhcr.org/) | ⭐⭐⭐ | 2026-04-18 |
+| [ReliefWeb (RSS)](https://reliefweb.int/) | ⭐⭐⭐ | 2026-04-18 |
+| [NASA (RSS)](https://www.nasa.gov/) | ⭐⭐⭐ | 2026-04-18 |
+| [BBC World (RSS)](https://www.bbc.com/news/world) | ⭐⭐⭐ | 2026-04-18 |
+| [DW News (RSS)](https://www.dw.com/) | ⭐⭐⭐ | 2026-04-18 |
+| [Al Jazeera (RSS)](https://www.aljazeera.com/) | ⭐⭐⭐ | 2026-04-18 |
+| [Guardian World (RSS)](https://www.theguardian.com/world) | ⭐⭐⭐ | 2026-04-18 |
+| [France24 (RSS)](https://www.france24.com/) | ⭐⭐⭐ | 2026-04-18 |
+| [NOAA Space Weather](https://www.swpc.noaa.gov/) | ⭐⭐⭐ | 2026-04-18 |
+| [USGS Volcanoes](https://volcanoes.usgs.gov/) | ⭐⭐⭐ | 2026-04-18 |
 
 ## 🚀 Setup
 
@@ -222,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 17.04.2026 18:59 UTC | 40/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 18.04.2026 02:13 UTC | 40/40 Quellen aktiv
 </sub>
