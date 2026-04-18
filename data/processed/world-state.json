@@ -1,20 +1,21 @@
 {
   "meta": {
-    "generated": "2026-04-18T07:06:59.037Z",
+    "generated": "2026-04-18T13:02:02.961Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-04-18T13:06:59.037Z",
+    "next_update": "2026-04-18T19:02:02.961Z",
     "realtimePulse": {
-      "environment": -0.8,
-      "society": 0,
+      "environment": -1,
+      "society": 0.05,
       "economy": -0.38,
       "progress": 0.8,
       "details": {
-        "quakeCount": 42,
-        "maxMagnitude": 5.5,
-        "avgGlobalTemp": 18.9,
+        "quakeCount": 45,
+        "maxMagnitude": 5.9,
+        "avgGlobalTemp": 20.8,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 26,
         "arxivPapers": 20
       }
@@ -25,9 +26,9 @@
     "rawValue": 62.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.6,
-    "change": -0.1,
-    "trend": "declining",
+    "previous": 65.5,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -72,12 +73,12 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.8,
+          "bufferDistance": 34.6,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -102,11 +103,11 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.6,
+      "value": 44.4,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "stable",
+      "trend": "declining",
       "change": -0.2,
       "indicators": [
         {
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 66,
+          "value": 70,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -1196,79 +1197,79 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 66,
+      "globalAvgAQI": 70,
       "cleanestCities": [
-        {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 20,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
-          "city": "London",
-          "country": "",
-          "aqi": 22,
-          "lat": 51.51,
-          "lng": -0.13
-        },
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 24,
+          "aqi": 14,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "Lagos",
           "country": "",
-          "aqi": 33,
+          "aqi": 30,
           "lat": 6.45,
           "lng": 3.4
         },
         {
           "city": "Los Angeles",
           "country": "",
-          "aqi": 34,
+          "aqi": 35,
           "lat": 34.05,
           "lng": -118.24
+        },
+        {
+          "city": "London",
+          "country": "",
+          "aqi": 35,
+          "lat": 51.51,
+          "lng": -0.13
+        },
+        {
+          "city": "Berlin",
+          "country": "",
+          "aqi": 44,
+          "lat": 52.52,
+          "lng": 13.41
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 139,
+          "aqi": 175,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 126,
+          "aqi": 122,
           "lat": 39.9,
           "lng": 116.4
         },
         {
           "city": "Cairo",
           "country": "",
-          "aqi": 120,
+          "aqi": 109,
           "lat": 30.04,
           "lng": 31.24
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 75,
+          "aqi": 70,
           "lat": 19.08,
           "lng": 72.88
         },
         {
-          "city": "São Paulo",
+          "city": "Tokyo",
           "country": "",
-          "aqi": 66,
-          "lat": -23.55,
-          "lng": -46.63
+          "aqi": 65,
+          "lat": 35.68,
+          "lng": 139.69
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1628,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-18T09:00",
+          "time": "2026-04-18T15:00",
           "interval": 900,
-          "temperature_2m": 10.9,
-          "relative_humidity_2m": 53,
-          "wind_speed_10m": 6.5,
+          "temperature_2m": 20.3,
+          "relative_humidity_2m": 31,
+          "wind_speed_10m": 4.3,
           "weather_code": 3
         }
       },
@@ -1641,12 +1642,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-18T03:00",
+          "time": "2026-04-18T09:00",
           "interval": 900,
-          "temperature_2m": 13.7,
-          "relative_humidity_2m": 97,
-          "wind_speed_10m": 5.5,
-          "weather_code": 3
+          "temperature_2m": 14.9,
+          "relative_humidity_2m": 77,
+          "wind_speed_10m": 14,
+          "weather_code": 0
         }
       },
       {
@@ -1654,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-18T16:00",
+          "time": "2026-04-18T22:00",
           "interval": 900,
-          "temperature_2m": 20.2,
-          "relative_humidity_2m": 59,
-          "wind_speed_10m": 7.3,
-          "weather_code": 0
+          "temperature_2m": 14,
+          "relative_humidity_2m": 86,
+          "wind_speed_10m": 3.3,
+          "weather_code": 2
         }
       },
       {
@@ -1667,11 +1668,11 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-18T17:00",
+          "time": "2026-04-18T23:00",
           "interval": 900,
-          "temperature_2m": 17.5,
-          "relative_humidity_2m": 41,
-          "wind_speed_10m": 10.5,
+          "temperature_2m": 11.6,
+          "relative_humidity_2m": 74,
+          "wind_speed_10m": 3.6,
           "weather_code": 0
         }
       },
@@ -1680,12 +1681,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-18T04:00",
+          "time": "2026-04-18T10:00",
           "interval": 900,
-          "temperature_2m": 19.9,
-          "relative_humidity_2m": 84,
-          "wind_speed_10m": 0.5,
-          "weather_code": 2
+          "temperature_2m": 26.2,
+          "relative_humidity_2m": 58,
+          "wind_speed_10m": 7.9,
+          "weather_code": 1
         }
       },
       {
@@ -1693,12 +1694,12 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-18T08:00",
+          "time": "2026-04-18T14:00",
           "interval": 900,
-          "temperature_2m": 29.3,
-          "relative_humidity_2m": 82,
-          "wind_speed_10m": 5.9,
-          "weather_code": 3
+          "temperature_2m": 33.2,
+          "relative_humidity_2m": 62,
+          "wind_speed_10m": 13.8,
+          "weather_code": 80
         }
       },
       {
@@ -1706,11 +1707,11 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-18T12:30",
+          "time": "2026-04-18T18:30",
           "interval": 900,
-          "temperature_2m": 29.8,
-          "relative_humidity_2m": 79,
-          "wind_speed_10m": 9.4,
+          "temperature_2m": 30.4,
+          "relative_humidity_2m": 67,
+          "wind_speed_10m": 15.5,
           "weather_code": 3
         }
       },
@@ -1719,12 +1720,12 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-18T08:00",
+          "time": "2026-04-18T14:00",
           "interval": 900,
-          "temperature_2m": 10.2,
-          "relative_humidity_2m": 79,
-          "wind_speed_10m": 10.1,
-          "weather_code": 0
+          "temperature_2m": 16.1,
+          "relative_humidity_2m": 40,
+          "wind_speed_10m": 11.5,
+          "weather_code": 2
         }
       }
     ]
@@ -3944,73 +3945,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 491260,
-          "forks": 46407,
+          "stars": 491343,
+          "forks": 46415,
           "language": "Markdown",
-          "updated": "2026-04-18T07:03:41Z"
+          "updated": "2026-04-18T12:58:29Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 456438,
-          "forks": 34321,
+          "stars": 456518,
+          "forks": 34324,
           "language": null,
-          "updated": "2026-04-18T07:01:49Z"
+          "updated": "2026-04-18T12:59:03Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 443098,
-          "forks": 44330,
+          "stars": 443122,
+          "forks": 44331,
           "language": "TypeScript",
-          "updated": "2026-04-18T06:57:52Z"
+          "updated": "2026-04-18T12:50:09Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 424583,
-          "forks": 46249,
+          "stars": 424671,
+          "forks": 46256,
           "language": "Python",
-          "updated": "2026-04-18T07:05:27Z"
+          "updated": "2026-04-18T13:00:29Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 385652,
-          "forks": 66114,
+          "stars": 385667,
+          "forks": 66112,
           "language": "Python",
-          "updated": "2026-04-18T07:00:13Z"
+          "updated": "2026-04-18T12:57:20Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 359653,
-          "forks": 73211,
+          "stars": 359808,
+          "forks": 73251,
           "language": "TypeScript",
-          "updated": "2026-04-18T07:04:36Z"
+          "updated": "2026-04-18T12:58:09Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 353136,
-          "forks": 43944,
+          "stars": 353146,
+          "forks": 43945,
           "language": "TypeScript",
-          "updated": "2026-04-18T07:03:04Z"
+          "updated": "2026-04-18T12:15:01Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 343161,
-          "forks": 55442,
+          "stars": 343180,
+          "forks": 55447,
           "language": "Python",
-          "updated": "2026-04-18T07:06:00Z"
+          "updated": "2026-04-18T12:53:36Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 341069,
-          "forks": 81912,
+          "stars": 341082,
+          "forks": 81913,
           "language": null,
-          "updated": "2026-04-18T06:26:27Z"
+          "updated": "2026-04-18T12:53:24Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 292956,
+          "stars": 292993,
           "forks": 27707,
           "language": "Python",
-          "updated": "2026-04-18T06:49:09Z"
+          "updated": "2026-04-18T13:00:33Z"
         }
       ],
       "source": "GitHub"
@@ -4556,87 +4557,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "210 km W of Langlois, Oregon",
-          "magnitude": 2.6,
-          "depth": 10,
-          "lat": 43.2088,
-          "lng": -127.0084,
-          "time": "2026-04-18T06:09:25.350Z",
+          "location": "18 km SE of Silver Springs, Nevada",
+          "magnitude": 3.18,
+          "depth": 7.2846,
+          "lat": 39.3093,
+          "lng": -119.0551,
+          "time": "2026-04-18T12:19:25.367Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "Carlsberg Ridge",
-          "magnitude": 4.9,
-          "depth": 10,
-          "lat": 6.4842,
-          "lng": 60.2475,
-          "time": "2026-04-18T06:04:35.041Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "Carlsberg Ridge",
-          "magnitude": 5.5,
-          "depth": 10,
-          "lat": 6.409,
-          "lng": 60.2178,
-          "time": "2026-04-18T05:59:58.199Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "7 km SSE of Indios, Puerto Rico",
-          "magnitude": 2.47,
-          "depth": 8.87,
-          "lat": 17.9348333333333,
-          "lng": -66.7883333333333,
-          "time": "2026-04-18T05:54:40.980Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "5 km NE of Ōmachi, Japan",
-          "magnitude": 4.9,
-          "depth": 10,
-          "lat": 36.5388,
-          "lng": 137.9099,
-          "time": "2026-04-18T05:54:30.799Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "45 km NW of Ninilchik, Alaska",
-          "magnitude": 3.5,
-          "depth": 97.6,
-          "lat": 60.291,
-          "lng": -152.323,
-          "time": "2026-04-18T05:35:49.482Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "Kuril Islands",
+          "location": "south of the Kermadec Islands",
           "magnitude": 5.2,
-          "depth": 35,
-          "lat": 45.7789,
-          "lng": 151.8949,
-          "time": "2026-04-18T04:40:12.867Z",
+          "depth": 10,
+          "lat": -32.0442,
+          "lng": -177.9073,
+          "time": "2026-04-18T12:16:26.188Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "279 km SSE of Amahai, Indonesia",
-          "magnitude": 4.4,
-          "depth": 205.269,
-          "lat": -5.6651,
-          "lng": 129.9006,
-          "time": "2026-04-18T04:37:12.871Z",
+          "location": "Kermadec Islands region",
+          "magnitude": 4.8,
+          "depth": 10,
+          "lat": -31.9639,
+          "lng": -178.1147,
+          "time": "2026-04-18T12:15:48.541Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "26 km ENE of Karligan, Philippines",
+          "magnitude": 4.6,
+          "depth": 10,
+          "lat": 15.0254,
+          "lng": 122.284,
+          "time": "2026-04-18T12:01:20.423Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "144 km E of Modisi, Indonesia",
+          "magnitude": 5,
+          "depth": 30.56,
+          "lat": 0.213,
+          "lng": 125.7153,
+          "time": "2026-04-18T11:04:56.276Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "85 km ESE of Egegik, Alaska",
+          "magnitude": 2.5,
+          "depth": 140.2,
+          "lat": 57.935,
+          "lng": -156.032,
+          "time": "2026-04-18T11:04:04.097Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "south of the Kermadec Islands",
+          "magnitude": 5.9,
+          "depth": 10,
+          "lat": -32.0876,
+          "lng": -178.0627,
+          "time": "2026-04-18T10:47:54.936Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "149 km E of Modisi, Indonesia",
+          "magnitude": 4.9,
+          "depth": 35,
+          "lat": 0.2372,
+          "lng": 125.7661,
+          "time": "2026-04-18T10:23:40.737Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 42,
+      "total24h": 45,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4665,100 +4666,82 @@
     },
     "news": [
       {
+        "title": "Strait of Hormuz : Iran to block transit until US lifts its blockade",
+        "pubDate": "Sat, 18 Apr 2026 12:51:33 GMT",
+        "link": "https://www.france24.com/en/strait-of-hormuz-iran-to-block-transit-until-us-lifts-its-blockade",
+        "source": "France24"
+      },
+      {
+        "title": "Middle East : Fragile US-Iran talks hinge on nuclear and Hormuz disputes",
+        "pubDate": "Sat, 18 Apr 2026 12:42:51 GMT",
+        "link": "https://www.france24.com/en/middle-east-fragile-us-iran-talks-hinge-on-nuclear-and-hormuz-disputes",
+        "source": "France24"
+      },
+      {
+        "title": "Sudan’s war leaves thousands of children alone and displaced",
+        "pubDate": "Sat, 18 Apr 2026 12:39:57 GMT",
+        "link": "https://www.france24.com/en/sudan-s-war-leaves-thousands-of-children-alone-and-displaced",
+        "source": "France24"
+      },
+      {
+        "title": "French film star Nathalie Baye dies aged 77, media report",
+        "pubDate": "Sat, 18 Apr 2026 12:31:16 GMT",
+        "link": "https://www.bbc.com/news/articles/cn9q48y9wr7o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Iran closes Strait of Hormuz again over US blockade of its ports",
+        "pubDate": "Sat, 18 Apr 2026 12:03:33 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/18/iran-closes-strait-of-hormuz-again-over-us-blockade-of-its-ports?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
         "title": "UNICEF ‘outraged’ by killing of Gaza water truck drivers, urges investigation",
         "pubDate": "Sat, 18 Apr 2026 12:00:00 +0000",
         "link": "https://news.un.org/feed/view/en/story/2026/04/1167331",
         "source": "UN News"
       },
       {
-        "title": "Trump says US will ‘start dropping bombs again’ if no Iran deal is reached",
-        "pubDate": "Sat, 18 Apr 2026 06:10:45 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/18/trump-says-us-will-start-dropping-bombs-again-if-no-iran-deal-is-reached?traffic_source=rss",
+        "title": "Gunfire reported by vessel in Strait of Hormuz",
+        "pubDate": "Sat, 18 Apr 2026 11:55:48 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/18/gunfire-reported-by-vessel-in-strait-of-hormuz?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Iran war: What is happening on day 50 of the US-Iran conflict?",
-        "pubDate": "Sat, 18 Apr 2026 06:07:12 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/18/iran-war-what-is-happening-on-day-50-of-the-us-iran-conflict?traffic_source=rss",
+        "title": "Displaced Lebanese return as Israeli shelling violates ceasefire in south",
+        "pubDate": "Sat, 18 Apr 2026 11:53:02 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/18/displaced-lebanese-return-as-israeli-shelling-violates-ceasefire-in-south?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Oil prices plunge as Iran says Strait 'open'",
-        "pubDate": "Sat, 18 Apr 2026 06:06:38 GMT",
-        "link": "https://www.bbc.com/news/articles/ckg045z73z1o?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Rutte dismisses speculation about US leaving NATO",
+        "pubDate": "Sat, 18 Apr 2026 11:07:00 GMT",
+        "link": "https://www.dw.com/en/rutte-dismisses-speculation-about-us-leaving-nato/a-76841349?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Madonna joins Sabrina Carpenter to surprise Coachella",
+        "pubDate": "Sat, 18 Apr 2026 10:32:54 GMT",
+        "link": "https://www.bbc.com/news/articles/c77my6gnpy4o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Curry, Warriors knocked out of NBA play-in tournament by Suns",
-        "pubDate": "Sat, 18 Apr 2026 05:50:22 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/4/18/curry-warriors-knocked-out-of-nba-play-in-tournament-by-suns?traffic_source=rss",
-        "source": "Al Jazeera"
+        "title": "Displaced by Iran war: out of Lebanon, into Syrian crisis",
+        "pubDate": "Sat, 18 Apr 2026 10:07:00 GMT",
+        "link": "https://www.dw.com/en/displaced-by-iran-war-out-of-lebanon-into-syrian-crisis/a-76822402?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
       },
       {
-        "title": "Middle East live: Iran threatens to close Strait of Hormuz again if US blockade continues",
-        "pubDate": "Sat, 18 Apr 2026 05:01:20 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260418-iran-threatens-to-close-strait-of-hormuz-again-if-us-blockade-continues",
-        "source": "France24"
-      },
-      {
-        "title": "Tale of two truces: Lebanon 'steps up' alongside Israel as Tehran and Washington edge toward a deal",
-        "pubDate": "Sat, 18 Apr 2026 04:58:33 GMT",
-        "link": "https://www.france24.com/en/tv-shows/spotlight/20260418-tale-of-two-truces-lebanon-steps-up-alongside-israel-as-tehran-and-washington-edge-toward-a-deal",
-        "source": "France24"
+        "title": "White House and Anthropic hold 'productive' meeting amid fears over Mythos model",
+        "pubDate": "Sat, 18 Apr 2026 00:37:06 GMT",
+        "link": "https://www.bbc.com/news/articles/cyv10e1d13po?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
       },
       {
         "title": "World Cup 2026: Fans to pay $150 for train ticket to stadium",
         "pubDate": "Fri, 17 Apr 2026 23:53:00 GMT",
         "link": "https://www.dw.com/en/world-cup-2026-fans-to-pay-150-for-train-ticket-to-stadium/a-76839579?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
-      },
-      {
-        "title": "CSDA Quality Assessment Report Evaluates Satellogic NewSat Data",
-        "pubDate": "Fri, 17 Apr 2026 21:21:02 +0000",
-        "link": "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data/",
-        "source": "NASA"
-      },
-      {
-        "title": "Trump says Iran peace deal could be reached ‘soon’ after Tehran reopens Hormuz Strait",
-        "pubDate": "Fri, 17 Apr 2026 20:54:37 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260417-trump-says-iran-peace-deal-could-be-reached-soon-after-tehran-reopens-hormuz-strait",
-        "source": "France24"
-      },
-      {
-        "title": "Webinar 4/29: NASA CSDA Program Vendor Focus- MDA Space",
-        "pubDate": "Fri, 17 Apr 2026 20:33:51 +0000",
-        "link": "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space/",
-        "source": "NASA"
-      },
-      {
-        "title": "As Strait of Hormuz reopens, Europe looks to secure shipping",
-        "pubDate": "Fri, 17 Apr 2026 20:25:00 GMT",
-        "link": "https://www.dw.com/en/as-strait-of-hormuz-reopens-europe-looks-to-secure-shipping/a-76838636?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Can the 25th Amendment remove Donald Trump from office?",
-        "pubDate": "Fri, 17 Apr 2026 19:55:00 GMT",
-        "link": "https://www.dw.com/en/can-the-25th-amendment-remove-donald-trump-from-office/a-76835018?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "NASA Artemis II Human Research Data Methodology Challenge",
-        "pubDate": "Fri, 17 Apr 2026 18:41:35 +0000",
-        "link": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/center-of-excellence-for-collaborative-innovation-coeci/nasa-artemis-ii-human-research-data-methodology-challenge/",
-        "source": "NASA"
-      },
-      {
-        "title": "Thousands celebrate open-air Mass with Pope Leo in Cameroon - in pictures",
-        "pubDate": "Fri, 17 Apr 2026 18:25:12 GMT",
-        "link": "https://www.bbc.com/news/articles/cdj7kwn1d78o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Kanye West concert in Poland cancelled over antisemitic comments",
-        "pubDate": "Fri, 17 Apr 2026 18:19:10 GMT",
-        "link": "https://www.bbc.com/news/articles/czx95rl4ek5o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
       },
       {
         "title": "Kenyan firm sacks more than 1,000 workers after losing Meta contract",
@@ -4783,6 +4766,24 @@
         "pubDate": "Fri, 17 Apr 2026 07:49:38 GMT",
         "link": "https://www.theguardian.com/environment/2026/apr/17/weather-tracker-hail-covers-parts-of-tunisia-and-algeria-like-snow",
         "source": "Guardian"
+      },
+      {
+        "title": "Spring Rains Saturate Michigan",
+        "pubDate": "Fri, 17 Apr 2026 04:01:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/spring-rains-saturate-michigan/",
+        "source": "NASA Earth"
+      },
+      {
+        "title": "South African politician Julius Malema given five-year jail term for gun offence",
+        "pubDate": "Thu, 16 Apr 2026 12:37:49 GMT",
+        "link": "https://www.theguardian.com/world/2026/apr/16/south-africa-julius-malema-jail-term-rifle",
+        "source": "Guardian"
+      },
+      {
+        "title": "Eyeing the Richat Structure",
+        "pubDate": "Thu, 16 Apr 2026 04:00:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/eyeing-the-richat-structure/",
+        "source": "NASA Earth"
       }
     ],
     "volcanic": [],
@@ -4836,7 +4837,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-18T07:06:59.037Z"
+    "lastUpdated": "2026-04-18T13:02:02.961Z"
   },
   "momentum": {
     "indicators": [
