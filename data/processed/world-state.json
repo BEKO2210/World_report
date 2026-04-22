@@ -1,20 +1,21 @@
 {
   "meta": {
-    "generated": "2026-04-22T02:30:30.882Z",
+    "generated": "2026-04-22T07:46:53.263Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-04-22T08:30:30.882Z",
+    "next_update": "2026-04-22T13:46:53.263Z",
     "realtimePulse": {
-      "environment": -0.59,
-      "society": 0,
+      "environment": -0.51,
+      "society": 0.05,
       "economy": -0.29,
       "progress": 0.8,
       "details": {
-        "quakeCount": 31,
+        "quakeCount": 28,
         "maxMagnitude": 5.7,
-        "avgGlobalTemp": 16.8,
+        "avgGlobalTemp": 17.1,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 32,
         "arxivPapers": 20
       }
@@ -25,9 +26,9 @@
     "rawValue": 62.5,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.5,
-    "change": 0.1,
-    "trend": "improving",
+    "previous": 65.6,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -72,12 +73,12 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 35.1,
+          "bufferDistance": 35.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -102,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.8,
+      "value": 44.9,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "improving",
-      "change": 0.4,
+      "trend": "stable",
+      "change": 0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 64,
+          "value": 63,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -1196,14 +1197,21 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 64,
+      "globalAvgAQI": 63,
       "cleanestCities": [
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 25,
+          "aqi": 22,
           "lat": -33.87,
           "lng": 151.21
+        },
+        {
+          "city": "London",
+          "country": "",
+          "aqi": 24,
+          "lat": 51.51,
+          "lng": -0.13
         },
         {
           "city": "Berlin",
@@ -1213,46 +1221,39 @@
           "lng": 13.41
         },
         {
-          "city": "London",
+          "city": "Los Angeles",
           "country": "",
-          "aqi": 30,
-          "lat": 51.51,
-          "lng": -0.13
+          "aqi": 27,
+          "lat": 34.05,
+          "lng": -118.24
         },
         {
           "city": "Lagos",
           "country": "",
-          "aqi": 30,
+          "aqi": 29,
           "lat": 6.45,
           "lng": 3.4
-        },
-        {
-          "city": "Los Angeles",
-          "country": "",
-          "aqi": 34,
-          "lat": 34.05,
-          "lng": -118.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 261,
+          "aqi": 262,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 74,
+          "aqi": 75,
           "lat": 39.9,
           "lng": 116.4
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 67,
+          "aqi": 72,
           "lat": 19.08,
           "lng": 72.88
         },
@@ -1266,7 +1267,7 @@
         {
           "city": "Mexico City",
           "country": "",
-          "aqi": 39,
+          "aqi": 40,
           "lat": 19.43,
           "lng": -99.13
         }
@@ -1628,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-22T04:15",
+          "time": "2026-04-22T09:45",
           "interval": 900,
-          "temperature_2m": 3.6,
-          "relative_humidity_2m": 67,
-          "wind_speed_10m": 6.2,
+          "temperature_2m": 8.2,
+          "relative_humidity_2m": 43,
+          "wind_speed_10m": 8.7,
           "weather_code": 0
         }
       },
@@ -1641,11 +1642,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-21T22:15",
+          "time": "2026-04-22T03:45",
           "interval": 900,
-          "temperature_2m": 6.9,
-          "relative_humidity_2m": 61,
-          "wind_speed_10m": 10.7,
+          "temperature_2m": 7.2,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 10.8,
           "weather_code": 3
         }
       },
@@ -1654,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-22T11:15",
+          "time": "2026-04-22T16:45",
           "interval": 900,
-          "temperature_2m": 20.5,
-          "relative_humidity_2m": 52,
-          "wind_speed_10m": 10.1,
-          "weather_code": 1
+          "temperature_2m": 18.4,
+          "relative_humidity_2m": 62,
+          "wind_speed_10m": 9.5,
+          "weather_code": 2
         }
       },
       {
@@ -1667,12 +1668,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-22T12:15",
+          "time": "2026-04-22T17:45",
           "interval": 900,
-          "temperature_2m": 21,
-          "relative_humidity_2m": 52,
-          "wind_speed_10m": 13.7,
-          "weather_code": 2
+          "temperature_2m": 17.7,
+          "relative_humidity_2m": 66,
+          "wind_speed_10m": 7.4,
+          "weather_code": 1
         }
       },
       {
@@ -1680,11 +1681,11 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-21T23:15",
+          "time": "2026-04-22T04:45",
           "interval": 900,
-          "temperature_2m": 17.9,
-          "relative_humidity_2m": 86,
-          "wind_speed_10m": 6.9,
+          "temperature_2m": 16.6,
+          "relative_humidity_2m": 91,
+          "wind_speed_10m": 3.4,
           "weather_code": 2
         }
       },
@@ -1693,12 +1694,12 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-22T03:15",
+          "time": "2026-04-22T08:45",
           "interval": 900,
-          "temperature_2m": 27.8,
-          "relative_humidity_2m": 89,
-          "wind_speed_10m": 4.1,
-          "weather_code": 3
+          "temperature_2m": 29.3,
+          "relative_humidity_2m": 84,
+          "wind_speed_10m": 5.2,
+          "weather_code": 2
         }
       },
       {
@@ -1706,11 +1707,11 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-22T07:45",
+          "time": "2026-04-22T13:15",
           "interval": 900,
-          "temperature_2m": 29.2,
-          "relative_humidity_2m": 77,
-          "wind_speed_10m": 5.5,
+          "temperature_2m": 29.8,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 14.1,
           "weather_code": 1
         }
       },
@@ -1719,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-22T03:15",
+          "time": "2026-04-22T08:45",
           "interval": 900,
-          "temperature_2m": 7.2,
-          "relative_humidity_2m": 80,
-          "wind_speed_10m": 11.5,
+          "temperature_2m": 9.8,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 15.5,
           "weather_code": 0
         }
       }
@@ -3944,73 +3945,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 492564,
-          "forks": 46571,
+          "stars": 492616,
+          "forks": 46575,
           "language": "Markdown",
-          "updated": "2026-04-22T02:25:52Z"
+          "updated": "2026-04-22T07:41:54Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 457683,
-          "forks": 34385,
+          "stars": 457773,
+          "forks": 34396,
           "language": null,
-          "updated": "2026-04-22T02:17:23Z"
+          "updated": "2026-04-22T07:42:50Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 443330,
-          "forks": 44357,
+          "stars": 443341,
+          "forks": 44358,
           "language": "TypeScript",
-          "updated": "2026-04-22T01:59:58Z"
+          "updated": "2026-04-22T07:18:53Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 425683,
-          "forks": 46415,
+          "stars": 425750,
+          "forks": 46432,
           "language": "Python",
-          "updated": "2026-04-22T02:25:03Z"
+          "updated": "2026-04-22T07:44:22Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 385836,
-          "forks": 66111,
+          "stars": 385849,
+          "forks": 66115,
           "language": "Python",
-          "updated": "2026-04-22T02:24:17Z"
+          "updated": "2026-04-22T07:44:26Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 361919,
-          "forks": 73872,
+          "stars": 362045,
+          "forks": 73922,
           "language": "TypeScript",
-          "updated": "2026-04-22T02:26:48Z"
+          "updated": "2026-04-22T07:44:51Z"
         },
         {
           "name": "kamranahmedse/developer-roadmap",
-          "stars": 353340,
-          "forks": 43952,
+          "stars": 353358,
+          "forks": 43953,
           "language": "TypeScript",
-          "updated": "2026-04-22T02:29:15Z"
+          "updated": "2026-04-22T07:31:14Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 343604,
-          "forks": 55492,
+          "stars": 343631,
+          "forks": 55502,
           "language": "Python",
-          "updated": "2026-04-22T02:20:30Z"
+          "updated": "2026-04-22T07:23:00Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 341367,
-          "forks": 81957,
+          "stars": 341384,
+          "forks": 81960,
           "language": null,
-          "updated": "2026-04-22T02:26:50Z"
+          "updated": "2026-04-22T07:31:39Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 293695,
-          "forks": 27728,
+          "stars": 293740,
+          "forks": 27733,
           "language": "Python",
-          "updated": "2026-04-22T02:27:49Z"
+          "updated": "2026-04-22T07:45:01Z"
         }
       ],
       "source": "GitHub"
@@ -4491,6 +4492,12 @@
     },
     "spaceflight": [
       {
+        "title": "Belts of Green in the Washington Suburbs",
+        "published": "2026-04-22T04:01:00Z",
+        "source": "NASA",
+        "summary": "Along the northeast side of the Capital Beltway in Maryland, green spaces weave through the developed landscape."
+      },
+      {
         "title": "Artemis II Mission Milestones: An Image and Video Recap",
         "published": "2026-04-22T01:55:09Z",
         "source": "NASA",
@@ -4518,7 +4525,7 @@
         "title": "NASA and Axiom react to OIG Report on delays in Next-Generation Spacesuit Program",
         "published": "2026-04-21T23:02:17Z",
         "source": "NASASpaceflight",
-        "summary": "NASA’s leadership and Axiom have reacted to a warning from the NASA Office of Inspector…\nThe post NASA and Axiom react to OIG Report on delays in Next-Generation Spacesuit Program appeared first on NA"
+        "summary": "NASA’s leadership and Axiom have reacted to a warning from the NASA Office of Inspector…\r\nThe post NASA and Axiom react to OIG Report on delays in Next-Generation Spacesuit Program appeared first on N"
       },
       {
         "title": "NASA Invites Media to Jordan Artemis Accords Signing Ceremony",
@@ -4543,12 +4550,6 @@
         "published": "2026-04-21T19:13:36Z",
         "source": "NASA",
         "summary": "On March 21, 2026, NASA’s Johnson Space Center Director Vanessa Wyche took the stage at the Space House event at South by Southwest in Austin, Texas, to outline NASA’s next giant leap in human spacefl"
-      },
-      {
-        "title": "NASA, Organ Sharing Network UNOS to Study Faster Organ Transport",
-        "published": "2026-04-21T17:56:04Z",
-        "source": "NASA",
-        "summary": "Every second counts in the life-saving world of medical transplants. To help address that urgency, NASA’s Langley Research Center in Hampton, Virginia, is teaming up with the United Network for Organ "
       }
     ]
   },
@@ -4556,87 +4557,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "112 km ENE of Miyako, Japan",
-          "magnitude": 5.3,
-          "depth": 35,
-          "lat": 39.9179,
-          "lng": 143.2055,
-          "time": "2026-04-22T00:01:12.294Z",
+          "location": "36 km E of Denali National Park, Alaska",
+          "magnitude": 2.8,
+          "depth": 0.2,
+          "lat": 63.538,
+          "lng": -150.996,
+          "time": "2026-04-22T07:40:08.091Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "93 km W of Puerto, Chile",
-          "magnitude": 4.4,
-          "depth": 10,
-          "lat": -20.2857,
-          "lng": -71.0453,
-          "time": "2026-04-21T22:00:30.129Z",
+          "location": "4 km SSE of Magas Arriba, Puerto Rico",
+          "magnitude": 2.75,
+          "depth": 9.56,
+          "lat": 17.9788333333333,
+          "lng": -66.7586666666667,
+          "time": "2026-04-22T07:07:39.870Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "140 km E of Noda, Japan",
-          "magnitude": 5.6,
-          "depth": 35,
-          "lat": 40.1562,
-          "lng": 143.4599,
-          "time": "2026-04-21T18:44:12.001Z",
+          "location": "34 km W of Indian Springs, Nevada",
+          "magnitude": 2.51,
+          "depth": 8.9836,
+          "lat": 36.6073,
+          "lng": -116.056,
+          "time": "2026-04-22T04:44:10.984Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "112 km E of Noda, Japan",
-          "magnitude": 4.4,
-          "depth": 40.126,
-          "lat": 40.2344,
-          "lng": 143.1277,
-          "time": "2026-04-21T18:43:02.208Z",
+          "location": "17 km SSE of Esperanza, Puerto Rico",
+          "magnitude": 3.11,
+          "depth": 10.05,
+          "lat": 17.9633333333333,
+          "lng": -65.3773333333333,
+          "time": "2026-04-22T04:23:22.600Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "107 km N of San Juan, Puerto Rico",
-          "magnitude": 3.34,
-          "depth": 29.58,
-          "lat": 19.4311666666667,
-          "lng": -66.0048333333333,
-          "time": "2026-04-21T18:02:39.800Z",
+          "location": "3 km SSW of Indios, Puerto Rico",
+          "magnitude": 3.03,
+          "depth": 12.57,
+          "lat": 17.9665,
+          "lng": -66.8375,
+          "time": "2026-04-22T04:20:16.700Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "24 km ESE of Laraos, Peru",
-          "magnitude": 4.5,
-          "depth": 102.261,
-          "lat": -12.425,
-          "lng": -75.5727,
-          "time": "2026-04-21T16:18:55.418Z",
+          "location": "3 km SSW of Indios, Puerto Rico",
+          "magnitude": 3.15,
+          "depth": 12.64,
+          "lat": 17.9641666666667,
+          "lng": -66.8398333333333,
+          "time": "2026-04-22T04:07:57.820Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "35 km E of Noda, Japan",
-          "magnitude": 4.4,
-          "depth": 50.385,
-          "lat": 40.0783,
-          "lng": 142.2292,
-          "time": "2026-04-21T16:18:10.843Z",
+          "location": "3 km WNW of Delta, B.C., MX",
+          "magnitude": 2.56,
+          "depth": 12.01,
+          "lat": 32.3683333333333,
+          "lng": -115.2255,
+          "time": "2026-04-22T04:05:50.430Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "12 km SSW of Santiago Quiavicuzas, Mexico",
-          "magnitude": 5,
-          "depth": 81.326,
-          "lat": 16.7709,
-          "lng": -95.7767,
-          "time": "2026-04-21T14:52:17.411Z",
+          "location": "75 km N of Brenas, Puerto Rico",
+          "magnitude": 3.17,
+          "depth": 46.15,
+          "lat": 19.1421666666667,
+          "lng": -66.4361666666667,
+          "time": "2026-04-22T02:49:12.430Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 31,
+      "total24h": 28,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4665,6 +4666,60 @@
     },
     "news": [
       {
+        "title": "US halts shipment of Iraq’s oil dollars in bid to curb Iran-linked groups",
+        "pubDate": "Wed, 22 Apr 2026 07:18:26 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/22/us-halts-iraq-dollar-shipments-in-pressure-campaign-over-iran-linked-groups?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "World Cup host Mexico pledges security at tourist sites after shooting",
+        "pubDate": "Wed, 22 Apr 2026 07:15:06 +0000",
+        "link": "https://www.aljazeera.com/sports/2026/4/22/world-cup-host-mexico-pledges-security-at-tourist-sites-after-shooting?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Is Bangladesh killing reforms introduced after student-led protests?",
+        "pubDate": "Wed, 22 Apr 2026 07:03:54 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/22/is-bangladesh-killing-reforms-introduced-after-student-led-protests?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Digital memory at stake: Why news outlets block the Wayback Machine",
+        "pubDate": "Wed, 22 Apr 2026 06:37:00 GMT",
+        "link": "https://www.dw.com/en/digital-memory-at-stake-why-news-outlets-block-the-wayback-machine/a-76887853?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "French Cup: Lens defeat Toulouse and qualify for first final in 28 years",
+        "pubDate": "Wed, 22 Apr 2026 05:59:50 GMT",
+        "link": "https://www.france24.com/en/tv-shows/sports/20260422-french-cup-lens-defeat-toulouse-and-qualify-for-first-final-in-28-years",
+        "source": "France24"
+      },
+      {
+        "title": "Heatwaves, floods and wildfires pose rising threat to democracy, report finds",
+        "pubDate": "Wed, 22 Apr 2026 05:00:09 GMT",
+        "link": "https://www.theguardian.com/global-development/2026/apr/22/climate-change-extreme-weather-heatwaves-floods-wildfires-threat-democracy-elections",
+        "source": "Guardian"
+      },
+      {
+        "title": "Phone tracking shows how Colombian mercenaries backed Sudan's RSF - report",
+        "pubDate": "Wed, 22 Apr 2026 04:01:50 GMT",
+        "link": "https://www.bbc.com/news/articles/cn4vk13wgwwo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Belts of Green in the Washington Suburbs",
+        "pubDate": "Wed, 22 Apr 2026 04:01:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/belts-of-green-in-the-washington-suburbs/",
+        "source": "NASA Earth"
+      },
+      {
+        "title": "Middle East war live: Trump says Iran 'collapsing financially' as Washington prolongs ceasefire",
+        "pubDate": "Wed, 22 Apr 2026 03:27:38 GMT",
+        "link": "https://www.france24.com/en/middle-east/20260422-live-us-will-extend-ceasefire-unclear-if-iran-agrees-war",
+        "source": "France24"
+      },
+      {
         "title": "Virginia approves redistricting, giving Democrats edge in midterms",
         "pubDate": "Wed, 22 Apr 2026 02:24:41 GMT",
         "link": "https://www.bbc.com/news/articles/c895j8zgqe4o?at_medium=RSS&amp;at_campaign=rss",
@@ -4675,12 +4730,6 @@
         "pubDate": "Wed, 22 Apr 2026 02:20:37 GMT",
         "link": "https://www.france24.com/en/americas/20260422-virginia-redistricting-vote-could-boost-democrats-in-us-midterms",
         "source": "France24"
-      },
-      {
-        "title": "Artemis II Mission Milestones: An Image and Video Recap",
-        "pubDate": "Wed, 22 Apr 2026 01:55:09 +0000",
-        "link": "https://www.nasa.gov/general/artemis-ii-mission-milestones-an-image-and-video-recap/",
-        "source": "NASA"
       },
       {
         "title": "Virginia voters approve plan that could boost Democrats&#039; seats in Congress",
@@ -4695,40 +4744,10 @@
         "source": "DW News"
       },
       {
-        "title": "Argentina’s Milei sings and lights torch for Israeli national day",
-        "pubDate": "Wed, 22 Apr 2026 00:53:59 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/22/argentinas-milei-sings-and-lights-torch-for-israeli-national-day?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Trump extends ceasefire and hopes for ‘unified proposal’",
-        "pubDate": "Wed, 22 Apr 2026 00:51:59 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/22/trump-extends-ceasefire-and-hopes-for-unified?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Curiosity Blog, Sols 4867-4872: Sand Fill In Antofagasta Crater and Finding Our Next Drill Target",
-        "pubDate": "Wed, 22 Apr 2026 00:33:49 +0000",
-        "link": "https://science.nasa.gov/blog/curiosity-blog-sols-4867-4872-sand-fill-in-antofagasta-crater-and-finding-our-next-drill-target/",
-        "source": "NASA"
-      },
-      {
         "title": "Trump buys time for Iran deal after frantic day of diplomacy",
         "pubDate": "Wed, 22 Apr 2026 00:32:10 GMT",
         "link": "https://www.bbc.com/news/articles/cvg4yr90jr2o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
-      },
-      {
-        "title": "Trump extends Iran ceasefire indefinitely as peace talks stall",
-        "pubDate": "Wed, 22 Apr 2026 00:26:22 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260422-trump-extends-iran-ceasefire-indefinitely-as-peace-talks-stall-war-usa",
-        "source": "France24"
-      },
-      {
-        "title": "Iran war live: Trump says ceasefire extended as talks with Tehran in limbo",
-        "pubDate": "Wed, 22 Apr 2026 00:00:00 +0000",
-        "link": "https://www.aljazeera.com/news/liveblog/2026/4/22/iran-war-live-trump-says-ceasefire-extended-as-talks-with-tehran-in-limbo?traffic_source=rss",
-        "source": "Al Jazeera"
       },
       {
         "title": "Trump officials consider sending 1,100 Afghans who aided US forces to Congo",
@@ -4737,34 +4756,10 @@
         "source": "Guardian"
       },
       {
-        "title": "Mexican pyramid gunman had materials tied to Columbine shooting, officials say",
-        "pubDate": "Tue, 21 Apr 2026 22:46:00 GMT",
-        "link": "https://www.dw.com/en/mexican-pyramid-gunman-had-materials-tied-to-columbine-shooting-officials-say/a-76889302?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Japan scraps a ban on lethal weapons exports in a change of its postwar pacifist policy",
-        "pubDate": "Tue, 21 Apr 2026 21:54:10 GMT",
-        "link": "https://www.france24.com/en/japan-scraps-a-ban-on-lethal-weapons-exports-in-a-change-of-its-postwar-pacifist-policy",
-        "source": "France24"
-      },
-      {
-        "title": "NASA Invites Media to Jordan Artemis Accords Signing Ceremony",
-        "pubDate": "Tue, 21 Apr 2026 21:30:25 +0000",
-        "link": "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony/",
-        "source": "NASA"
-      },
-      {
         "title": "Taiwan president blames China for forced cancellation of Eswatini trip",
         "pubDate": "Tue, 21 Apr 2026 18:22:29 GMT",
         "link": "https://www.theguardian.com/world/2026/apr/21/taiwan-president-blames-china-cancel-eswatini-revoke-flight",
         "source": "Guardian"
-      },
-      {
-        "title": "Zelensky says failure of US envoys to visit Kyiv is 'disrespectful'",
-        "pubDate": "Tue, 21 Apr 2026 16:25:44 GMT",
-        "link": "https://www.bbc.com/news/articles/cd9v420y190o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
       },
       {
         "title": "World News in Brief: Tackling the AI digital divide, deadly migration journeys, Lucy Hale named new WFP Goodwill Ambassador",
@@ -4783,6 +4778,12 @@
         "pubDate": "Tue, 21 Apr 2026 12:00:00 +0000",
         "link": "https://news.un.org/feed/view/en/story/2026/04/1167347",
         "source": "UN News"
+      },
+      {
+        "title": "Euclid Space Warps: help spot galaxies bending spacetime",
+        "pubDate": "Tue, 21 Apr 2026 11:00:00 +0200",
+        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_Space_Warps_help_spot_galaxies_bending_spacetime]]>",
+        "source": "ESA"
       }
     ],
     "volcanic": [],
@@ -4836,7 +4837,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-22T02:30:30.882Z"
+    "lastUpdated": "2026-04-22T07:46:53.263Z"
   },
   "momentum": {
     "indicators": [
