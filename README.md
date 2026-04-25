@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 66.7 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 67.3 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.7/100  ↑ +1.2
+█████████████░░░░░░░  67.3/100  ↑ +0.6
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 25.04.2026 07:17 UTC
+> **Letzte Aktualisierung:** 25.04.2026 13:04 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.6**/100 | ↑ +0.3 | 25% |
-| 🟡 Gesellschaft | **56**/100 | → +0 | 25% |
+| 🟡 Umwelt | **47.9**/100 | ↑ +3.3 | 25% |
+| 🟡 Gesellschaft | **55.9**/100 | → -0.1 | 25% |
 | 🟢 Wirtschaft | **68.5**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **78.1**/100 | → +0 | 20% |
-| 🔵 Momentum | **84.2**/100 | → +0 | 10% |
+| 🔵 Momentum | **83.3**/100 | → +0 | 10% |
 
 ---
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **66** | WAQI |
+| Luftqualität (Ø) | AQI **72** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -69,15 +69,14 @@
 
 ---
 
-## 📈 Momentum: 16/19 Trends positiv
+## 📈 Momentum: 15/18 Trends positiv
 
 <details>
-<summary>Alle 19 Indikatoren anzeigen</summary>
+<summary>Alle 18 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (16)
+#### ✅ Verbessert sich (15)
 - **Lebenserwartung**: +1.6%
 - **Kindersterblichkeit**: -2.3%
-- **Erneuerbare Energie**: +6.6%
 - **Internet-Zugang**: +12.1%
 - **BIP-Wachstum**: +48.9%
 - **Arbeitslosigkeit**: -19.1%
@@ -94,7 +93,7 @@
 
 #### ❌ Verschlechtert sich (3)
 - **CO2-Konzentration**: +2.0%
-- **CO2 pro Kopf**: +1.4%
+- **CO2 pro Kopf**: +1.9%
 - **Militärausgaben (% BIP)**: +5.6%
 
 </details>
@@ -221,5 +220,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 25.04.2026 07:17 UTC | 39/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 25.04.2026 13:04 UTC | 38/40 Quellen aktiv
 </sub>
