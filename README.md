@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 67.3 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 66 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  67.3/100  ↑ +0.6
+█████████████░░░░░░░  66/100  ↓ -1.3
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 25.04.2026 13:04 UTC
+> **Letzte Aktualisierung:** 25.04.2026 19:02 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **47.9**/100 | ↑ +3.3 | 25% |
-| 🟡 Gesellschaft | **55.9**/100 | → -0.1 | 25% |
+| 🟡 Umwelt | **47.8**/100 | → -0.1 | 25% |
+| 🟡 Gesellschaft | **55.8**/100 | → -0.1 | 25% |
 | 🟢 Wirtschaft | **68.5**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **78.1**/100 | → +0 | 20% |
-| 🔵 Momentum | **83.3**/100 | → +0 | 10% |
+| 🟢 Momentum | **78.6**/100 | → +0 | 10% |
 
 ---
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **429 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **72** | WAQI |
+| Luftqualität (Ø) | AQI **76** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -69,12 +69,12 @@
 
 ---
 
-## 📈 Momentum: 15/18 Trends positiv
+## 📈 Momentum: 11/14 Trends positiv
 
 <details>
-<summary>Alle 18 Indikatoren anzeigen</summary>
+<summary>Alle 14 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (15)
+#### ✅ Verbessert sich (11)
 - **Lebenserwartung**: +1.6%
 - **Kindersterblichkeit**: -2.3%
 - **Internet-Zugang**: +12.1%
@@ -85,16 +85,12 @@
 - **Alphabetisierung**: +0.7%
 - **Mobilfunk**: +3.8%
 - **F&E Ausgaben**: +10.8%
-- **Elektrizitätszugang**: +1.4%
-- **Trinkwasser**: +2.7%
-- **Gesundheitsausgaben**: +1.0%
-- **Urbanisierung**: +1.6%
 - **Patentanmeldungen**: +1.2%
 
 #### ❌ Verschlechtert sich (3)
 - **CO2-Konzentration**: +2.0%
-- **CO2 pro Kopf**: +1.9%
-- **Militärausgaben (% BIP)**: +5.6%
+- **Waldfläche**: -0.3%
+- **CO2 pro Kopf**: +1.4%
 
 </details>
 
@@ -220,5 +216,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 25.04.2026 13:04 UTC | 38/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 25.04.2026 19:02 UTC | 31/40 Quellen aktiv
 </sub>
