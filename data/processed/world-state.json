@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generated": "2026-04-26T02:39:51.798Z",
+    "generated": "2026-04-26T13:08:16.059Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 39,
-    "sources_success_rate": 98,
-    "next_update": "2026-04-26T08:39:51.798Z",
+    "sources_available": 40,
+    "sources_success_rate": 100,
+    "next_update": "2026-04-26T19:08:16.059Z",
     "realtimePulse": {
-      "environment": -1,
+      "environment": -0.88,
       "society": 0.05,
       "economy": -0.27,
       "progress": 0.8,
       "details": {
-        "quakeCount": 50,
-        "maxMagnitude": 5.4,
-        "avgGlobalTemp": 17.7,
+        "quakeCount": 40,
+        "maxMagnitude": 5.9,
+        "avgGlobalTemp": 19.2,
         "newsSentiment": -0.42,
         "cryptoFearGreed": 33,
         "arxivPapers": 20
@@ -26,9 +26,9 @@
     "rawValue": 62.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 66,
-    "change": -0.5,
-    "trend": "declining",
+    "previous": 65.5,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -52,8 +52,8 @@
         },
         "society": {
           "direction": "expansion",
-          "position": "elastic",
-          "level": 1
+          "position": "stable",
+          "level": 0
         },
         "economy": {
           "direction": "expansion",
@@ -67,13 +67,13 @@
         },
         "momentum": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         }
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.6,
+          "bufferDistance": 34.7,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
@@ -103,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.4,
+      "value": 44.5,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "declining",
-      "change": -3.4,
+      "trend": "stable",
+      "change": 0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -140,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 72,
+          "value": 73,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -159,8 +159,8 @@
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "improving",
-      "change": 0.2,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -1197,58 +1197,72 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 72,
+      "globalAvgAQI": 73,
       "cleanestCities": [
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 26,
+          "aqi": 18,
           "lat": -33.87,
           "lng": 151.21
         },
         {
+          "city": "Los Angeles",
+          "country": "",
+          "aqi": 30,
+          "lat": 34.05,
+          "lng": -118.24
+        },
+        {
           "city": "London",
           "country": "",
-          "aqi": 28,
+          "aqi": 35,
           "lat": 51.51,
           "lng": -0.13
         },
         {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 30,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
           "city": "Lagos",
           "country": "",
-          "aqi": 33,
+          "aqi": 36,
           "lat": 6.45,
           "lng": 3.4
         },
         {
-          "city": "Los Angeles",
+          "city": "Mexico City",
           "country": "",
-          "aqi": 36,
-          "lat": 34.05,
-          "lng": -118.24
+          "aqi": 38,
+          "lat": 19.43,
+          "lng": -99.13
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 298,
+          "aqi": 315,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 78,
+          "aqi": 70,
           "lat": 39.9,
           "lng": 116.4
+        },
+        {
+          "city": "Mumbai",
+          "country": "",
+          "aqi": 65,
+          "lat": 19.08,
+          "lng": 72.88
+        },
+        {
+          "city": "Tokyo",
+          "country": "",
+          "aqi": 63,
+          "lat": 35.68,
+          "lng": 139.69
         },
         {
           "city": "Cairo",
@@ -1256,20 +1270,6 @@
           "aqi": 63,
           "lat": 30.04,
           "lng": 31.24
-        },
-        {
-          "city": "Mumbai",
-          "country": "",
-          "aqi": 62,
-          "lat": 19.08,
-          "lng": 72.88
-        },
-        {
-          "city": "São Paulo",
-          "country": "",
-          "aqi": 62,
-          "lat": -23.55,
-          "lng": -46.63
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1629,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-26T04:30",
+          "time": "2026-04-26T15:00",
           "interval": 900,
-          "temperature_2m": 5.5,
-          "relative_humidity_2m": 70,
-          "wind_speed_10m": 14.6,
+          "temperature_2m": 13.8,
+          "relative_humidity_2m": 22,
+          "wind_speed_10m": 8.7,
           "weather_code": 1
         }
       },
@@ -1642,12 +1642,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-25T22:30",
+          "time": "2026-04-26T09:00",
           "interval": 900,
-          "temperature_2m": 5,
-          "relative_humidity_2m": 95,
-          "wind_speed_10m": 8.9,
-          "weather_code": 61
+          "temperature_2m": 6.4,
+          "relative_humidity_2m": 91,
+          "wind_speed_10m": 11.3,
+          "weather_code": 3
         }
       },
       {
@@ -1655,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-26T11:30",
+          "time": "2026-04-26T22:00",
           "interval": 900,
-          "temperature_2m": 19.1,
-          "relative_humidity_2m": 52,
-          "wind_speed_10m": 5.9,
-          "weather_code": 0
+          "temperature_2m": 14.9,
+          "relative_humidity_2m": 81,
+          "wind_speed_10m": 3.7,
+          "weather_code": 2
         }
       },
       {
@@ -1668,11 +1668,11 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-26T12:30",
+          "time": "2026-04-26T23:00",
           "interval": 900,
-          "temperature_2m": 22.6,
-          "relative_humidity_2m": 45,
-          "wind_speed_10m": 9.4,
+          "temperature_2m": 15.6,
+          "relative_humidity_2m": 78,
+          "wind_speed_10m": 4.5,
           "weather_code": 0
         }
       },
@@ -1681,12 +1681,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-25T23:30",
+          "time": "2026-04-26T10:00",
           "interval": 900,
-          "temperature_2m": 23.1,
-          "relative_humidity_2m": 60,
-          "wind_speed_10m": 6.2,
-          "weather_code": 0
+          "temperature_2m": 26.3,
+          "relative_humidity_2m": 46,
+          "wind_speed_10m": 14.5,
+          "weather_code": 1
         }
       },
       {
@@ -1694,12 +1694,12 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-26T03:30",
+          "time": "2026-04-26T14:00",
           "interval": 900,
-          "temperature_2m": 24.7,
-          "relative_humidity_2m": 91,
-          "wind_speed_10m": 7.7,
-          "weather_code": 81
+          "temperature_2m": 27.8,
+          "relative_humidity_2m": 80,
+          "wind_speed_10m": 12.2,
+          "weather_code": 3
         }
       },
       {
@@ -1707,12 +1707,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-26T08:00",
+          "time": "2026-04-26T18:30",
           "interval": 900,
-          "temperature_2m": 30,
-          "relative_humidity_2m": 58,
-          "wind_speed_10m": 1.4,
-          "weather_code": 0
+          "temperature_2m": 30.6,
+          "relative_humidity_2m": 70,
+          "wind_speed_10m": 11.5,
+          "weather_code": 95
         }
       },
       {
@@ -1720,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-26T03:30",
+          "time": "2026-04-26T14:00",
           "interval": 900,
-          "temperature_2m": 11.4,
-          "relative_humidity_2m": 73,
-          "wind_speed_10m": 11.9,
+          "temperature_2m": 18.5,
+          "relative_humidity_2m": 29,
+          "wind_speed_10m": 9,
           "weather_code": 0
         }
       }
@@ -3945,73 +3945,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 496050,
-          "forks": 47014,
+          "stars": 496460,
+          "forks": 47051,
           "language": "Markdown",
-          "updated": "2026-04-26T02:38:04Z"
+          "updated": "2026-04-26T13:06:07Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 459003,
-          "forks": 34470,
+          "stars": 459144,
+          "forks": 34480,
           "language": null,
-          "updated": "2026-04-26T02:29:15Z"
+          "updated": "2026-04-26T13:05:38Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 443559,
-          "forks": 44384,
+          "stars": 443594,
+          "forks": 44385,
           "language": "TypeScript",
-          "updated": "2026-04-26T02:27:48Z"
+          "updated": "2026-04-26T12:53:04Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 426485,
-          "forks": 46548,
+          "stars": 426584,
+          "forks": 46561,
           "language": "Python",
-          "updated": "2026-04-26T02:32:48Z"
+          "updated": "2026-04-26T13:00:02Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 386043,
-          "forks": 66125,
+          "stars": 386057,
+          "forks": 66129,
           "language": "Python",
-          "updated": "2026-04-26T02:22:53Z"
+          "updated": "2026-04-26T12:58:45Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 363939,
-          "forks": 74524,
+          "stars": 364202,
+          "forks": 74587,
           "language": "TypeScript",
-          "updated": "2026-04-26T02:38:02Z"
+          "updated": "2026-04-26T13:05:47Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 353642,
-          "forks": 43968,
+          "stars": 353669,
+          "forks": 43970,
           "language": "TypeScript",
-          "updated": "2026-04-26T02:21:56Z"
+          "updated": "2026-04-26T12:55:52Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 344307,
-          "forks": 55614,
+          "stars": 344504,
+          "forks": 55661,
           "language": "Python",
-          "updated": "2026-04-26T02:36:50Z"
+          "updated": "2026-04-26T13:03:58Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 342671,
-          "forks": 82176,
+          "stars": 342792,
+          "forks": 82200,
           "language": null,
-          "updated": "2026-04-26T02:35:46Z"
+          "updated": "2026-04-26T12:57:12Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 294395,
-          "forks": 27773,
+          "stars": 294456,
+          "forks": 27774,
           "language": "Python",
-          "updated": "2026-04-26T02:22:03Z"
+          "updated": "2026-04-26T13:00:12Z"
         }
       ],
       "source": "GitHub"
@@ -4495,7 +4495,7 @@
         "title": "Progress MS-34 to launch from Baikonur for ISS cargo delivery",
         "published": "2026-04-25T16:30:36Z",
         "source": "NASASpaceflight",
-        "summary": "Two weeks after the CRS NG-24 mission launched cargo to the International Space Station (ISS),…\nThe post Progress MS-34 to launch from Baikonur for ISS cargo delivery appeared first on NASASpaceFlight"
+        "summary": "Two weeks after the CRS NG-24 mission launched cargo to the International Space Station (ISS),…\r\nThe post Progress MS-34 to launch from Baikonur for ISS cargo delivery appeared first on NASASpaceFligh"
       },
       {
         "title": "I Am Artemis: Peter Rossoni",
@@ -4557,87 +4557,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "165 km NNE of Cruz Bay, U.S. Virgin Islands",
-          "magnitude": 3.72,
-          "depth": 22,
-          "lat": 19.731,
-          "lng": -64.229,
-          "time": "2026-04-26T01:03:53.230Z",
+          "location": "31 km E of Parapat, Indonesia",
+          "magnitude": 4.6,
+          "depth": 183.434,
+          "lat": 2.623,
+          "lng": 99.2195,
+          "time": "2026-04-26T11:52:25.631Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "3 km SSW of San Francisco Zoo, CA",
-          "magnitude": 2.66,
-          "depth": 6.86999988555908,
-          "lat": 37.7031669616699,
-          "lng": -122.518669128418,
-          "time": "2026-04-25T23:41:56.730Z",
+          "location": "100 km N of Culebra, Puerto Rico",
+          "magnitude": 3.49,
+          "depth": 12,
+          "lat": 19.214,
+          "lng": -65.2778,
+          "time": "2026-04-26T11:29:51.200Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "3 km SSW of San Francisco Zoo, CA",
-          "magnitude": 2.96,
-          "depth": 6.96000003814697,
-          "lat": 37.7043342590332,
-          "lng": -122.518165588379,
-          "time": "2026-04-25T23:39:38.270Z",
+          "location": "118 km NW of Yakutat, Alaska",
+          "magnitude": 2.5,
+          "depth": 4.3,
+          "lat": 60.294,
+          "lng": -141.232,
+          "time": "2026-04-26T10:58:47.452Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "Kermadec Islands, New Zealand",
-          "magnitude": 4.9,
-          "depth": 73.664,
-          "lat": -30.2935,
-          "lng": -177.8716,
-          "time": "2026-04-25T23:35:19.847Z",
+          "location": "17 km S of Lincoln, Montana",
+          "magnitude": 2.8,
+          "depth": 9.482,
+          "lat": 46.7935,
+          "lng": -112.6742,
+          "time": "2026-04-26T10:46:32.113Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "177 km S of Pagar Alam, Indonesia",
-          "magnitude": 4.7,
-          "depth": 35,
-          "lat": -5.633,
-          "lng": 103.2816,
-          "time": "2026-04-25T23:00:58.746Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "10 km NNE of Ivanof Bay, Alaska",
-          "magnitude": 2.6,
-          "depth": 108.6,
-          "lat": 55.994,
-          "lng": -159.449,
-          "time": "2026-04-25T22:16:06.879Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "north of Svalbard",
+          "location": "49 km W of La Quiaca, Argentina",
           "magnitude": 4.3,
-          "depth": 10,
-          "lat": 86.0901,
-          "lng": 30.7175,
-          "time": "2026-04-25T21:02:28.625Z",
+          "depth": 264.742,
+          "lat": -22.1384,
+          "lng": -66.0705,
+          "time": "2026-04-26T10:36:15.721Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "108 km ENE of Miyako, Japan",
-          "magnitude": 4.8,
-          "depth": 35,
-          "lat": 39.8948,
-          "lng": 143.1612,
-          "time": "2026-04-25T20:41:32.778Z",
+          "location": "26 km SE of El Negro, Puerto Rico",
+          "magnitude": 2.57,
+          "depth": 8.87,
+          "lat": 17.8868333333333,
+          "lng": -65.652,
+          "time": "2026-04-26T10:33:42.630Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "16 km E of Seven Trees, CA",
+          "magnitude": 2.7,
+          "depth": 6.67000007629395,
+          "lat": 37.2883338928223,
+          "lng": -121.659332275391,
+          "time": "2026-04-26T10:27:11.860Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "122 km NE of Cruz Bay, U.S. Virgin Islands",
+          "magnitude": 3.17,
+          "depth": 33.6,
+          "lat": 19.2086666666667,
+          "lng": -64.0928333333333,
+          "time": "2026-04-26T09:03:33.250Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 50,
+      "total24h": 40,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4666,28 +4666,82 @@
     },
     "news": [
       {
-        "title": "Trump live: US president safe after shots fired near correspondents’ dinner",
-        "pubDate": "Sun, 26 Apr 2026 02:10:00 +0000",
-        "link": "https://www.aljazeera.com/news/liveblog/2026/4/26/trump-live-us-president-safe-after-shots-fired-at-correspondents-dinner?traffic_source=rss",
+        "title": "Syria puts first Assad-era official on trial in Damascus",
+        "pubDate": "Sun, 26 Apr 2026 12:31:50 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/26/syria-puts-al-assad-era-officials-on?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Hundreds of Israelis rally as US-Iran peace talks stall",
-        "pubDate": "Sun, 26 Apr 2026 02:00:32 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/26/hundreds-of-israelis-rally-as-us-iran-peace-talks-stall?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Trump rushed off stage after shots fired at White House correspondents’ dinner",
-        "pubDate": "Sun, 26 Apr 2026 01:25:17 GMT",
-        "link": "https://www.france24.com/en/americas/20260426-%F0%9F%94%B4-suspected-gunshots-disrupt-white-house-correspondents-dinner-as-trump-rushed-out",
+        "title": "🔴 Mali Defence Minister Sadio Camara killed in al Qaeda‑linked attack near Bamako, RFI reports",
+        "pubDate": "Sun, 26 Apr 2026 12:26:57 GMT",
+        "link": "https://www.france24.com/en/africa/20260426-new-fighting-erupts-in-north-mali-s-kidal-as-army-clashes-with-rebels",
         "source": "France24"
       },
       {
-        "title": "Dramatic scenes as Trump rushed from White House gala",
-        "pubDate": "Sun, 26 Apr 2026 01:14:33 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/26/dramatic-scenes-as-trump-rushed-from-white-house-gala?traffic_source=rss",
+        "title": "40 years since Chernobyl disaster: Soviet Union's 'top-down culture' partly to blame",
+        "pubDate": "Sun, 26 Apr 2026 12:04:29 GMT",
+        "link": "https://www.france24.com/en/40-years-since-chernobyl-disaster-soviet-union-s-top-down-culture-partly-to-blame",
+        "source": "France24"
+      },
+      {
+        "title": "Kenya’s Sawe is world’s first man to run a sub-two-hour marathon in London",
+        "pubDate": "Sun, 26 Apr 2026 11:27:52 +0000",
+        "link": "https://www.aljazeera.com/sports/2026/4/26/kenyas-sawe-is-worlds-first-man-to-run-a-sub-two-hour-marathon-in-london?traffic_source=rss",
         "source": "Al Jazeera"
+      },
+      {
+        "title": "Timeline: Trump assassination attempts and security incidents",
+        "pubDate": "Sun, 26 Apr 2026 11:24:37 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/26/timeline-trump-assassination-attempts-and-security-incidents?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Solomon Islands NEOC National Situation Report 06 - TC Maila (22 April 2026)",
+        "pubDate": "Sun, 26 Apr 2026 11:22:11 +0000",
+        "link": "https://reliefweb.int/report/solomon-islands/solomon-islands-neoc-national-situation-report-06-tc-maila-22-april-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Solomon Islands: Tropical Cyclone Maila - Humanitarian Snapshot (24 April 2026)",
+        "pubDate": "Sun, 26 Apr 2026 10:46:13 +0000",
+        "link": "https://reliefweb.int/report/solomon-islands/tropical-cyclone-maila-humanitarian-snapshot-24-april-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "London Marathon: Kenya's Sabastian Sawe sets world-record men’s time of under 2 hours",
+        "pubDate": "Sun, 26 Apr 2026 10:45:21 GMT",
+        "link": "https://www.france24.com/en/sport/20260426-london-marathon-kenya-s-sabastian-sawe-sets-world-record-men-s-time-of-under-2-hours",
+        "source": "France24"
+      },
+      {
+        "title": "Solomon Islands: Tropical Cyclone Maila - Track Map",
+        "pubDate": "Sun, 26 Apr 2026 10:42:57 +0000",
+        "link": "https://reliefweb.int/map/solomon-islands/tropical-cyclone-maila-track-map",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Armed groups launch coordinated attacks across Mali",
+        "pubDate": "Sun, 26 Apr 2026 08:56:02 GMT",
+        "link": "https://www.bbc.com/news/articles/clyx7nnrkqdo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Colombia highway bomb attack kills 14",
+        "pubDate": "Sun, 26 Apr 2026 05:20:00 GMT",
+        "link": "https://www.dw.com/en/colombia-highway-bomb-attack-kills-14/a-76939450?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "I was in the room with Trump and heard the low thudding sound of gunfire",
+        "pubDate": "Sun, 26 Apr 2026 04:22:59 GMT",
+        "link": "https://www.bbc.com/news/articles/c62j23wzeqeo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Netanyahu orders army to 'vigorously attack' Hezbollah in Lebanon",
+        "pubDate": "Sun, 26 Apr 2026 00:34:21 GMT",
+        "link": "https://www.bbc.com/news/articles/c5yv1nvd4gjo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
       },
       {
         "title": "40 years after Chernobyl: Pripyat today",
@@ -4702,46 +4756,22 @@
         "source": "DW News"
       },
       {
-        "title": "Trump cancels US envoys' trip to Pakistan for talks on Iran war",
-        "pubDate": "Sat, 25 Apr 2026 21:34:12 GMT",
-        "link": "https://www.bbc.com/news/articles/c4g6nyvl29po?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Explosions and gunfire as armed groups launch co-ordinated attacks across Mali",
-        "pubDate": "Sat, 25 Apr 2026 21:13:49 GMT",
-        "link": "https://www.bbc.com/news/articles/clyx7nnrkqdo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
         "title": "Militants and separatists launch coordinated attacks across Mali",
         "pubDate": "Sat, 25 Apr 2026 20:22:14 GMT",
         "link": "https://www.theguardian.com/world/2026/apr/25/militants-and-separatists-launch-coordinated-attacks-across-mali",
         "source": "Guardian"
       },
       {
-        "title": "🔴 Jihadist group JNIM says it launched attacks in Mali with Tuareg rebels",
-        "pubDate": "Sat, 25 Apr 2026 18:11:54 GMT",
-        "link": "https://www.france24.com/en/africa/20260425-mali-live-army-says-armed-terrorist-groups-launch-attacks-on-military-positions-nationwide",
-        "source": "France24"
+        "title": "South Pacific islanders strive to rescue their home from toxic legacy",
+        "pubDate": "Sat, 25 Apr 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/04/1167381",
+        "source": "UN News"
       },
       {
-        "title": "Strait talks: What's at stake in Hormuz",
-        "pubDate": "Sat, 25 Apr 2026 17:56:24 GMT",
-        "link": "https://www.france24.com/en/tv-shows/spotlight/20260425-strait-talks-what-s-at-stake-in-hormuz",
-        "source": "France24"
-      },
-      {
-        "title": "Mexico says US agents killed in crash weren't permitted to operate there",
-        "pubDate": "Sat, 25 Apr 2026 17:40:51 GMT",
-        "link": "https://www.bbc.com/news/articles/cx2491we011o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "UK-US ties tested: Britain courts Trump with King Charles",
-        "pubDate": "Sat, 25 Apr 2026 16:31:00 GMT",
-        "link": "https://www.dw.com/en/uk-us-ties-tested-britain-courts-trump-with-king-charles/a-76928978?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
+        "title": "Renewables rising, Part 1: How four countries are reshaping energy security",
+        "pubDate": "Sat, 25 Apr 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/04/1167366",
+        "source": "UN News"
       },
       {
         "title": "A race for rights: How sport is helping protect girls in Uganda",
@@ -4754,36 +4784,6 @@
         "pubDate": "Sat, 25 Apr 2026 09:00:41 GMT",
         "link": "https://www.theguardian.com/global-development/2026/apr/25/discovery-children-fatal-disfiguring-disease-noma-unknown-bacteria",
         "source": "Guardian"
-      },
-      {
-        "title": "Lebanon: Flash Update #20 - Escalation of hostilities in Lebanon (as of 23 April 2026)",
-        "pubDate": "Sat, 25 Apr 2026 08:39:51 +0000",
-        "link": "https://reliefweb.int/report/lebanon/lebanon-flash-update-20-escalation-hostilities-lebanon-23-april-2026",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "Lebanon: Conflict Intensity, 2 March - 23 April 2026",
-        "pubDate": "Sat, 25 Apr 2026 08:33:52 +0000",
-        "link": "https://reliefweb.int/report/lebanon/lebanon-conflict-intensity-2-march-23-april-2026",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "Haiti: Latinoamérica y El Caribe Resumen de Situación Semanal al 24 de abril 2026",
-        "pubDate": "Fri, 24 Apr 2026 18:47:40 +0000",
-        "link": "https://reliefweb.int/report/haiti/latinoamerica-y-el-caribe-resumen-de-situacion-semanal-al-24-de-abril-2026",
-        "source": "ReliefWeb"
-      },
-      {
-        "title": "US millionaire big-game hunter dies after being crushed by elephants",
-        "pubDate": "Fri, 24 Apr 2026 18:09:03 GMT",
-        "link": "https://www.theguardian.com/us-news/2026/apr/24/millionaire-hunter-dies-elephants-gabon",
-        "source": "Guardian"
-      },
-      {
-        "title": "I Am Artemis: Peter Rossoni",
-        "pubDate": "Fri, 24 Apr 2026 16:33:35 +0000",
-        "link": "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-peter-rossoni/",
-        "source": "NASA"
       }
     ],
     "volcanic": [],
@@ -4837,7 +4837,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-26T02:39:51.798Z"
+    "lastUpdated": "2026-04-26T13:08:16.059Z"
   },
   "momentum": {
     "indicators": [
