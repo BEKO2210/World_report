@@ -1,20 +1,21 @@
 {
   "meta": {
-    "generated": "2026-04-30T13:52:43.097Z",
+    "generated": "2026-04-30T19:21:06.613Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-04-30T19:52:43.097Z",
+    "next_update": "2026-05-01T01:21:06.613Z",
     "realtimePulse": {
-      "environment": -0.71,
-      "society": 0,
+      "environment": -0.49,
+      "society": 0.05,
       "economy": -0.34,
       "progress": 0.8,
       "details": {
-        "quakeCount": 36,
+        "quakeCount": 27,
         "maxMagnitude": 5.7,
-        "avgGlobalTemp": 20.1,
+        "avgGlobalTemp": 18.6,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 29,
         "arxivPapers": 20
       }
@@ -25,9 +26,9 @@
     "rawValue": 62.5,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.5,
-    "change": 0.1,
-    "trend": "improving",
+    "previous": 65.6,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -61,8 +62,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         },
         "momentum": {
           "direction": "expansion",
@@ -72,12 +73,12 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.9,
+          "bufferDistance": 35.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -102,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.7,
+      "value": 44.9,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.2,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 56,
+          "value": 59,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -262,8 +263,8 @@
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -1196,79 +1197,79 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 56,
+      "globalAvgAQI": 59,
       "cleanestCities": [
+        {
+          "city": "Berlin",
+          "country": "",
+          "aqi": 29,
+          "lat": 52.52,
+          "lng": 13.41
+        },
+        {
+          "city": "Lagos",
+          "country": "",
+          "aqi": 34,
+          "lat": 6.45,
+          "lng": 3.4
+        },
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 32,
+          "aqi": 34,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "London",
           "country": "",
-          "aqi": 33,
+          "aqi": 36,
           "lat": 51.51,
           "lng": -0.13
         },
         {
-          "city": "Lagos",
+          "city": "Cairo",
           "country": "",
-          "aqi": 35,
-          "lat": 6.45,
-          "lng": 3.4
-        },
-        {
-          "city": "Mexico City",
-          "country": "",
-          "aqi": 36,
-          "lat": 19.43,
-          "lng": -99.13
-        },
-        {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 38,
-          "lat": 52.52,
-          "lng": 13.41
+          "aqi": 42,
+          "lat": 30.04,
+          "lng": 31.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 155,
+          "aqi": 164,
           "lat": 28.61,
           "lng": 77.21
         },
         {
+          "city": "Mexico City",
+          "country": "",
+          "aqi": 71,
+          "lat": 19.43,
+          "lng": -99.13
+        },
+        {
           "city": "Beijing",
           "country": "",
-          "aqi": 67,
+          "aqi": 69,
           "lat": 39.9,
           "lng": 116.4
         },
         {
-          "city": "Cairo",
-          "country": "",
-          "aqi": 61,
-          "lat": 30.04,
-          "lng": 31.24
-        },
-        {
           "city": "São Paulo",
           "country": "",
-          "aqi": 58,
+          "aqi": 63,
           "lat": -23.55,
           "lng": -46.63
         },
         {
-          "city": "Mumbai",
+          "city": "Los Angeles",
           "country": "",
-          "aqi": 45,
-          "lat": 19.08,
-          "lng": 72.88
+          "aqi": 51,
+          "lat": 34.05,
+          "lng": -118.24
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1628,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-04-30T15:45",
+          "time": "2026-04-30T21:15",
           "interval": 900,
-          "temperature_2m": 18.3,
-          "relative_humidity_2m": 32,
-          "wind_speed_10m": 8.3,
+          "temperature_2m": 16.6,
+          "relative_humidity_2m": 40,
+          "wind_speed_10m": 5.4,
           "weather_code": 1
         }
       },
@@ -1641,11 +1642,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-04-30T09:45",
+          "time": "2026-04-30T15:15",
           "interval": 900,
-          "temperature_2m": 10.5,
-          "relative_humidity_2m": 92,
-          "wind_speed_10m": 4.6,
+          "temperature_2m": 13.7,
+          "relative_humidity_2m": 85,
+          "wind_speed_10m": 3.5,
           "weather_code": 3
         }
       },
@@ -1654,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-04-30T22:45",
+          "time": "2026-05-01T04:15",
           "interval": 900,
-          "temperature_2m": 11.7,
-          "relative_humidity_2m": 85,
-          "wind_speed_10m": 4.2,
-          "weather_code": 3
+          "temperature_2m": 9.6,
+          "relative_humidity_2m": 95,
+          "wind_speed_10m": 4.8,
+          "weather_code": 61
         }
       },
       {
@@ -1667,12 +1668,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-04-30T23:45",
+          "time": "2026-05-01T05:15",
           "interval": 900,
-          "temperature_2m": 17,
-          "relative_humidity_2m": 89,
-          "wind_speed_10m": 1.3,
-          "weather_code": 1
+          "temperature_2m": 14.2,
+          "relative_humidity_2m": 96,
+          "wind_speed_10m": 3.7,
+          "weather_code": 0
         }
       },
       {
@@ -1680,12 +1681,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-04-30T10:45",
+          "time": "2026-04-30T16:15",
           "interval": 900,
-          "temperature_2m": 23.7,
-          "relative_humidity_2m": 74,
-          "wind_speed_10m": 3.4,
-          "weather_code": 1
+          "temperature_2m": 21.5,
+          "relative_humidity_2m": 84,
+          "wind_speed_10m": 12.3,
+          "weather_code": 3
         }
       },
       {
@@ -1693,11 +1694,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-04-30T14:45",
+          "time": "2026-04-30T20:15",
           "interval": 900,
-          "temperature_2m": 30.5,
-          "relative_humidity_2m": 68,
-          "wind_speed_10m": 11.3,
+          "temperature_2m": 27.7,
+          "relative_humidity_2m": 87,
+          "wind_speed_10m": 6.9,
           "weather_code": 3
         }
       },
@@ -1706,11 +1707,11 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-04-30T19:15",
+          "time": "2026-05-01T00:45",
           "interval": 900,
-          "temperature_2m": 29.5,
-          "relative_humidity_2m": 77,
-          "wind_speed_10m": 10.9,
+          "temperature_2m": 28.4,
+          "relative_humidity_2m": 83,
+          "wind_speed_10m": 9.4,
           "weather_code": 95
         }
       },
@@ -1719,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-04-30T14:45",
+          "time": "2026-04-30T20:15",
           "interval": 900,
-          "temperature_2m": 19.6,
-          "relative_humidity_2m": 31,
-          "wind_speed_10m": 20.5,
+          "temperature_2m": 17.2,
+          "relative_humidity_2m": 38,
+          "wind_speed_10m": 14,
           "weather_code": 0
         }
       }
@@ -3944,73 +3945,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 498234,
-          "forks": 47213,
+          "stars": 498278,
+          "forks": 47218,
           "language": "Markdown",
-          "updated": "2026-04-30T13:44:50Z"
+          "updated": "2026-04-30T19:12:21Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 460487,
-          "forks": 34546,
+          "stars": 460586,
+          "forks": 34554,
           "language": null,
-          "updated": "2026-04-30T13:51:09Z"
+          "updated": "2026-04-30T19:18:18Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 443925,
-          "forks": 44426,
+          "stars": 443939,
+          "forks": 44431,
           "language": "TypeScript",
-          "updated": "2026-04-30T13:40:14Z"
+          "updated": "2026-04-30T19:15:30Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 429126,
-          "forks": 46840,
+          "stars": 429359,
+          "forks": 46856,
           "language": "Python",
-          "updated": "2026-04-30T13:49:02Z"
+          "updated": "2026-04-30T19:18:55Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 387407,
-          "forks": 66205,
+          "stars": 387429,
+          "forks": 66204,
           "language": "Python",
-          "updated": "2026-04-30T13:36:58Z"
+          "updated": "2026-04-30T19:18:50Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 366669,
-          "forks": 75282,
+          "stars": 366756,
+          "forks": 75322,
           "language": "TypeScript",
-          "updated": "2026-04-30T13:48:39Z"
+          "updated": "2026-04-30T19:15:37Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 353921,
+          "stars": 353931,
           "forks": 43983,
           "language": "TypeScript",
-          "updated": "2026-04-30T13:48:49Z"
+          "updated": "2026-04-30T19:16:36Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 346356,
-          "forks": 55887,
+          "stars": 346411,
+          "forks": 55896,
           "language": "Python",
-          "updated": "2026-04-30T13:43:42Z"
+          "updated": "2026-04-30T19:01:55Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 343324,
-          "forks": 82290,
+          "stars": 343344,
+          "forks": 82297,
           "language": null,
-          "updated": "2026-04-30T13:40:01Z"
+          "updated": "2026-04-30T19:10:16Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 295193,
+          "stars": 295245,
           "forks": 27797,
           "language": "Python",
-          "updated": "2026-04-30T13:47:46Z"
+          "updated": "2026-04-30T19:13:21Z"
         }
       ],
       "source": "GitHub"
@@ -4491,6 +4492,54 @@
     },
     "spaceflight": [
       {
+        "title": "Odyssey Team Celebrates on a Global Map of Mars",
+        "published": "2026-04-30T18:19:29Z",
+        "source": "NASA",
+        "summary": "Description Team members past and present from NASA’s 2001 Mars Odyssey orbiter mission gathered on April 15, 2026, to celebrate 25 years since the spacecraft’s launch, which took place April 7, 2001."
+      },
+      {
+        "title": "What’s Up: May 2026 Skywatching Tips from NASA",
+        "published": "2026-04-30T18:13:34Z",
+        "source": "NASA",
+        "summary": "Shooting stars before dawn, a brilliant meetup between the Moon and Venus and a rare blue moon to end the month."
+      },
+      {
+        "title": "Artemis III Moon Rocket Core Stage on the Move",
+        "published": "2026-04-30T17:39:07Z",
+        "source": "NASA",
+        "summary": "Teams move the core stage, or largest section, of the SLS (Space Launch System) rocket for NASA’s Artemis III mission into the Vehicle Assembly Building at the agency’s Kennedy Space Center in Florida"
+      },
+      {
+        "title": "NASA Welcomes Morocco as 64th Artemis Accords Signatory",
+        "published": "2026-04-30T17:31:51Z",
+        "source": "NASA",
+        "summary": "The Kingdom of Morocco signed the Artemis Accords on April 29th during a ceremony in the country’s capital, Rabat, becoming the latest nation to commit to the responsible exploration of space. “It is "
+      },
+      {
+        "title": "NASA Goddard’s Greenbelt Visitor Center Marks 50th Anniversary",
+        "published": "2026-04-30T17:13:07Z",
+        "source": "NASA",
+        "summary": "Trimmed in bicentennial pageantry, NASA opened a visitor center at its Goddard campus in Greenbelt, Maryland, in May 1976. Fifty years on, the Goddard Visitor Center continues to inspire through exhib"
+      },
+      {
+        "title": "NASA Explores Prioritizing First Response Drones in Crowded Skies",
+        "published": "2026-04-30T16:54:12Z",
+        "source": "NASA",
+        "summary": "Our streets are crowded with commuters and delivery vehicles, but when a police car or fire engine approaches with its lights and sirens on, drivers clear the way. In the coming years, drones for deli"
+      },
+      {
+        "title": "Next NASA ISS astronaut, doctor discusses upcoming mission",
+        "published": "2026-04-30T14:55:18Z",
+        "source": "NASASpaceflight",
+        "summary": "A doctor who has assisted in mass casualty events, served overseas, and has assisted both…\nThe post Next NASA ISS astronaut, doctor discusses upcoming mission appeared first on NASASpaceFlight.com."
+      },
+      {
+        "title": "This Month at ESA: April 2026",
+        "published": "2026-04-30T14:00:00Z",
+        "source": "ESA",
+        "summary": "What did space deliver for Europe this month? From the Moon to low Earth orbit and beyond, here’s what the European Space Agency has been up to."
+      },
+      {
         "title": "The great parachute bake-out",
         "published": "2026-04-30T11:30:00Z",
         "source": "ESA",
@@ -4501,54 +4550,6 @@
         "published": "2026-04-30T11:20:56Z",
         "source": "European Spaceflight",
         "summary": "European launch services provider Arianespace has successfully launched a second mission for Amazon, deploying 32 satellites for the company’s Amazon LEO constellation aboard an Ariane 6 rocket. The r"
-      },
-      {
-        "title": "Baking a parachute for Mars",
-        "published": "2026-04-30T09:29:00Z",
-        "source": "ESA",
-        "summary": "Watch ESA’s Mars chief engineer Albert Haldemann explains the sterilisation process of one of the parachutes of the ExoMars Rosalind Franklin rover mission and why it matters."
-      },
-      {
-        "title": "Starry spiral in a familiar neighbourhood",
-        "published": "2026-04-30T08:00:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
-      },
-      {
-        "title": "Winter’s End Is Written in the Clouds",
-        "published": "2026-04-30T04:00:00Z",
-        "source": "NASA",
-        "summary": "As winter turned to spring, the skies over the Gulf of Alaska displayed textbook examples of numerous cloud formations."
-      },
-      {
-        "title": "Live coverage: SpaceX to launch 24 Starlink satellites on Falcon 9 rocket from Vandenberg SFB",
-        "published": "2026-04-29T23:28:46Z",
-        "source": "Spaceflight Now",
-        "summary": "The Starlink 17-36 mission will be SpaceX’s 51st Falcon 9 launch of 2026. Liftoff from pad 4E is scheduled for 7:37 pm PDT (10:37 pm EDT / 0237 UTC)."
-      },
-      {
-        "title": "I Am Artemis: Ryan Schulte",
-        "published": "2026-04-29T21:45:16Z",
-        "source": "NASA",
-        "summary": "Listen to this audio excerpt from Ryan Schulte, Orion flywheel project manager: As the four Artemis II astronauts traveled on a 694,481-mile journey around the Moon and back, the Orion spacecraft prov"
-      },
-      {
-        "title": "US-Indian Spacecraft Captures Mexico City Subsidence",
-        "published": "2026-04-29T21:12:56Z",
-        "source": "NASA",
-        "summary": "Description A scientist produced this map of land subsidence (sinking) in Mexico City using data from the NISAR (NASA-ISRO Synthetic Aperture Radar) mission captured between Oct. 25, 2025, and Jan. 17"
-      },
-      {
-        "title": "Curiosity Blog, Sols 4873-4878: Welcome to the Atacama Drill Target",
-        "published": "2026-04-29T20:38:38Z",
-        "source": "NASA",
-        "summary": "Written by Sharon Wilson Purdy, Planetary Geologist at the Smithsonian National Air and Space Museum Earth planning date: Friday, April 24, 2026 There was excitement in the air as the Curiosity Scienc"
-      },
-      {
-        "title": "US-Indian Space Mission Maps Extreme Subsidence in Mexico City",
-        "published": "2026-04-29T20:23:12Z",
-        "source": "NASA",
-        "summary": "One of the most powerful radar systems ever launched into space has mapped the ground moving beneath one of fastest subsiding capitals in the world: Mexico City. The findings show how quickly and reli"
       }
     ]
   },
@@ -4556,12 +4557,62 @@
     "earthquakes": {
       "last24h": [
         {
+          "location": "Mid-Indian Ridge",
+          "magnitude": 4.8,
+          "depth": 10,
+          "lat": -27.7862,
+          "lng": 73.8743,
+          "time": "2026-04-30T17:28:32.427Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "16 km SSW of Falls City, Texas",
+          "magnitude": 2.6,
+          "depth": 3.0158,
+          "lat": 28.857,
+          "lng": -98.101,
+          "time": "2026-04-30T16:15:08.461Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "31 km NW of Valdez, Alaska",
+          "magnitude": 3.9,
+          "depth": 14.7,
+          "lat": 61.363,
+          "lng": -146.682,
+          "time": "2026-04-30T16:03:15.033Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "164 km S of False Pass, Alaska",
+          "magnitude": 2.9,
+          "depth": 5.9,
+          "lat": 53.381,
+          "lng": -163.254,
+          "time": "2026-04-30T13:38:08.438Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
           "location": "234 km SE of Lorengau, Papua New Guinea",
           "magnitude": 5.7,
           "depth": 10,
           "lat": -3.4749,
           "lng": 148.8139,
           "time": "2026-04-30T13:27:01.741Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "18 km SE of Silver Springs, Nevada",
+          "magnitude": 2.58,
+          "depth": 9.554,
+          "lat": 39.2972,
+          "lng": -119.0798,
+          "time": "2026-04-30T11:23:06.547Z",
           "tsunami": false,
           "type": "earthquake"
         },
@@ -4576,67 +4627,17 @@
           "type": "earthquake"
         },
         {
-          "location": "29 km SSW of Alamo, Nevada",
-          "magnitude": 2.57,
-          "depth": 4.2256,
-          "lat": 37.1178,
-          "lng": -115.2819,
-          "time": "2026-04-30T09:43:26.869Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "135 km WNW of Neiafu, Tonga",
-          "magnitude": 5,
-          "depth": 248.742,
-          "lat": -18.2522,
-          "lng": -175.1974,
-          "time": "2026-04-30T09:07:09.663Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "106 km ENE of Kuji, Japan",
-          "magnitude": 4.5,
-          "depth": 35.555,
-          "lat": 40.6305,
-          "lng": 142.8855,
-          "time": "2026-04-30T08:43:19.055Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "6 km NNE of Sabana Eneas, Puerto Rico",
-          "magnitude": 2.62,
-          "depth": 20.72,
-          "lat": 18.1443333333333,
-          "lng": -67.0573333333333,
-          "time": "2026-04-30T08:04:05.830Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "33 km SSW of Alamo, Nevada",
-          "magnitude": 3.63,
-          "depth": 0,
-          "lat": 37.09,
-          "lng": -115.3096,
-          "time": "2026-04-30T07:44:59.773Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "south of the Kermadec Islands",
-          "magnitude": 4.9,
-          "depth": 10,
-          "lat": -32.0637,
-          "lng": -178.0356,
-          "time": "2026-04-30T06:40:48.551Z",
+          "location": "30 km SSW of Alamo, Nevada",
+          "magnitude": 2.55,
+          "depth": 9.4342,
+          "lat": 37.1213,
+          "lng": -115.3285,
+          "time": "2026-04-30T09:43:27.959Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 36,
+      "total24h": 27,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4665,124 +4666,124 @@
     },
     "news": [
       {
-        "title": "Mali crisis: Who are the key leaders to know about?",
-        "pubDate": "Thu, 30 Apr 2026 13:29:26 +0000",
-        "link": "https://www.aljazeera.com/news/2026/4/30/mali-crisis-who-are-the-key-leaders-to-know-about?traffic_source=rss",
+        "title": "US House votes to end government shutdown over immigration operations",
+        "pubDate": "Thu, 30 Apr 2026 19:12:03 GMT",
+        "link": "https://www.bbc.com/news/articles/ce3pw5x3z54o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Piracy rises off Somalia as US-Israeli war on Iran diverts naval forces",
+        "pubDate": "Thu, 30 Apr 2026 18:59:13 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/30/piracy-rises-off-somalia-as-us-israeli-war-on-iran-diverts-naval-forces?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Anti-immigrant attacks and protests in South Africa",
-        "pubDate": "Thu, 30 Apr 2026 13:24:34 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/30/anti-immigrant-attacks-and-protests-in-south-africa?traffic_source=rss",
+        "title": "Lebanese girl mourns paramedic father killed in Israeli strike",
+        "pubDate": "Thu, 30 Apr 2026 18:38:56 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/4/30/lebanese-girl-mourns-paramedic-father-killed-in-israeli-strike?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Why are Western feminists silent on the war on Iranian women?",
-        "pubDate": "Thu, 30 Apr 2026 13:00:56 +0000",
-        "link": "https://www.aljazeera.com/opinions/2026/4/30/why-are-western-feminists-silent-on-the-war-on-iranian-women?traffic_source=rss",
+        "title": "How Serbia&#039;s government dominates the country&#039;s media",
+        "pubDate": "Thu, 30 Apr 2026 18:33:00 GMT",
+        "link": "https://www.dw.com/en/how-serbia-s-government-dominates-the-country-s-media/a-77004243?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Myanmar’s former leader Aung San Suu Kyi moved to house arrest",
+        "pubDate": "Thu, 30 Apr 2026 18:25:35 +0000",
+        "link": "https://www.aljazeera.com/news/2026/4/30/myanmars-former-leader-aung-san-suu-kyi-moved-from-prison-to-house-arrest?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "DR Congo creates paramilitary mining guard",
-        "pubDate": "Thu, 30 Apr 2026 12:59:06 GMT",
-        "link": "https://www.france24.com/en/dr-congo-creates-paramilitary-mining-guard",
+        "title": "Vessel carrying grain Ukraine says stolen by Russia will not unload in Israel, Kyiv says",
+        "pubDate": "Thu, 30 Apr 2026 18:24:42 GMT",
+        "link": "https://www.france24.com/en/vessel-carrying-grain-ukraine-says-stolen-by-russia-will-not-unload-in-israel-kyiv-says",
+        "source": "France24"
+      },
+      {
+        "title": "Odyssey Team Celebrates on a Global Map of Mars",
+        "pubDate": "Thu, 30 Apr 2026 18:19:29 +0000",
+        "link": "https://science.nasa.gov/photojournal/odyssey-team-celebrates-on-a-global-map-of-mars/",
+        "source": "NASA Earth"
+      },
+      {
+        "title": "Musk vs Altman: Beyond battle of egos, who gets final say on AI?",
+        "pubDate": "Thu, 30 Apr 2026 18:14:49 GMT",
+        "link": "https://www.france24.com/en/tv-shows/the-debate/20260430-musk-vs-altman-beyond-battle-of-egos-who-gets-final-say-on-ai",
+        "source": "France24"
+      },
+      {
+        "title": "Iran threatens painful response if US renews attacks",
+        "pubDate": "Thu, 30 Apr 2026 18:12:46 GMT",
+        "link": "https://www.france24.com/en/iran-threatens-painful-response-if-us-renews-attacks",
         "source": "France24"
       },
       {
         "title": "Oil price hits highest since 2022 after report Trump to be briefed on new Iran options",
-        "pubDate": "Thu, 30 Apr 2026 12:59:04 GMT",
+        "pubDate": "Thu, 30 Apr 2026 18:05:26 GMT",
         "link": "https://www.bbc.com/news/articles/cx21m88rd14o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Are fans being priced out of live gigs?",
-        "pubDate": "Thu, 30 Apr 2026 12:51:16 GMT",
-        "link": "https://www.france24.com/en/tv-shows/people-profit/20260430-are-fans-being-priced-out-of-live-gigs",
-        "source": "France24"
+        "title": "South Sudan Humanitarian Update 18 - 30 April 2026",
+        "pubDate": "Thu, 30 Apr 2026 17:39:57 +0000",
+        "link": "https://reliefweb.int/report/south-sudan/south-sudan-humanitarian-update-18-30-april-2026",
+        "source": "ReliefWeb"
       },
       {
-        "title": "Mauritania sees gold rush in Sahara desert",
-        "pubDate": "Thu, 30 Apr 2026 12:40:51 GMT",
-        "link": "https://www.france24.com/en/tv-shows/focus/20260430-mauritania-sees-gold-rush-in-sahara-desert",
-        "source": "France24"
+        "title": "Artemis III Moon Rocket Core Stage on the Move",
+        "pubDate": "Thu, 30 Apr 2026 17:39:07 +0000",
+        "link": "https://www.nasa.gov/image-article/artemis-iii-moon-rocket-core-stage-on-the-move/",
+        "source": "NASA"
       },
       {
-        "title": "'How are we going to get back home?' Islamist group tightens blockade on Mali capital",
-        "pubDate": "Thu, 30 Apr 2026 12:24:12 GMT",
-        "link": "https://www.bbc.com/news/articles/cg4pq3zxnpqo?at_medium=RSS&amp;at_campaign=rss",
+        "title": "NASA Welcomes Morocco as 64th Artemis Accords Signatory",
+        "pubDate": "Thu, 30 Apr 2026 17:31:51 +0000",
+        "link": "https://www.nasa.gov/organizations/oiir/artemis-accords/nasa-welcomes-morocco-as-64th-artemis-accords-signatory/",
+        "source": "NASA"
+      },
+      {
+        "title": "NASA Goddard’s Greenbelt Visitor Center Marks 50th Anniversary",
+        "pubDate": "Thu, 30 Apr 2026 17:13:07 +0000",
+        "link": "https://www.nasa.gov/centers-and-facilities/goddard/nasa-goddards-greenbelt-visitor-center-marks-50th-anniversary/",
+        "source": "NASA"
+      },
+      {
+        "title": "DR Congo: République Démocratique du Congo - Régions de l'Est : aperçu des incidents contre les travailleurs humanitaires (mars 2026)",
+        "pubDate": "Thu, 30 Apr 2026 17:01:18 +0000",
+        "link": "https://reliefweb.int/report/democratic-republic-congo/republique-democratique-du-congo-regions-de-lest-apercu-des-incidents-contre-les-travailleurs-humanitaires-mars-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Myanmar ex-leader Aung San Suu Kyi moved to house arrest, military says",
+        "pubDate": "Thu, 30 Apr 2026 16:38:58 GMT",
+        "link": "https://www.bbc.com/news/articles/cz72j8eex4eo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Hormuz disruption deepens energy shock through vulnerable regions",
+        "title": "Niger: Bulletin mensuel du Cluster-Santé N°1 - 2026",
+        "pubDate": "Thu, 30 Apr 2026 16:02:58 +0000",
+        "link": "https://reliefweb.int/report/niger/bulletin-mensuel-du-cluster-sante-ndeg1-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "UAE oil exit from OPEC signals focus on domestic priorities",
+        "pubDate": "Thu, 30 Apr 2026 14:26:00 GMT",
+        "link": "https://www.dw.com/en/uae-oil-exit-from-opec-signals-focus-on-domestic-priorities/a-76998152?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Abuse of women journalists made ‘easier and more damaging’ by AI",
         "pubDate": "Thu, 30 Apr 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/04/1167411",
+        "link": "https://news.un.org/feed/view/en/story/2026/04/1167416",
         "source": "UN News"
       },
       {
-        "title": "Central Asia celebrates 20 years as a nuclear-weapon-free zone",
+        "title": "DPRK Korea: Continued militarisation a ‘serious concern’, political affairs chief warns Security Council",
         "pubDate": "Thu, 30 Apr 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/04/1167410",
+        "link": "https://news.un.org/feed/view/en/story/2026/04/1167415",
         "source": "UN News"
-      },
-      {
-        "title": "Hong Kong pro-democracy publisher Jimmy Lai honored by DW",
-        "pubDate": "Thu, 30 Apr 2026 08:44:00 GMT",
-        "link": "https://www.dw.com/en/hong-kong-pro-democracy-publisher-jimmy-lai-honored-by-dw/a-76991604?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Starry spiral in a familiar neighbourhood",
-        "pubDate": "Thu, 30 Apr 2026 10:00:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Images/2026/04/Starry_spiral_in_a_familiar_neighbourhood]]>",
-        "source": "ESA"
-      },
-      {
-        "title": "Why UAE&#039;s OPEC exit is a blow to Saudi Arabia",
-        "pubDate": "Thu, 30 Apr 2026 07:02:00 GMT",
-        "link": "https://www.dw.com/en/why-uae-s-opec-exit-is-a-blow-to-saudi-arabia/a-76975354?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Women journalists in Ghana encounter – and overcome – gender barriers",
-        "pubDate": "Thu, 30 Apr 2026 06:52:00 GMT",
-        "link": "https://www.dw.com/en/women-journalists-in-ghana-encounter-and-overcome-gender-barriers/a-76977637?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Police say they believe abducted child was murdered as body found in Outback",
-        "pubDate": "Thu, 30 Apr 2026 06:29:55 GMT",
-        "link": "https://www.bbc.com/news/articles/cvgzd1yp2n6o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Winter’s End Is Written in the Clouds",
-        "pubDate": "Thu, 30 Apr 2026 04:00:00 +0000",
-        "link": "https://science.nasa.gov/earth/earth-observatory/winters-end-is-written-in-the-clouds/",
-        "source": "NASA"
-      },
-      {
-        "title": "Winter&#8217;s End Is Written in the Clouds",
-        "pubDate": "Thu, 30 Apr 2026 04:00:00 +0000",
-        "link": "https://science.nasa.gov/earth/earth-observatory/winters-end-is-written-in-the-clouds/",
-        "source": "NASA Earth"
-      },
-      {
-        "title": "I Am Artemis: Ryan Schulte",
-        "pubDate": "Wed, 29 Apr 2026 21:45:16 +0000",
-        "link": "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-ryan-schulte/",
-        "source": "NASA"
-      },
-      {
-        "title": "US-Indian Spacecraft Captures Mexico City Subsidence",
-        "pubDate": "Wed, 29 Apr 2026 21:12:56 +0000",
-        "link": "https://science.nasa.gov/photojournal/us-indian-spacecraft-captures-mexico-city-subsidence/",
-        "source": "NASA"
-      },
-      {
-        "title": "South Africa deports Mugabe’s son for unrelated offences after employee shot at family home",
-        "pubDate": "Wed, 29 Apr 2026 14:12:25 GMT",
-        "link": "https://www.theguardian.com/world/2026/apr/29/south-africa-deports-mugabes-son-after-separate-offences-three-months-after-shooting-at-family-home",
-        "source": "Guardian"
       }
     ],
     "volcanic": [],
@@ -4836,7 +4837,7 @@
         "sunspots": 85.9
       }
     ],
-    "lastUpdated": "2026-04-30T13:52:43.098Z"
+    "lastUpdated": "2026-04-30T19:21:06.613Z"
   },
   "momentum": {
     "indicators": [
