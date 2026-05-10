@@ -1,20 +1,21 @@
 {
   "meta": {
-    "generated": "2026-05-10T08:07:49.156Z",
+    "generated": "2026-05-10T13:16:58.327Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-05-10T14:07:49.156Z",
+    "next_update": "2026-05-10T19:16:58.327Z",
     "realtimePulse": {
       "environment": -1,
-      "society": 0,
+      "society": 0.05,
       "economy": -0.05,
       "progress": 0.8,
       "details": {
-        "quakeCount": 68,
+        "quakeCount": 74,
         "maxMagnitude": 5.5,
-        "avgGlobalTemp": 19.6,
+        "avgGlobalTemp": 20,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 47,
         "arxivPapers": 20
       }
@@ -25,9 +26,9 @@
     "rawValue": 62.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.6,
-    "change": -0.1,
-    "trend": "declining",
+    "previous": 65.5,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -77,7 +78,7 @@
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -107,7 +108,7 @@
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.2,
+      "change": 0,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 59,
+          "value": 58,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -1196,79 +1197,79 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 59,
+      "globalAvgAQI": 58,
       "cleanestCities": [
         {
           "city": "São Paulo",
           "country": "",
-          "aqi": 25,
+          "aqi": 17,
           "lat": -23.55,
           "lng": -46.63
         },
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 29,
+          "aqi": 28,
           "lat": -33.87,
           "lng": 151.21
         },
         {
-          "city": "Berlin",
+          "city": "Lagos",
           "country": "",
-          "aqi": 30,
-          "lat": 52.52,
-          "lng": 13.41
+          "aqi": 31,
+          "lat": 6.45,
+          "lng": 3.4
         },
         {
           "city": "London",
           "country": "",
-          "aqi": 33,
+          "aqi": 38,
           "lat": 51.51,
           "lng": -0.13
         },
         {
-          "city": "Lagos",
+          "city": "Berlin",
           "country": "",
-          "aqi": 34,
-          "lat": 6.45,
-          "lng": 3.4
+          "aqi": 43,
+          "lat": 52.52,
+          "lng": 13.41
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 152,
+          "aqi": 145,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 94,
+          "aqi": 90,
           "lat": 39.9,
           "lng": 116.4
         },
         {
+          "city": "Mexico City",
+          "country": "",
+          "aqi": 68,
+          "lat": 19.43,
+          "lng": -99.13
+        },
+        {
           "city": "Mumbai",
           "country": "",
-          "aqi": 74,
+          "aqi": 65,
           "lat": 19.08,
           "lng": 72.88
         },
         {
-          "city": "Tokyo",
+          "city": "Los Angeles",
           "country": "",
-          "aqi": 63,
-          "lat": 35.68,
-          "lng": 139.69
-        },
-        {
-          "city": "Mexico City",
-          "country": "",
-          "aqi": 60,
-          "lat": 19.43,
-          "lng": -99.13
+          "aqi": 58,
+          "lat": 34.05,
+          "lng": -118.24
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1628,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-05-10T10:00",
+          "time": "2026-05-10T15:15",
           "interval": 900,
-          "temperature_2m": 13.5,
-          "relative_humidity_2m": 67,
-          "wind_speed_10m": 6.9,
+          "temperature_2m": 20,
+          "relative_humidity_2m": 37,
+          "wind_speed_10m": 2.2,
           "weather_code": 3
         }
       },
@@ -1641,12 +1642,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-05-10T04:00",
+          "time": "2026-05-10T09:15",
           "interval": 900,
-          "temperature_2m": 11.3,
-          "relative_humidity_2m": 100,
-          "wind_speed_10m": 7.9,
-          "weather_code": 45
+          "temperature_2m": 13,
+          "relative_humidity_2m": 96,
+          "wind_speed_10m": 6.9,
+          "weather_code": 3
         }
       },
       {
@@ -1654,12 +1655,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-05-10T17:00",
+          "time": "2026-05-10T22:15",
           "interval": 900,
-          "temperature_2m": 20.4,
-          "relative_humidity_2m": 63,
-          "wind_speed_10m": 8.7,
-          "weather_code": 0
+          "temperature_2m": 17.4,
+          "relative_humidity_2m": 76,
+          "wind_speed_10m": 4.3,
+          "weather_code": 1
         }
       },
       {
@@ -1667,12 +1668,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-05-10T18:00",
+          "time": "2026-05-10T23:15",
           "interval": 900,
-          "temperature_2m": 18.5,
-          "relative_humidity_2m": 71,
-          "wind_speed_10m": 15,
-          "weather_code": 0
+          "temperature_2m": 15.9,
+          "relative_humidity_2m": 75,
+          "wind_speed_10m": 8.6,
+          "weather_code": 1
         }
       },
       {
@@ -1680,12 +1681,12 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-05-10T05:00",
+          "time": "2026-05-10T10:15",
           "interval": 900,
-          "temperature_2m": 16,
-          "relative_humidity_2m": 89,
-          "wind_speed_10m": 7.1,
-          "weather_code": 3
+          "temperature_2m": 17,
+          "relative_humidity_2m": 81,
+          "wind_speed_10m": 7.5,
+          "weather_code": 51
         }
       },
       {
@@ -1693,11 +1694,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-05-10T09:00",
+          "time": "2026-05-10T14:15",
           "interval": 900,
-          "temperature_2m": 29,
-          "relative_humidity_2m": 74,
-          "wind_speed_10m": 13.7,
+          "temperature_2m": 29.9,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 16.3,
           "weather_code": 3
         }
       },
@@ -1706,12 +1707,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-05-10T13:30",
+          "time": "2026-05-10T18:45",
           "interval": 900,
-          "temperature_2m": 36.4,
-          "relative_humidity_2m": 45,
-          "wind_speed_10m": 16.2,
-          "weather_code": 1
+          "temperature_2m": 32.7,
+          "relative_humidity_2m": 53,
+          "wind_speed_10m": 14.7,
+          "weather_code": 0
         }
       },
       {
@@ -1719,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-05-10T09:00",
+          "time": "2026-05-10T14:15",
           "interval": 900,
-          "temperature_2m": 11.5,
-          "relative_humidity_2m": 64,
-          "wind_speed_10m": 17.6,
+          "temperature_2m": 14.4,
+          "relative_humidity_2m": 49,
+          "wind_speed_10m": 16.9,
           "weather_code": 3
         }
       }
@@ -3944,73 +3945,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 500172,
+          "stars": 500221,
           "forks": 47411,
           "language": "Markdown",
-          "updated": "2026-05-10T08:00:42Z"
+          "updated": "2026-05-10T13:15:50Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 464688,
-          "forks": 34864,
+          "stars": 464789,
+          "forks": 34869,
           "language": null,
-          "updated": "2026-05-10T08:05:22Z"
+          "updated": "2026-05-10T13:15:35Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 444420,
-          "forks": 44499,
+          "stars": 444434,
+          "forks": 44500,
           "language": "TypeScript",
-          "updated": "2026-05-10T08:05:28Z"
+          "updated": "2026-05-10T12:50:18Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 433663,
-          "forks": 47468,
+          "stars": 433736,
+          "forks": 47477,
           "language": "Python",
-          "updated": "2026-05-10T08:03:01Z"
+          "updated": "2026-05-10T13:09:54Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 387974,
-          "forks": 66278,
+          "stars": 387977,
+          "forks": 66276,
           "language": "Python",
-          "updated": "2026-05-10T08:02:01Z"
+          "updated": "2026-05-10T13:15:31Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 370336,
-          "forks": 76501,
+          "stars": 370417,
+          "forks": 76526,
           "language": "TypeScript",
-          "updated": "2026-05-10T08:03:23Z"
+          "updated": "2026-05-10T13:14:29Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 354492,
-          "forks": 44047,
+          "stars": 354498,
+          "forks": 44049,
           "language": "TypeScript",
-          "updated": "2026-05-10T07:28:28Z"
+          "updated": "2026-05-10T13:15:26Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 347638,
-          "forks": 56088,
+          "stars": 347677,
+          "forks": 56093,
           "language": "Python",
-          "updated": "2026-05-10T07:44:50Z"
+          "updated": "2026-05-10T12:58:55Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 346481,
-          "forks": 82855,
+          "stars": 346494,
+          "forks": 82856,
           "language": null,
-          "updated": "2026-05-10T08:02:01Z"
+          "updated": "2026-05-10T12:37:16Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 296843,
-          "forks": 27856,
+          "stars": 296876,
+          "forks": 27857,
           "language": "Python",
-          "updated": "2026-05-10T08:02:39Z"
+          "updated": "2026-05-10T13:02:38Z"
         }
       ],
       "source": "GitHub"
@@ -4556,87 +4557,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "4 km WSW of Brawley, CA",
-          "magnitude": 2.86,
-          "depth": 10.57,
-          "lat": 32.9691666666667,
-          "lng": -115.567666666667,
-          "time": "2026-05-10T07:53:32.390Z",
+          "location": "248 km NNE of Palu, Indonesia",
+          "magnitude": 4.7,
+          "depth": 35,
+          "lat": 1.2342,
+          "lng": 120.5431,
+          "time": "2026-05-10T12:24:34.277Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "4 km WSW of Brawley, CA",
-          "magnitude": 2.63,
-          "depth": 11.04,
-          "lat": 32.967,
-          "lng": -115.574333333333,
-          "time": "2026-05-10T07:48:24.190Z",
+          "location": "22 km SW of Santa Bárbara, Portugal",
+          "magnitude": 4.6,
+          "depth": 10,
+          "lat": 38.5344,
+          "lng": -27.5038,
+          "time": "2026-05-10T12:21:22.589Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "4 km WSW of Brawley, CA",
-          "magnitude": 3.23249255980468,
-          "depth": 13.6400003433228,
-          "lat": 32.9618339538574,
-          "lng": -115.562835693359,
-          "time": "2026-05-10T07:41:25.850Z",
+          "location": "73 km WNW of San Antonio de los Cobres, Argentina",
+          "magnitude": 4.2,
+          "depth": 208.663,
+          "lat": -24.0095,
+          "lng": -67.0041,
+          "time": "2026-05-10T11:59:24.565Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "2 km NNW of Brawley, CA",
-          "magnitude": 3.26849923512091,
-          "depth": 7.48999977111816,
-          "lat": 32.9983329772949,
-          "lng": -115.539329528809,
-          "time": "2026-05-10T07:27:52.050Z",
+          "location": "1 km WNW of Brawley, CA",
+          "magnitude": 2.83,
+          "depth": 11.35,
+          "lat": 32.9813333333333,
+          "lng": -115.540833333333,
+          "time": "2026-05-10T11:03:42.920Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "0 km SSW of Brawley, CA",
-          "magnitude": 2.56,
-          "depth": 9.03,
-          "lat": 32.9753333333333,
-          "lng": -115.532166666667,
-          "time": "2026-05-10T07:18:17.850Z",
+          "location": "1 km WNW of Brawley, CA",
+          "magnitude": 2.95412912010478,
+          "depth": 11.8400001525879,
+          "lat": 32.982666015625,
+          "lng": -115.544830322266,
+          "time": "2026-05-10T10:47:25.870Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "4 km WSW of Brawley, CA",
-          "magnitude": 2.59,
-          "depth": 11.68,
-          "lat": 32.96,
-          "lng": -115.567,
-          "time": "2026-05-10T07:16:49.200Z",
+          "location": "38 km WSW of Haines, Alaska",
+          "magnitude": 3.2,
+          "depth": 2.8,
+          "lat": 59.05,
+          "lng": -136.021,
+          "time": "2026-05-10T10:30:24.827Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "4 km NW of Brawley, CA",
-          "magnitude": 2.9942881727191,
-          "depth": 8.97000026702881,
-          "lat": 33.0043334960938,
-          "lng": -115.561332702637,
-          "time": "2026-05-10T07:15:37.380Z",
+          "location": "6 km SSW of Petrolia, CA",
+          "magnitude": 2.62,
+          "depth": 8.46000003814697,
+          "lat": 40.2760009765625,
+          "lng": -124.314002990723,
+          "time": "2026-05-10T09:26:07.510Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "3 km WSW of Brawley, CA",
-          "magnitude": 3.01714299527353,
-          "depth": 11.2399997711182,
-          "lat": 32.9659996032715,
-          "lng": -115.553337097168,
-          "time": "2026-05-10T07:15:05.880Z",
+          "location": "69 km NW of San Antonio, Puerto Rico",
+          "magnitude": 3.15,
+          "depth": 22.4,
+          "lat": 18.9383333333333,
+          "lng": -67.5628333333333,
+          "time": "2026-05-10T09:07:01.520Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 68,
+      "total24h": 74,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4665,58 +4666,70 @@
     },
     "news": [
       {
-        "title": "'A full-time job': How a self-proclaimed swiss king's 'empire' is riling local authorities",
-        "pubDate": "Sun, 10 May 2026 07:47:43 GMT",
-        "link": "https://www.france24.com/en/europe/20260510-how-switzerland-self-proclaimed-king-built-a-land-empire-that-riling-local-authorities",
-        "source": "France24"
-      },
-      {
-        "title": "Sabalenka out of Italian Open amid injury concerns for Roland Garros",
-        "pubDate": "Sun, 10 May 2026 07:19:59 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/5/10/sabalenka-out-of-italian-open-amid-injury-concerns-for-roland-garros?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Israel deports two Gaza aid flotilla activists",
-        "pubDate": "Sun, 10 May 2026 07:13:50 +0000",
-        "link": "https://www.aljazeera.com/news/2026/5/10/israel-deports-two-gaza-aid-flotilla-activists?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Live: Iran's Guards threaten US sites in the region if its tankers come under fire",
-        "pubDate": "Sun, 10 May 2026 06:50:18 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260510-live-iran-s-guards-threaten-us-sites-in-the-region-if-its-tankers-come-under-fire",
-        "source": "France24"
-      },
-      {
-        "title": "Cruise ship hit by hantavirus outbreak arrives in Tenerife",
-        "pubDate": "Sun, 10 May 2026 06:48:20 +0000",
-        "link": "https://www.aljazeera.com/news/2026/5/10/cruise-ship-hit-by-hantavirus-outbreak-arrives-in-tenerife?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Virus-hit cruise ship arrives in Tenerife as medics await passengers",
-        "pubDate": "Sun, 10 May 2026 06:42:04 GMT",
+        "title": "First passengers fly home from virus-hit cruise ship",
+        "pubDate": "Sun, 10 May 2026 13:15:28 GMT",
         "link": "https://www.bbc.com/news/articles/cn7pzmg8zeno?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Dozens killed in jihadist attacks in central Mali",
-        "pubDate": "Sun, 10 May 2026 06:02:45 GMT",
-        "link": "https://www.france24.com/en/africa/20260510-dozens-killed-in-jihadist-attacks-in-central-mali",
+        "title": "Army parachutes onto remote island to help Briton with suspected hantavirus",
+        "pubDate": "Sun, 10 May 2026 12:52:31 GMT",
+        "link": "https://www.bbc.com/news/articles/cvgzv77ldpdo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Iran sends response to US proposal to end war via mediator Pakistan",
+        "pubDate": "Sun, 10 May 2026 12:40:50 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/10/iran-sends-response-to-us-proposal-to-end-war-via-mediator-pakistan?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Can central banks curb inflation as energy costs rise?",
+        "pubDate": "Sun, 10 May 2026 12:21:18 +0000",
+        "link": "https://www.aljazeera.com/video/counting-the-cost/2026/5/10/can-central-banks-curb-inflation-as-energy-costs-rise?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "US-Iran ceasefire under strain as Gulf states report drone attacks",
+        "pubDate": "Sun, 10 May 2026 12:16:51 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/10/us-iran-ceasefire-under-strain-as-gulf-states-report-drone-attacks?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Israel deports two activists detained on board Gaza flotilla",
+        "pubDate": "Sun, 10 May 2026 11:55:09 GMT",
+        "link": "https://www.bbc.com/news/articles/cvgzdpxv2d7o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "&#039;No comment&#039; after Schröder named by Putin for Ukraine talks",
+        "pubDate": "Sun, 10 May 2026 11:14:00 GMT",
+        "link": "https://www.dw.com/en/no-comment-after-schröder-named-by-putin-for-ukraine-talks/a-77110295?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Iran warns of retaliation as US tensions threaten fragile peace talks",
+        "pubDate": "Sun, 10 May 2026 10:50:07 GMT",
+        "link": "https://www.france24.com/en/video/20260510-iran-war",
         "source": "France24"
       },
       {
-        "title": "Buddhist monk arrested over alleged rape of teen in Sri Lanka",
-        "pubDate": "Sun, 10 May 2026 03:09:45 GMT",
-        "link": "https://www.bbc.com/news/articles/cy42kp0x92jo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
+        "title": "International evacuation underway as cruise ship passengers return home",
+        "pubDate": "Sun, 10 May 2026 10:49:50 GMT",
+        "link": "https://www.france24.com/en/video/20260510-cruise-ship-passengers-disembark",
+        "source": "France24"
       },
       {
-        "title": "Putin says he thinks Ukraine conflict 'coming to an end'",
-        "pubDate": "Sun, 10 May 2026 00:46:07 GMT",
-        "link": "https://www.bbc.com/news/articles/cn8p4j2jzwwo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
+        "title": "Israel strikes kill several in Lebanon despite truce",
+        "pubDate": "Sun, 10 May 2026 09:53:23 GMT",
+        "link": "https://www.france24.com/en/israel-strikes-kill-several-in-lebanon-despite-truce",
+        "source": "France24"
+      },
+      {
+        "title": "The weaponization of shipping channels",
+        "pubDate": "Sun, 10 May 2026 07:43:00 GMT",
+        "link": "https://www.dw.com/en/the-weaponization-of-shipping-channels/a-77108496?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
       },
       {
         "title": "Greek minister says mystery drone from a &#039;foreign state&#039;",
@@ -4725,22 +4738,10 @@
         "source": "DW News"
       },
       {
-        "title": "Putin says he thinks Ukraine war is &#039;coming to an end&#039;",
-        "pubDate": "Sat, 9 May 2026 19:16:00 GMT",
-        "link": "https://www.dw.com/en/putin-says-he-thinks-ukraine-war-is-coming-to-an-end/a-77106772?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
         "title": "‘Watching us is like watching a cousin’: the online creators reshaping Africa’s news ecosphere",
         "pubDate": "Sat, 09 May 2026 13:00:57 GMT",
         "link": "https://www.theguardian.com/world/2026/may/09/africa-influencers-news-consumption-social-media",
         "source": "Guardian"
-      },
-      {
-        "title": "Tariffs or not? How EU is dealing with US &#039;dealmaking&#039;",
-        "pubDate": "Sat, 9 May 2026 12:39:00 GMT",
-        "link": "https://www.dw.com/en/tariffs-or-not-how-eu-is-dealing-with-us-dealmaking/a-77100109?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
       },
       {
         "title": "Guardian reporter and colleagues detained and beaten by Somali police",
@@ -4836,7 +4837,7 @@
         "sunspots": 79.3
       }
     ],
-    "lastUpdated": "2026-05-10T08:07:49.156Z"
+    "lastUpdated": "2026-05-10T13:16:58.327Z"
   },
   "momentum": {
     "indicators": [
