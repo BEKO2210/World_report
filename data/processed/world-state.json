@@ -1,33 +1,32 @@
 {
   "meta": {
-    "generated": "2026-05-12T14:24:21.693Z",
+    "generated": "2026-05-12T19:52:32.679Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 40,
-    "sources_success_rate": 100,
-    "next_update": "2026-05-12T20:24:21.693Z",
+    "sources_available": 39,
+    "sources_success_rate": 98,
+    "next_update": "2026-05-13T01:52:32.680Z",
     "realtimePulse": {
-      "environment": -0.65,
-      "society": 0.05,
+      "environment": -0.58,
+      "society": 0,
       "economy": -0.02,
       "progress": 0.8,
       "details": {
-        "quakeCount": 36,
-        "maxMagnitude": 5.1,
-        "avgGlobalTemp": 18.7,
-        "newsSentiment": -0.42,
+        "quakeCount": 32,
+        "maxMagnitude": 5.6,
+        "avgGlobalTemp": 18.1,
         "cryptoFearGreed": 49,
         "arxivPapers": 20
       }
     }
   },
   "worldIndex": {
-    "value": 65.6,
-    "rawValue": 62.5,
+    "value": 66.7,
+    "rawValue": 62.9,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.5,
-    "change": 0.1,
+    "previous": 65.6,
+    "change": 1.1,
     "trend": "improving",
     "carryingCapacity": {
       "checks": {
@@ -36,8 +35,8 @@
           "passed": true
         },
         "balance": {
-          "multiplier": 1.05,
-          "ratio": 0.8
+          "multiplier": 1.061,
+          "ratio": 0.8421052631578947
         },
         "cascading": {
           "penalty": 0,
@@ -62,13 +61,13 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         },
         "momentum": {
           "direction": "expansion",
-          "position": "elastic",
-          "level": 1
+          "position": "capacitive",
+          "level": 2
         }
       },
       "indicators": {
@@ -78,7 +77,7 @@
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.2,
+          "bufferDistance": 48.1,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -93,7 +92,7 @@
           "maintenanceCost": 4.52
         },
         "momentum": {
-          "bufferDistance": 76.5,
+          "bufferDistance": 81.4,
           "recoveryTime": 0,
           "maintenanceCost": 0
         }
@@ -108,7 +107,7 @@
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0.1,
+      "change": 0,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -140,7 +139,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 61,
+          "value": 62,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -155,12 +154,12 @@
       ]
     },
     "society": {
-      "value": 56,
+      "value": 55.9,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0,
+      "change": -0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -263,8 +262,8 @@
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -311,10 +310,10 @@
       ]
     },
     "momentum": {
-      "value": 80,
+      "value": 84.2,
       "positiveCount": 16,
-      "negativeCount": 4,
-      "totalIndicators": 20,
+      "negativeCount": 3,
+      "totalIndicators": 19,
       "weight": 0.1,
       "indicators": []
     }
@@ -1197,79 +1196,79 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 61,
+      "globalAvgAQI": 62,
       "cleanestCities": [
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 21,
+          "aqi": 20,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "Lagos",
           "country": "",
-          "aqi": 26,
+          "aqi": 27,
           "lat": 6.45,
           "lng": 3.4
         },
         {
-          "city": "Tokyo",
-          "country": "",
-          "aqi": 27,
-          "lat": 35.68,
-          "lng": 139.69
-        },
-        {
-          "city": "Mexico City",
-          "country": "",
-          "aqi": 33,
-          "lat": 19.43,
-          "lng": -99.13
-        },
-        {
           "city": "London",
           "country": "",
-          "aqi": 36,
+          "aqi": 31,
           "lat": 51.51,
           "lng": -0.13
+        },
+        {
+          "city": "Berlin",
+          "country": "",
+          "aqi": 32,
+          "lat": 52.52,
+          "lng": 13.41
+        },
+        {
+          "city": "Tokyo",
+          "country": "",
+          "aqi": 34,
+          "lat": 35.68,
+          "lng": 139.69
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 190,
+          "aqi": 195,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 77,
+          "aqi": 76,
           "lat": 39.9,
           "lng": 116.4
         },
         {
           "city": "São Paulo",
           "country": "",
-          "aqi": 72,
+          "aqi": 73,
           "lat": -23.55,
           "lng": -46.63
         },
         {
-          "city": "Mumbai",
-          "country": "",
-          "aqi": 66,
-          "lat": 19.08,
-          "lng": 72.88
-        },
-        {
           "city": "Cairo",
           "country": "",
-          "aqi": 62,
+          "aqi": 65,
           "lat": 30.04,
           "lng": 31.24
+        },
+        {
+          "city": "Mumbai",
+          "country": "",
+          "aqi": 64,
+          "lat": 19.08,
+          "lng": 72.88
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1283,116 +1282,7 @@
     },
     "forest": {
       "current": 31.1,
-      "history": [
-        {
-          "year": 1996,
-          "value": 32.6
-        },
-        {
-          "year": 1997,
-          "value": 32.6
-        },
-        {
-          "year": 1998,
-          "value": 32.5
-        },
-        {
-          "year": 1999,
-          "value": 32.5
-        },
-        {
-          "year": 2000,
-          "value": 32.4
-        },
-        {
-          "year": 2001,
-          "value": 32.3
-        },
-        {
-          "year": 2002,
-          "value": 32.3
-        },
-        {
-          "year": 2003,
-          "value": 32.3
-        },
-        {
-          "year": 2004,
-          "value": 32.2
-        },
-        {
-          "year": 2005,
-          "value": 32.1
-        },
-        {
-          "year": 2006,
-          "value": 32.1
-        },
-        {
-          "year": 2007,
-          "value": 32.1
-        },
-        {
-          "year": 2008,
-          "value": 32
-        },
-        {
-          "year": 2009,
-          "value": 32
-        },
-        {
-          "year": 2010,
-          "value": 31.9
-        },
-        {
-          "year": 2011,
-          "value": 31.9
-        },
-        {
-          "year": 2012,
-          "value": 31.5
-        },
-        {
-          "year": 2013,
-          "value": 31.4
-        },
-        {
-          "year": 2014,
-          "value": 31.4
-        },
-        {
-          "year": 2015,
-          "value": 31.4
-        },
-        {
-          "year": 2016,
-          "value": 31.3
-        },
-        {
-          "year": 2017,
-          "value": 31.3
-        },
-        {
-          "year": 2018,
-          "value": 31.3
-        },
-        {
-          "year": 2019,
-          "value": 31.2
-        },
-        {
-          "year": 2020,
-          "value": 31.2
-        },
-        {
-          "year": 2021,
-          "value": 31.2
-        },
-        {
-          "year": 2022,
-          "value": 31.1
-        }
-      ],
+      "history": [],
       "source": "World Bank"
     },
     "renewableEnergy": {
@@ -1629,12 +1519,12 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-05-12T16:15",
+          "time": "2026-05-12T21:45",
           "interval": 900,
-          "temperature_2m": 10.1,
-          "relative_humidity_2m": 56,
-          "wind_speed_10m": 8.8,
-          "weather_code": 80
+          "temperature_2m": 7.4,
+          "relative_humidity_2m": 85,
+          "wind_speed_10m": 11.3,
+          "weather_code": 61
         }
       },
       {
@@ -1642,11 +1532,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-05-12T10:15",
+          "time": "2026-05-12T15:45",
           "interval": 900,
-          "temperature_2m": 13.9,
-          "relative_humidity_2m": 35,
-          "wind_speed_10m": 14.2,
+          "temperature_2m": 19,
+          "relative_humidity_2m": 22,
+          "wind_speed_10m": 13.3,
           "weather_code": 0
         }
       },
@@ -1655,11 +1545,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-05-12T23:15",
+          "time": "2026-05-13T04:45",
           "interval": 900,
-          "temperature_2m": 15.6,
-          "relative_humidity_2m": 86,
-          "wind_speed_10m": 3.7,
+          "temperature_2m": 12,
+          "relative_humidity_2m": 91,
+          "wind_speed_10m": 3.9,
           "weather_code": 0
         }
       },
@@ -1668,12 +1558,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-05-13T00:15",
+          "time": "2026-05-13T05:45",
           "interval": 900,
-          "temperature_2m": 17.1,
-          "relative_humidity_2m": 78,
-          "wind_speed_10m": 12.4,
-          "weather_code": 51
+          "temperature_2m": 17.2,
+          "relative_humidity_2m": 70,
+          "wind_speed_10m": 11,
+          "weather_code": 1
         }
       },
       {
@@ -1681,11 +1571,11 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-05-12T11:15",
+          "time": "2026-05-12T16:45",
           "interval": 900,
-          "temperature_2m": 15.6,
-          "relative_humidity_2m": 62,
-          "wind_speed_10m": 8.6,
+          "temperature_2m": 18.9,
+          "relative_humidity_2m": 55,
+          "wind_speed_10m": 2.4,
           "weather_code": 0
         }
       },
@@ -1694,11 +1584,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-05-12T15:15",
+          "time": "2026-05-12T20:45",
           "interval": 900,
-          "temperature_2m": 30.6,
-          "relative_humidity_2m": 69,
-          "wind_speed_10m": 17.8,
+          "temperature_2m": 28.5,
+          "relative_humidity_2m": 78,
+          "wind_speed_10m": 12.4,
           "weather_code": 1
         }
       },
@@ -1707,11 +1597,11 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-05-12T19:45",
+          "time": "2026-05-13T01:15",
           "interval": 900,
-          "temperature_2m": 30.2,
-          "relative_humidity_2m": 77,
-          "wind_speed_10m": 11.5,
+          "temperature_2m": 29.6,
+          "relative_humidity_2m": 82,
+          "wind_speed_10m": 1.8,
           "weather_code": 95
         }
       },
@@ -1720,12 +1610,12 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-05-12T15:15",
+          "time": "2026-05-12T20:45",
           "interval": 900,
-          "temperature_2m": 16.8,
-          "relative_humidity_2m": 38,
-          "wind_speed_10m": 16.9,
-          "weather_code": 3
+          "temperature_2m": 12.1,
+          "relative_humidity_2m": 68,
+          "wind_speed_10m": 11.2,
+          "weather_code": 0
         }
       }
     ]
@@ -3945,73 +3835,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 500833,
-          "forks": 47492,
+          "stars": 500913,
+          "forks": 47509,
           "language": "Markdown",
-          "updated": "2026-05-12T14:15:53Z"
+          "updated": "2026-05-12T19:46:56Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 465562,
-          "forks": 34919,
+          "stars": 465647,
+          "forks": 34927,
           "language": null,
-          "updated": "2026-05-12T14:21:40Z"
+          "updated": "2026-05-12T19:48:03Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 444556,
-          "forks": 44534,
+          "stars": 444570,
+          "forks": 44532,
           "language": "TypeScript",
-          "updated": "2026-05-12T14:14:25Z"
+          "updated": "2026-05-12T19:38:05Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 434342,
-          "forks": 47556,
+          "stars": 434473,
+          "forks": 47566,
           "language": "Python",
-          "updated": "2026-05-12T14:22:10Z"
+          "updated": "2026-05-12T19:42:32Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 388132,
-          "forks": 66290,
+          "stars": 388141,
+          "forks": 66288,
           "language": "Python",
-          "updated": "2026-05-12T14:19:16Z"
+          "updated": "2026-05-12T19:25:57Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 371157,
-          "forks": 76778,
+          "stars": 371239,
+          "forks": 76801,
           "language": "TypeScript",
-          "updated": "2026-05-12T14:21:38Z"
+          "updated": "2026-05-12T19:50:33Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 354644,
-          "forks": 44062,
+          "stars": 354654,
+          "forks": 44061,
           "language": "TypeScript",
-          "updated": "2026-05-12T14:22:23Z"
+          "updated": "2026-05-12T19:21:33Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 348093,
-          "forks": 56150,
+          "stars": 348168,
+          "forks": 56159,
           "language": "Python",
-          "updated": "2026-05-12T14:21:38Z"
+          "updated": "2026-05-12T19:45:15Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 346629,
-          "forks": 82877,
+          "stars": 346637,
+          "forks": 82881,
           "language": null,
-          "updated": "2026-05-12T14:17:38Z"
+          "updated": "2026-05-12T19:27:24Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 297250,
-          "forks": 27874,
+          "stars": 297287,
+          "forks": 27880,
           "language": "Python",
-          "updated": "2026-05-12T14:22:18Z"
+          "updated": "2026-05-12T19:32:49Z"
         }
       ],
       "source": "GitHub"
@@ -4492,70 +4382,120 @@
     },
     "spaceflight": [
       {
+        "title": "NASA Langley Engineer Attends FAA Training",
+        "published": "2026-05-12T18:57:31Z",
+        "source": "NASA",
+        "summary": "At a busy airport, every aircraft in the area shares just a handful of radio frequencies. Spectrum and time are constrained and if multiple people speak at once, both messages can get lost. Communicat"
+      },
+      {
+        "title": "Perseverance Stuns in New Selfie",
+        "published": "2026-05-12T17:22:51Z",
+        "source": "NASA",
+        "summary": "NASA’s Perseverance rover recently took a self-portrait against a sweeping backdrop of ancient Martian terrain at a location the science team calls “Lac de Charmes.” Assembled from 61 individual image"
+      },
+      {
+        "title": "NASA’s Perseverance Rover Snaps Selfie in Mars’ Western Frontier",
+        "published": "2026-05-12T16:48:31Z",
+        "source": "NASA",
+        "summary": "NASA’s Perseverance Mars rover recently took a self-portrait against a sweeping backdrop of ancient Martian terrain at a location the science team calls “Lac de Charmes.” Assembled from 61 individual "
+      },
+      {
+        "title": "NASA’s Perseverance Captures Panorama at ‘Arbot’",
+        "published": "2026-05-12T16:46:56Z",
+        "source": "NASA",
+        "summary": "Description NASA’s Perseverance Mars rover used its Mastcam-Z camera to capture this panorama of an area nicknamed “Arbot” on April 5, 2026, the 1,882nd Martian day, or sol, of the mission, during the"
+      },
+      {
+        "title": "NASA’s Perseverance Rover Snaps Westernmost Selfie",
+        "published": "2026-05-12T16:45:58Z",
+        "source": "NASA",
+        "summary": "Description NASA’s Perseverance Mars rover took this selfie on March 11, 2026, the 1,797th Martian day, or sol, of the mission, during the rover’s deepest push west beyond Jezero Crater. Assembled fro"
+      },
+      {
+        "title": "Hello Universe: NASA’s Next-Gen Space Processor Undergoes Testing",
+        "published": "2026-05-12T15:02:47Z",
+        "source": "NASA",
+        "summary": "NASA’s High Performance Spaceflight Computing project aims to dramatically improve the computing power of spacecraft. Missions need processors that can withstand the harsh space environment, so they u"
+      },
+      {
+        "title": "I Am Artemis: Kathleen Harmon",
+        "published": "2026-05-12T14:40:56Z",
+        "source": "NASA",
+        "summary": "Listen to this audio excerpt from Kathleen Harmon, the Artemis II Mission Interface Manager for NASA’s Deep Space Network: Captivated by Apollo launches on her television as a child, Kathleen Harmon n"
+      },
+      {
         "title": "Live coverage: NASA, SpaceX to launch 34th Cargo Dragon mission to the space station",
         "published": "2026-05-12T12:20:19Z",
         "source": "Spaceflight Now",
         "summary": "SpaceX’s 34th mission as part of the Commercial Resupply Services 2 contract with NASA will deliver 6,500 pounds of science and supplies to the International Space Station. Liftoff of the Falcon 9 roc"
       },
       {
+        "title": "New Ultra-Black Coating Could Enable the Search for Life on Exoplanets",
+        "published": "2026-05-12T12:00:00Z",
+        "source": "NASA",
+        "summary": "A recently developed ultra-black coating not only efficiently absorbs light, but is also extremely thin and durable, enabling its potential use on starshades that could someday support the imaging of "
+      },
+      {
         "title": "Smile's journey from launch to orbit",
         "published": "2026-05-12T08:00:00Z",
         "source": "ESA",
         "summary": "Our next space science mission is about to begin its space adventure."
-      },
-      {
-        "title": "Australia’s Cloudy Beauty",
-        "published": "2026-05-12T04:01:00Z",
-        "source": "NASA",
-        "summary": "Valley fog gathered in the Victorian Alps while an arch-shaped cloud drifted across Port Phillip Bay."
-      },
-      {
-        "title": "Curiosity Blog, Sols 4886-4892: Ingenuity and Perseverance, Curiosity Style",
-        "published": "2026-05-12T01:38:30Z",
-        "source": "NASA",
-        "summary": "Written by Michelle Minitti, MAHLI Deputy Principal Investigator Earth planning date: Friday, May 8, 2026 While we know the monikers Ingenuity and Perseverance are attached to our sister helicopter an"
-      },
-      {
-        "title": "NASA’s Curiosity Takes Close Look at Rock That Got Stuck on Drill",
-        "published": "2026-05-12T00:09:41Z",
-        "source": "NASA",
-        "summary": "Description NASA’s Curiosity Mars rover used its Mast Camera, or Mastcam, to capture this view of a rock nicknamed “Atacama” on May 6, 2026, the 4,877th Martian day, or sol, of the mission. The rock h"
-      },
-      {
-        "title": "May 2026 Satellite Puzzler",
-        "published": "2026-05-11T22:11:35Z",
-        "source": "NASA",
-        "summary": "Your challenge is to tell us the location of the satellite image and why it is interesting."
-      },
-      {
-        "title": "Launch Preview: SpaceX and Chinese missions fill busy launch manifest",
-        "published": "2026-05-11T22:05:00Z",
-        "source": "NASASpaceflight",
-        "summary": "The week of May 11 brings nine launches across the United States and China, spanning…\r\nThe post Launch Preview: SpaceX and Chinese missions fill busy launch manifest appeared first on NASASpaceFlight."
-      },
-      {
-        "title": "Nicholas Houghton: Engineering Crew Safety for NASA’s Artemis Missions",
-        "published": "2026-05-11T20:51:53Z",
-        "source": "NASA",
-        "summary": "Nicholas Houghton always dreamed of working at NASA and one day becoming an astronaut. Today, he helps design systems that keep crews safe during missions aboard NASA’s Orion spacecraft, including the"
-      },
-      {
-        "title": "Live coverage: SpaceX to launch intelligence-gathering satellites for the National Reconnaissance Office",
-        "published": "2026-05-11T19:50:46Z",
-        "source": "Spaceflight Now",
-        "summary": "The NROL-72 mission will be the 13th to date supporting what the NRO calls its “proliferated architecture” satellite constellation. Liftoff of SpaceX’s Falcon 9 rocket from pad 4E at Vandenberg Space "
-      },
-      {
-        "title": "NASA Invites Media to Annual Lunabotics Robotics Competition",
-        "published": "2026-05-11T19:11:57Z",
-        "source": "NASA",
-        "summary": "NASA will hold its 2026 Lunabotics Challenge Tuesday, May 19, to Thursday, May 21, at the Astronauts Memorial Foundation’s Center for Space Education at the Kennedy Space Center Visitor Complex in Flo"
       }
     ]
   },
   "realtime": {
     "earthquakes": {
       "last24h": [
+        {
+          "location": "2 km NNE of Middletown, CA",
+          "magnitude": 3,
+          "depth": 4,
+          "lat": 38.7693328857422,
+          "lng": -122.608329772949,
+          "time": "2026-05-12T19:38:13.700Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "108 km WSW of Pelican, Alaska",
+          "magnitude": 3,
+          "depth": 5,
+          "lat": 57.635,
+          "lng": -137.953,
+          "time": "2026-05-12T17:05:27.137Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "96 km W of Lata, Solomon Islands",
+          "magnitude": 5.6,
+          "depth": 63.665,
+          "lat": -10.6279,
+          "lng": 164.9205,
+          "time": "2026-05-12T15:39:30.763Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "206 km SE of Chiniak, Alaska",
+          "magnitude": 3.3,
+          "depth": 5,
+          "lat": 56.498,
+          "lng": -149.554,
+          "time": "2026-05-12T15:15:53.195Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "42 km W of Petrolia, CA",
+          "magnitude": 2.99,
+          "depth": 17.9899997711182,
+          "lat": 40.3455009460449,
+          "lng": -124.776000976562,
+          "time": "2026-05-12T14:52:58.670Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
         {
           "location": "118 km ESE of Chignik, Alaska",
           "magnitude": 2.6,
@@ -4585,59 +4525,9 @@
           "time": "2026-05-12T12:34:17.318Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "254 km WSW of Tofino, Canada",
-          "magnitude": 2.8,
-          "depth": 10,
-          "lat": 47.9595,
-          "lng": -128.8473,
-          "time": "2026-05-12T11:34:16.561Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "57 km WSW of San Pedro de Atacama, Chile",
-          "magnitude": 4.4,
-          "depth": 125.984,
-          "lat": -23.1277,
-          "lng": -68.7122,
-          "time": "2026-05-12T10:40:05.870Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "1 km WSW of Pāhala, Hawaii",
-          "magnitude": 2.46,
-          "depth": 31.3099994659424,
-          "lat": 19.1989994049072,
-          "lng": -155.493499755859,
-          "time": "2026-05-12T09:28:12.000Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "23 km SW of Owhiro Bay, New Zealand",
-          "magnitude": 4.3,
-          "depth": 24.825,
-          "lat": -41.4903,
-          "lng": 174.5627,
-          "time": "2026-05-12T09:02:57.723Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "224 km SE of Pondaguitan, Philippines",
-          "magnitude": 5,
-          "depth": 108.574,
-          "lat": 4.8333,
-          "lng": 127.5121,
-          "time": "2026-05-12T08:53:56.666Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 36,
+      "total24h": 32,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4666,124 +4556,124 @@
     },
     "news": [
       {
-        "title": "eBay rejects $55.5bn offer from GameStop",
-        "pubDate": "Tue, 12 May 2026 14:07:18 GMT",
-        "link": "https://www.bbc.com/news/articles/ckgp5ll3jd4o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
+        "title": "Japanese crisp bags turn black and white due to Iran war",
+        "pubDate": "Tue, 12 May 2026 19:42:31 GMT",
+        "link": "https://www.france24.com/en/tv-shows/business/20260512-japanese-crisp-bags-turn-black-and-white-due-to-iran-war",
+        "source": "France24"
+      },
+      {
+        "title": "Mali, immigration and DR Congo: Five key takeaways from Macron's interview with FRANCE 24",
+        "pubDate": "Tue, 12 May 2026 19:39:55 GMT",
+        "link": "https://www.france24.com/en/africa/20260512-mali-immigration-and-dr-congo-five-key-takeaways-from-macron-s-interview-with-france-24",
+        "source": "France24"
+      },
+      {
+        "title": "Why is Iran increasingly targeting the UAE in its war messaging?",
+        "pubDate": "Tue, 12 May 2026 19:37:09 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/12/why-is-iran-increasingly-targeting-the-uae-in-its-war-messaging?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Ukraine hits Russia’s distant gas facilities after Moscow’s attacks kill 6",
+        "pubDate": "Tue, 12 May 2026 19:36:36 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/12/russia-ukraine-latest?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "American actor Jane Fonda and Chinese star Gong Li open 2026 Cannes Film Festival",
+        "pubDate": "Tue, 12 May 2026 19:22:16 GMT",
+        "link": "https://www.france24.com/en/culture/20260512-american-actor-jane-fonda-and-chinese-star-gong-li-open-2026-cannes-film-festival",
+        "source": "France24"
+      },
+      {
+        "title": "Macron unveils $27 billion Africa investment, urges reset with Europe",
+        "pubDate": "Tue, 12 May 2026 19:04:36 +0000",
+        "link": "https://www.aljazeera.com/video/2026/5/12/macron-unveils-27-billion-africa-investment-urges-reset-with-europe?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "NASA Langley Engineer Attends FAA Training",
+        "pubDate": "Tue, 12 May 2026 18:57:31 +0000",
+        "link": "https://www.nasa.gov/general/nasa-langley-engineer-attends-faa-training/",
+        "source": "NASA"
       },
       {
         "title": "US inflation jumps to 3.8% as energy costs surge from Iran war",
-        "pubDate": "Tue, 12 May 2026 14:06:08 GMT",
+        "pubDate": "Tue, 12 May 2026 18:36:58 GMT",
         "link": "https://www.bbc.com/news/articles/c202pgxx89lo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Trump-Xi summit: High stakes for the US, China and the world",
-        "pubDate": "Tue, 12 May 2026 14:02:00 GMT",
-        "link": "https://www.dw.com/en/trump-xi-summit-high-stakes-for-the-us-china-and-the-world/a-77134255?maca=en-rss-en-world-4025-xml-mrss",
+        "title": "Mali: Humanitarian situation following the attacks on 25 April 2026",
+        "pubDate": "Tue, 12 May 2026 18:27:57 +0000",
+        "link": "https://reliefweb.int/report/mali/humanitarian-situation-following-attacks-25-april-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Mali: Situation humanitaire suite aux attaques du 25 avril 2026",
+        "pubDate": "Tue, 12 May 2026 18:25:22 +0000",
+        "link": "https://reliefweb.int/report/mali/situation-humanitaire-suite-aux-attaques-du-25-avril-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Iran: Surge of political prisoners amid US-Israel war",
+        "pubDate": "Tue, 12 May 2026 18:16:00 GMT",
+        "link": "https://www.dw.com/en/iran-surge-of-political-prisoners-amid-us-israel-war/a-77136844?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "Thailand scraps Cambodia naval pact amid sinking ties",
-        "pubDate": "Tue, 12 May 2026 13:58:00 GMT",
-        "link": "https://www.dw.com/en/thailand-scraps-cambodia-naval-pact-amid-sinking-ties/a-77132501?maca=en-rss-en-world-4025-xml-mrss",
+        "title": "EU invites Taiban members to discuss Afghan migrant returns",
+        "pubDate": "Tue, 12 May 2026 18:05:00 GMT",
+        "link": "https://www.dw.com/en/eu-invites-taiban-members-to-discuss-afghan-migrant-returns/a-77134268?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "Farmer-owned supermarket sets example for better remuneration model",
-        "pubDate": "Tue, 12 May 2026 13:53:54 GMT",
-        "link": "https://www.france24.com/en/farmer-owned-supermarket-sets-example-for-better-remuneration-model",
-        "source": "France24"
-      },
-      {
-        "title": "'Our democracy has passed all the tests now,' says Botswana's president",
-        "pubDate": "Tue, 12 May 2026 13:46:24 GMT",
-        "link": "https://www.france24.com/en/tv-shows/t%C3%AAte-%C3%A0-t%C3%AAte/20260512-our-democracy-has-passed-all-the-tests-now-says-botswana-s-president",
-        "source": "France24"
-      },
-      {
-        "title": "Uganda’s Yoweri Museveni sworn in for seventh term as president",
-        "pubDate": "Tue, 12 May 2026 13:42:21 +0000",
-        "link": "https://www.aljazeera.com/news/2026/5/12/ugandas-yoweri-museveni-sworn-in-for-seventh-term-as-president?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Spain reports new hantavirus case in passenger evacuated from cruise ship",
-        "pubDate": "Tue, 12 May 2026 13:39:50 +0000",
-        "link": "https://www.aljazeera.com/news/2026/5/12/spain-reports-new-hantavirus-case-in-passenger-evacuated-from-cruise-ship?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Israel approves law on death penalty for October 7 detainees",
-        "pubDate": "Tue, 12 May 2026 13:35:23 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/5/12/israel-approves-law-on-death-penalty-for-october-7-detainees?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "UK govenrment divided around Starmer as three junior ministers resign",
-        "pubDate": "Tue, 12 May 2026 13:33:02 GMT",
-        "link": "https://www.france24.com/en/uk-govenrment-divided-around-starmer-as-three-junior-ministers-resign",
-        "source": "France24"
-      },
-      {
-        "title": "Uganda's president sworn in for record seventh term",
-        "pubDate": "Tue, 12 May 2026 13:19:47 GMT",
-        "link": "https://www.bbc.com/news/articles/cqxp23272j3o?at_medium=RSS&amp;at_campaign=rss",
+        "title": "No sign of larger hantavirus outbreak, says UN health agency",
+        "pubDate": "Tue, 12 May 2026 17:55:12 GMT",
+        "link": "https://www.bbc.com/news/articles/cqjpqynj1nlo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Children shot, stabbed and pepper-sprayed in occupied West Bank",
-        "pubDate": "Tue, 12 May 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/05/1167488",
-        "source": "UN News"
+        "title": "Sudan Site Management and Shelter &amp; NFI Cluster - Preparedness and Response Plan, May 2026",
+        "pubDate": "Tue, 12 May 2026 17:53:15 +0000",
+        "link": "https://reliefweb.int/report/sudan/sudan-site-management-and-shelter-nfi-cluster-preparedness-and-response-plan-may-2026",
+        "source": "ReliefWeb"
       },
       {
-        "title": "UK: Keir Starmer tells Cabinet he will continue in place, as two junior ministers quit",
-        "pubDate": "Tue, 12 May 2026 09:45:00 GMT",
-        "link": "https://www.dw.com/en/uk-keir-starmer-tells-cabinet-he-will-continue-in-place-as-two-junior-ministers-quit/a-77129695?maca=en-rss-en-world-4025-xml-mrss",
+        "title": "Perseverance Stuns in New Selfie",
+        "pubDate": "Tue, 12 May 2026 17:22:51 +0000",
+        "link": "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie/",
+        "source": "NASA"
+      },
+      {
+        "title": "War in Iran: Despite Iranian attacks, Doha steps up mediation efforts",
+        "pubDate": "Tue, 12 May 2026 17:19:00 GMT",
+        "link": "https://www.dw.com/en/war-in-iran-despite-iranian-attacks-doha-steps-up-mediation-efforts/a-77133071?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "How to follow the Smile launch live",
-        "pubDate": "Tue, 12 May 2026 11:30:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Smile/How_to_follow_the_Smile_launch_live]]>",
-        "source": "ESA"
+        "title": "Lebanon says two paramedics among 10 killed in Israeli strikes",
+        "pubDate": "Tue, 12 May 2026 17:17:54 GMT",
+        "link": "https://www.bbc.com/news/articles/cx21j3xl72zo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
       },
       {
-        "title": "Internal displacements caused by violence or conflict at record high in 2025",
-        "pubDate": "Tue, 12 May 2026 08:01:28 GMT",
-        "link": "https://www.theguardian.com/world/2026/may/12/internal-displacements-violence-conflict-record-high-2025",
-        "source": "Guardian"
-      },
-      {
-        "title": "Smile's journey from launch to orbit",
-        "pubDate": "Tue, 12 May 2026 10:00:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/ESA_Multimedia/Videos/2026/04/Smile_s_journey_from_launch_to_orbit]]>",
-        "source": "ESA"
-      },
-      {
-        "title": "Gaborone gold rush: how Botswana rose to the top of men’s sprinting",
-        "pubDate": "Tue, 12 May 2026 07:17:30 GMT",
-        "link": "https://www.theguardian.com/world/2026/may/12/gaborone-gold-rush-botswana-sprinting-athletics",
-        "source": "Guardian"
-      },
-      {
-        "title": "Australia’s Cloudy Beauty",
-        "pubDate": "Tue, 12 May 2026 04:01:00 +0000",
-        "link": "https://science.nasa.gov/earth/earth-observatory/australias-cloudy-beauty/",
+        "title": "NASA’s Perseverance Rover Snaps Selfie in Mars’ Western Frontier",
+        "pubDate": "Tue, 12 May 2026 16:48:31 +0000",
+        "link": "https://www.nasa.gov/missions/mars-2020-perseverance/perseverance-rover/nasas-perseverance-rover-snaps-selfie-in-mars-western-frontier/",
         "source": "NASA"
       },
       {
-        "title": "Australia&#8217;s Cloudy Beauty",
-        "pubDate": "Tue, 12 May 2026 04:01:00 +0000",
-        "link": "https://science.nasa.gov/earth/earth-observatory/australias-cloudy-beauty/",
-        "source": "NASA Earth"
+        "title": "Guterres highlights Africa’s leadership in speech to summit in Nairobi",
+        "pubDate": "Tue, 12 May 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/05/1167493",
+        "source": "UN News"
       },
       {
-        "title": "Curiosity Blog, Sols 4886-4892: Ingenuity and Perseverance, Curiosity Style",
-        "pubDate": "Tue, 12 May 2026 01:38:30 +0000",
-        "link": "https://science.nasa.gov/blog/curiosity-blog-sols-4886-4892-ingenuity-and-perseverance-curiosity-style/",
-        "source": "NASA"
+        "title": "From childhood to university, economic inequality shapes life chances worldwide",
+        "pubDate": "Tue, 12 May 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/05/1167492",
+        "source": "UN News"
       }
     ],
     "volcanic": [],
@@ -4837,7 +4727,7 @@
         "sunspots": 79.3
       }
     ],
-    "lastUpdated": "2026-05-12T14:24:21.693Z"
+    "lastUpdated": "2026-05-12T19:52:32.680Z"
   },
   "momentum": {
     "indicators": [
@@ -4864,12 +4754,6 @@
         "direction": "improving",
         "change": "+6.6%",
         "icon": "up"
-      },
-      {
-        "name": "Waldfläche",
-        "direction": "declining",
-        "change": "-0.3%",
-        "icon": "down"
       },
       {
         "name": "Internet-Zugang",
