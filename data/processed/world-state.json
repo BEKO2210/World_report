@@ -1,22 +1,23 @@
 {
   "meta": {
-    "generated": "2026-05-26T09:55:24.535Z",
+    "generated": "2026-05-26T15:26:04.372Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 40,
-    "sources_success_rate": 100,
-    "next_update": "2026-05-26T15:55:24.535Z",
+    "sources_available": 39,
+    "sources_success_rate": 98,
+    "next_update": "2026-05-26T21:26:04.372Z",
     "realtimePulse": {
-      "environment": -1.1,
-      "society": -0.45,
+      "environment": -1.05,
+      "society": -0.4,
       "economy": -0.26,
-      "progress": 0.8,
+      "progress": 0.47,
       "details": {
-        "quakeCount": 36,
+        "quakeCount": 34,
         "maxMagnitude": 6.9,
-        "avgGlobalTemp": 23.1,
+        "avgGlobalTemp": 25.1,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 34,
-        "arxivPapers": 20
+        "arxivPapers": 5
       }
     }
   },
@@ -25,9 +26,9 @@
     "rawValue": 62.2,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 64.1,
-    "change": 1.2,
-    "trend": "improving",
+    "previous": 65.3,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -61,8 +62,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         },
         "momentum": {
           "direction": "expansion",
@@ -72,7 +73,7 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.2,
+          "bufferDistance": 34.4,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
@@ -87,7 +88,7 @@
           "maintenanceCost": 2.76
         },
         "progress": {
-          "bufferDistance": 74.2,
+          "bufferDistance": 73.9,
           "recoveryTime": 0,
           "maintenanceCost": 4.52
         },
@@ -102,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.1,
+      "value": 44.2,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 69,
+          "value": 70,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -258,12 +259,12 @@
       ]
     },
     "progress": {
-      "value": 78.1,
+      "value": 77.8,
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "declining",
+      "change": -0.3,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -302,7 +303,7 @@
         },
         {
           "name": "Wissenschaftliche Papers",
-          "value": "20+ heute",
+          "value": "3.2M/Jahr",
           "score": 75,
           "trend": "improving",
           "source": "arXiv"
@@ -1196,58 +1197,65 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 69,
+      "globalAvgAQI": 70,
       "cleanestCities": [
+        {
+          "city": "Mumbai",
+          "country": "",
+          "aqi": 20,
+          "lat": 19.08,
+          "lng": 72.88
+        },
         {
           "city": "Los Angeles",
           "country": "",
-          "aqi": 19,
+          "aqi": 22,
           "lat": 34.05,
           "lng": -118.24
         },
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 31,
+          "aqi": 26,
           "lat": -33.87,
           "lng": 151.21
         },
         {
-          "city": "London",
+          "city": "Tokyo",
           "country": "",
-          "aqi": 37,
-          "lat": 51.51,
-          "lng": -0.13
+          "aqi": 39,
+          "lat": 35.68,
+          "lng": 139.69
         },
         {
-          "city": "Mumbai",
+          "city": "Cairo",
           "country": "",
-          "aqi": 38,
-          "lat": 19.08,
-          "lng": 72.88
-        },
-        {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 40,
-          "lat": 52.52,
-          "lng": 13.41
+          "aqi": 43,
+          "lat": 30.04,
+          "lng": 31.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 254,
+          "aqi": 262,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 97,
+          "aqi": 95,
           "lat": 39.9,
           "lng": 116.4
+        },
+        {
+          "city": "Lagos",
+          "country": "",
+          "aqi": 71,
+          "lat": 6.45,
+          "lng": 3.4
         },
         {
           "city": "Mexico City",
@@ -1257,16 +1265,9 @@
           "lng": -99.13
         },
         {
-          "city": "Lagos",
-          "country": "",
-          "aqi": 63,
-          "lat": 6.45,
-          "lng": 3.4
-        },
-        {
           "city": "São Paulo",
           "country": "",
-          "aqi": 44,
+          "aqi": 62,
           "lat": -23.55,
           "lng": -46.63
         }
@@ -1628,11 +1629,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-05-26T11:45",
+          "time": "2026-05-26T17:15",
           "interval": 900,
-          "temperature_2m": 25.1,
-          "relative_humidity_2m": 46,
-          "wind_speed_10m": 10.1,
+          "temperature_2m": 29.7,
+          "relative_humidity_2m": 31,
+          "wind_speed_10m": 13.4,
           "weather_code": 0
         }
       },
@@ -1641,11 +1642,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-05-26T05:45",
+          "time": "2026-05-26T11:15",
           "interval": 900,
-          "temperature_2m": 14.3,
-          "relative_humidity_2m": 88,
-          "wind_speed_10m": 5.8,
+          "temperature_2m": 23.6,
+          "relative_humidity_2m": 48,
+          "wind_speed_10m": 1.8,
           "weather_code": 0
         }
       },
@@ -1654,11 +1655,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-05-26T18:45",
+          "time": "2026-05-27T00:15",
           "interval": 900,
-          "temperature_2m": 22.2,
-          "relative_humidity_2m": 74,
-          "wind_speed_10m": 5.9,
+          "temperature_2m": 18.5,
+          "relative_humidity_2m": 95,
+          "wind_speed_10m": 3.5,
           "weather_code": 1
         }
       },
@@ -1667,12 +1668,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-05-26T19:45",
+          "time": "2026-05-27T01:15",
           "interval": 900,
-          "temperature_2m": 17.2,
-          "relative_humidity_2m": 97,
-          "wind_speed_10m": 2,
-          "weather_code": 63
+          "temperature_2m": 15.5,
+          "relative_humidity_2m": 98,
+          "wind_speed_10m": 1.8,
+          "weather_code": 2
         }
       },
       {
@@ -1680,11 +1681,11 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-05-26T06:45",
+          "time": "2026-05-26T12:15",
           "interval": 900,
-          "temperature_2m": 16.1,
-          "relative_humidity_2m": 99,
-          "wind_speed_10m": 8.1,
+          "temperature_2m": 23.2,
+          "relative_humidity_2m": 68,
+          "wind_speed_10m": 8.4,
           "weather_code": 3
         }
       },
@@ -1693,11 +1694,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-05-26T10:45",
+          "time": "2026-05-26T16:15",
           "interval": 900,
-          "temperature_2m": 27.8,
-          "relative_humidity_2m": 80,
-          "wind_speed_10m": 4.7,
+          "temperature_2m": 28.5,
+          "relative_humidity_2m": 74,
+          "wind_speed_10m": 11.2,
           "weather_code": 3
         }
       },
@@ -1706,12 +1707,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-05-26T15:15",
+          "time": "2026-05-26T20:45",
           "interval": 900,
-          "temperature_2m": 33.8,
-          "relative_humidity_2m": 58,
-          "wind_speed_10m": 12.8,
-          "weather_code": 95
+          "temperature_2m": 30.9,
+          "relative_humidity_2m": 70,
+          "wind_speed_10m": 5.8,
+          "weather_code": 2
         }
       },
       {
@@ -1719,11 +1720,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-05-26T10:45",
+          "time": "2026-05-26T16:15",
           "interval": 900,
-          "temperature_2m": 28.4,
-          "relative_humidity_2m": 38,
-          "wind_speed_10m": 5,
+          "temperature_2m": 31.1,
+          "relative_humidity_2m": 29,
+          "wind_speed_10m": 9.2,
           "weather_code": 0
         }
       }
@@ -3908,33 +3909,7 @@
           "value": 3200000
         }
       ],
-      "latestArxiv": [
-        {
-          "title": "Unifying Early and Late Dark Energy: Dynamical Requirements and Obstructions",
-          "published": "2026-05-25T17:59:53Z",
-          "category": "astro-ph.CO"
-        },
-        {
-          "title": "Radial Extremality for LRU Caching and the Fill--Holst Conjecture",
-          "published": "2026-05-25T17:59:10Z",
-          "category": "math.PR"
-        },
-        {
-          "title": "Automated Benchmark Auditing for AI Agents and Large Language Models",
-          "published": "2026-05-25T17:44:21Z",
-          "category": "cs.CL"
-        },
-        {
-          "title": "Observation of the Optical Phonons in α-MnTe films",
-          "published": "2026-05-25T17:38:54Z",
-          "category": "cond-mat.mes-hall"
-        },
-        {
-          "title": "Active Query Synthesis for Preference Learning",
-          "published": "2026-05-25T17:37:58Z",
-          "category": "cs.LG"
-        }
-      ],
+      "latestArxiv": [],
       "source": "arXiv / Scopus"
     },
     "github": {
@@ -3944,73 +3919,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 504762,
-          "forks": 47880,
+          "stars": 504823,
+          "forks": 47886,
           "language": "Markdown",
-          "updated": "2026-05-26T09:51:35Z"
+          "updated": "2026-05-26T15:22:58Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 470120,
+          "stars": 470206,
           "forks": 35174,
           "language": null,
-          "updated": "2026-05-26T09:53:08Z"
+          "updated": "2026-05-26T15:21:37Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 445397,
-          "forks": 44692,
+          "stars": 445408,
+          "forks": 44694,
           "language": "TypeScript",
-          "updated": "2026-05-26T09:51:50Z"
+          "updated": "2026-05-26T15:02:55Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 437209,
-          "forks": 47928,
+          "stars": 437246,
+          "forks": 47933,
           "language": "Python",
-          "updated": "2026-05-26T09:53:27Z"
+          "updated": "2026-05-26T15:16:33Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 388974,
-          "forks": 66344,
+          "stars": 388985,
+          "forks": 66343,
           "language": "Python",
-          "updated": "2026-05-26T09:51:49Z"
+          "updated": "2026-05-26T15:22:17Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 374740,
-          "forks": 78043,
+          "stars": 374805,
+          "forks": 78077,
           "language": "TypeScript",
-          "updated": "2026-05-26T09:53:40Z"
+          "updated": "2026-05-26T15:21:40Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 355448,
-          "forks": 44106,
+          "stars": 355475,
+          "forks": 44104,
           "language": "TypeScript",
-          "updated": "2026-05-26T09:51:57Z"
+          "updated": "2026-05-26T15:19:09Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 350327,
-          "forks": 56428,
+          "stars": 350363,
+          "forks": 56435,
           "language": "Python",
-          "updated": "2026-05-26T09:52:27Z"
+          "updated": "2026-05-26T15:15:15Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 347402,
+          "stars": 347423,
           "forks": 82958,
           "language": null,
-          "updated": "2026-05-26T09:52:03Z"
+          "updated": "2026-05-26T15:14:49Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 299614,
-          "forks": 27978,
+          "stars": 299666,
+          "forks": 27980,
           "language": "Python",
-          "updated": "2026-05-26T09:51:50Z"
+          "updated": "2026-05-26T15:11:44Z"
         }
       ],
       "source": "GitHub"
@@ -4491,6 +4466,48 @@
     },
     "spaceflight": [
       {
+        "title": "Italy’s Lunar Habitat Clears NASA System Requirements Review",
+        "published": "2026-05-26T14:52:21Z",
+        "source": "European Spaceflight",
+        "summary": "The Italian Space Agency announced on 22 May that its Multi-Purpose Habitation (MPH) module had been cleared by a NASA review board to progress toward a Preliminary Design Review in 2027. The first MP"
+      },
+      {
+        "title": "Chennai City Lights",
+        "published": "2026-05-26T14:49:48Z",
+        "source": "NASA",
+        "summary": "Chennai, on India’s southern coast along the Bay of Bengal and with a metropolitan population of about 8.7 million, shines with white LED streetlights in this photograph taken at approximately 9:13 p."
+      },
+      {
+        "title": "Analyst on China's spent rocket stages: \"Things only continue to get worse\"",
+        "published": "2026-05-26T13:57:30Z",
+        "source": "Arstechnica",
+        "summary": "Spent upper stages are the most dangerous kind of space debris."
+      },
+      {
+        "title": "Regulations and access to capital continue to hinder Europe’s smallsat industry",
+        "published": "2026-05-26T12:49:00Z",
+        "source": "SpaceNews",
+        "summary": "\nBurdensome regulations and limited access to capital continue to act as a drag on Europe’s smallsat sector despite proposed new legislation and an influx of defense spending.\nThe post Regulations and"
+      },
+      {
+        "title": "Live coverage: SpaceX to launch 24 Starlink satellites on Falcon 9 rocket from Vandenberg SFB",
+        "published": "2026-05-26T12:48:17Z",
+        "source": "Spaceflight Now",
+        "summary": "The Starlink 17-37 mission will fly on the 60th Falcon 9 rocket launched in 2026. Liftoff from pad 4E at Vandenberg Space Force Base is scheduled for 7:50 a.m. PDT (10:50 a.m. EDT / 1450 UTC). "
+      },
+      {
+        "title": "New Instrument Used Antarctic Ice Sheet to Probe Extreme Universe",
+        "published": "2026-05-26T12:00:00Z",
+        "source": "NASA",
+        "summary": "The Payload for Ultrahigh Energy Observations (PUEO) is a NASA Astrophysics Pioneers Program mission designed to detect the most energetic particles in the universe."
+      },
+      {
+        "title": "Chinese startup Mega Engine advances reusable staged-combustion rocket engine",
+        "published": "2026-05-26T10:43:10Z",
+        "source": "SpaceNews",
+        "summary": "\nA new Chinese commercial rocket engine startup has conducted a successful long-duration hot fire test of a closed-cycle kerosene-liquid oxygen engine.\nThe post Chinese startup Mega Engine advances re"
+      },
+      {
         "title": "Orbit Fab, Thales Alenia to study refueling for electric-propulsion satellites",
         "published": "2026-05-26T08:00:00Z",
         "source": "SpaceNews",
@@ -4503,58 +4520,66 @@
         "summary": "\nTwo companies best known for brokering payload space on SpaceX rideshare launches have each purchased Falcon 9 launches to meet the growing demand for such missions.\nThe post Exolaunch and SEOPS purc"
       },
       {
-        "title": "Launch Preview: Starlink and Amazon Leo missions fill manifest",
-        "published": "2026-05-25T22:01:32Z",
-        "source": "NASASpaceflight",
-        "summary": "Six orbital launches are expected worldwide this week, headlined by four Falcon 9 Starlink missions…\nThe post Launch Preview: Starlink and Amazon Leo missions fill manifest appeared first on NASASpace"
-      },
-      {
-        "title": "Starship V3 Debuts, with Mixed Results",
-        "published": "2026-05-25T17:29:33Z",
-        "source": "Space Scout",
-        "summary": "Starship's 12th flight test ended with mixed results, advancing the program in some ways and stumbling backwards in others."
-      },
-      {
-        "title": "Redwire Delivers Argonaut Robotic Arm Prototype",
-        "published": "2026-05-25T11:05:20Z",
-        "source": "European Spaceflight",
-        "summary": "US-based space technology company Redwire has delivered an initial prototype of a robotic arm that could be used aboard the European Space Agency’s Argonaut lunar lander. The announcement comes as ESA"
-      },
-      {
-        "title": "Northern Norway is ready to launch. EU Space Regulation — and its new Arctic policy – is not.",
-        "published": "2026-05-25T11:00:00Z",
-        "source": "SpaceNews",
-        "summary": "\nThe European Commission is currently updating its Arctic policy, with a new policy statement expected this coming autumn. Unlike the latest policy from 2021, the update will place greater emphasis […"
-      },
-      {
-        "title": "Shenzhou-23 crew arrives at Tiangong as China maps path to 2030 lunar landing",
-        "published": "2026-05-24T21:11:26Z",
-        "source": "SpaceNews",
-        "summary": "\nThree Chinese astronauts arrived at Tiangong space station Sunday, with one crewmember expected to become China’s first to stay in orbit for an entire year.\nThe post Shenzhou-23 crew arrives at Tiang"
-      },
-      {
-        "title": "Vehicle arrivals, science experiments, and maintenance keep Expedition 74 busy through April",
-        "published": "2026-05-24T19:04:58Z",
-        "source": "NASASpaceflight",
-        "summary": "Recent weeks aboard the International Space Station have been busy, with the Expedition 74 crew…\nThe post Vehicle arrivals, science experiments, and maintenance keep Expedition 74 busy through April a"
-      },
-      {
-        "title": "What’s Happening in Space Policy May 24-30, 2026",
-        "published": "2026-05-24T18:44:17Z",
-        "source": "SpacePolicyOnline.com",
-        "summary": "Here is SpacePolicyOnline.com’s list of space policy events for the week of May 24-30, 2026 and any insight we can offer about them. The House and Senate are in recess […]"
-      },
-      {
-        "title": "Live coverage: SpaceX to launch 29 Starlink satellites on a Falcon 9 rocket from Cape Canaveral",
-        "published": "2026-05-24T17:54:29Z",
-        "source": "Spaceflight Now",
-        "summary": "The mission is SpaceX’s 60th orbital flight of the year, including one Falcon Heavy launch and 59 Falcon 9 flights. Liftoff of the Starlink 10-47 mission from pad 40 at Cape Canaveral Space Force Stat"
+        "title": "A Full Moon Checkup",
+        "published": "2026-05-26T04:00:00Z",
+        "source": "NASA",
+        "summary": "Once a month during the full Moon, Landsat 9 turns from Earth to image the lunar surface, helping keep the spacecraft’s data accurate and consistent."
       }
     ]
   },
   "realtime": {
     "earthquakes": {
       "last24h": [
+        {
+          "location": "44 km ENE of Mawlaik, Burma (Myanmar)",
+          "magnitude": 4.5,
+          "depth": 112.555,
+          "lat": 23.8178,
+          "lng": 94.7947,
+          "time": "2026-05-26T14:07:51.172Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "29 km S of Manley Hot Springs, Alaska",
+          "magnitude": 3.6,
+          "depth": 10,
+          "lat": 64.7326,
+          "lng": -150.6626,
+          "time": "2026-05-26T13:43:57.825Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "19 km S of Nixon, Texas",
+          "magnitude": 3,
+          "depth": 6.327,
+          "lat": 29.092,
+          "lng": -97.772,
+          "time": "2026-05-26T13:22:53.704Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "32 km NE of Chase, Alaska",
+          "magnitude": 2.6,
+          "depth": 55.089,
+          "lat": 62.6357,
+          "lng": -149.6128,
+          "time": "2026-05-26T11:45:21.984Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "15 km NNW of Tamuning-Tumon-Harmon Village, Guam",
+          "magnitude": 4.4,
+          "depth": 134.429,
+          "lat": 13.6167,
+          "lng": 144.7187,
+          "time": "2026-05-26T11:10:25.462Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
         {
           "location": "66 km SW of Gambiran Satu, Indonesia",
           "magnitude": 4.9,
@@ -4584,59 +4609,9 @@
           "time": "2026-05-26T06:27:45.435Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "26 km NE of Viola, CA",
-          "magnitude": 3.48,
-          "depth": -1.80999994277954,
-          "lat": 40.6828346252441,
-          "lng": -121.456336975098,
-          "time": "2026-05-26T05:11:52.110Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "25 km WNW of Whites City, New Mexico",
-          "magnitude": 2.9,
-          "depth": 6.339,
-          "lat": 32.2793,
-          "lng": -104.6134,
-          "time": "2026-05-26T04:26:58.447Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "9 km SE of Waikoloa, Hawaii",
-          "magnitude": 2.55,
-          "depth": 35.060001373291,
-          "lat": 19.8911666870117,
-          "lng": -155.716171264648,
-          "time": "2026-05-26T03:55:16.320Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "8 km S of Malibu Beach, CA",
-          "magnitude": 3.17361641696221,
-          "depth": 12.3999996185303,
-          "lat": 33.9601669311523,
-          "lng": -118.682334899902,
-          "time": "2026-05-26T03:11:58.480Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "23 km NE of Calama, Chile",
-          "magnitude": 4.1,
-          "depth": 112.943,
-          "lat": -22.3134,
-          "lng": -68.7517,
-          "time": "2026-05-26T03:11:00.383Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 36,
+      "total24h": 34,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4665,64 +4640,100 @@
     },
     "news": [
       {
-        "title": "Could a controversial award-winning short story signal a new era of AI 'literary slop'?",
-        "pubDate": "Tue, 26 May 2026 09:53:37 GMT",
-        "link": "https://www.france24.com/en/culture/20260526-could-controversial-award-winning-short-story-signal-new-era-ai-literary-slop-commonwealth-prize",
+        "title": "World Cup fever brings hope to NYC’s immigrant hubs after Trump crackdown",
+        "pubDate": "Tue, 26 May 2026 15:23:00 GMT",
+        "link": "https://www.france24.com/en/video/20260526-world-cup-fever-brings-hope-to-nyc-s-immigrant-hubs-after-trump-crackdown",
         "source": "France24"
       },
       {
-        "title": "Senegal appoints former central banker as new prime minister",
-        "pubDate": "Tue, 26 May 2026 09:46:17 GMT",
-        "link": "https://www.france24.com/en/senegal-appoints-former-central-banker-as-new-prime-minister",
+        "title": "'How to shoot down an F-18': Videos show Iran militia members training to use anti-aircraft missiles",
+        "pubDate": "Tue, 26 May 2026 15:22:33 GMT",
+        "link": "https://www.france24.com/en/middle-east/20260526-iran-manpads-basij-training-us-israeli-aircraft",
         "source": "France24"
       },
       {
-        "title": "US launches new strikes on Iran, targeting missile sites and boats",
-        "pubDate": "Tue, 26 May 2026 09:44:58 GMT",
-        "link": "https://www.bbc.com/news/articles/cvgzzn4y1n8o?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Paris's Notre Dame cathedral in the midst of a battle over its stained glass",
+        "pubDate": "Tue, 26 May 2026 15:15:50 GMT",
+        "link": "https://www.france24.com/en/paris-s-notre-dame-cathedral-in-the-midst-of-a-battle-over-its-stained-glass",
+        "source": "France24"
+      },
+      {
+        "title": "Iran condemns US strikes as 'gross violation' of ceasefire",
+        "pubDate": "Tue, 26 May 2026 15:15:29 GMT",
+        "link": "https://www.bbc.com/news/articles/c4g44yl7q70o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Dr Congo adapts burials amid Ebola outbreak",
-        "pubDate": "Tue, 26 May 2026 09:42:58 GMT",
-        "link": "https://www.france24.com/en/dr-congo-adapts-burials-amid-ebola-outbreak",
-        "source": "France24"
-      },
-      {
-        "title": "China executes man for murdering prominent gaming tycoon",
-        "pubDate": "Tue, 26 May 2026 08:55:55 GMT",
-        "link": "https://www.bbc.com/news/articles/cg5ppg50gplo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "ICE agents use pepper spray on protesters outside detention centre",
-        "pubDate": "Tue, 26 May 2026 08:47:47 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/5/26/ice-agents-use-pepper-spray-on-protesters-outside-detention-centre?traffic_source=rss",
+        "title": "Israel is no longer ‘shooting and crying’",
+        "pubDate": "Tue, 26 May 2026 15:10:04 +0000",
+        "link": "https://www.aljazeera.com/opinions/2026/5/26/israel-is-no-longer-shooting-and-crying?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Philippines ends rescue efforts for 16 missing after building collapse",
-        "pubDate": "Tue, 26 May 2026 08:43:29 +0000",
-        "link": "https://www.aljazeera.com/news/2026/5/26/philippines-ends-rescue-efforts-for-16-missing-after-building-collapse?traffic_source=rss",
+        "title": "Hajj pilgrims gather at Mount Arafat under scorching desert sun",
+        "pubDate": "Tue, 26 May 2026 15:08:06 +0000",
+        "link": "https://www.aljazeera.com/gallery/2026/5/26/hajj-pilgrims-gather-at-mount-arafat-under-scorching-desert-sun?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Bodies with names: Inside Gaza’s cemetery of the missing",
-        "pubDate": "Tue, 26 May 2026 08:28:36 +0000",
-        "link": "https://www.aljazeera.com/features/2026/5/26/bodies-with-names-inside-gazas-cemetery-of-the-missing?traffic_source=rss",
+        "title": "WFP Bolivia Situation Report 26 May 2026",
+        "pubDate": "Tue, 26 May 2026 15:05:52 +0000",
+        "link": "https://reliefweb.int/report/bolivia-plurinational-state/wfp-bolivia-situation-report-26-may-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "‘Leave Kyiv’: Why Russia’s latest Ukraine threat is a major escalation",
+        "pubDate": "Tue, 26 May 2026 14:59:42 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/26/leave-kyiv-why-russias-latest-ukraine-threat-is-a-major-escalation?traffic_source=rss",
         "source": "Al Jazeera"
       },
       {
-        "title": "Unseasonal May heat wave grips Europe",
-        "pubDate": "Tue, 26 May 2026 08:10:00 GMT",
-        "link": "https://www.dw.com/en/unseasonal-may-heat-wave-grips-europe/a-77291415?maca=en-rss-en-world-4025-xml-mrss",
+        "title": "Haiti | Tableau de bord du Cluster Nutrition 2026 - Aperçu de la réponse humanitaire (avril 2026)",
+        "pubDate": "Tue, 26 May 2026 14:52:25 +0000",
+        "link": "https://reliefweb.int/report/haiti/haiti-tableau-de-bord-du-cluster-nutrition-2026-apercu-de-la-reponse-humanitaire-avril-2026",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Fuel hikes: Is ride-hailing becoming a luxury in Lagos?",
+        "pubDate": "Tue, 26 May 2026 14:47:00 GMT",
+        "link": "https://www.dw.com/en/fuel-hikes-is-ride-hailing-becoming-a-luxury-in-lagos/a-77299355?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "Australia confirms first diphtheria death amid worst outbreak in decades",
-        "pubDate": "Tue, 26 May 2026 07:09:38 GMT",
-        "link": "https://www.bbc.com/news/articles/c759q6y26w3o?at_medium=RSS&amp;at_campaign=rss",
+        "title": "World: OCHA Pooled Funds impact stories",
+        "pubDate": "Tue, 26 May 2026 14:42:21 +0000",
+        "link": "https://reliefweb.int/report/world/ocha-pooled-funds-impact-stories",
+        "source": "ReliefWeb"
+      },
+      {
+        "title": "Ferrari unveils its first all-electric car, the 4-door Luce",
+        "pubDate": "Tue, 26 May 2026 13:24:00 GMT",
+        "link": "https://www.dw.com/en/ferrari-unveils-its-first-all-electric-car-the-4-door-luce/a-77297459?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Eleven killed in Lebanon village as Israel intensifies strikes",
+        "pubDate": "Tue, 26 May 2026 12:44:57 GMT",
+        "link": "https://www.bbc.com/news/articles/cx211rgngp0o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
+      },
+      {
+        "title": "Four killed as school minibus collides with train in Belgium",
+        "pubDate": "Tue, 26 May 2026 12:29:14 GMT",
+        "link": "https://www.bbc.com/news/articles/c70vvd17rg7o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Marco Rubio&#039;s India visit signals effort to steady ties",
+        "pubDate": "Tue, 26 May 2026 12:17:00 GMT",
+        "link": "https://www.dw.com/en/marco-rubio-s-india-visit-signals-effort-to-steady-ties/a-77297978?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Security Council LIVE: Founding principles of the UN facing ‘profound strain’, Guterres warns",
+        "pubDate": "Tue, 26 May 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/05/1167585",
+        "source": "UN News"
       },
       {
         "title": "A Full Moon Checkup",
@@ -4731,22 +4742,10 @@
         "source": "NASA Earth"
       },
       {
-        "title": "Jaclyn Kagey Shapes Humanity’s Return to the Moon",
-        "pubDate": "Tue, 26 May 2026 03:09:55 +0000",
-        "link": "https://www.nasa.gov/centers-and-facilities/johnson/jaclyn-kagey-shapes-humanitys-return-to-the-moon/",
-        "source": "NASA"
-      },
-      {
         "title": "Spread of Ebola in DRC ‘outpacing’ response efforts, warns WHO",
         "pubDate": "Mon, 25 May 2026 17:00:30 GMT",
         "link": "https://www.theguardian.com/world/2026/may/25/spread-of-ebola-in-drc-outpacing-response-efforts-warns-who",
         "source": "Guardian"
-      },
-      {
-        "title": "Afghanistan&#039;s crisis deepens hidden violence against women",
-        "pubDate": "Mon, 25 May 2026 16:51:00 GMT",
-        "link": "https://www.dw.com/en/afghanistan-s-crisis-deepens-hidden-violence-against-women/a-77285438?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
       },
       {
         "title": "Ebola epidemic spreading rapidly and outpacing containment efforts",
@@ -4755,34 +4754,10 @@
         "source": "UN News"
       },
       {
-        "title": "Chinese human rights cases in limbo after Trump-Xi summit",
-        "pubDate": "Mon, 25 May 2026 11:53:00 GMT",
-        "link": "https://www.dw.com/en/chinese-human-rights-cases-in-limbo-after-trump-xi-summit/a-77285479?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
         "title": "An Early &#8220;Decoration Day&#8221; Celebration",
         "pubDate": "Mon, 25 May 2026 04:01:00 +0000",
         "link": "https://science.nasa.gov/earth/earth-observatory/an-early-decoration-day-celebration/",
         "source": "NASA Earth"
-      },
-      {
-        "title": "‘She does not back down’: the couple seeking to legalise same-sex marriage in Botswana",
-        "pubDate": "Mon, 25 May 2026 04:00:15 GMT",
-        "link": "https://www.theguardian.com/world/2026/may/25/same-sex-marriage-botswana-couple-court",
-        "source": "Guardian"
-      },
-      {
-        "title": "Suspected Ebola cases in DRC pass 900 as health workers face attacks and shortages",
-        "pubDate": "Sun, 24 May 2026 19:07:33 GMT",
-        "link": "https://www.theguardian.com/world/2026/may/24/suspected-ebola-cases-congo-health-workers-attacks",
-        "source": "Guardian"
-      },
-      {
-        "title": "Khalida Popal and Javier Zanetti among football stars appointed UN Champions",
-        "pubDate": "Sun, 24 May 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/05/1167582",
-        "source": "UN News"
       }
     ],
     "volcanic": [],
@@ -4836,7 +4811,7 @@
         "sunspots": 79.3
       }
     ],
-    "lastUpdated": "2026-05-26T09:55:24.535Z"
+    "lastUpdated": "2026-05-26T15:26:04.372Z"
   },
   "momentum": {
     "indicators": [
