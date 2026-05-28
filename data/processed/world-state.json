@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generated": "2026-05-28T15:53:29.192Z",
+    "generated": "2026-05-28T20:22:19.685Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-05-28T21:53:29.192Z",
+    "next_update": "2026-05-29T02:22:19.685Z",
     "realtimePulse": {
-      "environment": -0.9,
+      "environment": -0.85,
       "society": 0,
       "economy": -0.45,
       "progress": 0.8,
       "details": {
-        "quakeCount": 46,
+        "quakeCount": 44,
         "maxMagnitude": 5.3,
-        "avgGlobalTemp": 23.6,
+        "avgGlobalTemp": 22.1,
         "cryptoFearGreed": 22,
         "arxivPapers": 20
       }
@@ -25,9 +25,9 @@
     "rawValue": 62.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.4,
-    "change": 0.1,
-    "trend": "improving",
+    "previous": 65.5,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -61,8 +61,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         },
         "momentum": {
           "direction": "expansion",
@@ -72,7 +72,7 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.5,
+          "bufferDistance": 34.6,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
@@ -102,12 +102,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.3,
+      "value": 44.4,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0.2,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +139,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 76,
+          "value": 69,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -159,7 +159,7 @@
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -262,8 +262,8 @@
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -1196,15 +1196,8 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 76,
+      "globalAvgAQI": 69,
       "cleanestCities": [
-        {
-          "city": "Los Angeles",
-          "country": "",
-          "aqi": 18,
-          "lat": 34.05,
-          "lng": -118.24
-        },
         {
           "city": "Sydney",
           "country": "",
@@ -1213,55 +1206,62 @@
           "lng": 151.21
         },
         {
-          "city": "Tokyo",
+          "city": "São Paulo",
           "country": "",
-          "aqi": 28,
-          "lat": 35.68,
-          "lng": 139.69
-        },
-        {
-          "city": "Mumbai",
-          "country": "",
-          "aqi": 31,
-          "lat": 19.08,
-          "lng": 72.88
+          "aqi": 26,
+          "lat": -23.55,
+          "lng": -46.63
         },
         {
           "city": "Berlin",
           "country": "",
-          "aqi": 34,
+          "aqi": 27,
           "lat": 52.52,
           "lng": 13.41
+        },
+        {
+          "city": "Tokyo",
+          "country": "",
+          "aqi": 29,
+          "lat": 35.68,
+          "lng": 139.69
+        },
+        {
+          "city": "Los Angeles",
+          "country": "",
+          "aqi": 30,
+          "lat": 34.05,
+          "lng": -118.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 421,
+          "aqi": 351,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 77,
+          "aqi": 73,
           "lat": 39.9,
           "lng": 116.4
         },
         {
-          "city": "London",
+          "city": "Mexico City",
           "country": "",
-          "aqi": 49,
-          "lat": 51.51,
-          "lng": -0.13
+          "aqi": 57,
+          "lat": 19.43,
+          "lng": -99.13
         },
         {
-          "city": "São Paulo",
+          "city": "Mumbai",
           "country": "",
-          "aqi": 42,
-          "lat": -23.55,
-          "lng": -46.63
+          "aqi": 39,
+          "lat": 19.08,
+          "lng": 72.88
         },
         {
           "city": "Lagos",
@@ -1628,12 +1628,12 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-05-28T17:45",
+          "time": "2026-05-28T22:15",
           "interval": 900,
-          "temperature_2m": 20.7,
-          "relative_humidity_2m": 36,
-          "wind_speed_10m": 9.3,
-          "weather_code": 1
+          "temperature_2m": 18.3,
+          "relative_humidity_2m": 40,
+          "wind_speed_10m": 5.4,
+          "weather_code": 0
         }
       },
       {
@@ -1641,12 +1641,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-05-28T11:45",
+          "time": "2026-05-28T16:15",
           "interval": 900,
-          "temperature_2m": 22.5,
-          "relative_humidity_2m": 41,
-          "wind_speed_10m": 17.3,
-          "weather_code": 3
+          "temperature_2m": 19.3,
+          "relative_humidity_2m": 53,
+          "wind_speed_10m": 26.4,
+          "weather_code": 51
         }
       },
       {
@@ -1654,12 +1654,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-05-29T00:45",
+          "time": "2026-05-29T05:15",
           "interval": 900,
-          "temperature_2m": 21.4,
-          "relative_humidity_2m": 99,
-          "wind_speed_10m": 2.3,
-          "weather_code": 3
+          "temperature_2m": 21.7,
+          "relative_humidity_2m": 86,
+          "wind_speed_10m": 5,
+          "weather_code": 1
         }
       },
       {
@@ -1667,12 +1667,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-05-29T01:45",
+          "time": "2026-05-29T06:15",
           "interval": 900,
-          "temperature_2m": 17.1,
-          "relative_humidity_2m": 95,
-          "wind_speed_10m": 22.4,
-          "weather_code": 55
+          "temperature_2m": 17,
+          "relative_humidity_2m": 93,
+          "wind_speed_10m": 22.5,
+          "weather_code": 53
         }
       },
       {
@@ -1680,11 +1680,11 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-05-28T12:45",
+          "time": "2026-05-28T17:15",
           "interval": 900,
-          "temperature_2m": 18.8,
-          "relative_humidity_2m": 60,
-          "wind_speed_10m": 5.7,
+          "temperature_2m": 16.8,
+          "relative_humidity_2m": 79,
+          "wind_speed_10m": 10.1,
           "weather_code": 0
         }
       },
@@ -1693,11 +1693,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-05-28T16:45",
+          "time": "2026-05-28T21:15",
           "interval": 900,
-          "temperature_2m": 27.9,
-          "relative_humidity_2m": 78,
-          "wind_speed_10m": 10.9,
+          "temperature_2m": 27.4,
+          "relative_humidity_2m": 87,
+          "wind_speed_10m": 4.2,
           "weather_code": 3
         }
       },
@@ -1706,12 +1706,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-05-28T21:15",
+          "time": "2026-05-29T01:45",
           "interval": 900,
-          "temperature_2m": 30.6,
-          "relative_humidity_2m": 72,
-          "wind_speed_10m": 9.7,
-          "weather_code": 95
+          "temperature_2m": 30,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 13.7,
+          "weather_code": 0
         }
       },
       {
@@ -1719,11 +1719,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-05-28T16:45",
+          "time": "2026-05-28T21:15",
           "interval": 900,
-          "temperature_2m": 30,
-          "relative_humidity_2m": 36,
-          "wind_speed_10m": 12.6,
+          "temperature_2m": 26.5,
+          "relative_humidity_2m": 48,
+          "wind_speed_10m": 11.2,
           "weather_code": 3
         }
       }
@@ -3944,73 +3944,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 506307,
-          "forks": 48074,
+          "stars": 506444,
+          "forks": 48085,
           "language": "Markdown",
-          "updated": "2026-05-28T15:51:09Z"
+          "updated": "2026-05-28T20:18:08Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 470820,
-          "forks": 35207,
+          "stars": 470885,
+          "forks": 35209,
           "language": null,
-          "updated": "2026-05-28T15:49:43Z"
+          "updated": "2026-05-28T20:16:03Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 445529,
-          "forks": 44721,
+          "stars": 445540,
+          "forks": 44722,
           "language": "TypeScript",
-          "updated": "2026-05-28T15:46:42Z"
+          "updated": "2026-05-28T18:44:00Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 437604,
-          "forks": 47973,
+          "stars": 437637,
+          "forks": 47977,
           "language": "Python",
-          "updated": "2026-05-28T15:45:41Z"
+          "updated": "2026-05-28T20:11:28Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 389089,
-          "forks": 66351,
+          "stars": 389100,
+          "forks": 66352,
           "language": "Python",
-          "updated": "2026-05-28T15:48:39Z"
+          "updated": "2026-05-28T19:39:11Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 375259,
-          "forks": 78281,
+          "stars": 375283,
+          "forks": 78286,
           "language": "TypeScript",
-          "updated": "2026-05-28T15:47:51Z"
+          "updated": "2026-05-28T20:19:51Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 355622,
+          "stars": 355638,
           "forks": 44121,
           "language": "TypeScript",
-          "updated": "2026-05-28T15:40:34Z"
+          "updated": "2026-05-28T20:13:16Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 350671,
-          "forks": 56453,
+          "stars": 350693,
+          "forks": 56456,
           "language": "Python",
-          "updated": "2026-05-28T15:51:47Z"
+          "updated": "2026-05-28T20:12:07Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 347573,
-          "forks": 82972,
+          "stars": 347592,
+          "forks": 82973,
           "language": null,
-          "updated": "2026-05-28T15:49:55Z"
+          "updated": "2026-05-28T20:11:05Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 300005,
-          "forks": 27981,
+          "stars": 300051,
+          "forks": 27984,
           "language": "Python",
-          "updated": "2026-05-28T15:40:05Z"
+          "updated": "2026-05-28T20:07:57Z"
         }
       ],
       "source": "GitHub"
@@ -4491,6 +4491,54 @@
     },
     "spaceflight": [
       {
+        "title": "Curiosity Blog, Sols 4900-4907: Pasadena, We Have a Drill Sample!",
+        "published": "2026-05-28T19:37:24Z",
+        "source": "NASA",
+        "summary": "Written by Abigail Fraeman, Deputy Project Scientist at Jet Propulsion Laboratory, California Institute of Technology Earth planning date: Friday, May 22, 2026 I spent this past weekend eagerly awaiti"
+      },
+      {
+        "title": "NASA Uses Mineralogical Marker to Understand Ancient Martian Climate",
+        "published": "2026-05-28T18:22:00Z",
+        "source": "NASA",
+        "summary": "Scientists analyzed 20 Martian samples collected by NASA’s Curiosity Rover and found that differences in hematite crystallite size at varying elevations could serve as a new mineralogical marker for u"
+      },
+      {
+        "title": "Nancy Grace Roman Space Telescope Poster",
+        "published": "2026-05-28T17:26:43Z",
+        "source": "NASA",
+        "summary": "NASA/Jenny Mottar Downloads Print high resolution PDF May 28, 2026 PDF (144.47 MB) Print high resolution image May 28, 2026 PNG (45.60 MB) Smaller image for web view May 28, 2026 PNG (3.75 MB)"
+      },
+      {
+        "title": "Setting up a permanent lunar presence needs investment in biology",
+        "published": "2026-05-28T17:12:36Z",
+        "source": "SpaceNews",
+        "summary": "\nIn December 1972, Gene Cernan and Harrison Schmitt spent 75 hours on the lunar surface during Apollo 17. They drove a rover, conducted three spacewalks and collected samples across the […]\nThe post S"
+      },
+      {
+        "title": "Contractor to Civil Servant: NASA Welcomes Kenny Heckle",
+        "published": "2026-05-28T16:58:55Z",
+        "source": "NASA",
+        "summary": "Kenny Heckle grew up in Orlando, just west of NASA’s Kennedy Space Center in Florida. An 80s child, he comes from a long line of union pipefitters and fabricators. Heckle recalls the day 42 years ago "
+      },
+      {
+        "title": "NASA Astronaut Andrew Morgan Retires",
+        "published": "2026-05-28T16:47:10Z",
+        "source": "NASA",
+        "summary": "May 28, 2026 After a 12-year career at NASA, U.S. Army Brig. Gen. Andrew R. Morgan has retired from the agency to continue his military service. Morgan spent 272 days in space aboard the International"
+      },
+      {
+        "title": "Revolv Space enters in-orbit servicing market with Infinite Orbits deal",
+        "published": "2026-05-28T16:06:02Z",
+        "source": "SpaceNews",
+        "summary": "\nWARSAW, Poland — The Italian-Dutch company Revolv Space has announced that French in-orbit services provider Infinite Orbits has selected its Solar Array Drive Assemblies (SADAs), the devices used to"
+      },
+      {
+        "title": "Going Low and Slow in Testing",
+        "published": "2026-05-28T16:01:59Z",
+        "source": "NASA",
+        "summary": "NASA’s X-59 quiet supersonic research aircraft flies above NASA’s Armstrong Flight Research Center in Edwards, California, on April 28, 2026, during testing focused on lower-speed and altitude flight "
+      },
+      {
         "title": "Germany pushes European military space command initiative",
         "published": "2026-05-28T15:02:40Z",
         "source": "SpaceNews",
@@ -4501,60 +4549,72 @@
         "published": "2026-05-28T14:41:22Z",
         "source": "SpaceNews",
         "summary": "\nIn this episode of Space Minds, David Ariosto talks with Lux Aeterna CEO Brian Taylor about the problems with disposable satellites and the use for on-orbit servicing. Sponsored by Arcfield […]\nThe p"
-      },
-      {
-        "title": "NASA’s Roman Mission Preps to Unveil New Populations of Faraway Worlds",
-        "published": "2026-05-28T14:40:33Z",
-        "source": "NASA",
-        "summary": "NASA’s Nancy Grace Roman Space Telescope is poised to make a major leap in the hunt for worlds outside our solar system, known as exoplanets. Scientists expect the mission to reveal around 100,000 wor"
-      },
-      {
-        "title": "Isar Aerospace Signs Agreement to Launch from Future Canadian Spaceport",
-        "published": "2026-05-28T14:31:28Z",
-        "source": "European Spaceflight",
-        "summary": "German rocket builder Isar Aerospace has signed an agreement with Maritime Launch Services to conduct launches from the company’s planned spaceport in Nova Scotia. Isar Aerospace is currently working "
-      },
-      {
-        "title": "How NASA Uses Light to Detect Waste From Mines",
-        "published": "2026-05-28T14:20:54Z",
-        "source": "NASA",
-        "summary": "Tens of thousands of abandoned mines threaten waterways across the American West, but identifying which sites urgently need cleanup is slow and expensive. Now, NASA’s EMIT instrument can analyze the u"
-      },
-      {
-        "title": "Growing Stem Cells in Space to Improve Cancer and Disease Treatments",
-        "published": "2026-05-28T14:00:00Z",
-        "source": "NASA",
-        "summary": "Expedition 74 astronauts aboard the International Space Station are continuing research efforts to manufacture large quantities of stem cells for therapies on Earth. Previous studies have focused on f"
-      },
-      {
-        "title": "The Propulsion Imperative Behind Golden Dome",
-        "published": "2026-05-28T13:26:54Z",
-        "source": "SpaceNews",
-        "summary": "\nMissile defense has traditionally been framed around detection, tracking and interception. Golden Dome changes that calculus, broadening the focus to the entire distributed infrastructure enabling th"
-      },
-      {
-        "title": "The Propulsion Imperative Behind Golden Dome",
-        "published": "2026-05-28T13:20:33Z",
-        "source": "SpaceNews",
-        "summary": "\nMissile defense has traditionally been framed around detection, tracking and interception. Golden Dome changes that calculus, broadening the focus to the entire distributed infrastructure enabling th"
-      },
-      {
-        "title": "MTG-I2 embarks on journey to Europe’s Spaceport",
-        "published": "2026-05-28T12:00:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
-      },
-      {
-        "title": "Helix rocket engine power pack upgrade",
-        "published": "2026-05-28T11:50:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
       }
     ]
   },
   "realtime": {
     "earthquakes": {
       "last24h": [
+        {
+          "location": "30 km SSW of Alamo, Nevada",
+          "magnitude": 2.52,
+          "depth": 7.1042,
+          "lat": 37.1209,
+          "lng": -115.3271,
+          "time": "2026-05-28T19:04:40.560Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "28 km WNW of Whites City, New Mexico",
+          "magnitude": 3,
+          "depth": 5.101,
+          "lat": 32.284,
+          "lng": -104.6458,
+          "time": "2026-05-28T18:17:23.465Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "154 km SW of Merizo Village, Guam",
+          "magnitude": 4.7,
+          "depth": 36.098,
+          "lat": 12.4385,
+          "lng": 143.5219,
+          "time": "2026-05-28T17:57:19.445Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "Revilla Gigedo Islands region",
+          "magnitude": 5.3,
+          "depth": 10,
+          "lat": 19.6577,
+          "lng": -109.4358,
+          "time": "2026-05-28T16:18:09.965Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "140 km WSW of Adak, Alaska",
+          "magnitude": 2.6,
+          "depth": 5.8,
+          "lat": 51.373,
+          "lng": -178.493,
+          "time": "2026-05-28T15:20:47.195Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "South Sandwich Islands region",
+          "magnitude": 4.8,
+          "depth": 79.985,
+          "lat": -56.4113,
+          "lng": -26.5457,
+          "time": "2026-05-28T15:07:48.099Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
         {
           "location": "15 km ENE of Red Bluff, CA",
           "magnitude": 2.84,
@@ -4574,69 +4634,9 @@
           "time": "2026-05-28T14:47:36.444Z",
           "tsunami": false,
           "type": "earthquake"
-        },
-        {
-          "location": "60 km S of Whites City, New Mexico",
-          "magnitude": 3.1,
-          "depth": 6.0999,
-          "lat": 31.634,
-          "lng": -104.367,
-          "time": "2026-05-28T13:41:55.793Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "133 km SW of Tual, Indonesia",
-          "magnitude": 4.9,
-          "depth": 10,
-          "lat": -6.5891,
-          "lng": 132.0189,
-          "time": "2026-05-28T12:35:40.163Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "17 km SE of Silver Springs, Nevada",
-          "magnitude": 3.72,
-          "depth": 5,
-          "lat": 39.3251,
-          "lng": -119.0524,
-          "time": "2026-05-28T11:48:35.345Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "9 km SW of Cavancha, Chile",
-          "magnitude": 3.6,
-          "depth": 82.365,
-          "lat": -20.2836,
-          "lng": -70.2173,
-          "time": "2026-05-28T11:35:47.101Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "124 km WSW of Isangel, Vanuatu",
-          "magnitude": 4.7,
-          "depth": 10,
-          "lat": -20.0493,
-          "lng": 168.2222,
-          "time": "2026-05-28T09:41:10.963Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "9 km WNW of Primo Tapia, B.C., MX",
-          "magnitude": 2.99,
-          "depth": 19.68,
-          "lat": 32.2583333333333,
-          "lng": -116.998833333333,
-          "time": "2026-05-28T09:41:05.430Z",
-          "tsunami": false,
-          "type": "earthquake"
         }
       ],
-      "total24h": 46,
+      "total24h": 44,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4665,46 +4665,88 @@
     },
     "news": [
       {
-        "title": "US Treasury threatens Oman with sanctions over Hormuz Strait",
-        "pubDate": "Thu, 28 May 2026 15:44:47 +0000",
-        "link": "https://www.aljazeera.com/news/2026/5/28/us-treasury-threatens-oman-with-sanctions-over-hormuz-strait?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Neymar set to miss Brazil World Cup opener due to calf injury",
-        "pubDate": "Thu, 28 May 2026 15:34:00 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/5/28/neymar-out-of-brazil-world-cup-opener-due-to-calf-injury?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Gaza children with Down syndrome are still reckoning with the devastation of the war",
-        "pubDate": "Thu, 28 May 2026 15:27:30 GMT",
-        "link": "https://www.france24.com/en/video/20260528-gaza-children-with-down-syndrome-are-still-reckoning-with-the-devastation-of-the-war",
+        "title": "Clashes between armed groups in Colombia kill at least 52 guerrillas on eve of election",
+        "pubDate": "Thu, 28 May 2026 20:18:57 GMT",
+        "link": "https://www.france24.com/en/americas/20260528-clashes-between-armed-groups-in-colombia-kill-at-least-52-guerrillas-on-eve-of-election",
         "source": "France24"
       },
       {
-        "title": "Iran: US base targeted in missile strike",
-        "pubDate": "Thu, 28 May 2026 15:25:58 GMT",
-        "link": "https://www.france24.com/en/video/20260528-iran-us-base-targeted-in-missile-strike",
+        "title": "Fire rips through a dormitory at a girls' school in Kenya",
+        "pubDate": "Thu, 28 May 2026 20:15:36 GMT",
+        "link": "https://www.france24.com/en/fire-rips-through-a-dormitory-at-a-girls-school-in-kenya",
         "source": "France24"
       },
       {
-        "title": "Reconnected? Iranians say only 'drip-feed' internet has returned after three-month shutdown",
-        "pubDate": "Thu, 28 May 2026 15:22:35 GMT",
-        "link": "https://www.france24.com/en/asia-pacific/20260528-reconnected-iranians-say-only-drip-feed-internet-has-returned-after-three-month-shutdown",
+        "title": "Man jailed for 15 years over plot to attack Taylor Swift concert in Vienna",
+        "pubDate": "Thu, 28 May 2026 19:52:33 GMT",
+        "link": "https://www.bbc.com/news/articles/cgrp7y05l9do?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Curiosity Blog, Sols 4900-4907: Pasadena, We Have a Drill Sample!",
+        "pubDate": "Thu, 28 May 2026 19:37:24 +0000",
+        "link": "https://science.nasa.gov/blog/curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sample/",
+        "source": "NASA"
+      },
+      {
+        "title": "What’s behind South Africa’s anti-migrant protests?",
+        "pubDate": "Thu, 28 May 2026 19:35:24 +0000",
+        "link": "https://www.aljazeera.com/video/inside-story/2026/5/28/whats-behind-south-africas-anti-migrant-protests?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Israel’s Netanyahu directs army to seize 70 percent of Gaza Strip",
+        "pubDate": "Thu, 28 May 2026 19:03:50 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/28/israels-netanyahu-directs-army-to-seize-70-percent-of-gaza-strip?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Rebuilding US weapons stockpile may ‘take years’ post-Iran war",
+        "pubDate": "Thu, 28 May 2026 18:36:50 +0000",
+        "link": "https://www.aljazeera.com/news/2026/5/28/us-weapon-stockpile-rebuilding-to-take-years-post-iran-war-says-report?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "NASA Uses Mineralogical Marker to Understand Ancient Martian Climate",
+        "pubDate": "Thu, 28 May 2026 18:22:00 +0000",
+        "link": "https://science.nasa.gov/science-research/astromaterials/nasa-uses-mineralogical-marker-to-understand-ancient-martian-climate/",
+        "source": "NASA"
+      },
+      {
+        "title": "No love for Arsenal? English fans divided ahead of Champions League final",
+        "pubDate": "Thu, 28 May 2026 18:16:19 GMT",
+        "link": "https://www.france24.com/en/tv-shows/the-debate/20260528-no-love-for-arsenal-english-fans-divided-ahead-of-champions-league-final",
         "source": "France24"
       },
       {
         "title": "Israel hits Lebanese capital in 'targeted strike'",
-        "pubDate": "Thu, 28 May 2026 15:07:56 GMT",
+        "pubDate": "Thu, 28 May 2026 17:39:16 GMT",
         "link": "https://www.bbc.com/news/articles/cgqpjwdv7xeo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "IOC chief Coventry stirs social media storm over athlete payment comments",
-        "pubDate": "Thu, 28 May 2026 15:04:11 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/5/28/ioc-chief-coventry-stirs-social-media-storm-over-athlete-payment-comments?traffic_source=rss",
-        "source": "Al Jazeera"
+        "title": "Nancy Grace Roman Space Telescope Poster",
+        "pubDate": "Thu, 28 May 2026 17:26:43 +0000",
+        "link": "https://science.nasa.gov/image-article/nancy-grace-roman-space-telescope-poster/",
+        "source": "NASA"
+      },
+      {
+        "title": "Are US and Iran close to peace or sliding back to war?",
+        "pubDate": "Thu, 28 May 2026 16:56:19 GMT",
+        "link": "https://www.bbc.com/news/articles/cze29764067o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "France moves to symbolically repeal slavery legislation",
+        "pubDate": "Thu, 28 May 2026 16:02:00 GMT",
+        "link": "https://www.dw.com/en/france-moves-to-symbolically-repeal-slavery-legislation/a-77332888?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "The Suez and Panama canals charge tolls. Why is Iran’s Hormuz fee triggering global outrage?",
+        "pubDate": "Thu, 28 May 2026 15:35:00 GMT",
+        "link": "https://www.dw.com/en/the-suez-and-panama-canals-charge-tolls-why-is-iran-s-hormuz-fee-triggering-global-outrage/a-77325707?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
       },
       {
         "title": "Dormitory fire at Kenyan girls’ school kills at least 16 students",
@@ -4713,76 +4755,34 @@
         "source": "Guardian"
       },
       {
-        "title": "Villas, cars and cash: Italy seizes dead Mafia mobster's millions",
-        "pubDate": "Thu, 28 May 2026 14:47:05 GMT",
-        "link": "https://www.bbc.com/news/articles/ceqpd4gqgveo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Are US and Iran close to peace or sliding back to war?",
-        "pubDate": "Thu, 28 May 2026 14:42:27 GMT",
-        "link": "https://www.bbc.com/news/articles/cze29764067o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "NASA’s Roman Mission Preps to Unveil New Populations of Faraway Worlds",
-        "pubDate": "Thu, 28 May 2026 14:40:33 +0000",
-        "link": "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-mission-preps-to-unveil-new-populations-of-faraway-worlds/",
-        "source": "NASA"
-      },
-      {
-        "title": "How NASA Uses Light to Detect Waste From Mines",
-        "pubDate": "Thu, 28 May 2026 14:20:54 +0000",
-        "link": "https://science.nasa.gov/earth/how-nasa-uses-light-to-detect-waste-from-mines/",
-        "source": "NASA"
-      },
-      {
         "title": "Crises in Amhara, Tigray cloud Ethiopia&#039;s election 2026",
         "pubDate": "Thu, 28 May 2026 14:18:00 GMT",
         "link": "https://www.dw.com/en/crises-in-amhara-tigray-cloud-ethiopia-s-election-2026/a-77233448?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "Growing Stem Cells in Space to Improve Cancer and Disease Treatments",
-        "pubDate": "Thu, 28 May 2026 14:00:00 +0000",
-        "link": "https://www.nasa.gov/missions/station/iss-research/growing-stem-cells-in-space-to-improve-cancer-and-disease-treatments/",
-        "source": "NASA"
-      },
-      {
-        "title": "Iran turns internet back on, but old restrictions remain",
-        "pubDate": "Thu, 28 May 2026 13:09:00 GMT",
-        "link": "https://www.dw.com/en/iran-turns-internet-back-on-but-old-restrictions-remain/a-77331981?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "UK re-chalks Dorset&#039;s famed and feisty Cerne Abbas Giant",
-        "pubDate": "Thu, 28 May 2026 12:54:00 GMT",
-        "link": "https://www.dw.com/en/uk-re-chalks-dorset-s-famed-and-feisty-cerne-abbas-giant/a-77329497?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "US building Ebola quarantine center in Kenya for Americans amid outbreak",
-        "pubDate": "Wed, 27 May 2026 18:00:41 GMT",
-        "link": "https://www.theguardian.com/us-news/2026/may/27/trump-administration-ebola-quarantine-kenya",
-        "source": "Guardian"
-      },
-      {
-        "title": "WHO chief calls for DRC ceasefire to tackle Ebola outbreak",
-        "pubDate": "Wed, 27 May 2026 15:51:54 GMT",
-        "link": "https://www.theguardian.com/world/2026/may/27/who-chief-tedros-calls-for-drc-ceasefire-ebola",
-        "source": "Guardian"
-      },
-      {
-        "title": "Webb reveals black hole that formed before its galaxy",
-        "pubDate": "Wed, 27 May 2026 17:00:00 +0200",
-        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_reveals_black_hole_that_formed_before_its_galaxy]]>",
-        "source": "ESA"
-      },
-      {
-        "title": "Ebola outbreak in DR Congo collides with conflict and hunger, WHO warns",
-        "pubDate": "Wed, 27 May 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/05/1167592",
+        "title": "Security Council LIVE: Mounting attacks and Russian threats prompt emergency Ukraine meeting",
+        "pubDate": "Thu, 28 May 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/05/1167597",
         "source": "UN News"
+      },
+      {
+        "title": "Global temperatures set to stay near record levels: UN weather agency",
+        "pubDate": "Thu, 28 May 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/05/1167596",
+        "source": "UN News"
+      },
+      {
+        "title": "WHO chief calls for ceasefire amid DR Congo Ebola outbreak",
+        "pubDate": "Thu, 28 May 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/05/1167594",
+        "source": "UN News"
+      },
+      {
+        "title": "A Shift in What’s Shaping U.S. Landscapes",
+        "pubDate": "Thu, 28 May 2026 04:00:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/a-shift-in-whats-shaping-u-s-landscapes/",
+        "source": "NASA Earth"
       }
     ],
     "volcanic": [],
@@ -4836,7 +4836,7 @@
         "sunspots": 79.3
       }
     ],
-    "lastUpdated": "2026-05-28T15:53:29.192Z"
+    "lastUpdated": "2026-05-28T20:22:19.685Z"
   },
   "momentum": {
     "indicators": [
