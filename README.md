@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 64.5 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 65.3 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  64.5/100  ↓ -1
+█████████████░░░░░░░  65.3/100  ↑ +0.8
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 07.06.2026 13:51 UTC
+> **Letzte Aktualisierung:** 07.06.2026 19:21 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.2**/100 | ↓ -0.3 | 25% |
+| 🟡 Umwelt | **43.9**/100 | ↓ -0.3 | 25% |
 | 🟡 Gesellschaft | **55.9**/100 | → +0 | 25% |
-| 🟢 Wirtschaft | **66.6**/100 | ↓ -1.6 | 20% |
+| 🟢 Wirtschaft | **68.2**/100 | ↑ +1.6 | 20% |
 | 🟢 Fortschritt | **78.1**/100 | → +0 | 20% |
-| 🟢 Momentum | **78.9**/100 | → +0 | 10% |
+| 🟢 Momentum | **80**/100 | → +0 | 10% |
 
 ---
 
@@ -69,17 +69,18 @@
 
 ---
 
-## 📈 Momentum: 15/19 Trends positiv
+## 📈 Momentum: 16/20 Trends positiv
 
 <details>
-<summary>Alle 19 Indikatoren anzeigen</summary>
+<summary>Alle 20 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (15)
+#### ✅ Verbessert sich (16)
 - **Lebenserwartung**: +1.6%
 - **Kindersterblichkeit**: -2.3%
 - **Erneuerbare Energie**: +6.6%
 - **Internet-Zugang**: +12.1%
 - **BIP-Wachstum**: +48.9%
+- **Arbeitslosigkeit**: -19.1%
 - **BIP pro Kopf**: +14.3%
 - **Globaler Handel**: +7.8%
 - **Alphabetisierung**: +0.7%
@@ -221,5 +222,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 07.06.2026 13:51 UTC | 39/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 07.06.2026 19:21 UTC | 39/40 Quellen aktiv
 </sub>
