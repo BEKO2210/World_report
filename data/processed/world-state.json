@@ -1,23 +1,21 @@
 {
   "meta": {
-    "generated": "2026-06-11T03:54:01.967Z",
+    "generated": "2026-06-11T10:26:40.509Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 38,
-    "sources_success_rate": 95,
-    "next_update": "2026-06-11T09:54:01.967Z",
+    "sources_available": 40,
+    "sources_success_rate": 100,
+    "next_update": "2026-06-11T16:26:40.510Z",
     "realtimePulse": {
-      "environment": -0.64,
-      "society": 0.05,
+      "environment": -0.69,
+      "society": 0,
       "economy": -0.61,
-      "progress": 0.47,
+      "progress": 0.8,
       "details": {
-        "quakeCount": 33,
+        "quakeCount": 35,
         "maxMagnitude": 5.7,
-        "avgGlobalTemp": 20.2,
-        "newsSentiment": -0.42,
         "cryptoFearGreed": 12,
-        "arxivPapers": 5
+        "arxivPapers": 20
       }
     }
   },
@@ -26,9 +24,9 @@
     "rawValue": 62.3,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 65.3,
-    "change": 0.1,
-    "trend": "improving",
+    "previous": 65.4,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -62,8 +60,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "elastic",
-          "level": 1
+          "position": "capacitive",
+          "level": 2
         },
         "momentum": {
           "direction": "expansion",
@@ -73,12 +71,12 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.6,
+          "bufferDistance": 34.5,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.2,
+          "bufferDistance": 48.1,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -88,7 +86,7 @@
           "maintenanceCost": 2.76
         },
         "progress": {
-          "bufferDistance": 73.9,
+          "bufferDistance": 74.2,
           "recoveryTime": 0,
           "maintenanceCost": 4.52
         },
@@ -103,12 +101,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.4,
+      "value": 44.3,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "stable",
+      "change": -0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -140,7 +138,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 73,
+          "value": 70,
           "score": 45,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -155,12 +153,12 @@
       ]
     },
     "society": {
-      "value": 56,
+      "value": 55.9,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0.1,
+      "change": -0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -219,7 +217,7 @@
       "zone": "positive",
       "weight": 0.2,
       "trend": "stable",
-      "change": 0.1,
+      "change": 0,
       "indicators": [
         {
           "name": "BIP-Wachstum",
@@ -259,12 +257,12 @@
       ]
     },
     "progress": {
-      "value": 77.8,
+      "value": 78.1,
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "declining",
-      "change": -0.3,
+      "trend": "improving",
+      "change": 0.3,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -303,7 +301,7 @@
         },
         {
           "name": "Wissenschaftliche Papers",
-          "value": "3.2M/Jahr",
+          "value": "20+ heute",
           "score": 75,
           "trend": "improving",
           "source": "arXiv"
@@ -1197,28 +1195,35 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 73,
+      "globalAvgAQI": 70,
       "cleanestCities": [
         {
           "city": "London",
           "country": "",
-          "aqi": 14,
+          "aqi": 19,
           "lat": 51.51,
           "lng": -0.13
         },
         {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 22,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
           "city": "Sydney",
           "country": "",
-          "aqi": 23,
+          "aqi": 25,
           "lat": -33.87,
           "lng": 151.21
+        },
+        {
+          "city": "Mexico City",
+          "country": "",
+          "aqi": 30,
+          "lat": 19.43,
+          "lng": -99.13
+        },
+        {
+          "city": "Berlin",
+          "country": "",
+          "aqi": 31,
+          "lat": 52.52,
+          "lng": 13.41
         },
         {
           "city": "Los Angeles",
@@ -1226,50 +1231,43 @@
           "aqi": 34,
           "lat": 34.05,
           "lng": -118.24
-        },
-        {
-          "city": "Cairo",
-          "country": "",
-          "aqi": 38,
-          "lat": 30.04,
-          "lng": 31.24
         }
       ],
       "mostPolluted": [
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 339,
+          "aqi": 310,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 68,
+          "aqi": 67,
           "lat": 39.9,
           "lng": 116.4
         },
         {
-          "city": "São Paulo",
-          "country": "",
-          "aqi": 64,
-          "lat": -23.55,
-          "lng": -46.63
-        },
-        {
           "city": "Mumbai",
           "country": "",
-          "aqi": 62,
+          "aqi": 63,
           "lat": 19.08,
           "lng": 72.88
         },
         {
           "city": "Tokyo",
           "country": "",
-          "aqi": 62,
+          "aqi": 63,
           "lat": 35.68,
           "lng": 139.69
+        },
+        {
+          "city": "São Paulo",
+          "country": "",
+          "aqi": 58,
+          "lat": -23.55,
+          "lng": -46.63
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1623,112 +1621,7 @@
       ],
       "source": "World Bank"
     },
-    "weather": [
-      {
-        "name": "Berlin",
-        "lat": 52.52,
-        "lng": 13.41,
-        "current": {
-          "time": "2026-06-11T05:45",
-          "interval": 900,
-          "temperature_2m": 12,
-          "relative_humidity_2m": 85,
-          "wind_speed_10m": 10.6,
-          "weather_code": 3
-        }
-      },
-      {
-        "name": "New York",
-        "lat": 40.71,
-        "lng": -74.01,
-        "current": {
-          "time": "2026-06-10T23:45",
-          "interval": 900,
-          "temperature_2m": 23.5,
-          "relative_humidity_2m": 91,
-          "wind_speed_10m": 14.3,
-          "weather_code": 1
-        }
-      },
-      {
-        "name": "Tokyo",
-        "lat": 35.68,
-        "lng": 139.69,
-        "current": {
-          "time": "2026-06-11T12:45",
-          "interval": 900,
-          "temperature_2m": 24,
-          "relative_humidity_2m": 60,
-          "wind_speed_10m": 8.8,
-          "weather_code": 1
-        }
-      },
-      {
-        "name": "Sydney",
-        "lat": -33.87,
-        "lng": 151.21,
-        "current": {
-          "time": "2026-06-11T13:45",
-          "interval": 900,
-          "temperature_2m": 18.2,
-          "relative_humidity_2m": 69,
-          "wind_speed_10m": 11.6,
-          "weather_code": 3
-        }
-      },
-      {
-        "name": "São Paulo",
-        "lat": -23.55,
-        "lng": -46.63,
-        "current": {
-          "time": "2026-06-11T00:45",
-          "interval": 900,
-          "temperature_2m": 16.6,
-          "relative_humidity_2m": 85,
-          "wind_speed_10m": 6.6,
-          "weather_code": 3
-        }
-      },
-      {
-        "name": "Lagos",
-        "lat": 6.45,
-        "lng": 3.4,
-        "current": {
-          "time": "2026-06-11T04:45",
-          "interval": 900,
-          "temperature_2m": 25,
-          "relative_humidity_2m": 95,
-          "wind_speed_10m": 8.1,
-          "weather_code": 3
-        }
-      },
-      {
-        "name": "Mumbai",
-        "lat": 19.08,
-        "lng": 72.88,
-        "current": {
-          "time": "2026-06-11T09:15",
-          "interval": 900,
-          "temperature_2m": 31.3,
-          "relative_humidity_2m": 68,
-          "wind_speed_10m": 13.6,
-          "weather_code": 3
-        }
-      },
-      {
-        "name": "London",
-        "lat": 51.51,
-        "lng": -0.13,
-        "current": {
-          "time": "2026-06-11T04:45",
-          "interval": 900,
-          "temperature_2m": 11,
-          "relative_humidity_2m": 84,
-          "wind_speed_10m": 7.9,
-          "weather_code": 1
-        }
-      }
-    ]
+    "weather": []
   },
   "society": {
     "conflicts": {
@@ -3909,7 +3802,33 @@
           "value": 3200000
         }
       ],
-      "latestArxiv": [],
+      "latestArxiv": [
+        {
+          "title": "Doc-to-Atom: Learning to Compile and Compose Memory Atoms",
+          "published": "2026-06-10T17:58:20Z",
+          "category": "cs.CL"
+        },
+        {
+          "title": "The Fundaments of Unity: ${\\mathcal O}(1)$ Couplings in Quantum Field Theories",
+          "published": "2026-06-10T17:55:23Z",
+          "category": "hep-ph"
+        },
+        {
+          "title": "ATLAS: Active Theory Learning for Automated Science",
+          "published": "2026-06-10T17:52:03Z",
+          "category": "cs.LG"
+        },
+        {
+          "title": "SPEA2$^+$: Improved Density Estimation in SPEA2 with Provable Runtime Guarantees",
+          "published": "2026-06-10T17:44:23Z",
+          "category": "cs.NE"
+        },
+        {
+          "title": "Forbidden Intersection Theorems for Matrix Spaces",
+          "published": "2026-06-10T17:43:13Z",
+          "category": "math.CO"
+        }
+      ],
       "source": "arXiv / Scopus"
     },
     "github": {
@@ -3919,73 +3838,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 514126,
-          "forks": 48715,
+          "stars": 514231,
+          "forks": 48729,
           "language": "Markdown",
-          "updated": "2026-06-11T03:51:01Z"
+          "updated": "2026-06-11T10:24:17Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 474650,
+          "stars": 474730,
           "forks": 35368,
           "language": null,
-          "updated": "2026-06-11T03:51:48Z"
+          "updated": "2026-06-11T10:22:32Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 446607,
-          "forks": 44877,
+          "stars": 446617,
+          "forks": 44878,
           "language": "TypeScript",
-          "updated": "2026-06-11T03:31:32Z"
+          "updated": "2026-06-11T10:10:20Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 440731,
-          "forks": 48295,
+          "stars": 440786,
+          "forks": 48300,
           "language": "Python",
-          "updated": "2026-06-11T03:47:01Z"
+          "updated": "2026-06-11T10:20:25Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 390071,
-          "forks": 66444,
+          "stars": 390081,
+          "forks": 66440,
           "language": "Python",
-          "updated": "2026-06-11T03:18:02Z"
+          "updated": "2026-06-11T10:10:27Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 378051,
-          "forks": 79062,
+          "stars": 378101,
+          "forks": 79068,
           "language": "TypeScript",
-          "updated": "2026-06-11T03:50:08Z"
+          "updated": "2026-06-11T10:25:11Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 356727,
-          "forks": 44192,
+          "stars": 356750,
+          "forks": 44191,
           "language": "TypeScript",
-          "updated": "2026-06-11T03:46:07Z"
+          "updated": "2026-06-11T10:12:24Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 352561,
-          "forks": 56660,
+          "stars": 352594,
+          "forks": 56667,
           "language": "Python",
-          "updated": "2026-06-11T03:51:16Z"
+          "updated": "2026-06-11T10:10:44Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 351099,
-          "forks": 83411,
+          "stars": 351115,
+          "forks": 83416,
           "language": null,
-          "updated": "2026-06-11T03:32:08Z"
+          "updated": "2026-06-11T10:07:27Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 302295,
-          "forks": 28062,
+          "stars": 302337,
+          "forks": 28061,
           "language": "Python",
-          "updated": "2026-06-11T03:45:45Z"
+          "updated": "2026-06-11T10:18:32Z"
         }
       ],
       "source": "GitHub"
@@ -4466,6 +4385,24 @@
     },
     "spaceflight": [
       {
+        "title": "ILA Berlin 2026: ESA Director General press conference",
+        "published": "2026-06-11T08:00:00Z",
+        "source": "ESA",
+        "summary": "ESA Director General Josef Aschbacher briefed media representatives and discussed Europe's priorities in space, exploration, resilience and the future of the European space sector. "
+      },
+      {
+        "title": "Tracking urban expansion in hazard-prone areas",
+        "published": "2026-06-11T07:15:00Z",
+        "source": "ESA",
+        "summary": "The World Settlement Footprint (WSF) Tracker, and its dedicated online platform, have been officially released at an event at the World Bank headquarters in Washington DC."
+      },
+      {
+        "title": "Air Pollution’s Daily Pulse Over the Northeast",
+        "published": "2026-06-11T04:01:00Z",
+        "source": "NASA",
+        "summary": "The TEMPO mission helped scientists track morning nitrogen dioxide that contributed to afternoon ozone along the New York–Washington corridor in May 2026."
+      },
+      {
         "title": "NASA chief defends selection of all-male Artemis 3 crew",
         "published": "2026-06-10T23:21:51Z",
         "source": "Spaceflight Now",
@@ -4506,24 +4443,6 @@
         "published": "2026-06-10T19:39:20Z",
         "source": "SpaceNews",
         "summary": "\nDraft defense bill funds Pentagon at requested discretionary levels but excludes $350 billion in proposed reconciliation spending, casting doubt on Golden Dome and other space programs\nThe post House"
-      },
-      {
-        "title": "NASA, NOAA to Hold Joint Session at 23rd Symposium on Operational Environmental Satellite Systems",
-        "published": "2026-06-10T18:09:55Z",
-        "source": "NASA",
-        "summary": "Abstracts are now being accepted for the session, which will take place at the 2027 AMS Annual Meeting."
-      },
-      {
-        "title": "ESA at ILA 2026 – Day 1 highlights",
-        "published": "2026-06-10T17:32:00Z",
-        "source": "ESA",
-        "summary": "The European Space Agency (ESA) inaugurated its participation at ILA Berlin International Airshow 2026 with a day rich in high-level meetings, public events and strategic milestones, highlighting Euro"
-      },
-      {
-        "title": "We managed to glean some interesting details about the Artemis III mission",
-        "published": "2026-06-10T17:31:13Z",
-        "source": "Arstechnica",
-        "summary": "\"I was on the phone with Blue Origin leadership that night, all the next day, all through the weekend.\""
       }
     ]
   },
@@ -4531,87 +4450,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "20 km SE of Sarangani, Philippines",
-          "magnitude": 4.8,
-          "depth": 10,
-          "lat": 5.2678,
-          "lng": 125.5928,
-          "time": "2026-06-11T03:14:25.782Z",
+          "location": "72 km W of Petrolia, CA",
+          "magnitude": 2.76,
+          "depth": 4.40000009536743,
+          "lat": 40.3146667480469,
+          "lng": -125.13166809082,
+          "time": "2026-06-11T10:14:15.950Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "71 km WNW of The Bottom, Bonaire, Saint Eustatius and Saba ",
-          "magnitude": 3.4,
-          "depth": 139.684,
-          "lat": 17.9444,
-          "lng": -63.842,
-          "time": "2026-06-11T03:01:19.631Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "70 km S of Sarangani, Philippines",
-          "magnitude": 4.6,
-          "depth": 31.967,
-          "lat": 4.7679,
-          "lng": 125.396,
-          "time": "2026-06-11T02:43:38.320Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "80 km W of Petrolia, CA",
-          "magnitude": 2.84,
-          "depth": 0.660000026226044,
-          "lat": 40.4254989624023,
-          "lng": -125.22533416748,
-          "time": "2026-06-11T02:42:07.140Z",
+          "location": "21 km N of Midland, Texas",
+          "magnitude": 2.6,
+          "depth": 4.069,
+          "lat": 32.188,
+          "lng": -102.093,
+          "time": "2026-06-11T09:36:00.457Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
           "location": "south of the Fiji Islands",
-          "magnitude": 4.6,
-          "depth": 184.016,
-          "lat": -26.0978,
-          "lng": -177.5824,
-          "time": "2026-06-11T02:41:17.247Z",
+          "magnitude": 4.8,
+          "depth": 540.532,
+          "lat": -23.6335,
+          "lng": -179.7115,
+          "time": "2026-06-11T07:53:10.696Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "58 km S of Sarangani, Philippines",
-          "magnitude": 5.5,
-          "depth": 49.891,
-          "lat": 4.8778,
-          "lng": 125.4356,
-          "time": "2026-06-11T01:56:14.675Z",
+          "location": "59 km S of Sarangani, Philippines",
+          "magnitude": 5.4,
+          "depth": 72.962,
+          "lat": 4.8685,
+          "lng": 125.4495,
+          "time": "2026-06-11T07:33:23.077Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "184 km SE of Petropavlovsk-Kamchatsky, Russia",
-          "magnitude": 4.1,
-          "depth": 35,
-          "lat": 51.96,
-          "lng": 160.6456,
-          "time": "2026-06-11T01:27:55.543Z",
+          "location": "1 km WSW of Pinnacles, CA",
+          "magnitude": 2.88,
+          "depth": 6.3600001335144,
+          "lat": 36.5275001525879,
+          "lng": -121.156997680664,
+          "time": "2026-06-11T06:46:06.450Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "57 km SSW of Sarangani, Philippines",
-          "magnitude": 4.9,
-          "depth": 35,
-          "lat": 4.8951,
-          "lng": 125.3373,
-          "time": "2026-06-11T00:00:43.372Z",
+          "location": "119 km NW of Vallenar, Chile",
+          "magnitude": 4.3,
+          "depth": 10,
+          "lat": -27.8004,
+          "lng": -71.6044,
+          "time": "2026-06-11T06:05:46.702Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "65 km SSE of Sarangani, Philippines",
+          "magnitude": 5,
+          "depth": 62.85,
+          "lat": 4.8238,
+          "lng": 125.5812,
+          "time": "2026-06-11T05:38:46.440Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "117 km NW of Vallenar, Chile",
+          "magnitude": 5.2,
+          "depth": 10,
+          "lat": -27.8358,
+          "lng": -71.6196,
+          "time": "2026-06-11T05:19:44.569Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 33,
+      "total24h": 35,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4640,76 +4559,88 @@
     },
     "news": [
       {
-        "title": "FIFA’s Infantino defends US as World Cup host amid visa row, entry denials",
-        "pubDate": "Thu, 11 Jun 2026 03:07:23 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/6/11/fifas-infantino-defends-us-as-world-cup-host-amid-visa-row-entry-denials?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Which World Cup teams, players and officials were denied US visas, entry?",
-        "pubDate": "Thu, 11 Jun 2026 02:24:07 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/6/11/which-world-cup-teams-players-and-officials-were-denied-us-visas-entry?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Nigerian migrants flee South Africa after spike in xenophobic protests",
-        "pubDate": "Thu, 11 Jun 2026 02:15:40 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/6/11/nigerian-migrants-flee-south-africa-after-spike-in-xenophobic-protests?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Israeli strikes kill 12 in Lebanon as Netanyahu urges fight against Hezbollah",
-        "pubDate": "Thu, 11 Jun 2026 02:11:36 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260611-israeli-strikes-kill-12-in-lebanon-as-netanyahu-urges-fight-against-hezbollah",
-        "source": "France24"
-      },
-      {
-        "title": "Tehran targets US Gulf bases after American forces launch new strikes on Iran",
-        "pubDate": "Thu, 11 Jun 2026 01:46:18 GMT",
+        "title": "US and Iran exchange strikes across Middle East for second day in a row",
+        "pubDate": "Thu, 11 Jun 2026 10:07:25 GMT",
         "link": "https://www.bbc.com/news/articles/c4gyp9v0e93o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Trump says he 'loves the inflation' as US prices rise at fastest rate in three years",
-        "pubDate": "Thu, 11 Jun 2026 00:02:45 GMT",
+        "title": "Taiwan says Chinese vessels entered disputed waters in South China Sea",
+        "pubDate": "Thu, 11 Jun 2026 09:39:47 GMT",
+        "link": "https://www.france24.com/en/asia-pacific/20260611-taiwan-says-chinese-vessels-entered-disputed-waters-south-china-sea",
+        "source": "France24"
+      },
+      {
+        "title": "DRC referendum bill intensifies constitutional standoff",
+        "pubDate": "Thu, 11 Jun 2026 09:26:00 GMT",
+        "link": "https://www.dw.com/en/drc-referendum-bill-intensifies-constitutional-standoff/a-77499438?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "World Cup 2026: Immigrant fans, workers face ICE fears",
+        "pubDate": "Thu, 11 Jun 2026 09:22:52 GMT",
+        "link": "https://www.france24.com/en/video/20260611-world-cup-2026-immigrant-fans-workers-face-ice-fears",
+        "source": "France24"
+      },
+      {
+        "title": "US and Iran exchange fire for a second day, undermining shaky ceasefire",
+        "pubDate": "Thu, 11 Jun 2026 09:19:46 GMT",
+        "link": "https://www.france24.com/en/video/20260611-us-and-iran-exchange-fire-for-a-second-day-undermining-shaky-ceasefire",
+        "source": "France24"
+      },
+      {
+        "title": "World celebrates, but Gaza watches the World Cup from a distance",
+        "pubDate": "Thu, 11 Jun 2026 09:15:31 +0000",
+        "link": "https://www.aljazeera.com/features/longform/2026/6/11/world-celebrates-but-gaza-watches-the-world-cup-from-a-distance?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Trump says 'I love the inflation' as US prices rise at fastest rate in three years",
+        "pubDate": "Thu, 11 Jun 2026 09:14:13 GMT",
         "link": "https://www.bbc.com/news/articles/c0myzxjkw99o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Iran announces closure of Strait of Hormuz after US attacks",
-        "pubDate": "Wed, 10 Jun 2026 23:50:51 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260610-middle-east-live-iran-announces-closure-of-strait-of-hormuz-after-us-attacks",
-        "source": "France24"
+        "title": "World Cup Day 1: Schedule, predictions, opening ceremony and what to watch",
+        "pubDate": "Thu, 11 Jun 2026 09:01:51 +0000",
+        "link": "https://www.aljazeera.com/news/2026/6/11/world-cup-day-1-schedule-predictions-opening-ceremony-and-what-to-watch?traffic_source=rss",
+        "source": "Al Jazeera"
       },
       {
-        "title": "Middle East live: US launches new strikes on Iran, which fires back at Gulf states",
-        "pubDate": "Wed, 10 Jun 2026 23:38:40 GMT",
-        "link": "https://www.france24.com/en/middle-east/20260610-middle-east-live-iran-announces-closure-of-strait-of-hormuz-after-us-attacks",
-        "source": "France24"
+        "title": "UK, Australia, Canada launch $4m peace fund for Israel-Palestine conflict",
+        "pubDate": "Thu, 11 Jun 2026 08:59:25 +0000",
+        "link": "https://www.aljazeera.com/news/2026/6/11/uk-australia-canada-launch-4mn-peace-fund-for-israel-palestine-conflict?traffic_source=rss",
+        "source": "Al Jazeera"
       },
       {
-        "title": "The furious dispute over what caused Air India flight 171 to crash",
-        "pubDate": "Wed, 10 Jun 2026 23:10:11 GMT",
-        "link": "https://www.bbc.com/news/articles/cwyk9exxp2qo?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Three Indian sailors killed in US strike on oil tanker",
+        "pubDate": "Thu, 11 Jun 2026 08:07:34 GMT",
+        "link": "https://www.bbc.com/news/articles/cy73dr081p8o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Curiosity Blog: Sols 4913-4919: Planetary explorers, freewheeling to the Yardang unit!",
-        "pubDate": "Wed, 10 Jun 2026 21:23:02 +0000",
-        "link": "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit/",
-        "source": "NASA"
+        "title": "ESA science missions get green light for new discoveries",
+        "pubDate": "Thu, 11 Jun 2026 10:00:00 +0200",
+        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/ESA_science_missions_get_green_light_for_new_discoveries]]>",
+        "source": "ESA"
       },
       {
-        "title": "NASA Awards Contract for Construction Services in California",
-        "pubDate": "Wed, 10 Jun 2026 20:32:25 +0000",
-        "link": "https://www.nasa.gov/news-release/nasa-awards-contract-for-construction-services-in-california/",
-        "source": "NASA"
+        "title": "Hungary, Ukraine make historic deal after years of tension",
+        "pubDate": "Thu, 11 Jun 2026 07:45:00 GMT",
+        "link": "https://www.dw.com/en/hungary-ukraine-make-historic-deal-after-years-of-tension/a-77496875?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
       },
       {
-        "title": "NASA, NOAA to Hold Joint Session at 23rd Symposium on Operational Environmental Satellite Systems",
-        "pubDate": "Wed, 10 Jun 2026 18:09:55 +0000",
-        "link": "https://science.nasa.gov/science-research/earth-science/nasa-noaa-to-hold-joint-session-at-23rd-symposium-on-operational-environmental-satellite-systems/",
-        "source": "NASA"
+        "title": "Air Pollution&#8217;s Daily Pulse Over the Northeast",
+        "pubDate": "Thu, 11 Jun 2026 04:01:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/air-pollutions-daily-pulse-over-the-northeast/",
+        "source": "NASA Earth"
+      },
+      {
+        "title": "Canada introduces bill to ban social media for under-16s",
+        "pubDate": "Thu, 11 Jun 2026 03:47:00 GMT",
+        "link": "https://www.dw.com/en/canada-introduces-bill-to-ban-social-media-for-under-16s/a-77498276?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
       },
       {
         "title": "ESA adopts galactic archaeology mission Arrakihs",
@@ -4722,12 +4653,6 @@
         "pubDate": "Wed, 10 Jun 2026 13:00:20 GMT",
         "link": "https://www.theguardian.com/us-news/2026/jun/10/trump-administration-immigrants-climate-crisis",
         "source": "Guardian"
-      },
-      {
-        "title": "Why is Hezbollah still important for Iran?",
-        "pubDate": "Wed, 10 Jun 2026 12:22:00 GMT",
-        "link": "https://www.dw.com/en/why-is-hezbollah-still-important-for-iran/a-77487992?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
       },
       {
         "title": "UN rights chief urges ‘massive rethink’ of US immigration policies ahead of World Cup",
@@ -4748,16 +4673,10 @@
         "source": "UN News"
       },
       {
-        "title": "Rising cyberscam losses expose gaps in EU response",
-        "pubDate": "Wed, 10 Jun 2026 11:46:00 GMT",
-        "link": "https://www.dw.com/en/rising-cyberscam-losses-expose-gaps-in-eu-response/a-77487321?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Philippines: Farmers race to keep up with global &#039;ube&#039; craze",
-        "pubDate": "Wed, 10 Jun 2026 11:34:00 GMT",
-        "link": "https://www.dw.com/en/philippines-farmers-race-to-keep-up-with-global-ube-craze/a-77486681?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
+        "title": "Global brands ‘likely’ using mineral that funds rebels accused of atrocities in DRC, investigation finds",
+        "pubDate": "Wed, 10 Jun 2026 05:00:11 GMT",
+        "link": "https://www.theguardian.com/global-development/2026/jun/10/coltan-drc-m23-global-witness-investigation",
+        "source": "Guardian"
       }
     ],
     "volcanic": [],
@@ -4811,7 +4730,7 @@
         "sunspots": 101.4
       }
     ],
-    "lastUpdated": "2026-06-11T03:54:01.967Z"
+    "lastUpdated": "2026-06-11T10:26:40.510Z"
   },
   "momentum": {
     "indicators": [
