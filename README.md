@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 66.6 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 66.7 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  66.6/100  ↑ +0
+█████████████░░░░░░░  66.7/100  ↑ +0.1
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 03.07.2026 02:52 UTC
+> **Letzte Aktualisierung:** 03.07.2026 09:29 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.1**/100 | → +0 | 25% |
-| 🟡 Gesellschaft | **55.9**/100 | → -0.1 | 25% |
+| 🟡 Umwelt | **44.2**/100 | → +0.1 | 25% |
+| 🟡 Gesellschaft | **55.8**/100 | → -0.1 | 25% |
 | 🟢 Wirtschaft | **73.2**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **77.6**/100 | → +0 | 20% |
-| 🔵 Momentum | **81**/100 | → +0 | 10% |
+| 🔵 Momentum | **81.3**/100 | → +0 | 10% |
 
 ---
 
@@ -34,7 +34,7 @@
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
 | CO2-Konzentration | **432 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **45** | WAQI |
+| Luftqualität (Ø) | AQI **46** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -69,17 +69,16 @@
 
 ---
 
-## 📈 Momentum: 17/21 Trends positiv
+## 📈 Momentum: 13/16 Trends positiv
 
 <details>
-<summary>Alle 21 Indikatoren anzeigen</summary>
+<summary>Alle 16 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (17)
+#### ✅ Verbessert sich (13)
 - **Lebenserwartung**: +1.6%
 - **Kindersterblichkeit**: -2.3%
 - **Erneuerbare Energie**: +6.6%
 - **Internet-Zugang**: +12.1%
-- **BIP-Wachstum**: +23.3%
 - **Inflation**: -12.0%
 - **Arbeitslosigkeit**: -19.1%
 - **BIP pro Kopf**: +14.0%
@@ -87,17 +86,13 @@
 - **Alphabetisierung**: +0.7%
 - **Mobilfunk**: +3.8%
 - **F&E Ausgaben**: +10.8%
-- **Elektrizitätszugang**: +1.4%
-- **Trinkwasser**: +2.7%
-- **Gesundheitsausgaben**: +1.1%
 - **Urbanisierung**: +1.4%
 - **Patentanmeldungen**: +1.2%
 
-#### ❌ Verschlechtert sich (4)
+#### ❌ Verschlechtert sich (3)
 - **CO2-Konzentration**: +2.1%
 - **Waldfläche**: -0.3%
 - **CO2 pro Kopf**: +1.4%
-- **Militärausgaben (% BIP)**: +5.3%
 
 </details>
 
@@ -223,5 +218,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 03.07.2026 02:52 UTC | 39/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 03.07.2026 09:29 UTC | 32/40 Quellen aktiv
 </sub>
