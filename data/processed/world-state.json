@@ -1,32 +1,33 @@
 {
   "meta": {
-    "generated": "2026-07-04T02:52:33.029Z",
+    "generated": "2026-07-04T08:36:16.658Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 39,
-    "sources_success_rate": 98,
-    "next_update": "2026-07-04T08:52:33.029Z",
+    "sources_available": 40,
+    "sources_success_rate": 100,
+    "next_update": "2026-07-04T14:36:16.658Z",
     "realtimePulse": {
-      "environment": -0.82,
-      "society": -0.05,
+      "environment": -0.75,
+      "society": 0,
       "economy": -0.45,
-      "progress": 0.47,
+      "progress": 0.8,
       "details": {
-        "quakeCount": 35,
-        "maxMagnitude": 6.1,
+        "quakeCount": 40,
+        "maxMagnitude": 5.3,
+        "avgGlobalTemp": 20.8,
         "cryptoFearGreed": 22,
-        "arxivPapers": 5
+        "arxivPapers": 20
       }
     }
   },
   "worldIndex": {
-    "value": 66.6,
-    "rawValue": 63.3,
+    "value": 66.7,
+    "rawValue": 63.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 66.7,
-    "change": -0.1,
-    "trend": "declining",
+    "previous": 66.6,
+    "change": 0.1,
+    "trend": "improving",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -60,8 +61,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "elastic",
-          "level": 1
+          "position": "capacitive",
+          "level": 2
         },
         "momentum": {
           "direction": "expansion",
@@ -71,7 +72,7 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.4,
+          "bufferDistance": 34.5,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
@@ -86,7 +87,7 @@
           "maintenanceCost": 2.78
         },
         "progress": {
-          "bufferDistance": 73.9,
+          "bufferDistance": 74.2,
           "recoveryTime": 0,
           "maintenanceCost": 4.52
         },
@@ -101,12 +102,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.2,
+      "value": 44.3,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -138,7 +139,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 43,
+          "value": 41,
           "score": 70,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -217,7 +218,7 @@
       "zone": "positive",
       "weight": 0.2,
       "trend": "stable",
-      "change": 0.1,
+      "change": 0,
       "indicators": [
         {
           "name": "BIP-Wachstum",
@@ -257,12 +258,12 @@
       ]
     },
     "progress": {
-      "value": 77.8,
+      "value": 78.1,
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "declining",
-      "change": -0.3,
+      "trend": "improving",
+      "change": 0.3,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -301,7 +302,7 @@
         },
         {
           "name": "Wissenschaftliche Papers",
-          "value": "3.2M/Jahr",
+          "value": "20+ heute",
           "score": 75,
           "trend": "improving",
           "source": "arXiv"
@@ -1195,58 +1196,58 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 43,
+      "globalAvgAQI": 41,
       "cleanestCities": [
         {
           "city": "London",
           "country": "",
-          "aqi": 18,
+          "aqi": 13,
           "lat": 51.51,
           "lng": -0.13
         },
         {
-          "city": "Mumbai",
-          "country": "",
-          "aqi": 19,
-          "lat": 19.08,
-          "lng": 72.88
-        },
-        {
           "city": "Sydney",
           "country": "",
-          "aqi": 20,
+          "aqi": 13,
           "lat": -33.87,
           "lng": 151.21
         },
         {
-          "city": "Berlin",
+          "city": "Mumbai",
           "country": "",
           "aqi": 22,
+          "lat": 19.08,
+          "lng": 72.88
+        },
+        {
+          "city": "Berlin",
+          "country": "",
+          "aqi": 23,
           "lat": 52.52,
           "lng": 13.41
         },
         {
-          "city": "Lagos",
+          "city": "São Paulo",
           "country": "",
-          "aqi": 30,
-          "lat": 6.45,
-          "lng": 3.4
+          "aqi": 28,
+          "lat": -23.55,
+          "lng": -46.63
         }
       ],
       "mostPolluted": [
         {
-          "city": "Beijing",
-          "country": "",
-          "aqi": 88,
-          "lat": 39.9,
-          "lng": 116.4
-        },
-        {
           "city": "Delhi",
           "country": "",
-          "aqi": 77,
+          "aqi": 80,
           "lat": 28.61,
           "lng": 77.21
+        },
+        {
+          "city": "Beijing",
+          "country": "",
+          "aqi": 78,
+          "lat": 39.9,
+          "lng": 116.4
         },
         {
           "city": "Mexico City",
@@ -1265,7 +1266,7 @@
         {
           "city": "Cairo",
           "country": "",
-          "aqi": 41,
+          "aqi": 39,
           "lat": 30.04,
           "lng": 31.24
         }
@@ -1625,7 +1626,112 @@
       ],
       "source": "World Bank"
     },
-    "weather": []
+    "weather": [
+      {
+        "name": "Berlin",
+        "lat": 52.52,
+        "lng": 13.41,
+        "current": {
+          "time": "2026-07-04T10:30",
+          "interval": 900,
+          "temperature_2m": 17.5,
+          "relative_humidity_2m": 57,
+          "wind_speed_10m": 18.3,
+          "weather_code": 3
+        }
+      },
+      {
+        "name": "New York",
+        "lat": 40.71,
+        "lng": -74.01,
+        "current": {
+          "time": "2026-07-04T04:30",
+          "interval": 900,
+          "temperature_2m": 23.5,
+          "relative_humidity_2m": 86,
+          "wind_speed_10m": 8.9,
+          "weather_code": 0
+        }
+      },
+      {
+        "name": "Tokyo",
+        "lat": 35.68,
+        "lng": 139.69,
+        "current": {
+          "time": "2026-07-04T17:30",
+          "interval": 900,
+          "temperature_2m": 24.5,
+          "relative_humidity_2m": 79,
+          "wind_speed_10m": 6.8,
+          "weather_code": 3
+        }
+      },
+      {
+        "name": "Sydney",
+        "lat": -33.87,
+        "lng": 151.21,
+        "current": {
+          "time": "2026-07-04T18:30",
+          "interval": 900,
+          "temperature_2m": 13,
+          "relative_humidity_2m": 72,
+          "wind_speed_10m": 5.4,
+          "weather_code": 0
+        }
+      },
+      {
+        "name": "São Paulo",
+        "lat": -23.55,
+        "lng": -46.63,
+        "current": {
+          "time": "2026-07-04T05:30",
+          "interval": 900,
+          "temperature_2m": 14.7,
+          "relative_humidity_2m": 89,
+          "wind_speed_10m": 7.8,
+          "weather_code": 3
+        }
+      },
+      {
+        "name": "Lagos",
+        "lat": 6.45,
+        "lng": 3.4,
+        "current": {
+          "time": "2026-07-04T09:30",
+          "interval": 900,
+          "temperature_2m": 26.5,
+          "relative_humidity_2m": 83,
+          "wind_speed_10m": 9.2,
+          "weather_code": 2
+        }
+      },
+      {
+        "name": "Mumbai",
+        "lat": 19.08,
+        "lng": 72.88,
+        "current": {
+          "time": "2026-07-04T14:00",
+          "interval": 900,
+          "temperature_2m": 26.3,
+          "relative_humidity_2m": 92,
+          "wind_speed_10m": 23.7,
+          "weather_code": 95
+        }
+      },
+      {
+        "name": "London",
+        "lat": 51.51,
+        "lng": -0.13,
+        "current": {
+          "time": "2026-07-04T09:30",
+          "interval": 900,
+          "temperature_2m": 20.7,
+          "relative_humidity_2m": 67,
+          "wind_speed_10m": 14,
+          "weather_code": 1
+        }
+      }
+    ]
   },
   "society": {
     "conflicts": {
@@ -3947,7 +4053,33 @@
           "value": 3200000
         }
       ],
-      "latestArxiv": [],
+      "latestArxiv": [
+        {
+          "title": "Alignment Is All You Need For X-to-4D Generation",
+          "published": "2026-07-02T17:59:57Z",
+          "category": "cs.CV"
+        },
+        {
+          "title": "ReContext: Recursive Evidence Replay as LLM Harness for Long-Context Reasoning",
+          "published": "2026-07-02T17:59:26Z",
+          "category": "cs.AI"
+        },
+        {
+          "title": "Reasoning LLM Improves Speaker Recognition in Long-form TV Dramas",
+          "published": "2026-07-02T17:58:52Z",
+          "category": "cs.CL"
+        },
+        {
+          "title": "Alleviating prior dependencies for DESI DR1 clustering fits through reparameterization",
+          "published": "2026-07-02T17:57:15Z",
+          "category": "astro-ph.CO"
+        },
+        {
+          "title": "Robustness and hyperstability for the Erdős-Gallai theorem",
+          "published": "2026-07-02T17:50:56Z",
+          "category": "math.CO"
+        }
+      ],
       "source": "arXiv / Scopus"
     },
     "github": {
@@ -3957,73 +4089,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 522203,
-          "forks": 49398,
+          "stars": 522265,
+          "forks": 49409,
           "language": "Markdown",
-          "updated": "2026-07-04T02:39:12Z"
+          "updated": "2026-07-04T08:32:00Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 481244,
-          "forks": 35663,
+          "stars": 481309,
+          "forks": 35668,
           "language": null,
-          "updated": "2026-07-04T02:41:14Z"
+          "updated": "2026-07-04T08:32:28Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 451004,
-          "forks": 45350,
+          "stars": 451021,
+          "forks": 45351,
           "language": "TypeScript",
-          "updated": "2026-07-04T02:48:43Z"
+          "updated": "2026-07-04T08:21:40Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 446356,
-          "forks": 48994,
+          "stars": 446410,
+          "forks": 49002,
           "language": "Python",
-          "updated": "2026-07-04T02:43:34Z"
+          "updated": "2026-07-04T08:32:06Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 391232,
+          "stars": 391245,
           "forks": 66474,
           "language": "Python",
-          "updated": "2026-07-04T02:44:23Z"
+          "updated": "2026-07-04T08:33:57Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 381607,
-          "forks": 80007,
+          "stars": 381640,
+          "forks": 80013,
           "language": "TypeScript",
-          "updated": "2026-07-04T02:44:58Z"
+          "updated": "2026-07-04T08:33:02Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 359168,
-          "forks": 44355,
+          "stars": 359183,
+          "forks": 44357,
           "language": "TypeScript",
-          "updated": "2026-07-04T02:14:03Z"
+          "updated": "2026-07-04T08:15:43Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 356002,
-          "forks": 57029,
+          "stars": 356030,
+          "forks": 57033,
           "language": "Python",
-          "updated": "2026-07-04T02:19:03Z"
+          "updated": "2026-07-04T08:18:17Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 355008,
-          "forks": 84083,
+          "stars": 355027,
+          "forks": 84089,
           "language": null,
-          "updated": "2026-07-04T02:43:10Z"
+          "updated": "2026-07-04T08:21:08Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 306149,
-          "forks": 28209,
+          "stars": 306199,
+          "forks": 28211,
           "language": "Python",
-          "updated": "2026-07-04T02:48:31Z"
+          "updated": "2026-07-04T08:28:21Z"
         }
       ],
       "source": "GitHub"
@@ -4504,6 +4636,12 @@
     },
     "spaceflight": [
       {
+        "title": "Katalyst’s LINK On Its Way to Reboost Swift",
+        "published": "2026-07-04T03:59:09Z",
+        "source": "SpacePolicyOnline.com",
+        "summary": "Katalyst Space’s LINK on-orbit servicing spacecraft is on its way to reboost NASA’s Swift observatory. Northrop Grumman’s Pegasus-XL rocket launched LINK this morning and contact has been successfully"
+      },
+      {
         "title": "Starship in Florida pushing for launch this year",
         "published": "2026-07-03T21:26:45Z",
         "source": "NASASpaceflight",
@@ -4556,12 +4694,6 @@
         "published": "2026-07-03T08:28:00Z",
         "source": "ESA",
         "summary": "From the ESA Blogs."
-      },
-      {
-        "title": "Earth from Space: Grand Canyon, US",
-        "published": "2026-07-03T08:00:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
       }
     ]
   },
@@ -4569,87 +4701,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "3 km SW of Anderson Springs, CA",
-          "magnitude": 2.52,
-          "depth": 0.699999988079071,
-          "lat": 38.7578315734863,
-          "lng": -122.717498779297,
-          "time": "2026-07-04T02:23:40.870Z",
+          "location": "135 km N of Lae, Papua New Guinea",
+          "magnitude": 5.1,
+          "depth": 182.779,
+          "lat": -5.5049,
+          "lng": 147.103,
+          "time": "2026-07-04T07:50:23.853Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "73 km NW of San Antonio, Puerto Rico",
-          "magnitude": 3.4,
-          "depth": 39.904,
-          "lat": 18.9565,
-          "lng": -67.6028,
-          "time": "2026-07-04T02:21:40.622Z",
+          "location": "90 km ESE of McCarthy, Alaska",
+          "magnitude": 2.6,
+          "depth": 5,
+          "lat": 61.264,
+          "lng": -141.276,
+          "time": "2026-07-04T06:20:00.606Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "24 km SW of Balangonan, Philippines",
-          "magnitude": 5.2,
+          "location": "124 km WSW of Hihifo, Tonga",
+          "magnitude": 4.3,
+          "depth": 301.374,
+          "lat": -16.1828,
+          "lng": -174.939,
+          "time": "2026-07-04T05:46:43.221Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "8 km ENE of Borrego Springs, CA",
+          "magnitude": 2.5,
+          "depth": 8.29,
+          "lat": 33.2858333333333,
+          "lng": -116.296333333333,
+          "time": "2026-07-04T05:42:09.130Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "Izu Islands, Japan region",
+          "magnitude": 4.8,
           "depth": 10,
-          "lat": 5.429,
-          "lng": 125.1808,
-          "time": "2026-07-04T02:21:23.141Z",
+          "lat": 32.089,
+          "lng": 142.4608,
+          "time": "2026-07-04T05:03:52.698Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "54 km SW of Akhiok, Alaska",
+          "location": "92 km SSE of Kokhanok, Alaska",
           "magnitude": 2.7,
-          "depth": 59,
-          "lat": 56.611,
-          "lng": -154.83,
-          "time": "2026-07-04T02:00:28.043Z",
+          "depth": 10.7,
+          "lat": 58.637,
+          "lng": -154.364,
+          "time": "2026-07-04T04:58:06.686Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "65 km N of Hatillo, Puerto Rico",
-          "magnitude": 3.29,
-          "depth": 40.22,
-          "lat": 19.074,
-          "lng": -66.772,
-          "time": "2026-07-04T01:10:14.830Z",
+          "location": "26 km SW of Balangonan, Philippines",
+          "magnitude": 4.8,
+          "depth": 10.124,
+          "lat": 5.4243,
+          "lng": 125.17,
+          "time": "2026-07-04T04:26:27.270Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "Fiji region",
-          "magnitude": 4.5,
-          "depth": 576.196,
-          "lat": -19.9341,
-          "lng": -178.202,
-          "time": "2026-07-04T00:00:50.589Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "48 km NNE of Sarykemer, Kazakhstan",
-          "magnitude": 4.4,
+          "location": "198 km WSW of Pistol River, Oregon",
+          "magnitude": 2.6,
           "depth": 10,
-          "lat": 43.4086,
-          "lng": 71.713,
-          "time": "2026-07-03T23:40:55.905Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "95 km N of Isabela, Puerto Rico",
-          "magnitude": 3.25,
-          "depth": 24.06,
-          "lat": 19.3556666666667,
-          "lng": -67.1056666666667,
-          "time": "2026-07-03T23:39:00.920Z",
+          "lat": 41.8984,
+          "lng": -126.7348,
+          "time": "2026-07-04T04:14:38.917Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 35,
+      "total24h": 40,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4678,82 +4810,82 @@
     },
     "news": [
       {
-        "title": "Ronaldo sends message to Venezuelan earthquake survivor",
-        "pubDate": "Sat, 04 Jul 2026 01:32:28 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/7/4/ronaldo-sends-message-to-venezuelan-earthquake-survivor?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Colombia-Ghana live: Cafeteros edge ahead with early breakthrough",
-        "pubDate": "Sat, 04 Jul 2026 01:15:19 GMT",
-        "link": "https://www.france24.com/en/sport/20260704-colombia-ghana-live-last-round-of-16-spot-up-for-grabs",
+        "title": "England face Mexico in Azteca fortress, returning to scene of Maradona handball",
+        "pubDate": "Sat, 04 Jul 2026 08:24:29 GMT",
+        "link": "https://www.france24.com/en/sport/20260704-world-cup-england-face-mexico-azteca-fortress-return-scene-maradona-handball",
         "source": "France24"
       },
       {
-        "title": "Messi scores again but Argentina given World Cup upset fright by Cape Verde",
-        "pubDate": "Sat, 04 Jul 2026 00:51:40 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/7/4/messi-scores-again-but-argentina-given-world-cup-upset-fright-by-cape-verde?traffic_source=rss",
-        "source": "Al Jazeera"
+        "title": "Overseas education project for women and girls axed by UK after two years",
+        "pubDate": "Sat, 04 Jul 2026 08:00:08 GMT",
+        "link": "https://www.theguardian.com/global-development/2026/jul/04/overseas-education-project-for-women-and-girls-axed-by-uk-after-two-years",
+        "source": "Guardian"
       },
       {
-        "title": "World Cup 2026: Argentina survive epic Cape Verde scare after extra-time thriller",
-        "pubDate": "Sat, 04 Jul 2026 00:48:05 GMT",
-        "link": "https://www.france24.com/en/sport/20260704-world-cup-2026-argentina-survive-epic-cape-verde-scare-after-extra-time-thriller",
-        "source": "France24"
-      },
-      {
-        "title": "Egypt coach dedicates World Cup win to Palestine as Gaza celebrates",
-        "pubDate": "Sat, 04 Jul 2026 00:20:08 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/7/4/egypt-coach-dedicates-world-cup-win-to-palestine-as-arab-world-celebrates?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "More than 400 dead in DR Congo's Ebola outbreak",
-        "pubDate": "Fri, 03 Jul 2026 21:39:49 GMT",
-        "link": "https://www.france24.com/en/more-than-400-dead-in-dr-congo-s-ebola-outbreak",
-        "source": "France24"
-      },
-      {
-        "title": "Anguished families left to identify Venezuela quake victims at makeshift morgue",
-        "pubDate": "Fri, 03 Jul 2026 21:00:53 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/c20y2p9qqqko?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Keiko Fujimori declared winner of Peru's presidential election weeks after vote",
+        "pubDate": "Sat, 04 Jul 2026 07:52:55 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/cr5jpvv06e1o?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Iran begins public mourning for Ayatollah killed in February",
-        "pubDate": "Fri, 03 Jul 2026 19:03:45 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/cx2k4k7jqeno?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
+        "title": "Taylor Swift and Travis Kelce marry at NYC’s Madison Square Garden",
+        "pubDate": "Sat, 04 Jul 2026 07:46:55 +0000",
+        "link": "https://www.aljazeera.com/news/2026/7/4/taylor-swift-and-travis-kelce-marry-at-nycs-madison-square-garden?traffic_source=rss",
+        "source": "Al Jazeera"
       },
       {
-        "title": "Maltese tycoon faces trial over Caruana Galizia murder",
-        "pubDate": "Fri, 3 Jul 2026 18:20:00 GMT",
-        "link": "https://www.dw.com/en/maltese-tycoon-faces-trial-over-caruana-galizia-murder/a-77823553?maca=en-rss-en-world-4025-xml-mrss",
+        "title": "250 years of US independence: How France helped turn the tide of the Revolutionary War",
+        "pubDate": "Sat, 04 Jul 2026 07:26:23 GMT",
+        "link": "https://www.france24.com/en/americas/20260704-250-years-of-us-independence-how-france-helped-turn-the-tide-of-the-revolutionary-war",
+        "source": "France24"
+      },
+      {
+        "title": "Trump praises army, rails against communism in US 250th anniversary speech",
+        "pubDate": "Sat, 04 Jul 2026 07:19:57 +0000",
+        "link": "https://www.aljazeera.com/news/2026/7/4/trump-praises-army-rails-against-communism-in-us-250th-anniversary-speech?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "At 250, America is still deciding who belongs",
+        "pubDate": "Sat, 04 Jul 2026 07:07:30 +0000",
+        "link": "https://www.aljazeera.com/opinions/2026/7/4/at-250-america-is-still-deciding-who-belongs?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "US 'royal wedding': Taylor Swift and Travis Kelce marry at Madison Square Garden",
+        "pubDate": "Sat, 04 Jul 2026 07:02:57 GMT",
+        "link": "https://www.france24.com/en/americas/20260704-us-royal-wedding-taylor-swift-and-travis-kelce-marry-at-madison-square-garden",
+        "source": "France24"
+      },
+      {
+        "title": "Trump set to put NATO unity to the test at Turkey summit",
+        "pubDate": "Sat, 4 Jul 2026 07:01:00 GMT",
+        "link": "https://www.dw.com/en/trump-set-to-put-nato-unity-to-the-test-at-turkey-summit/a-77824515?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "Polish PM warns critical months ahead in face of Russian threat",
-        "pubDate": "Fri, 03 Jul 2026 16:41:00 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/cj0gp88q4l4o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "NASA’s Hubble Captures Crimson Cloud Sparkling with White, Blue Stars",
-        "pubDate": "Fri, 03 Jul 2026 15:01:17 +0000",
-        "link": "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars/",
-        "source": "NASA"
-      },
-      {
-        "title": "Can inspectors return to Iran&#039;s nuclear sites?",
-        "pubDate": "Fri, 3 Jul 2026 13:04:00 GMT",
-        "link": "https://www.dw.com/en/can-inspectors-return-to-iran-s-nuclear-sites/a-77819688?maca=en-rss-en-world-4025-xml-mrss",
+        "title": "Kielce pogrom in Poland: 80th anniversary of 1946 massacre",
+        "pubDate": "Sat, 4 Jul 2026 04:24:00 GMT",
+        "link": "https://www.dw.com/en/kielce-pogrom-in-poland-80th-anniversary-of-1946-massacre/a-77826002?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
       },
       {
-        "title": "NASA’s Hubble Spots Star-Spangled Cosmic Scene",
-        "pubDate": "Fri, 03 Jul 2026 12:42:03 +0000",
-        "link": "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene/",
-        "source": "NASA"
+        "title": "US: President Trump pardons 11 people, including Clean Air Act violators",
+        "pubDate": "Sat, 4 Jul 2026 04:05:00 GMT",
+        "link": "https://www.dw.com/en/us-president-trump-pardons-11-people-including-clean-air-act-violators/a-77829438?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Brutal heat cancels Fourth of July events, from DC to Philadelphia",
+        "pubDate": "Sat, 04 Jul 2026 02:57:48 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/cevlkzer7vdo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Taylor Swift marries Travis Kelce in NYC ceremony officiated by Adam Sandler",
+        "pubDate": "Sat, 04 Jul 2026 02:26:54 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/c982ry2pen3o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
       },
       {
         "title": "Civilian dangers multiply as drones transform Ukraine&#039;s battlefield",
@@ -4774,12 +4906,6 @@
         "source": "UN News"
       },
       {
-        "title": "AI drones made in Germany see duty on Ukraine&#039;s front line",
-        "pubDate": "Fri, 3 Jul 2026 04:38:00 GMT",
-        "link": "https://www.dw.com/en/ai-drones-made-in-germany-see-duty-on-ukraine-s-front-line/a-77804928?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
         "title": "The Birthplace of the United States",
         "pubDate": "Fri, 03 Jul 2026 04:00:00 +0000",
         "link": "https://science.nasa.gov/earth/earth-observatory/the-birthplace-of-the-united-states-90513/",
@@ -4792,10 +4918,16 @@
         "source": "Guardian"
       },
       {
-        "title": "NASA’s Artemis II Breaks Agency Streaming Record",
-        "pubDate": "Thu, 02 Jul 2026 18:02:21 +0000",
-        "link": "https://www.nasa.gov/general/nasas-artemis-ii-breaks-agency-streaming-record/",
-        "source": "NASA"
+        "title": "WHO adds first diagnostic test for Ebola Bundibugyo virus to its Emergency Use Listing",
+        "pubDate": "Thu, 02 Jul 2026 16:21:23 Z",
+        "link": "https://www.who.int/news/item/02-07-2026-who-adds-first-diagnostic-test-for-ebola-bundibugyo-virus-to-its-emergency-use-listing",
+        "source": "WHO News"
+      },
+      {
+        "title": "Patient enrolment begins in a scientific trial to identify the first effective treatments for Bundibugyo virus disease",
+        "pubDate": "Thu, 02 Jul 2026 12:19:20 Z",
+        "link": "https://www.who.int/news/item/02-07-2026-patient-enrolment-begins-in-a-scientific-trial-to-identify-the-first-effective-treatments-for-bundibugyo-virus-disease",
+        "source": "WHO News"
       }
     ],
     "volcanic": [],
@@ -4849,7 +4981,7 @@
         "sunspots": 94.4
       }
     ],
-    "lastUpdated": "2026-07-04T02:52:33.029Z"
+    "lastUpdated": "2026-07-04T08:36:16.658Z"
   },
   "momentum": {
     "indicators": [
