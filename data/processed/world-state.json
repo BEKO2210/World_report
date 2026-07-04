@@ -1,20 +1,21 @@
 {
   "meta": {
-    "generated": "2026-07-04T08:36:16.658Z",
+    "generated": "2026-07-04T13:23:25.440Z",
     "version": "2.0.0",
     "sources_count": 40,
     "sources_available": 40,
     "sources_success_rate": 100,
-    "next_update": "2026-07-04T14:36:16.658Z",
+    "next_update": "2026-07-04T19:23:25.441Z",
     "realtimePulse": {
-      "environment": -0.75,
-      "society": 0,
+      "environment": -0.87,
+      "society": 0.05,
       "economy": -0.45,
       "progress": 0.8,
       "details": {
-        "quakeCount": 40,
+        "quakeCount": 45,
         "maxMagnitude": 5.3,
-        "avgGlobalTemp": 20.8,
+        "avgGlobalTemp": 22.3,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 22,
         "arxivPapers": 20
       }
@@ -25,9 +26,9 @@
     "rawValue": 63.4,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 66.6,
-    "change": 0.1,
-    "trend": "improving",
+    "previous": 66.7,
+    "change": 0,
+    "trend": "stable",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -61,8 +62,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "capacitive",
-          "level": 2
+          "position": "elastic",
+          "level": 1
         },
         "momentum": {
           "direction": "expansion",
@@ -72,12 +73,12 @@
       },
       "indicators": {
         "environment": {
-          "bufferDistance": 34.5,
+          "bufferDistance": 34.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -102,12 +103,12 @@
   },
   "subScores": {
     "environment": {
-      "value": 44.3,
+      "value": 44.1,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0.1,
+      "change": -0.2,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 41,
+          "value": 44,
           "score": 70,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": 0,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -262,8 +263,8 @@
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "improving",
-      "change": 0.3,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -1196,45 +1197,52 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 41,
+      "globalAvgAQI": 44,
       "cleanestCities": [
-        {
-          "city": "London",
-          "country": "",
-          "aqi": 13,
-          "lat": 51.51,
-          "lng": -0.13
-        },
         {
           "city": "Sydney",
           "country": "",
-          "aqi": 13,
+          "aqi": 17,
           "lat": -33.87,
           "lng": 151.21
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 22,
+          "aqi": 19,
           "lat": 19.08,
           "lng": 72.88
         },
         {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 23,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
           "city": "São Paulo",
           "country": "",
-          "aqi": 28,
+          "aqi": 26,
           "lat": -23.55,
           "lng": -46.63
+        },
+        {
+          "city": "London",
+          "country": "",
+          "aqi": 27,
+          "lat": 51.51,
+          "lng": -0.13
+        },
+        {
+          "city": "Los Angeles",
+          "country": "",
+          "aqi": 28,
+          "lat": 34.05,
+          "lng": -118.24
         }
       ],
       "mostPolluted": [
+        {
+          "city": "Beijing",
+          "country": "",
+          "aqi": 81,
+          "lat": 39.9,
+          "lng": 116.4
+        },
         {
           "city": "Delhi",
           "country": "",
@@ -1243,32 +1251,25 @@
           "lng": 77.21
         },
         {
-          "city": "Beijing",
-          "country": "",
-          "aqi": 78,
-          "lat": 39.9,
-          "lng": 116.4
-        },
-        {
           "city": "Mexico City",
           "country": "",
-          "aqi": 65,
+          "aqi": 66,
           "lat": 19.43,
           "lng": -99.13
         },
         {
-          "city": "Tokyo",
-          "country": "",
-          "aqi": 48,
-          "lat": 35.68,
-          "lng": 139.69
-        },
-        {
           "city": "Cairo",
           "country": "",
-          "aqi": 39,
+          "aqi": 51,
           "lat": 30.04,
           "lng": 31.24
+        },
+        {
+          "city": "Tokyo",
+          "country": "",
+          "aqi": 43,
+          "lat": 35.68,
+          "lng": 139.69
         }
       ],
       "source": "Open-Meteo Air Quality"
@@ -1632,11 +1633,11 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-07-04T10:30",
+          "time": "2026-07-04T15:15",
           "interval": 900,
-          "temperature_2m": 17.5,
-          "relative_humidity_2m": 57,
-          "wind_speed_10m": 18.3,
+          "temperature_2m": 20.2,
+          "relative_humidity_2m": 51,
+          "wind_speed_10m": 17.4,
           "weather_code": 3
         }
       },
@@ -1645,11 +1646,11 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-07-04T04:30",
+          "time": "2026-07-04T09:15",
           "interval": 900,
-          "temperature_2m": 23.5,
-          "relative_humidity_2m": 86,
-          "wind_speed_10m": 8.9,
+          "temperature_2m": 28.5,
+          "relative_humidity_2m": 79,
+          "wind_speed_10m": 8.6,
           "weather_code": 0
         }
       },
@@ -1658,11 +1659,11 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-07-04T17:30",
+          "time": "2026-07-04T22:15",
           "interval": 900,
-          "temperature_2m": 24.5,
-          "relative_humidity_2m": 79,
-          "wind_speed_10m": 6.8,
+          "temperature_2m": 22.9,
+          "relative_humidity_2m": 88,
+          "wind_speed_10m": 4,
           "weather_code": 3
         }
       },
@@ -1671,11 +1672,11 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-07-04T18:30",
+          "time": "2026-07-04T23:15",
           "interval": 900,
-          "temperature_2m": 13,
-          "relative_humidity_2m": 72,
-          "wind_speed_10m": 5.4,
+          "temperature_2m": 9.7,
+          "relative_humidity_2m": 74,
+          "wind_speed_10m": 11.9,
           "weather_code": 0
         }
       },
@@ -1684,10 +1685,10 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-07-04T05:30",
+          "time": "2026-07-04T10:15",
           "interval": 900,
-          "temperature_2m": 14.7,
-          "relative_humidity_2m": 89,
+          "temperature_2m": 15.6,
+          "relative_humidity_2m": 85,
           "wind_speed_10m": 7.8,
           "weather_code": 3
         }
@@ -1697,11 +1698,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-07-04T09:30",
+          "time": "2026-07-04T14:15",
           "interval": 900,
-          "temperature_2m": 26.5,
-          "relative_humidity_2m": 83,
-          "wind_speed_10m": 9.2,
+          "temperature_2m": 28.2,
+          "relative_humidity_2m": 76,
+          "wind_speed_10m": 17,
           "weather_code": 2
         }
       },
@@ -1710,12 +1711,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-07-04T14:00",
+          "time": "2026-07-04T18:45",
           "interval": 900,
           "temperature_2m": 26.3,
-          "relative_humidity_2m": 92,
-          "wind_speed_10m": 23.7,
-          "weather_code": 95
+          "relative_humidity_2m": 90,
+          "wind_speed_10m": 24.4,
+          "weather_code": 81
         }
       },
       {
@@ -1723,11 +1724,11 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-07-04T09:30",
+          "time": "2026-07-04T14:15",
           "interval": 900,
-          "temperature_2m": 20.7,
-          "relative_humidity_2m": 67,
-          "wind_speed_10m": 14,
+          "temperature_2m": 26.8,
+          "relative_humidity_2m": 41,
+          "wind_speed_10m": 16.2,
           "weather_code": 1
         }
       }
@@ -4089,73 +4090,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 522265,
-          "forks": 49409,
+          "stars": 522319,
+          "forks": 49412,
           "language": "Markdown",
-          "updated": "2026-07-04T08:32:00Z"
+          "updated": "2026-07-04T13:21:03Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 481309,
-          "forks": 35668,
+          "stars": 481371,
+          "forks": 35671,
           "language": null,
-          "updated": "2026-07-04T08:32:28Z"
+          "updated": "2026-07-04T13:15:56Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 451021,
-          "forks": 45351,
+          "stars": 451035,
+          "forks": 45357,
           "language": "TypeScript",
-          "updated": "2026-07-04T08:21:40Z"
+          "updated": "2026-07-04T13:15:40Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 446410,
-          "forks": 49002,
+          "stars": 446455,
+          "forks": 49013,
           "language": "Python",
-          "updated": "2026-07-04T08:32:06Z"
+          "updated": "2026-07-04T13:13:10Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 391245,
+          "stars": 391249,
           "forks": 66474,
           "language": "Python",
-          "updated": "2026-07-04T08:33:57Z"
+          "updated": "2026-07-04T13:11:20Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 381640,
-          "forks": 80013,
+          "stars": 381671,
+          "forks": 80018,
           "language": "TypeScript",
-          "updated": "2026-07-04T08:33:02Z"
+          "updated": "2026-07-04T13:16:43Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 359183,
+          "stars": 359212,
           "forks": 44357,
           "language": "TypeScript",
-          "updated": "2026-07-04T08:15:43Z"
+          "updated": "2026-07-04T13:20:49Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 356030,
-          "forks": 57033,
+          "stars": 356067,
+          "forks": 57035,
           "language": "Python",
-          "updated": "2026-07-04T08:18:17Z"
+          "updated": "2026-07-04T13:19:43Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 355027,
-          "forks": 84089,
+          "stars": 355042,
+          "forks": 84095,
           "language": null,
-          "updated": "2026-07-04T08:21:08Z"
+          "updated": "2026-07-04T13:18:08Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 306199,
-          "forks": 28211,
+          "stars": 306225,
+          "forks": 28214,
           "language": "Python",
-          "updated": "2026-07-04T08:28:21Z"
+          "updated": "2026-07-04T13:20:55Z"
         }
       ],
       "source": "GitHub"
@@ -4636,6 +4637,18 @@
     },
     "spaceflight": [
       {
+        "title": "NASA’s Hubble Spies Stellar Sparkler for July 4th",
+        "published": "2026-07-04T11:15:37Z",
+        "source": "NASA",
+        "summary": "Red, white, and blue stars glitter like a sparkler being waved on a dark night in this new image from NASA’s Hubble Space Telescope."
+      },
+      {
+        "title": "GAO flags satellite costs, launch risks in Space Force portfolio",
+        "published": "2026-07-04T10:17:06Z",
+        "source": "SpaceNews",
+        "summary": "\nWatchdog cites growing costs for missile-warning satellites, digital engineering gaps and workforce reductions that could slow national security launches\nThe post GAO flags satellite costs, launch ri"
+      },
+      {
         "title": "Katalyst’s LINK On Its Way to Reboost Swift",
         "published": "2026-07-04T03:59:09Z",
         "source": "SpacePolicyOnline.com",
@@ -4682,18 +4695,6 @@
         "published": "2026-07-03T12:42:03Z",
         "source": "NASA",
         "summary": "More than 500,000 stars blaze red, white, and blue in this NASA Hubble image of the globular cluster Messier 3 (M3)."
-      },
-      {
-        "title": "At 250 years, there are still reasons for hope in America",
-        "published": "2026-07-03T11:30:22Z",
-        "source": "Arstechnica",
-        "summary": "It's difficult to pinpoint the moment in my life where America started to lose the plot."
-      },
-      {
-        "title": "Artist's view of Space Transportation's major programmes from 2026 onwards – vertical",
-        "published": "2026-07-03T08:28:00Z",
-        "source": "ESA",
-        "summary": "From the ESA Blogs."
       }
     ]
   },
@@ -4701,87 +4702,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "135 km N of Lae, Papua New Guinea",
+          "location": "Reykjanes Ridge",
+          "magnitude": 5,
+          "depth": 10,
+          "lat": 59.4293,
+          "lng": -30.2028,
+          "time": "2026-07-04T12:42:27.246Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "Reykjanes Ridge",
+          "magnitude": 5,
+          "depth": 10,
+          "lat": 59.4329,
+          "lng": -30.2986,
+          "time": "2026-07-04T12:34:24.441Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "16 km ESE of Pianjiao, China",
+          "magnitude": 4.7,
+          "depth": 10,
+          "lat": 25.9834,
+          "lng": 100.7432,
+          "time": "2026-07-04T10:28:54.002Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "13 km N of Wai‘ōhinu, Hawaii",
+          "magnitude": 3.5,
+          "depth": 5.71999979019165,
+          "lat": 19.1893329620361,
+          "lng": -155.621002197266,
+          "time": "2026-07-04T10:26:08.240Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "13 km E of Pianjiao, China",
+          "magnitude": 4.6,
+          "depth": 10,
+          "lat": 25.994,
+          "lng": 100.713,
+          "time": "2026-07-04T10:07:37.416Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "32 km ENE of Aleneva, Alaska",
+          "magnitude": 2.8,
+          "depth": 34.9,
+          "lat": 58.221,
+          "lng": -152.446,
+          "time": "2026-07-04T09:21:44.904Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "64 km W of Tobelo, Indonesia",
+          "magnitude": 5,
+          "depth": 128.155,
+          "lat": 1.7873,
+          "lng": 127.4364,
+          "time": "2026-07-04T09:02:14.524Z",
+          "tsunami": false,
+          "type": "earthquake"
+        },
+        {
+          "location": "264 km W of Abepura, Indonesia",
           "magnitude": 5.1,
-          "depth": 182.779,
-          "lat": -5.5049,
-          "lng": 147.103,
-          "time": "2026-07-04T07:50:23.853Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "90 km ESE of McCarthy, Alaska",
-          "magnitude": 2.6,
-          "depth": 5,
-          "lat": 61.264,
-          "lng": -141.276,
-          "time": "2026-07-04T06:20:00.606Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "124 km WSW of Hihifo, Tonga",
-          "magnitude": 4.3,
-          "depth": 301.374,
-          "lat": -16.1828,
-          "lng": -174.939,
-          "time": "2026-07-04T05:46:43.221Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "8 km ENE of Borrego Springs, CA",
-          "magnitude": 2.5,
-          "depth": 8.29,
-          "lat": 33.2858333333333,
-          "lng": -116.296333333333,
-          "time": "2026-07-04T05:42:09.130Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "Izu Islands, Japan region",
-          "magnitude": 4.8,
-          "depth": 10,
-          "lat": 32.089,
-          "lng": 142.4608,
-          "time": "2026-07-04T05:03:52.698Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "92 km SSE of Kokhanok, Alaska",
-          "magnitude": 2.7,
-          "depth": 10.7,
-          "lat": 58.637,
-          "lng": -154.364,
-          "time": "2026-07-04T04:58:06.686Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "26 km SW of Balangonan, Philippines",
-          "magnitude": 4.8,
-          "depth": 10.124,
-          "lat": 5.4243,
-          "lng": 125.17,
-          "time": "2026-07-04T04:26:27.270Z",
-          "tsunami": false,
-          "type": "earthquake"
-        },
-        {
-          "location": "198 km WSW of Pistol River, Oregon",
-          "magnitude": 2.6,
-          "depth": 10,
-          "lat": 41.8984,
-          "lng": -126.7348,
-          "time": "2026-07-04T04:14:38.917Z",
+          "depth": 39.448,
+          "lat": -2.5131,
+          "lng": 138.2529,
+          "time": "2026-07-04T08:55:54.191Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 40,
+      "total24h": 45,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4810,10 +4811,64 @@
     },
     "news": [
       {
-        "title": "England face Mexico in Azteca fortress, returning to scene of Maradona handball",
-        "pubDate": "Sat, 04 Jul 2026 08:24:29 GMT",
-        "link": "https://www.france24.com/en/sport/20260704-world-cup-england-face-mexico-azteca-fortress-return-scene-maradona-handball",
+        "title": "Mali government says rebels attacking northern towns",
+        "pubDate": "Sat, 04 Jul 2026 13:18:56 GMT",
+        "link": "https://www.france24.com/en/video/20260704-mali-government-says-rebels-attacking-northern-towns",
         "source": "France24"
+      },
+      {
+        "title": "Iran holds funeral for Ali Khamenei: Attendees 'hardline factions' of society, specialist says",
+        "pubDate": "Sat, 04 Jul 2026 13:15:42 GMT",
+        "link": "https://www.france24.com/en/iran-holds-funeral-for-ali-khamenei-attendees-hardline-factions-of-society-specialist-says",
+        "source": "France24"
+      },
+      {
+        "title": "Ukraine hits major oil terminal in Russia's St Petersburg",
+        "pubDate": "Sat, 04 Jul 2026 13:13:52 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/c8j2vmzxezro?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Pop star Taylor Swift marries Travis Kelce at Madison Square Garden",
+        "pubDate": "Sat, 04 Jul 2026 13:02:44 GMT",
+        "link": "https://www.france24.com/en/pop-star-taylor-swift-marries-travis-kelce-at-madison-square-garden",
+        "source": "France24"
+      },
+      {
+        "title": "‘The situation is terrible’: aid workers on life in Sudanese city pummelled by drone strikes",
+        "pubDate": "Sat, 04 Jul 2026 12:43:43 GMT",
+        "link": "https://www.theguardian.com/world/2026/jul/04/el-obeid-aid-workers-sudan-war-drone-strikes",
+        "source": "Guardian"
+      },
+      {
+        "title": "Nabatieh recovery begins amid ongoing southern Lebanon tensions",
+        "pubDate": "Sat, 04 Jul 2026 12:31:20 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/7/4/nabatieh-recovery-begins-amid-ongoing-southern-lebanon-tensions?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Pope Leo urges migrant protection, integration on visit to Lampedusa",
+        "pubDate": "Sat, 04 Jul 2026 12:17:29 +0000",
+        "link": "https://www.aljazeera.com/news/2026/7/4/pope-urges-protection-integration-of-migrants-on-visit-to-island-frontier?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Firefighters race to contain flames in northeastern Spain",
+        "pubDate": "Sat, 04 Jul 2026 12:09:27 +0000",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/7/4/firefighters-race-to-contain-flames-in-northeastern-spain?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Large crowds gather in Tehran on first day of Ayatollah Khamenei's funeral",
+        "pubDate": "Sat, 04 Jul 2026 09:45:55 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/c0ky2zen1kgo?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Ukraine strikes oil terminals near St. Petersburg in Russia",
+        "pubDate": "Sat, 4 Jul 2026 09:02:00 GMT",
+        "link": "https://www.dw.com/en/ukraine-strikes-oil-terminals-near-st-petersburg-in-russia/a-77830574?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
       },
       {
         "title": "Overseas education project for women and girls axed by UK after two years",
@@ -4828,36 +4883,6 @@
         "source": "BBC World"
       },
       {
-        "title": "Taylor Swift and Travis Kelce marry at NYC’s Madison Square Garden",
-        "pubDate": "Sat, 04 Jul 2026 07:46:55 +0000",
-        "link": "https://www.aljazeera.com/news/2026/7/4/taylor-swift-and-travis-kelce-marry-at-nycs-madison-square-garden?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "250 years of US independence: How France helped turn the tide of the Revolutionary War",
-        "pubDate": "Sat, 04 Jul 2026 07:26:23 GMT",
-        "link": "https://www.france24.com/en/americas/20260704-250-years-of-us-independence-how-france-helped-turn-the-tide-of-the-revolutionary-war",
-        "source": "France24"
-      },
-      {
-        "title": "Trump praises army, rails against communism in US 250th anniversary speech",
-        "pubDate": "Sat, 04 Jul 2026 07:19:57 +0000",
-        "link": "https://www.aljazeera.com/news/2026/7/4/trump-praises-army-rails-against-communism-in-us-250th-anniversary-speech?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "At 250, America is still deciding who belongs",
-        "pubDate": "Sat, 04 Jul 2026 07:07:30 +0000",
-        "link": "https://www.aljazeera.com/opinions/2026/7/4/at-250-america-is-still-deciding-who-belongs?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "US 'royal wedding': Taylor Swift and Travis Kelce marry at Madison Square Garden",
-        "pubDate": "Sat, 04 Jul 2026 07:02:57 GMT",
-        "link": "https://www.france24.com/en/americas/20260704-us-royal-wedding-taylor-swift-and-travis-kelce-marry-at-madison-square-garden",
-        "source": "France24"
-      },
-      {
         "title": "Trump set to put NATO unity to the test at Turkey summit",
         "pubDate": "Sat, 4 Jul 2026 07:01:00 GMT",
         "link": "https://www.dw.com/en/trump-set-to-put-nato-unity-to-the-test-at-turkey-summit/a-77824515?maca=en-rss-en-world-4025-xml-mrss",
@@ -4868,24 +4893,6 @@
         "pubDate": "Sat, 4 Jul 2026 04:24:00 GMT",
         "link": "https://www.dw.com/en/kielce-pogrom-in-poland-80th-anniversary-of-1946-massacre/a-77826002?maca=en-rss-en-world-4025-xml-mrss",
         "source": "DW News"
-      },
-      {
-        "title": "US: President Trump pardons 11 people, including Clean Air Act violators",
-        "pubDate": "Sat, 4 Jul 2026 04:05:00 GMT",
-        "link": "https://www.dw.com/en/us-president-trump-pardons-11-people-including-clean-air-act-violators/a-77829438?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
-      },
-      {
-        "title": "Brutal heat cancels Fourth of July events, from DC to Philadelphia",
-        "pubDate": "Sat, 04 Jul 2026 02:57:48 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/cevlkzer7vdo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Taylor Swift marries Travis Kelce in NYC ceremony officiated by Adam Sandler",
-        "pubDate": "Sat, 04 Jul 2026 02:26:54 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/c982ry2pen3o?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
       },
       {
         "title": "Civilian dangers multiply as drones transform Ukraine&#039;s battlefield",
@@ -4921,12 +4928,6 @@
         "title": "WHO adds first diagnostic test for Ebola Bundibugyo virus to its Emergency Use Listing",
         "pubDate": "Thu, 02 Jul 2026 16:21:23 Z",
         "link": "https://www.who.int/news/item/02-07-2026-who-adds-first-diagnostic-test-for-ebola-bundibugyo-virus-to-its-emergency-use-listing",
-        "source": "WHO News"
-      },
-      {
-        "title": "Patient enrolment begins in a scientific trial to identify the first effective treatments for Bundibugyo virus disease",
-        "pubDate": "Thu, 02 Jul 2026 12:19:20 Z",
-        "link": "https://www.who.int/news/item/02-07-2026-patient-enrolment-begins-in-a-scientific-trial-to-identify-the-first-effective-treatments-for-bundibugyo-virus-disease",
         "source": "WHO News"
       }
     ],
@@ -4981,7 +4982,7 @@
         "sunspots": 94.4
       }
     ],
-    "lastUpdated": "2026-07-04T08:36:16.658Z"
+    "lastUpdated": "2026-07-04T13:23:25.441Z"
   },
   "momentum": {
     "indicators": [
