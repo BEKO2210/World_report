@@ -5,24 +5,24 @@
 
 ---
 
-## 🌍 Welt-Indikator: 65.3 / 100 🟢 POSITIV
+## 🌍 Welt-Indikator: 66.9 / 100 🟢 POSITIV
 
 ```
-█████████████░░░░░░░  65.3/100  ↓ -1.4
+█████████████░░░░░░░  66.9/100  ↑ +1.6
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 05.07.2026 03:07 UTC
+> **Letzte Aktualisierung:** 05.07.2026 08:51 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.3**/100 | → +0.2 | 25% |
-| 🟡 Gesellschaft | **56**/100 | → +0.1 | 25% |
+| 🟡 Umwelt | **44.5**/100 | ↑ +0.2 | 25% |
+| 🟡 Gesellschaft | **56**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73.3**/100 | → +0 | 20% |
-| 🟢 Fortschritt | **76.8**/100 | ↓ -1.3 | 20% |
-| 🟢 Momentum | **76.5**/100 | → +0 | 10% |
+| 🟢 Fortschritt | **78.1**/100 | ↑ +1.3 | 20% |
+| 🔵 Momentum | **81**/100 | → +0 | 10% |
 
 ---
 
@@ -56,7 +56,7 @@
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
 | Internet-Nutzer | **73.6%** (5.4 Mrd) | ITU |
-| Alphabetisierung | **87.4%** | UNESCO |
+| Alphabetisierung | **87.7%** | UNESCO |
 | Wiss. Publikationen | **3.2 Mio/Jahr** | arXiv/Scopus |
 | GitHub Commits | **142.0 Mio/Tag** | GitHub |
 
@@ -69,12 +69,12 @@
 
 ---
 
-## 📈 Momentum: 13/17 Trends positiv
+## 📈 Momentum: 17/21 Trends positiv
 
 <details>
-<summary>Alle 17 Indikatoren anzeigen</summary>
+<summary>Alle 21 Indikatoren anzeigen</summary>
 
-#### ✅ Verbessert sich (13)
+#### ✅ Verbessert sich (17)
 - **Lebenserwartung**: +1.6%
 - **Kindersterblichkeit**: -2.3%
 - **Erneuerbare Energie**: +6.6%
@@ -83,11 +83,15 @@
 - **Inflation**: -12.0%
 - **Arbeitslosigkeit**: -19.1%
 - **BIP pro Kopf**: +14.0%
+- **Globaler Handel**: +7.5%
+- **Alphabetisierung**: +0.7%
+- **Mobilfunk**: +3.8%
 - **F&E Ausgaben**: +10.8%
 - **Elektrizitätszugang**: +1.4%
 - **Trinkwasser**: +2.7%
 - **Gesundheitsausgaben**: +1.1%
 - **Urbanisierung**: +1.4%
+- **Patentanmeldungen**: +1.2%
 
 #### ❌ Verschlechtert sich (4)
 - **CO2-Konzentration**: +2.1%
@@ -219,5 +223,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 05.07.2026 03:07 UTC | 34/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 05.07.2026 08:51 UTC | 40/40 Quellen aktiv
 </sub>
