@@ -12,13 +12,13 @@
 ```
 
 > Berechnet aus hunderten Datenpunkten. Kein KI-Modell — reiner Code, reale Daten.
-> **Letzte Aktualisierung:** 06.07.2026 15:32 UTC
+> **Letzte Aktualisierung:** 06.07.2026 19:55 UTC
 
 ### Sub-Scores
 
 | Kategorie | Score | Trend | Gewichtung |
 |-----------|-------|-------|------------|
-| 🟡 Umwelt | **44.4**/100 | → +0.1 | 25% |
+| 🟡 Umwelt | **44.6**/100 | ↑ +0.2 | 25% |
 | 🟡 Gesellschaft | **56**/100 | → +0 | 25% |
 | 🟢 Wirtschaft | **73.3**/100 | → +0 | 20% |
 | 🟢 Fortschritt | **78.1**/100 | → +0 | 20% |
@@ -32,9 +32,9 @@
 | Indikator | Wert | Quelle |
 |-----------|------|--------|
 | Temperaturanomalie | **+1.19°C** | NASA GISTEMP |
-| CO2-Konzentration | **432 ppm** | NOAA |
+| CO2-Konzentration | **431 ppm** | NOAA |
 | Arktis-Eisfläche | **4.2 Mio km²** (46.2% verloren) | NSIDC |
-| Luftqualität (Ø) | AQI **45** | WAQI |
+| Luftqualität (Ø) | AQI **44** | WAQI |
 
 ### 👥 Gesellschaft
 | Indikator | Wert | Quelle |
@@ -223,5 +223,5 @@ Dieses Projekt wurde gebaut um zu überdauern. Die GitHub Actions Pipeline:
 ---
 
 <sub>
-Auto-generiert von der World.One Pipeline | 06.07.2026 15:32 UTC | 39/40 Quellen aktiv
+Auto-generiert von der World.One Pipeline | 06.07.2026 19:55 UTC | 40/40 Quellen aktiv
 </sub>
