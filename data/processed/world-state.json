@@ -1,33 +1,34 @@
 {
   "meta": {
-    "generated": "2026-07-06T03:25:46.344Z",
+    "generated": "2026-07-06T10:18:54.460Z",
     "version": "2.0.0",
     "sources_count": 40,
-    "sources_available": 39,
-    "sources_success_rate": 98,
-    "next_update": "2026-07-06T09:25:46.345Z",
+    "sources_available": 40,
+    "sources_success_rate": 100,
+    "next_update": "2026-07-06T16:18:54.460Z",
     "realtimePulse": {
-      "environment": -0.67,
-      "society": 0,
+      "environment": -0.7,
+      "society": 0.05,
       "economy": -0.42,
-      "progress": 0.47,
+      "progress": 0.8,
       "details": {
-        "quakeCount": 33,
+        "quakeCount": 34,
         "maxMagnitude": 5.8,
-        "avgGlobalTemp": 20.1,
+        "avgGlobalTemp": 20.9,
+        "newsSentiment": -0.42,
         "cryptoFearGreed": 24,
-        "arxivPapers": 5
+        "arxivPapers": 20
       }
     }
   },
   "worldIndex": {
-    "value": 66.5,
-    "rawValue": 63.4,
+    "value": 66.8,
+    "rawValue": 63.5,
     "label": "POSITIV",
     "zone": "positive",
-    "previous": 66.8,
-    "change": -0.3,
-    "trend": "declining",
+    "previous": 66.5,
+    "change": 0.3,
+    "trend": "improving",
     "carryingCapacity": {
       "checks": {
         "existence": {
@@ -39,8 +40,8 @@
           "ratio": 0.8095238095238095
         },
         "cascading": {
-          "penalty": -0.2,
-          "activePairs": 1
+          "penalty": 0,
+          "activePairs": 0
         }
       },
       "spectrum": {
@@ -61,8 +62,8 @@
         },
         "progress": {
           "direction": "expansion",
-          "position": "elastic",
-          "level": 1
+          "position": "capacitive",
+          "level": 2
         },
         "momentum": {
           "direction": "expansion",
@@ -77,7 +78,7 @@
           "maintenanceCost": 0.16
         },
         "society": {
-          "bufferDistance": 48.1,
+          "bufferDistance": 48.2,
           "recoveryTime": 0,
           "maintenanceCost": 0.78
         },
@@ -87,7 +88,7 @@
           "maintenanceCost": 2.78
         },
         "progress": {
-          "bufferDistance": 73.9,
+          "bufferDistance": 74.2,
           "recoveryTime": 0,
           "maintenanceCost": 4.52
         },
@@ -106,8 +107,8 @@
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
-      "trend": "declining",
-      "change": -0.2,
+      "trend": "stable",
+      "change": 0,
       "indicators": [
         {
           "name": "Globale Temperaturanomalie",
@@ -139,7 +140,7 @@
         },
         {
           "name": "Luftqualität (Global Avg AQI)",
-          "value": 38,
+          "value": 43,
           "score": 70,
           "trend": "stable",
           "source": "Open-Meteo"
@@ -154,12 +155,12 @@
       ]
     },
     "society": {
-      "value": 55.9,
+      "value": 56,
       "label": "GEMISCHT",
       "zone": "mixed",
       "weight": 0.25,
       "trend": "stable",
-      "change": -0.1,
+      "change": 0.1,
       "indicators": [
         {
           "name": "Lebenserwartung",
@@ -258,12 +259,12 @@
       ]
     },
     "progress": {
-      "value": 77.8,
+      "value": 78.1,
       "label": "POSITIV",
       "zone": "positive",
       "weight": 0.2,
-      "trend": "declining",
-      "change": -0.3,
+      "trend": "improving",
+      "change": 0.3,
       "indicators": [
         {
           "name": "Internet-Durchdringung",
@@ -302,7 +303,7 @@
         },
         {
           "name": "Wissenschaftliche Papers",
-          "value": "3.2M/Jahr",
+          "value": "20+ heute",
           "score": 75,
           "trend": "improving",
           "source": "arXiv"
@@ -1196,40 +1197,40 @@
       "source": "NOAA"
     },
     "airQuality": {
-      "globalAvgAQI": 38,
+      "globalAvgAQI": 43,
       "cleanestCities": [
         {
           "city": "London",
           "country": "",
-          "aqi": 10,
+          "aqi": 18,
           "lat": 51.51,
           "lng": -0.13
         },
         {
           "city": "Mumbai",
           "country": "",
-          "aqi": 18,
+          "aqi": 20,
           "lat": 19.08,
           "lng": 72.88
         },
         {
-          "city": "Berlin",
-          "country": "",
-          "aqi": 21,
-          "lat": 52.52,
-          "lng": 13.41
-        },
-        {
           "city": "Los Angeles",
           "country": "",
-          "aqi": 22,
+          "aqi": 23,
           "lat": 34.05,
           "lng": -118.24
         },
         {
-          "city": "Sydney",
+          "city": "Berlin",
           "country": "",
           "aqi": 24,
+          "lat": 52.52,
+          "lng": 13.41
+        },
+        {
+          "city": "Sydney",
+          "country": "",
+          "aqi": 26,
           "lat": -33.87,
           "lng": 151.21
         }
@@ -1238,14 +1239,14 @@
         {
           "city": "Delhi",
           "country": "",
-          "aqi": 76,
+          "aqi": 82,
           "lat": 28.61,
           "lng": 77.21
         },
         {
           "city": "Beijing",
           "country": "",
-          "aqi": 70,
+          "aqi": 72,
           "lat": 39.9,
           "lng": 116.4
         },
@@ -1259,14 +1260,14 @@
         {
           "city": "Tokyo",
           "country": "",
-          "aqi": 40,
+          "aqi": 56,
           "lat": 35.68,
           "lng": 139.69
         },
         {
           "city": "Cairo",
           "country": "",
-          "aqi": 36,
+          "aqi": 43,
           "lat": 30.04,
           "lng": 31.24
         }
@@ -1632,12 +1633,12 @@
         "lat": 52.52,
         "lng": 13.41,
         "current": {
-          "time": "2026-07-06T05:15",
+          "time": "2026-07-06T12:15",
           "interval": 900,
-          "temperature_2m": 13.9,
-          "relative_humidity_2m": 81,
-          "wind_speed_10m": 12.1,
-          "weather_code": 3
+          "temperature_2m": 17.6,
+          "relative_humidity_2m": 73,
+          "wind_speed_10m": 15.5,
+          "weather_code": 61
         }
       },
       {
@@ -1645,12 +1646,12 @@
         "lat": 40.71,
         "lng": -74.01,
         "current": {
-          "time": "2026-07-05T23:15",
+          "time": "2026-07-06T06:15",
           "interval": 900,
-          "temperature_2m": 22.5,
-          "relative_humidity_2m": 91,
-          "wind_speed_10m": 8.3,
-          "weather_code": 53
+          "temperature_2m": 20.4,
+          "relative_humidity_2m": 95,
+          "wind_speed_10m": 11.4,
+          "weather_code": 3
         }
       },
       {
@@ -1658,12 +1659,12 @@
         "lat": 35.68,
         "lng": 139.69,
         "current": {
-          "time": "2026-07-06T12:15",
+          "time": "2026-07-06T19:15",
           "interval": 900,
-          "temperature_2m": 22.7,
-          "relative_humidity_2m": 75,
-          "wind_speed_10m": 4.3,
-          "weather_code": 2
+          "temperature_2m": 20.1,
+          "relative_humidity_2m": 93,
+          "wind_speed_10m": 3.3,
+          "weather_code": 53
         }
       },
       {
@@ -1671,12 +1672,12 @@
         "lat": -33.87,
         "lng": 151.21,
         "current": {
-          "time": "2026-07-06T13:15",
+          "time": "2026-07-06T20:15",
           "interval": 900,
-          "temperature_2m": 14.9,
-          "relative_humidity_2m": 70,
-          "wind_speed_10m": 19.4,
-          "weather_code": 2
+          "temperature_2m": 14,
+          "relative_humidity_2m": 79,
+          "wind_speed_10m": 16.4,
+          "weather_code": 51
         }
       },
       {
@@ -1684,10 +1685,10 @@
         "lat": -23.55,
         "lng": -46.63,
         "current": {
-          "time": "2026-07-06T00:15",
+          "time": "2026-07-06T07:15",
           "interval": 900,
-          "temperature_2m": 13.5,
-          "relative_humidity_2m": 92,
+          "temperature_2m": 12.4,
+          "relative_humidity_2m": 97,
           "wind_speed_10m": 5.4,
           "weather_code": 3
         }
@@ -1697,11 +1698,11 @@
         "lat": 6.45,
         "lng": 3.4,
         "current": {
-          "time": "2026-07-06T04:15",
+          "time": "2026-07-06T11:15",
           "interval": 900,
-          "temperature_2m": 26.3,
-          "relative_humidity_2m": 88,
-          "wind_speed_10m": 14.2,
+          "temperature_2m": 28.1,
+          "relative_humidity_2m": 77,
+          "wind_speed_10m": 14.3,
           "weather_code": 3
         }
       },
@@ -1710,12 +1711,12 @@
         "lat": 19.08,
         "lng": 72.88,
         "current": {
-          "time": "2026-07-06T08:45",
+          "time": "2026-07-06T15:45",
           "interval": 900,
-          "temperature_2m": 27.1,
-          "relative_humidity_2m": 88,
-          "wind_speed_10m": 27.3,
-          "weather_code": 95
+          "temperature_2m": 27.7,
+          "relative_humidity_2m": 87,
+          "wind_speed_10m": 18,
+          "weather_code": 81
         }
       },
       {
@@ -1723,12 +1724,12 @@
         "lat": 51.51,
         "lng": -0.13,
         "current": {
-          "time": "2026-07-06T04:15",
+          "time": "2026-07-06T11:15",
           "interval": 900,
-          "temperature_2m": 19.7,
-          "relative_humidity_2m": 68,
-          "wind_speed_10m": 10.8,
-          "weather_code": 3
+          "temperature_2m": 26.9,
+          "relative_humidity_2m": 34,
+          "wind_speed_10m": 14.4,
+          "weather_code": 0
         }
       }
     ]
@@ -4053,7 +4054,33 @@
           "value": 3200000
         }
       ],
-      "latestArxiv": [],
+      "latestArxiv": [
+        {
+          "title": "Alignment Is All You Need For X-to-4D Generation",
+          "published": "2026-07-02T17:59:57Z",
+          "category": "cs.CV"
+        },
+        {
+          "title": "ReContext: Recursive Evidence Replay as LLM Harness for Long-Context Reasoning",
+          "published": "2026-07-02T17:59:26Z",
+          "category": "cs.AI"
+        },
+        {
+          "title": "Reasoning LLM Improves Speaker Recognition in Long-form TV Dramas",
+          "published": "2026-07-02T17:58:52Z",
+          "category": "cs.CL"
+        },
+        {
+          "title": "Alleviating prior dependencies for DESI DR1 clustering fits through reparameterization",
+          "published": "2026-07-02T17:57:15Z",
+          "category": "astro-ph.CO"
+        },
+        {
+          "title": "Robustness and hyperstability for the Erdős-Gallai theorem",
+          "published": "2026-07-02T17:50:56Z",
+          "category": "math.CO"
+        }
+      ],
       "source": "arXiv / Scopus"
     },
     "github": {
@@ -4063,73 +4090,73 @@
       "topRepos": [
         {
           "name": "codecrafters-io/build-your-own-x",
-          "stars": 522783,
-          "forks": 49450,
+          "stars": 522864,
+          "forks": 49458,
           "language": "Markdown",
-          "updated": "2026-07-06T03:14:57Z"
+          "updated": "2026-07-06T10:16:12Z"
         },
         {
           "name": "sindresorhus/awesome",
-          "stars": 481865,
-          "forks": 35696,
+          "stars": 481951,
+          "forks": 35709,
           "language": null,
-          "updated": "2026-07-06T03:15:01Z"
+          "updated": "2026-07-06T10:09:08Z"
         },
         {
           "name": "freeCodeCamp/freeCodeCamp",
-          "stars": 451139,
-          "forks": 45370,
+          "stars": 451157,
+          "forks": 45373,
           "language": "TypeScript",
-          "updated": "2026-07-06T02:48:21Z"
+          "updated": "2026-07-06T09:58:02Z"
         },
         {
           "name": "public-apis/public-apis",
-          "stars": 446923,
-          "forks": 49086,
+          "stars": 447034,
+          "forks": 49100,
           "language": "Python",
-          "updated": "2026-07-06T03:22:23Z"
+          "updated": "2026-07-06T10:16:30Z"
         },
         {
           "name": "EbookFoundation/free-programming-books",
-          "stars": 391340,
-          "forks": 66482,
+          "stars": 391356,
+          "forks": 66484,
           "language": "Python",
-          "updated": "2026-07-06T03:19:52Z"
+          "updated": "2026-07-06T09:40:00Z"
         },
         {
           "name": "openclaw/openclaw",
-          "stars": 381849,
-          "forks": 80091,
+          "stars": 381896,
+          "forks": 80107,
           "language": "TypeScript",
-          "updated": "2026-07-06T03:18:57Z"
+          "updated": "2026-07-06T10:14:40Z"
         },
         {
           "name": "nilbuild/developer-roadmap",
-          "stars": 359420,
-          "forks": 44378,
+          "stars": 359453,
+          "forks": 44381,
           "language": "TypeScript",
-          "updated": "2026-07-06T03:11:51Z"
+          "updated": "2026-07-06T10:15:25Z"
         },
         {
           "name": "donnemartin/system-design-primer",
-          "stars": 356276,
-          "forks": 57046,
+          "stars": 356326,
+          "forks": 57057,
           "language": "Python",
-          "updated": "2026-07-06T03:20:05Z"
+          "updated": "2026-07-06T10:14:16Z"
         },
         {
           "name": "jwasham/coding-interview-university",
-          "stars": 355165,
-          "forks": 84109,
+          "stars": 355191,
+          "forks": 84108,
           "language": null,
-          "updated": "2026-07-06T03:12:03Z"
+          "updated": "2026-07-06T10:11:06Z"
         },
         {
           "name": "vinta/awesome-python",
-          "stars": 306540,
-          "forks": 28224,
+          "stars": 306591,
+          "forks": 28223,
           "language": "Python",
-          "updated": "2026-07-06T03:08:01Z"
+          "updated": "2026-07-06T10:09:15Z"
         }
       ],
       "source": "GitHub"
@@ -4610,6 +4637,24 @@
     },
     "spaceflight": [
       {
+        "title": "Centre for Space Futures, Novaspace and SpaceTech Gulf  Sign Agreement to Develop Global Space Capability Mapping Dashboard",
+        "published": "2026-07-06T10:00:00Z",
+        "source": "SpaceNews",
+        "summary": "\nRiyadh, Saudi Arabia – June, 2026 The Centre for Space Futures (CSF), together with leading international partners including Novaspace, and SpaceTech Gulf, have signed a Memorandum of Cooperation (Mo"
+      },
+      {
+        "title": "Tianwen-2 arrives at asteroid Kamo’oalewa, first image revealed",
+        "published": "2026-07-06T09:14:36Z",
+        "source": "SpaceNews",
+        "summary": "\nHELSINKI — China’s Tianwen-2 sample return spacecraft has arrived at Kamoʻoalewa, revealing the near Earth asteroid to be a small, elongated rocky body. Tianwen-2 launched May 29, 2025, and traveled "
+      },
+      {
+        "title": "Euclid discovers the most ancient quasar in the Universe",
+        "published": "2026-07-06T06:30:00Z",
+        "source": "ESA",
+        "summary": "From the ESA Blogs."
+      },
+      {
         "title": "NASA and Small Business Administration partner on funding key space technologies",
         "published": "2026-07-06T01:43:42Z",
         "source": "SpaceNews",
@@ -4650,24 +4695,6 @@
         "published": "2026-07-04T11:15:37Z",
         "source": "NASA",
         "summary": "Red, white, and blue stars glitter like a sparkler being waved on a dark night in this new image from NASA’s Hubble Space Telescope."
-      },
-      {
-        "title": "GAO flags satellite costs, launch risks in Space Force portfolio",
-        "published": "2026-07-04T10:17:06Z",
-        "source": "SpaceNews",
-        "summary": "\nWatchdog cites growing costs for missile-warning satellites, digital engineering gaps and workforce reductions that could slow national security launches\nThe post GAO flags satellite costs, launch ri"
-      },
-      {
-        "title": "Katalyst’s LINK On Its Way to Reboost Swift",
-        "published": "2026-07-04T03:59:09Z",
-        "source": "SpacePolicyOnline.com",
-        "summary": "Katalyst Space’s LINK on-orbit servicing spacecraft is on its way to reboost NASA’s Swift observatory. Northrop Grumman’s Pegasus-XL rocket launched LINK this morning and contact has been successfully"
-      },
-      {
-        "title": "Starship in Florida pushing for launch this year",
-        "published": "2026-07-03T21:26:45Z",
-        "source": "NASASpaceflight",
-        "summary": "Starship launches from Cape Canaveral are getting closer and closer as SpaceX and its contractors…\nThe post Starship in Florida pushing for launch this year appeared first on NASASpaceFlight.com."
       }
     ]
   },
@@ -4675,87 +4702,87 @@
     "earthquakes": {
       "last24h": [
         {
-          "location": "15 km NNE of Red Bluff, CA",
-          "magnitude": 2.62,
-          "depth": 26.8799991607666,
-          "lat": 40.3101654052734,
-          "lng": -122.198997497559,
-          "time": "2026-07-06T02:49:39.220Z",
+          "location": "20 km S of Leilani Estates, Hawaii",
+          "magnitude": 2.7,
+          "depth": 38.2799987792969,
+          "lat": 19.283332824707,
+          "lng": -154.921661376953,
+          "time": "2026-07-06T10:11:33.300Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "91 km WNW of Tamarindo, Costa Rica",
-          "magnitude": 4.7,
-          "depth": 10,
-          "lat": 10.7504,
-          "lng": -86.5428,
-          "time": "2026-07-06T02:37:31.983Z",
+          "location": "26 km SSW of Segundo, Colorado",
+          "magnitude": 4,
+          "depth": 5,
+          "lat": 36.8926,
+          "lng": -104.8302,
+          "time": "2026-07-06T09:31:40.718Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "120 km SSE of Old Harbor, Alaska",
-          "magnitude": 3.1,
-          "depth": 37.7,
-          "lat": 56.244,
-          "lng": -152.391,
-          "time": "2026-07-06T00:06:06.608Z",
+          "location": "33 km SSW of Segundo, Colorado",
+          "magnitude": 4.2,
+          "depth": 6.217,
+          "lat": 36.8335,
+          "lng": -104.8326,
+          "time": "2026-07-06T09:21:54.771Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "294 km WNW of Ozernovskiy, Russia",
-          "magnitude": 3.9,
-          "depth": 535.114,
-          "lat": 52.8014,
-          "lng": 152.7507,
-          "time": "2026-07-05T23:22:09.724Z",
+          "location": "65 km SSW of Sarangani, Philippines",
+          "magnitude": 5.4,
+          "depth": 35,
+          "lat": 4.9091,
+          "lng": 125.1424,
+          "time": "2026-07-06T08:41:38.715Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "47 km NNW of Charlotte Amalie, U.S. Virgin Islands",
-          "magnitude": 3.07,
-          "depth": 35.74,
-          "lat": 18.739,
-          "lng": -65.1123333333333,
-          "time": "2026-07-05T23:22:07.840Z",
+          "location": "48 km SSW of Sarangani, Philippines",
+          "magnitude": 5.8,
+          "depth": 35,
+          "lat": 4.9886,
+          "lng": 125.326,
+          "time": "2026-07-06T08:11:11.032Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "41 km N of Brenas, Puerto Rico",
-          "magnitude": 2.68,
-          "depth": 30.71,
-          "lat": 18.8411666666667,
-          "lng": -66.3561666666667,
-          "time": "2026-07-05T23:06:06.670Z",
+          "location": "112 km NNW of Neiafu, Tonga",
+          "magnitude": 4.6,
+          "depth": 113.237,
+          "lat": -17.7009,
+          "lng": -174.3468,
+          "time": "2026-07-06T08:07:21.524Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "60 km NNW of Karluk, Alaska",
-          "magnitude": 3.2,
-          "depth": 100.2,
-          "lat": 58.098,
-          "lng": -154.664,
-          "time": "2026-07-05T19:27:57.135Z",
+          "location": "44 km W of Happy Valley, Alaska",
+          "magnitude": 4,
+          "depth": 108,
+          "lat": 60.014,
+          "lng": -152.525,
+          "time": "2026-07-06T05:36:22.880Z",
           "tsunami": false,
           "type": "earthquake"
         },
         {
-          "location": "47 km ESE of Jiufen, Taiwan",
-          "magnitude": 4.3,
-          "depth": 125.429,
-          "lat": 24.9267,
-          "lng": 122.268,
-          "time": "2026-07-05T19:11:34.177Z",
+          "location": "105 km SSE of Old Harbor, Alaska",
+          "magnitude": 3,
+          "depth": 5,
+          "lat": 56.374,
+          "lng": -152.468,
+          "time": "2026-07-06T03:23:29.918Z",
           "tsunami": false,
           "type": "earthquake"
         }
       ],
-      "total24h": 33,
+      "total24h": 34,
       "source": "USGS"
     },
     "newsSentiment": {
@@ -4784,57 +4811,75 @@
     },
     "news": [
       {
-        "title": "Bellingham inspires ten-man England in 3-2 last-16 thriller against Mexico",
-        "pubDate": "Mon, 06 Jul 2026 03:13:51 +0000",
-        "link": "https://www.aljazeera.com/sports/2026/7/6/bellingham-inspires-ten-man-england-in-3-2-last-16-thriller-against-mexico?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "World Cup 2026: Ten-man England battle past co-hosts Mexico in Azteca thriller",
-        "pubDate": "Mon, 06 Jul 2026 03:08:49 GMT",
-        "link": "https://www.france24.com/en/sport/20260706-world-cup-2026-ten-man-england-battle-past-co-hosts-mexico-in-azteca-thriller",
-        "source": "France24"
-      },
-      {
-        "title": "OPEC+ countries say they will expand monthly oil production",
-        "pubDate": "Mon, 06 Jul 2026 03:04:06 +0000",
-        "link": "https://www.aljazeera.com/economy/2026/7/6/opec-countries-say-they-will-expand-monthly-oil-production?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "Live: Russia launches deadly barrage on Kyiv region on eve of NATO summit",
-        "pubDate": "Mon, 06 Jul 2026 02:48:05 GMT",
-        "link": "https://www.france24.com/en/europe/20260706-live-russia-launches-deadly-barrage-on-kyiv-region-on-eve-of-nato-summit",
-        "source": "France24"
-      },
-      {
-        "title": "Sports stadium becomes home for victims of the Venezuela earthquakes",
-        "pubDate": "Mon, 06 Jul 2026 02:27:07 +0000",
-        "link": "https://www.aljazeera.com/video/newsfeed/2026/7/6/sports-stadium-becomes-home-for-victims-of-the-venezuela-earthquakes?traffic_source=rss",
-        "source": "Al Jazeera"
-      },
-      {
-        "title": "From 'a beautiful night' to 'world's greatest hangover', guests react to Taylor and Travis's wedding",
-        "pubDate": "Mon, 06 Jul 2026 01:20:47 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/clyxxr9n2kjo?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Ukraine warns of interceptor missile shortage as 14 killed in Kyiv region",
+        "pubDate": "Mon, 06 Jul 2026 10:15:30 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/cewqqnd7zdwo?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
-        "title": "Marine Le Pen appeal verdict: Why this moment matters for France",
-        "pubDate": "Sun, 05 Jul 2026 23:31:04 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/clyeele4leeo?at_medium=RSS&amp;at_campaign=rss",
-        "source": "BBC World"
-      },
-      {
-        "title": "Ten-man England survive Mexico comeback to knock out World Cup co-hosts in Azteca epic",
-        "pubDate": "Sun, 05 Jul 2026 22:59:27 GMT",
-        "link": "https://www.france24.com/en/sport/20260705-mexico-vs-england-live-azteca-fortress-hosts-three-lions-world-cup-last-16",
+        "title": "'Like we won a finale': England savour dramatic win and other World Cup news",
+        "pubDate": "Mon, 06 Jul 2026 10:06:13 GMT",
+        "link": "https://www.france24.com/en/like-we-won-a-finale-england-savour-dramatic-win-and-other-world-cup-news",
         "source": "France24"
       },
       {
-        "title": "A global hub for fake luxury goods, Vietnam cracks down on its black market",
-        "pubDate": "Sun, 05 Jul 2026 22:01:43 GMT",
-        "link": "https://www.bbc.co.uk/news/articles/cdx7zzywz7wo?at_medium=RSS&amp;at_campaign=rss",
+        "title": "Supporters stopped from attending Tour de France as wildfires ravage South of France",
+        "pubDate": "Mon, 06 Jul 2026 10:02:14 GMT",
+        "link": "https://www.france24.com/en/supporters-stopped-from-attending-tour-de-france-as-wildfires-ravage-south-of-france",
+        "source": "France24"
+      },
+      {
+        "title": "Are you older or younger than the rest of the world?",
+        "pubDate": "Mon, 06 Jul 2026 10:02:01 +0000",
+        "link": "https://www.aljazeera.com/features/longform/2026/7/6/are-you-older-or-younger-than-the-rest-of-the-world?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Syria expecting Macron visit in first for Western head-of-state since Assad",
+        "pubDate": "Mon, 06 Jul 2026 09:56:25 GMT",
+        "link": "https://www.france24.com/en/syria-expecting-macron-visit-in-first-for-western-head-of-state-since-assad",
+        "source": "France24"
+      },
+      {
+        "title": "Philippine Vice President Duterte’s impeachment trial begins: What we know",
+        "pubDate": "Mon, 06 Jul 2026 09:44:50 +0000",
+        "link": "https://www.aljazeera.com/news/2026/7/6/philippine-vice-president-dutertes-impeachment-trial-begins-what-we-know?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Iran: Millions flock to Ali Khamenei&#039;s funeral procession",
+        "pubDate": "Mon, 6 Jul 2026 09:43:00 GMT",
+        "link": "https://www.dw.com/en/iran-millions-flock-to-ali-khamenei-s-funeral-procession/a-77846937?maca=en-rss-en-world-4025-xml-mrss",
+        "source": "DW News"
+      },
+      {
+        "title": "Who is leading the race for the FIFA World Cup 2026 Golden Boot award?",
+        "pubDate": "Mon, 06 Jul 2026 09:30:23 +0000",
+        "link": "https://www.aljazeera.com/sports/2026/7/6/who-is-leading-the-race-for-the-fifa-world-cup-2026-golden-boot-award?traffic_source=rss",
+        "source": "Al Jazeera"
+      },
+      {
+        "title": "Euclid discovers the most ancient quasar in the Universe",
+        "pubDate": "Mon, 06 Jul 2026 08:30:00 +0200",
+        "link": "<![CDATA[https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_the_most_ancient_quasar_in_the_Universe]]>",
+        "source": "ESA"
+      },
+      {
+        "title": "'I ate ketchup and cheese,' says Venezuelan girl trapped under quake rubble for 32 hours",
+        "pubDate": "Mon, 06 Jul 2026 05:04:28 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/c9922x87nj8o?at_medium=RSS&amp;at_campaign=rss",
+        "source": "BBC World"
+      },
+      {
+        "title": "Examining Algal Blooms in Blue Mesa",
+        "pubDate": "Mon, 06 Jul 2026 04:01:00 +0000",
+        "link": "https://science.nasa.gov/earth/earth-observatory/examining-algal-blooms-in-blue-mesa/",
+        "source": "NASA Earth"
+      },
+      {
+        "title": "Australian PM apologises for 'inappropriate' comments about Kylie Minogue",
+        "pubDate": "Mon, 06 Jul 2026 01:46:29 GMT",
+        "link": "https://www.bbc.co.uk/news/articles/cr477en6w3go?at_medium=RSS&amp;at_campaign=rss",
         "source": "BBC World"
       },
       {
@@ -4850,10 +4895,10 @@
         "source": "DW News"
       },
       {
-        "title": "China&#039;s tech rise reshapes the global space race",
-        "pubDate": "Sun, 5 Jul 2026 12:31:00 GMT",
-        "link": "https://www.dw.com/en/china-s-tech-rise-reshapes-the-global-space-race/a-77790036?maca=en-rss-en-world-4025-xml-mrss",
-        "source": "DW News"
+        "title": "Global push for AI governance amid warnings of ‘catastrophic harm’",
+        "pubDate": "Sun, 05 Jul 2026 12:00:00 +0000",
+        "link": "https://news.un.org/feed/view/en/story/2026/07/1167862",
+        "source": "UN News"
       },
       {
         "title": "As deadly as war and as powerful as governments, global organized crime remains in the shadows",
@@ -4880,27 +4925,9 @@
         "source": "UN News"
       },
       {
-        "title": "Invisible peacebuilders: How ‘diplomacy works’ to prevent conflict",
-        "pubDate": "Sat, 04 Jul 2026 12:00:00 +0000",
-        "link": "https://news.un.org/feed/view/en/story/2026/07/1167866",
-        "source": "UN News"
-      },
-      {
         "title": "NASA’s Hubble Spies Stellar Sparkler for July 4th",
         "pubDate": "Sat, 04 Jul 2026 11:15:37 +0000",
         "link": "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th/",
-        "source": "NASA"
-      },
-      {
-        "title": "Overseas education project for women and girls axed by UK after two years",
-        "pubDate": "Sat, 04 Jul 2026 08:00:08 GMT",
-        "link": "https://www.theguardian.com/global-development/2026/jul/04/overseas-education-project-for-women-and-girls-axed-by-uk-after-two-years",
-        "source": "Guardian"
-      },
-      {
-        "title": "NASA’s Hubble Captures Crimson Cloud Sparkling with White, Blue Stars",
-        "pubDate": "Fri, 03 Jul 2026 15:01:17 +0000",
-        "link": "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars/",
         "source": "NASA"
       }
     ],
@@ -4955,7 +4982,7 @@
         "sunspots": 94.4
       }
     ],
-    "lastUpdated": "2026-07-06T03:25:46.345Z"
+    "lastUpdated": "2026-07-06T10:18:54.460Z"
   },
   "momentum": {
     "indicators": [
